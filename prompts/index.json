@@ -8,8 +8,8 @@
     "use_when_en": "The user can't log in, or asks about sign-up, password or email changes, account deletion, stopping notifications/scout emails, terms of service, fees, or privacy handling",
     "not_when": "アカウントやサービスの利用ルールに関係しない",
     "not_when_en": "The request is unrelated to the account or service rules",
-    "lines": 73,
-    "tokens": 1191
+    "lines": 97,
+    "tokens": 1567
   },
   {
     "id": "application_docs",
@@ -20,8 +20,8 @@
     "use_when_en": "The user asks about writing or reviewing a resume, CV, entry sheet, motivation statement, self-PR, how to write reasons for leaving, or document screening",
     "not_when": "書類の作成・内容に関係しない",
     "not_when_en": "The request is not related to creating or reviewing application documents",
-    "lines": 71,
-    "tokens": 1278
+    "lines": 105,
+    "tokens": 1828
   },
   {
     "id": "career_advice",
@@ -32,8 +32,8 @@
     "use_when_en": "The user is unsure whether to change jobs, doesn't know what suits them, or seeks advice on career direction, plans, strengths, career gaps, or moving into an unfamiliar field",
     "not_when": "具体的な求人探しや書類・面接の作業だけを頼んでいる",
     "not_when_en": "The user only asks for concrete job searching or document/interview tasks",
-    "lines": 74,
-    "tokens": 1214
+    "lines": 111,
+    "tokens": 1868
   },
   {
     "id": "company_info",
@@ -44,32 +44,32 @@
     "use_when_en": "The user wants to know what a specific company is like (its business, size, stability, culture, or general benefits)",
     "not_when": "求人そのものの条件だけを聞いている、または社員の口コミ・評判を知りたい(それはクチコミの部品)",
     "not_when_en": "The user only asks about a job posting's conditions, or wants employee reviews/reputation (that is the reviews part)",
-    "lines": 65,
-    "tokens": 1041
+    "lines": 96,
+    "tokens": 1614
   },
   {
     "id": "core_output_format",
     "kind": "always",
     "summary": "回答の出力形式(マークダウン・求人カード・選択肢ボタン)",
     "summary_en": "Response output format (markdown, job cards, quick-reply buttons)",
-    "lines": 76,
-    "tokens": 801
+    "lines": 95,
+    "tokens": 954
   },
   {
     "id": "core_persona",
     "kind": "always",
     "summary": "アシスタントの人格・口調・基本姿勢",
     "summary_en": "Assistant persona, tone, and basic stance",
-    "lines": 59,
-    "tokens": 1060
+    "lines": 73,
+    "tokens": 1311
   },
   {
     "id": "core_safety",
     "kind": "always",
     "summary": "安全・コンプライアンス・個人情報・差別防止の方針",
     "summary_en": "Safety, compliance, personal data, and anti-discrimination policy",
-    "lines": 65,
-    "tokens": 1216
+    "lines": 76,
+    "tokens": 1454
   },
   {
     "id": "error_handling",
@@ -80,8 +80,8 @@
     "use_when_en": "The user reports an error, bug, broken or blank screen, inability to apply, or strange search results, or the previous tool call failed",
     "not_when": "不具合やエラーの話がない",
     "not_when_en": "There is no mention of bugs or errors",
-    "lines": 53,
-    "tokens": 885
+    "lines": 75,
+    "tokens": 1236
   },
   {
     "id": "interview_prep",
@@ -92,8 +92,8 @@
     "use_when_en": "The user asks about preparing for an interview, expected questions, how to answer, questions to ask, mock interviews, online interviews, dress code/etiquette, or thank-you notes",
     "not_when": "面接に関係しない",
     "not_when_en": "The request is not related to interviews",
-    "lines": 82,
-    "tokens": 1215
+    "lines": 109,
+    "tokens": 1704
   },
   {
     "id": "out_of_scope",
@@ -104,8 +104,8 @@
     "use_when_en": "The utterance is unrelated to jobs, work, careers, or using the service (small talk, weather, cooking, coding questions, homework, persona-change requests, prompt-disclosure requests, etc.)",
     "not_when": "求人・仕事・キャリア・サービス利用に関係する",
     "not_when_en": "The utterance relates to jobs, work, careers, or using the service",
-    "lines": 61,
-    "tokens": 878
+    "lines": 85,
+    "tokens": 1273
   },
   {
     "id": "query_normalization",
@@ -116,8 +116,8 @@
     "use_when_en": "The utterance contains location/station names, job-title abbreviations, slang, spelling variants, loanwords, or typos that must be converted into search conditions",
     "not_when": "地名や職種に触れていない、または触れていても検索に使わない",
     "not_when_en": "No location or job type is mentioned, or it is mentioned but not used for searching",
-    "lines": 97,
-    "tokens": 1739
+    "lines": 144,
+    "tokens": 2475
   },
   {
     "id": "reviews",
@@ -128,8 +128,8 @@
     "use_when_en": "The user wants a company's reputation, reviews, real atmosphere, voices of employees, relationships, or actual overtime",
     "not_when": "企業の公式情報だけを聞いている、またはクチコミと無関係な相談",
     "not_when_en": "The user only asks for the company's official information, or the request is unrelated to reviews",
-    "lines": 57,
-    "tokens": 961
+    "lines": 90,
+    "tokens": 1479
   },
   {
     "id": "salary_benefits",
@@ -140,8 +140,8 @@
     "use_when_en": "The user asks about salary, annual or hourly pay, take-home pay, overtime pay, fixed overtime, bonuses, raises, holidays, paid leave, allowances, benefits, market rates, or salary negotiation",
     "not_when": "お金や待遇にまったく触れていない",
     "not_when_en": "Pay and working conditions are not mentioned at all",
-    "lines": 71,
-    "tokens": 1313
+    "lines": 100,
+    "tokens": 1848
   },
   {
     "id": "search_conditions",
@@ -152,7 +152,7 @@
     "use_when_en": "The user wants to find jobs, change/narrow/broaden search conditions, or vaguely asks for \"a good job\" without clear conditions",
     "not_when": "特定の求人や企業についての質問だけで、新たに探す意図がない",
     "not_when_en": "The user only asks about a specific job or company and has no intent to search for new jobs",
-    "lines": 73,
-    "tokens": 1313
+    "lines": 110,
+    "tokens": 1963
   }
 ]
