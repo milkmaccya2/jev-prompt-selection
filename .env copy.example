@@ -1,0 +1,4 @@
+# TypeSafe (Jev) early-access key. Never commit the real value.
+TYPESAFE_API_KEY=
+# Optional: enables selector D (light LLM baseline)
+ANTHROPIC_API_KEY=
