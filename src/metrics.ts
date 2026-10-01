@@ -1,7 +1,7 @@
 import type { EvalCase } from './data.js';
 import { BASE, type CallResult, type ConfigId } from './jev.js';
 import type { Part } from './parts.js';
-import { CUTOFFS, decide, pickPrompt } from './select.js';
+import { pickPrompt } from './select.js';
 
 export interface RawRun {
   startedAt: string;
@@ -14,17 +14,17 @@ export interface Variant {
   key: string;
   label: string;
   config: ConfigId;
-  cutoff: number;
 }
 
-export type Verdict = 'correct' | 'acceptable' | 'wrong' | 'fallback';
+export type Verdict = 'correct' | 'acceptable' | 'wrong';
 
 export interface CaseOutcome {
   id: string;
   answer: string;
   acceptable: string[];
-  chosen: string | null;
+  chosen: string;
   confidence: number | null;
+  failed: boolean;
   verdict: Verdict;
 }
 
@@ -37,12 +37,13 @@ export interface VariantMetrics {
   accuracyLenient: number;
   /** a prompt that is neither answer nor acceptable was used */
   wrongRate: number;
-  fallbackRate: number;
+  /** API errors; the base prompt was used */
+  failedRate: number;
   latencyP50: number | null;
   latencyP95: number | null;
   selectorTokensPerCall: number | null;
   costUsdPer1k: number | null;
-  perAnswer: Record<string, { n: number; ok: number; wrong: number; fallback: number }>;
+  perAnswer: Record<string, { n: number; ok: number; wrong: number }>;
   confusion: { answer: string; chosen: string; count: number }[];
   outcomes: CaseOutcome[];
 }
@@ -57,14 +58,7 @@ export function variantsFor(configs: ConfigId[]): Variant[] {
   const v: Variant[] = [];
   // raw runs may hold configs that were dropped later (e.g. an earlier description variant)
   for (const c of configs.filter((x) => x in CONFIG_LABEL)) {
-    for (const cut of CUTOFFS) {
-      v.push({
-        key: `${c}@${cut}`,
-        label: cut ? `${CONFIG_LABEL[c]} 下限${cut}` : `${CONFIG_LABEL[c]} 下限なし`,
-        config: c,
-        cutoff: cut,
-      });
-    }
+    v.push({ key: c, label: CONFIG_LABEL[c], config: c });
   }
   return v;
 }
@@ -92,36 +86,21 @@ export function computeMetrics(run: RawRun, cases: EvalCase[], parts: Part[]): V
       latencies.push(r.latencyMs);
       selTokens += r.inputTokens;
       calls++;
-      const d = decide(pickPrompt(r, variant.config), variant.cutoff);
-      const chosen = d.chosen ?? null;
+      const pk = pickPrompt(r, variant.config);
       const verdict: Verdict =
-        d.kind === 'fallback'
-          ? 'fallback'
-          : d.chosen === c.answer
-            ? 'correct'
-            : c.acceptable.includes(d.chosen)
-              ? 'acceptable'
-              : 'wrong';
-      outcomes.push({
-        id: c.id,
-        answer: c.answer,
-        acceptable: c.acceptable,
-        chosen,
-        confidence: d.confidence ?? null,
-        verdict,
-      });
+        pk.chosen === c.answer ? 'correct' : c.acceptable.includes(pk.chosen) ? 'acceptable' : 'wrong';
+      outcomes.push({ id: c.id, answer: c.answer, acceptable: c.acceptable, ...pk, verdict });
     }
     const n = outcomes.length || 1;
     const count = (f: (o: CaseOutcome) => boolean) => outcomes.filter(f).length;
     const perAnswer: VariantMetrics['perAnswer'] = Object.fromEntries(
-      answerIds.map((id) => [id, { n: 0, ok: 0, wrong: 0, fallback: 0 }])
+      answerIds.map((id) => [id, { n: 0, ok: 0, wrong: 0 }])
     );
     const conf = new Map<string, number>();
     for (const o of outcomes) {
       const pa = perAnswer[o.answer];
       pa.n++;
       if (o.verdict === 'correct' || o.verdict === 'acceptable') pa.ok++;
-      if (o.verdict === 'fallback') pa.fallback++;
       if (o.verdict === 'wrong') {
         pa.wrong++;
         const k = `${o.answer}\t${o.chosen}`;
@@ -134,7 +113,7 @@ export function computeMetrics(run: RawRun, cases: EvalCase[], parts: Part[]): V
       accuracy: count((o) => o.verdict === 'correct') / n,
       accuracyLenient: count((o) => o.verdict === 'correct' || o.verdict === 'acceptable') / n,
       wrongRate: count((o) => o.verdict === 'wrong') / n,
-      fallbackRate: count((o) => o.verdict === 'fallback') / n,
+      failedRate: count((o) => o.failed) / n,
       latencyP50: pct(latencies, 0.5),
       latencyP95: pct(latencies, 0.95),
       selectorTokensPerCall: calls ? selTokens / calls : null,

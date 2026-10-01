@@ -25,45 +25,7 @@ export function toPng(svgText: string): Buffer {
     .asPng();
 }
 
-/** Chart 1: outcome mix per confidence cut-off, as 100% stacked bars (one row per cut-off). */
-export function cutoffChart(ms: VariantMetrics[], title: string): string {
-  const rows = [...ms].sort((a, b) => a.variant.cutoff - b.variant.cutoff);
-  const segs = [
-    { name: '正解', color: C.s1, v: (m: VariantMetrics) => m.accuracy, onDark: true },
-    { name: 'これでも可', color: '#86b6ef', v: (m: VariantMetrics) => m.accuracyLenient - m.accuracy, onDark: false },
-    { name: '全部載せに倒した', color: '#c3c2b7', v: (m: VariantMetrics) => m.fallbackRate, onDark: false },
-    { name: '誤ったプロンプト', color: '#e34948', v: (m: VariantMetrics) => m.wrongRate, onDark: true },
-  ];
-  const L = 220, R = 130, T = 170, bh = 72, gap = 28;
-  const pw = W - L - R;
-  let g = `<text x="40" y="48" font-size="30" font-weight="700" fill="${C.text}">${esc(title)}</text>`;
-  g += `<text x="40" y="82" font-size="18" fill="${C.text2}">確信度が下限を下回ったら、選択を使わず全部載せにする。100件の内訳</text>`;
-  let lx = L;
-  for (const sg of segs) {
-    g += `<rect x="${lx}" y="${T - 52}" width="16" height="16" rx="3" fill="${sg.color}"/><text x="${lx + 24}" y="${T - 38}" font-size="18" fill="${C.text}">${sg.name}</text>`;
-    lx += sg.name.length * 18 + 64;
-  }
-  rows.forEach((m, i) => {
-    const y = T + i * (bh + gap);
-    const lab = m.variant.cutoff ? `下限 ${m.variant.cutoff}` : '下限なし';
-    g += `<text x="${L - 16}" y="${y + bh / 2 + 7}" text-anchor="end" font-size="20" fill="${C.text}">${lab}</text>`;
-    let x = L;
-    for (const sg of segs) {
-      const v = sg.v(m);
-      const w = v * pw;
-      if (w <= 0) continue;
-      g += `<rect x="${x}" y="${y}" width="${Math.max(0, w - 2)}" height="${bh}" fill="${sg.color}"/>`;
-      if (w > 40 && sg.name !== '誤ったプロンプト') {
-        g += `<text x="${x + w / 2 - 1}" y="${y + bh / 2 + 7}" text-anchor="middle" font-size="20" font-weight="600" fill="${sg.onDark ? '#ffffff' : C.text}">${Math.round(v * 100)}%</text>`;
-      }
-      x += w;
-    }
-    g += `<text x="${L + pw + 12}" y="${y + bh / 2 + 7}" font-size="20" font-weight="600" fill="${C.text}">誤り ${Math.round(m.wrongRate * 100)}%</text>`;
-  });
-  return svg(g);
-}
-
-/** Chart 2: per correct prompt, the share of cases where a wrong prompt was chosen. */
+/** Chart: per correct prompt, the share of cases where a wrong prompt was chosen. */
 export function missChart(m: VariantMetrics, title: string, labels: Record<string, string>): string {
   const rows = Object.entries(m.perAnswer)
     .filter(([, v]) => v.n > 0)

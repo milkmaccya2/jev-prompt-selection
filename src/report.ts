@@ -1,6 +1,6 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
-import { cutoffChart, missChart, toPng } from './charts.js';
+import { missChart, toPng } from './charts.js';
 import { loadEval } from './data.js';
 import { BASE, MAIN } from './jev.js';
 import { CONFIG_LABEL, computeMetrics, type RawRun, type VariantMetrics } from './metrics.js';
@@ -37,24 +37,29 @@ const LABEL: Record<string, string> = {
 const lab = (id: string | null) => (id ? (LABEL[id] ?? id) : '-');
 const p = (v: number | null) => (v === null ? '-' : `${(v * 100).toFixed(0)}%`);
 
-const main = ms.filter((m) => m.variant.config === MAIN);
-const head = main.find((m) => m.variant.cutoff === 0) as VariantMetrics;
-writeFileSync('results/chart-cutoff.png', toPng(cutoffChart(main, '確信度の下限を上げると、誤りは減り全部載せが増える')));
-writeFileSync('results/chart-part-miss.png', toPng(missChart(head, 'プロンプト別: 選び間違えた割合(下限なし)', LABEL)));
+const head = ms.find((m) => m.variant.config === MAIN) as VariantMetrics;
+writeFileSync('results/chart-part-miss.png', toPng(missChart(head, 'プロンプト別: 選び間違えた割合', LABEL)));
+
+/** Side check: if a low-confidence pick were replaced by the base prompt, how many would be wrong? */
+const baseFallbackWrong = (cut: number) =>
+  run.cases.filter((row) => {
+    const c = byId.get(row.id);
+    const r = row.results[MAIN];
+    if (!c || !r?.ok) return false;
+    const chosen = (r.confidence ?? 0) < cut ? BASE : (r.choice as string);
+    return chosen !== c.answer && !c.acceptable.includes(chosen);
+  }).length / head.n;
 
 const models = [...new Set(run.cases.flatMap((c) => Object.values(c.results).map((r) => r?.model)).filter(Boolean))];
 
 const table = [
-  '| 確信度の下限 | 正解率 | 「これでも可」込み | 誤ったプロンプト | 全部載せに倒した |',
-  '|---|---:|---:|---:|---:|',
-  ...main.map(
-    (m) =>
-      `| ${m.variant.cutoff || 'なし'} | ${p(m.accuracy)} | ${p(m.accuracyLenient)} | ${p(m.wrongRate)} | ${p(m.fallbackRate)} |`
-  ),
+  '| 正解率 | 「これでも可」込み | 誤ったプロンプト |',
+  '|---:|---:|---:|',
+  `| ${p(head.accuracy)} | ${p(head.accuracyLenient)} | ${p(head.wrongRate)} |`,
 ].join('\n');
 
 const extras = ms
-  .filter((m) => m.variant.config !== MAIN && m.variant.cutoff === 0)
+  .filter((m) => m.variant.config !== MAIN)
   .map(
     (m) =>
       `- ${CONFIG_LABEL[m.variant.config]}: 正解率 ${p(m.accuracy)}(可込み ${p(m.accuracyLenient)})、誤り ${p(m.wrongRate)}、判定の入力 ${m.selectorTokensPerCall?.toFixed(0)} tok/回`
@@ -81,7 +86,7 @@ const md = `# 結果サマリー: Jev でシステムプロンプトを1つ選�
 - 実行: ${run.startedAt} / モデル: ${models.join(', ')} / 件数: ${head.n}
 - 候補12個(専用プロンプト11個 + 基本プロンプト)から、Jev の choice で1つ選ぶ
 - 正解率 = 正解と一致 /「これでも可」込み = ラベル付けのときに決めた別解も当たりとする / 誤ったプロンプト = どちらでもないものを選んだ
-- 確信度の下限: Jev の \`confidence\` が下限未満なら、選択を使わず全部載せにする
+- Jev が使えなかったとき(API エラー)は基本プロンプトを使う(今回は ${Math.round(head.failedRate * head.n)} 件)
 - 判定時間 p50 ${Math.round(head.latencyP50 ?? 0)}ms / p95 ${Math.round(head.latencyP95 ?? 0)}ms、判定の費用 1000回あたり $${head.costUsdPer1k?.toFixed(3)}
 
 ${findings}
@@ -90,11 +95,9 @@ ${findings}
 
 ${table}
 
-![確信度の下限ごとの内訳](chart-cutoff.png)
-
 ![プロンプト別の選び間違い](chart-part-miss.png)
 
-## 選び間違えた件(下限なし)
+## 選び間違えた件
 
 | id | 発話 | 正解 | Jev が選んだ | 確信度 |
 |---|---|---|---|---:|
@@ -104,8 +107,9 @@ ${mistakes.join('\n') || '| - | なし | | | |'}
 
 ${confusion || '- なし'}
 
-## 補足: ほかの聞き方(下限なし)
+## 補足
 
+- 確信度が低いときに基本プロンプトへ戻すと: 誤り ${p(head.wrongRate)} → 下限0.5で ${p(baseFallbackWrong(0.5))}、0.7で ${p(baseFallbackWrong(0.7))}、0.9で ${p(baseFallbackWrong(0.9))}
 ${extras || '- なし'}
 `;
 writeFileSync('results/summary.md', md);
@@ -120,3 +124,4 @@ writeFileSync(
 console.log(`report from ${rawPath} → results/summary.md, metrics.json, chart-*.png`);
 console.log(table);
 console.log(extras);
+console.log('base fallback wrong @0.5/0.7/0.9:', [0.5, 0.7, 0.9].map((c) => p(baseFallbackWrong(c))).join(' / '));

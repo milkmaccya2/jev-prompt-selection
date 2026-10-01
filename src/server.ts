@@ -4,7 +4,7 @@ import type { Turn } from './data.js';
 import { loadEval } from './data.js';
 import { Budget, BudgetExceeded, MAIN, makeClient, runConfig } from './jev.js';
 import { loadParts, selectable } from './parts.js';
-import { CUTOFFS, NOUL_MIN } from './select.js';
+
 
 const PORT = Number(process.env.PORT ?? 4319);
 // Live calls from the UI share this cap for the lifetime of the server process.
@@ -38,8 +38,6 @@ createServer(async (req, res) => {
         cases: loadEval(),
         run: latestRun(),
         main: MAIN,
-        cutoffs: CUTOFFS,
-        noulMin: NOUL_MIN,
         live: Boolean(client),
         budget: { limitUsd: budget.limitUsd, spentUsd: budget.spentUsd },
       });

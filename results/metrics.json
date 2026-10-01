@@ -1,16 +1,15 @@
 [
   {
     "variant": {
-      "key": "choice_ja@0",
-      "label": "choice(日本語) 下限なし",
-      "config": "choice_ja",
-      "cutoff": 0
+      "key": "choice_ja",
+      "label": "choice(日本語)",
+      "config": "choice_ja"
     },
     "n": 100,
     "accuracy": 0.82,
     "accuracyLenient": 0.88,
     "wrongRate": 0.12,
-    "fallbackRate": 0,
+    "failedRate": 0,
     "latencyP50": 173.72529199999985,
     "latencyP95": 224.53499999999985,
     "selectorTokensPerCall": 1682.1,
@@ -19,74 +18,62 @@
       "account_terms": {
         "n": 7,
         "ok": 7,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "application_docs": {
         "n": 8,
         "ok": 7,
-        "wrong": 1,
-        "fallback": 0
+        "wrong": 1
       },
       "career_advice": {
         "n": 6,
         "ok": 6,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "company_info": {
         "n": 7,
         "ok": 7,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "error_handling": {
         "n": 4,
         "ok": 4,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "interview_prep": {
         "n": 6,
         "ok": 6,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "out_of_scope": {
         "n": 8,
         "ok": 5,
-        "wrong": 3,
-        "fallback": 0
+        "wrong": 3
       },
       "query_normalization": {
         "n": 0,
         "ok": 0,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "reviews": {
         "n": 5,
         "ok": 5,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "salary_benefits": {
         "n": 12,
         "ok": 12,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "search_conditions": {
         "n": 24,
         "ok": 23,
-        "wrong": 1,
-        "fallback": 0
+        "wrong": 1
       },
       "base": {
         "n": 13,
         "ok": 6,
-        "wrong": 7,
-        "fallback": 0
+        "wrong": 7
       }
     },
     "confusion": [
@@ -134,370 +121,15 @@
   },
   {
     "variant": {
-      "key": "choice_ja@0.5",
-      "label": "choice(日本語) 下限0.5",
-      "config": "choice_ja",
-      "cutoff": 0.5
-    },
-    "n": 100,
-    "accuracy": 0.78,
-    "accuracyLenient": 0.83,
-    "wrongRate": 0.11,
-    "fallbackRate": 0.06,
-    "latencyP50": 173.72529199999985,
-    "latencyP95": 224.53499999999985,
-    "selectorTokensPerCall": 1682.1,
-    "costUsdPer1k": 0.07064820000000001,
-    "perAnswer": {
-      "account_terms": {
-        "n": 7,
-        "ok": 7,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "application_docs": {
-        "n": 8,
-        "ok": 6,
-        "wrong": 1,
-        "fallback": 1
-      },
-      "career_advice": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "company_info": {
-        "n": 7,
-        "ok": 7,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "error_handling": {
-        "n": 4,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "interview_prep": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "out_of_scope": {
-        "n": 8,
-        "ok": 5,
-        "wrong": 3,
-        "fallback": 0
-      },
-      "query_normalization": {
-        "n": 0,
-        "ok": 0,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "reviews": {
-        "n": 5,
-        "ok": 5,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "salary_benefits": {
-        "n": 12,
-        "ok": 12,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "search_conditions": {
-        "n": 24,
-        "ok": 22,
-        "wrong": 1,
-        "fallback": 1
-      },
-      "base": {
-        "n": 13,
-        "ok": 3,
-        "wrong": 6,
-        "fallback": 4
-      }
-    },
-    "confusion": [
-      {
-        "answer": "base",
-        "chosen": "search_conditions",
-        "count": 3
-      },
-      {
-        "answer": "out_of_scope",
-        "chosen": "base",
-        "count": 3
-      },
-      {
-        "answer": "search_conditions",
-        "chosen": "error_handling",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "out_of_scope",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "salary_benefits",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "interview_prep",
-        "count": 1
-      },
-      {
-        "answer": "application_docs",
-        "chosen": "error_handling",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "variant": {
-      "key": "choice_ja@0.7",
-      "label": "choice(日本語) 下限0.7",
-      "config": "choice_ja",
-      "cutoff": 0.7
-    },
-    "n": 100,
-    "accuracy": 0.65,
-    "accuracyLenient": 0.67,
-    "wrongRate": 0.08,
-    "fallbackRate": 0.25,
-    "latencyP50": 173.72529199999985,
-    "latencyP95": 224.53499999999985,
-    "selectorTokensPerCall": 1682.1,
-    "costUsdPer1k": 0.07064820000000001,
-    "perAnswer": {
-      "account_terms": {
-        "n": 7,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 1
-      },
-      "application_docs": {
-        "n": 8,
-        "ok": 6,
-        "wrong": 1,
-        "fallback": 1
-      },
-      "career_advice": {
-        "n": 6,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 2
-      },
-      "company_info": {
-        "n": 7,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 1
-      },
-      "error_handling": {
-        "n": 4,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "interview_prep": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "out_of_scope": {
-        "n": 8,
-        "ok": 4,
-        "wrong": 2,
-        "fallback": 2
-      },
-      "query_normalization": {
-        "n": 0,
-        "ok": 0,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "reviews": {
-        "n": 5,
-        "ok": 3,
-        "wrong": 0,
-        "fallback": 2
-      },
-      "salary_benefits": {
-        "n": 12,
-        "ok": 12,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "search_conditions": {
-        "n": 24,
-        "ok": 15,
-        "wrong": 1,
-        "fallback": 8
-      },
-      "base": {
-        "n": 13,
-        "ok": 1,
-        "wrong": 4,
-        "fallback": 8
-      }
-    },
-    "confusion": [
-      {
-        "answer": "base",
-        "chosen": "search_conditions",
-        "count": 2
-      },
-      {
-        "answer": "out_of_scope",
-        "chosen": "base",
-        "count": 2
-      },
-      {
-        "answer": "search_conditions",
-        "chosen": "error_handling",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "out_of_scope",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "salary_benefits",
-        "count": 1
-      },
-      {
-        "answer": "application_docs",
-        "chosen": "error_handling",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "variant": {
-      "key": "choice_ja@0.9",
-      "label": "choice(日本語) 下限0.9",
-      "config": "choice_ja",
-      "cutoff": 0.9
-    },
-    "n": 100,
-    "accuracy": 0.55,
-    "accuracyLenient": 0.57,
-    "wrongRate": 0.02,
-    "fallbackRate": 0.41,
-    "latencyP50": 173.72529199999985,
-    "latencyP95": 224.53499999999985,
-    "selectorTokensPerCall": 1682.1,
-    "costUsdPer1k": 0.07064820000000001,
-    "perAnswer": {
-      "account_terms": {
-        "n": 7,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 3
-      },
-      "application_docs": {
-        "n": 8,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 2
-      },
-      "career_advice": {
-        "n": 6,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 2
-      },
-      "company_info": {
-        "n": 7,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 1
-      },
-      "error_handling": {
-        "n": 4,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "interview_prep": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "out_of_scope": {
-        "n": 8,
-        "ok": 4,
-        "wrong": 1,
-        "fallback": 3
-      },
-      "query_normalization": {
-        "n": 0,
-        "ok": 0,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "reviews": {
-        "n": 5,
-        "ok": 2,
-        "wrong": 0,
-        "fallback": 3
-      },
-      "salary_benefits": {
-        "n": 12,
-        "ok": 12,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "search_conditions": {
-        "n": 24,
-        "ok": 9,
-        "wrong": 0,
-        "fallback": 15
-      },
-      "base": {
-        "n": 13,
-        "ok": 0,
-        "wrong": 1,
-        "fallback": 12
-      }
-    },
-    "confusion": [
-      {
-        "answer": "out_of_scope",
-        "chosen": "base",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "search_conditions",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "variant": {
-      "key": "choice_en@0",
-      "label": "choice(英語の説明) 下限なし",
-      "config": "choice_en",
-      "cutoff": 0
+      "key": "choice_en",
+      "label": "choice(英語の説明)",
+      "config": "choice_en"
     },
     "n": 100,
     "accuracy": 0.83,
     "accuracyLenient": 0.89,
     "wrongRate": 0.11,
-    "fallbackRate": 0,
+    "failedRate": 0,
     "latencyP50": 170.75345800000014,
     "latencyP95": 241.74675000000025,
     "selectorTokensPerCall": 1114.42,
@@ -506,74 +138,62 @@
       "account_terms": {
         "n": 7,
         "ok": 7,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "application_docs": {
         "n": 8,
         "ok": 7,
-        "wrong": 1,
-        "fallback": 0
+        "wrong": 1
       },
       "career_advice": {
         "n": 6,
         "ok": 6,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "company_info": {
         "n": 7,
         "ok": 7,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "error_handling": {
         "n": 4,
         "ok": 4,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "interview_prep": {
         "n": 6,
         "ok": 6,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "out_of_scope": {
         "n": 8,
         "ok": 5,
-        "wrong": 3,
-        "fallback": 0
+        "wrong": 3
       },
       "query_normalization": {
         "n": 0,
         "ok": 0,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "reviews": {
         "n": 5,
         "ok": 5,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "salary_benefits": {
         "n": 12,
         "ok": 12,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "search_conditions": {
         "n": 24,
         "ok": 23,
-        "wrong": 1,
-        "fallback": 0
+        "wrong": 1
       },
       "base": {
         "n": 13,
         "ok": 7,
-        "wrong": 6,
-        "fallback": 0
+        "wrong": 6
       }
     },
     "confusion": [
@@ -616,365 +236,15 @@
   },
   {
     "variant": {
-      "key": "choice_en@0.5",
-      "label": "choice(英語の説明) 下限0.5",
-      "config": "choice_en",
-      "cutoff": 0.5
-    },
-    "n": 100,
-    "accuracy": 0.78,
-    "accuracyLenient": 0.81,
-    "wrongRate": 0.1,
-    "fallbackRate": 0.09,
-    "latencyP50": 170.75345800000014,
-    "latencyP95": 241.74675000000025,
-    "selectorTokensPerCall": 1114.42,
-    "costUsdPer1k": 0.04680564,
-    "perAnswer": {
-      "account_terms": {
-        "n": 7,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 1
-      },
-      "application_docs": {
-        "n": 8,
-        "ok": 6,
-        "wrong": 1,
-        "fallback": 1
-      },
-      "career_advice": {
-        "n": 6,
-        "ok": 5,
-        "wrong": 0,
-        "fallback": 1
-      },
-      "company_info": {
-        "n": 7,
-        "ok": 7,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "error_handling": {
-        "n": 4,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "interview_prep": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "out_of_scope": {
-        "n": 8,
-        "ok": 5,
-        "wrong": 2,
-        "fallback": 1
-      },
-      "query_normalization": {
-        "n": 0,
-        "ok": 0,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "reviews": {
-        "n": 5,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 1
-      },
-      "salary_benefits": {
-        "n": 12,
-        "ok": 12,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "search_conditions": {
-        "n": 24,
-        "ok": 20,
-        "wrong": 1,
-        "fallback": 3
-      },
-      "base": {
-        "n": 13,
-        "ok": 6,
-        "wrong": 6,
-        "fallback": 1
-      }
-    },
-    "confusion": [
-      {
-        "answer": "base",
-        "chosen": "search_conditions",
-        "count": 3
-      },
-      {
-        "answer": "out_of_scope",
-        "chosen": "base",
-        "count": 2
-      },
-      {
-        "answer": "search_conditions",
-        "chosen": "error_handling",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "out_of_scope",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "salary_benefits",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "interview_prep",
-        "count": 1
-      },
-      {
-        "answer": "application_docs",
-        "chosen": "error_handling",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "variant": {
-      "key": "choice_en@0.7",
-      "label": "choice(英語の説明) 下限0.7",
-      "config": "choice_en",
-      "cutoff": 0.7
-    },
-    "n": 100,
-    "accuracy": 0.72,
-    "accuracyLenient": 0.74,
-    "wrongRate": 0.06,
-    "fallbackRate": 0.2,
-    "latencyP50": 170.75345800000014,
-    "latencyP95": 241.74675000000025,
-    "selectorTokensPerCall": 1114.42,
-    "costUsdPer1k": 0.04680564,
-    "perAnswer": {
-      "account_terms": {
-        "n": 7,
-        "ok": 5,
-        "wrong": 0,
-        "fallback": 2
-      },
-      "application_docs": {
-        "n": 8,
-        "ok": 6,
-        "wrong": 1,
-        "fallback": 1
-      },
-      "career_advice": {
-        "n": 6,
-        "ok": 5,
-        "wrong": 0,
-        "fallback": 1
-      },
-      "company_info": {
-        "n": 7,
-        "ok": 7,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "error_handling": {
-        "n": 4,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "interview_prep": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "out_of_scope": {
-        "n": 8,
-        "ok": 5,
-        "wrong": 2,
-        "fallback": 1
-      },
-      "query_normalization": {
-        "n": 0,
-        "ok": 0,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "reviews": {
-        "n": 5,
-        "ok": 3,
-        "wrong": 0,
-        "fallback": 2
-      },
-      "salary_benefits": {
-        "n": 12,
-        "ok": 12,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "search_conditions": {
-        "n": 24,
-        "ok": 17,
-        "wrong": 0,
-        "fallback": 7
-      },
-      "base": {
-        "n": 13,
-        "ok": 4,
-        "wrong": 3,
-        "fallback": 6
-      }
-    },
-    "confusion": [
-      {
-        "answer": "base",
-        "chosen": "search_conditions",
-        "count": 2
-      },
-      {
-        "answer": "out_of_scope",
-        "chosen": "base",
-        "count": 2
-      },
-      {
-        "answer": "base",
-        "chosen": "salary_benefits",
-        "count": 1
-      },
-      {
-        "answer": "application_docs",
-        "chosen": "error_handling",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "variant": {
-      "key": "choice_en@0.9",
-      "label": "choice(英語の説明) 下限0.9",
-      "config": "choice_en",
-      "cutoff": 0.9
-    },
-    "n": 100,
-    "accuracy": 0.55,
-    "accuracyLenient": 0.57,
-    "wrongRate": 0.03,
-    "fallbackRate": 0.4,
-    "latencyP50": 170.75345800000014,
-    "latencyP95": 241.74675000000025,
-    "selectorTokensPerCall": 1114.42,
-    "costUsdPer1k": 0.04680564,
-    "perAnswer": {
-      "account_terms": {
-        "n": 7,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 3
-      },
-      "application_docs": {
-        "n": 8,
-        "ok": 5,
-        "wrong": 1,
-        "fallback": 2
-      },
-      "career_advice": {
-        "n": 6,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 2
-      },
-      "company_info": {
-        "n": 7,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 1
-      },
-      "error_handling": {
-        "n": 4,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "interview_prep": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "out_of_scope": {
-        "n": 8,
-        "ok": 4,
-        "wrong": 1,
-        "fallback": 3
-      },
-      "query_normalization": {
-        "n": 0,
-        "ok": 0,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "reviews": {
-        "n": 5,
-        "ok": 2,
-        "wrong": 0,
-        "fallback": 3
-      },
-      "salary_benefits": {
-        "n": 12,
-        "ok": 12,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "search_conditions": {
-        "n": 24,
-        "ok": 9,
-        "wrong": 0,
-        "fallback": 15
-      },
-      "base": {
-        "n": 13,
-        "ok": 1,
-        "wrong": 1,
-        "fallback": 11
-      }
-    },
-    "confusion": [
-      {
-        "answer": "base",
-        "chosen": "search_conditions",
-        "count": 1
-      },
-      {
-        "answer": "out_of_scope",
-        "chosen": "base",
-        "count": 1
-      },
-      {
-        "answer": "application_docs",
-        "chosen": "error_handling",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "variant": {
-      "key": "noul_ja@0",
-      "label": "noul ×11 の最大値 下限なし",
-      "config": "noul_ja",
-      "cutoff": 0
+      "key": "noul_ja",
+      "label": "noul ×11 の最大値",
+      "config": "noul_ja"
     },
     "n": 100,
     "accuracy": 0.81,
     "accuracyLenient": 0.89,
     "wrongRate": 0.11,
-    "fallbackRate": 0,
+    "failedRate": 0,
     "latencyP50": 175.12079099999937,
     "latencyP95": 243.2439999999997,
     "selectorTokensPerCall": 3756.1,
@@ -983,74 +253,62 @@
       "account_terms": {
         "n": 7,
         "ok": 7,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "application_docs": {
         "n": 8,
         "ok": 7,
-        "wrong": 1,
-        "fallback": 0
+        "wrong": 1
       },
       "career_advice": {
         "n": 6,
         "ok": 6,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "company_info": {
         "n": 7,
         "ok": 7,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "error_handling": {
         "n": 4,
         "ok": 4,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "interview_prep": {
         "n": 6,
         "ok": 6,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "out_of_scope": {
         "n": 8,
         "ok": 5,
-        "wrong": 3,
-        "fallback": 0
+        "wrong": 3
       },
       "query_normalization": {
         "n": 0,
         "ok": 0,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "reviews": {
         "n": 5,
         "ok": 4,
-        "wrong": 1,
-        "fallback": 0
+        "wrong": 1
       },
       "salary_benefits": {
         "n": 12,
         "ok": 12,
-        "wrong": 0,
-        "fallback": 0
+        "wrong": 0
       },
       "search_conditions": {
         "n": 24,
         "ok": 22,
-        "wrong": 2,
-        "fallback": 0
+        "wrong": 2
       },
       "base": {
         "n": 13,
         "ok": 9,
-        "wrong": 4,
-        "fallback": 0
+        "wrong": 4
       }
     },
     "confusion": [
@@ -1092,370 +350,6 @@
       {
         "answer": "reviews",
         "chosen": "base",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "variant": {
-      "key": "noul_ja@0.5",
-      "label": "noul ×11 の最大値 下限0.5",
-      "config": "noul_ja",
-      "cutoff": 0.5
-    },
-    "n": 100,
-    "accuracy": 0.81,
-    "accuracyLenient": 0.89,
-    "wrongRate": 0.11,
-    "fallbackRate": 0,
-    "latencyP50": 175.12079099999937,
-    "latencyP95": 243.2439999999997,
-    "selectorTokensPerCall": 3756.1,
-    "costUsdPer1k": 0.1577562,
-    "perAnswer": {
-      "account_terms": {
-        "n": 7,
-        "ok": 7,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "application_docs": {
-        "n": 8,
-        "ok": 7,
-        "wrong": 1,
-        "fallback": 0
-      },
-      "career_advice": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "company_info": {
-        "n": 7,
-        "ok": 7,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "error_handling": {
-        "n": 4,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "interview_prep": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "out_of_scope": {
-        "n": 8,
-        "ok": 5,
-        "wrong": 3,
-        "fallback": 0
-      },
-      "query_normalization": {
-        "n": 0,
-        "ok": 0,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "reviews": {
-        "n": 5,
-        "ok": 4,
-        "wrong": 1,
-        "fallback": 0
-      },
-      "salary_benefits": {
-        "n": 12,
-        "ok": 12,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "search_conditions": {
-        "n": 24,
-        "ok": 22,
-        "wrong": 2,
-        "fallback": 0
-      },
-      "base": {
-        "n": 13,
-        "ok": 9,
-        "wrong": 4,
-        "fallback": 0
-      }
-    },
-    "confusion": [
-      {
-        "answer": "out_of_scope",
-        "chosen": "base",
-        "count": 3
-      },
-      {
-        "answer": "base",
-        "chosen": "search_conditions",
-        "count": 2
-      },
-      {
-        "answer": "search_conditions",
-        "chosen": "error_handling",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "out_of_scope",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "salary_benefits",
-        "count": 1
-      },
-      {
-        "answer": "search_conditions",
-        "chosen": "base",
-        "count": 1
-      },
-      {
-        "answer": "application_docs",
-        "chosen": "error_handling",
-        "count": 1
-      },
-      {
-        "answer": "reviews",
-        "chosen": "base",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "variant": {
-      "key": "noul_ja@0.7",
-      "label": "noul ×11 の最大値 下限0.7",
-      "config": "noul_ja",
-      "cutoff": 0.7
-    },
-    "n": 100,
-    "accuracy": 0.78,
-    "accuracyLenient": 0.85,
-    "wrongRate": 0.08,
-    "fallbackRate": 0.07,
-    "latencyP50": 175.12079099999937,
-    "latencyP95": 243.2439999999997,
-    "selectorTokensPerCall": 3756.1,
-    "costUsdPer1k": 0.1577562,
-    "perAnswer": {
-      "account_terms": {
-        "n": 7,
-        "ok": 7,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "application_docs": {
-        "n": 8,
-        "ok": 5,
-        "wrong": 1,
-        "fallback": 2
-      },
-      "career_advice": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "company_info": {
-        "n": 7,
-        "ok": 7,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "error_handling": {
-        "n": 4,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "interview_prep": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "out_of_scope": {
-        "n": 8,
-        "ok": 5,
-        "wrong": 3,
-        "fallback": 0
-      },
-      "query_normalization": {
-        "n": 0,
-        "ok": 0,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "reviews": {
-        "n": 5,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 1
-      },
-      "salary_benefits": {
-        "n": 12,
-        "ok": 12,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "search_conditions": {
-        "n": 24,
-        "ok": 22,
-        "wrong": 1,
-        "fallback": 1
-      },
-      "base": {
-        "n": 13,
-        "ok": 7,
-        "wrong": 3,
-        "fallback": 3
-      }
-    },
-    "confusion": [
-      {
-        "answer": "out_of_scope",
-        "chosen": "base",
-        "count": 3
-      },
-      {
-        "answer": "base",
-        "chosen": "search_conditions",
-        "count": 2
-      },
-      {
-        "answer": "search_conditions",
-        "chosen": "error_handling",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "salary_benefits",
-        "count": 1
-      },
-      {
-        "answer": "application_docs",
-        "chosen": "error_handling",
-        "count": 1
-      }
-    ]
-  },
-  {
-    "variant": {
-      "key": "noul_ja@0.9",
-      "label": "noul ×11 の最大値 下限0.9",
-      "config": "noul_ja",
-      "cutoff": 0.9
-    },
-    "n": 100,
-    "accuracy": 0.63,
-    "accuracyLenient": 0.7,
-    "wrongRate": 0.04,
-    "fallbackRate": 0.26,
-    "latencyP50": 175.12079099999937,
-    "latencyP95": 243.2439999999997,
-    "selectorTokensPerCall": 3756.1,
-    "costUsdPer1k": 0.1577562,
-    "perAnswer": {
-      "account_terms": {
-        "n": 7,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 1
-      },
-      "application_docs": {
-        "n": 8,
-        "ok": 5,
-        "wrong": 1,
-        "fallback": 2
-      },
-      "career_advice": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "company_info": {
-        "n": 7,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 3
-      },
-      "error_handling": {
-        "n": 4,
-        "ok": 4,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "interview_prep": {
-        "n": 6,
-        "ok": 6,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "out_of_scope": {
-        "n": 8,
-        "ok": 4,
-        "wrong": 1,
-        "fallback": 3
-      },
-      "query_normalization": {
-        "n": 0,
-        "ok": 0,
-        "wrong": 0,
-        "fallback": 0
-      },
-      "reviews": {
-        "n": 5,
-        "ok": 3,
-        "wrong": 0,
-        "fallback": 2
-      },
-      "salary_benefits": {
-        "n": 12,
-        "ok": 11,
-        "wrong": 0,
-        "fallback": 1
-      },
-      "search_conditions": {
-        "n": 24,
-        "ok": 18,
-        "wrong": 1,
-        "fallback": 5
-      },
-      "base": {
-        "n": 13,
-        "ok": 3,
-        "wrong": 1,
-        "fallback": 9
-      }
-    },
-    "confusion": [
-      {
-        "answer": "search_conditions",
-        "chosen": "error_handling",
-        "count": 1
-      },
-      {
-        "answer": "out_of_scope",
-        "chosen": "base",
-        "count": 1
-      },
-      {
-        "answer": "base",
-        "chosen": "salary_benefits",
-        "count": 1
-      },
-      {
-        "answer": "application_docs",
-        "chosen": "error_handling",
         "count": 1
       }
     ]
