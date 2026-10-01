@@ -9,7 +9,10 @@ export interface EvalCase {
   id: string;
   context: Turn[];
   utterance: string;
-  gold: string[];
+  /** The one prompt that should be chosen: a selectable part id, or BASE. */
+  answer: string;
+  /** Other prompts that are also acceptable (utterances spanning several topics). */
+  acceptable: string[];
   tags: string[];
   note?: string;
 }

@@ -4,7 +4,7 @@ import type { Turn } from './data.js';
 import { loadEval } from './data.js';
 import { Budget, BudgetExceeded, CONFIGS, makeClient, runConfig } from './jev.js';
 import { loadParts, selectable } from './parts.js';
-import { FALLBACK, THRESHOLDS } from './select.js';
+import { CUTOFFS, NOUL_MIN } from './select.js';
 
 const PORT = Number(process.env.PORT ?? 4319);
 // Live calls from the UI share this cap for the lifetime of the server process.
@@ -14,7 +14,9 @@ const sel = selectable(parts);
 const client = process.env.TYPESAFE_API_KEY ? makeClient() : null;
 
 function latestRun() {
-  const files = readdirSync('results/raw').filter((f) => f.startsWith('run-')).sort();
+  const files = readdirSync('results/raw')
+    .filter((f) => f.startsWith('run-'))
+    .sort();
   return files.length ? JSON.parse(readFileSync(`results/raw/${files.at(-1)}`, 'utf8')) : null;
 }
 
@@ -35,8 +37,8 @@ createServer(async (req, res) => {
         parts: parts.map(({ body: _b, ...p }) => p),
         cases: loadEval(),
         run: latestRun(),
-        thresholds: THRESHOLDS,
-        fallback: FALLBACK,
+        cutoffs: CUTOFFS,
+        noulMin: NOUL_MIN,
         live: Boolean(client),
         budget: { limitUsd: budget.limitUsd, spentUsd: budget.spentUsd },
       });

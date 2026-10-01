@@ -4,1250 +4,2007 @@
       "key": "A",
       "label": "A 全部載せ",
       "config": "all",
-      "fallback": false
+      "cutoff": 0
     },
     "n": 100,
-    "meanPromptTokens": 22574,
+    "accuracy": 0,
+    "accuracyLenient": 0,
+    "wrongRate": 0,
+    "fallbackRate": 1,
     "reduction": 0,
-    "recall": 1,
-    "caseMissRate": 0,
-    "precision": 0.10454545454545454,
-    "fallbackRate": 0,
+    "meanPromptTokens": 22574,
     "latencyP50": null,
     "latencyP95": null,
     "selectorTokensPerCall": null,
     "costUsdPer1k": null,
-    "perPartMiss": {
+    "perAnswer": {
       "account_terms": {
-        "gold": 7,
-        "missed": 0
+        "n": 7,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 7
       },
       "application_docs": {
-        "gold": 8,
-        "missed": 0
+        "n": 8,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 8
       },
       "career_advice": {
-        "gold": 7,
-        "missed": 0
+        "n": 6,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 6
       },
       "company_info": {
-        "gold": 7,
-        "missed": 0
+        "n": 7,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 7
       },
       "error_handling": {
-        "gold": 5,
-        "missed": 0
+        "n": 4,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 4
       },
       "interview_prep": {
-        "gold": 8,
-        "missed": 0
+        "n": 6,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 6
       },
       "out_of_scope": {
-        "gold": 9,
-        "missed": 0
+        "n": 8,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 8
       },
       "query_normalization": {
-        "gold": 17,
-        "missed": 0
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
       },
       "reviews": {
-        "gold": 7,
-        "missed": 0
+        "n": 5,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 5
       },
       "salary_benefits": {
-        "gold": 15,
-        "missed": 0
+        "n": 12,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 12
       },
       "search_conditions": {
-        "gold": 25,
-        "missed": 0
+        "n": 24,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 24
+      },
+      "base": {
+        "n": 13,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 13
       }
-    }
+    },
+    "confusion": []
   },
   {
     "variant": {
-      "key": "noul_ja@0.2",
-      "label": "B noul(日本語) t=0.2",
-      "config": "noul_ja",
-      "threshold": 0.2,
-      "fallback": true
+      "key": "choice_ja@0",
+      "label": "C choice(日本語)",
+      "config": "choice_ja",
+      "cutoff": 0
     },
     "n": 100,
-    "meanPromptTokens": 7457.39,
-    "reduction": 0.6696469389563214,
-    "recall": 0.9652173913043478,
-    "caseMissRate": 0.04597701149425287,
-    "precision": 0.5467980295566502,
-    "fallbackRate": 0.01,
-    "latencyP50": 183.1364160000012,
-    "latencyP95": 272.90637499999997,
-    "selectorTokensPerCall": 3756.1,
-    "costUsdPer1k": 0.1577562,
-    "perPartMiss": {
+    "accuracy": 0.82,
+    "accuracyLenient": 0.88,
+    "wrongRate": 0.12,
+    "fallbackRate": 0,
+    "reduction": 0.7651266944272171,
+    "meanPromptTokens": 5302.03,
+    "latencyP50": 173.72529199999985,
+    "latencyP95": 224.53499999999985,
+    "selectorTokensPerCall": 1682.1,
+    "costUsdPer1k": 0.07064820000000001,
+    "perAnswer": {
       "account_terms": {
-        "gold": 7,
-        "missed": 0
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
       },
       "application_docs": {
-        "gold": 8,
-        "missed": 0
+        "n": 8,
+        "ok": 7,
+        "wrong": 1,
+        "fallback": 0
       },
       "career_advice": {
-        "gold": 7,
-        "missed": 0
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
       },
       "company_info": {
-        "gold": 7,
-        "missed": 0
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
       },
       "error_handling": {
-        "gold": 5,
-        "missed": 0
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
       },
       "interview_prep": {
-        "gold": 8,
-        "missed": 0
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
       },
       "out_of_scope": {
-        "gold": 9,
-        "missed": 3
+        "n": 8,
+        "ok": 5,
+        "wrong": 3,
+        "fallback": 0
       },
       "query_normalization": {
-        "gold": 17,
-        "missed": 1
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
       },
       "reviews": {
-        "gold": 7,
-        "missed": 0
+        "n": 5,
+        "ok": 5,
+        "wrong": 0,
+        "fallback": 0
       },
       "salary_benefits": {
-        "gold": 15,
-        "missed": 0
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
       },
       "search_conditions": {
-        "gold": 25,
-        "missed": 0
+        "n": 24,
+        "ok": 23,
+        "wrong": 1,
+        "fallback": 0
+      },
+      "base": {
+        "n": 13,
+        "ok": 6,
+        "wrong": 7,
+        "fallback": 0
       }
-    }
+    },
+    "confusion": [
+      {
+        "answer": "base",
+        "chosen": "search_conditions",
+        "count": 3
+      },
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 3
+      },
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "out_of_scope",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "career_advice",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "interview_prep",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      }
+    ]
   },
   {
     "variant": {
-      "key": "noul_ja@0.3",
-      "label": "B noul(日本語) t=0.3",
-      "config": "noul_ja",
-      "threshold": 0.3,
-      "fallback": true
+      "key": "choice_ja@0.5",
+      "label": "C choice(日本語) 確信度<0.5は全部載せ",
+      "config": "choice_ja",
+      "cutoff": 0.5
     },
     "n": 100,
-    "meanPromptTokens": 6911.27,
-    "reduction": 0.693839372729689,
-    "recall": 0.9391304347826087,
-    "caseMissRate": 0.08045977011494253,
-    "precision": 0.6242774566473989,
-    "fallbackRate": 0.01,
-    "latencyP50": 183.1364160000012,
-    "latencyP95": 272.90637499999997,
-    "selectorTokensPerCall": 3756.1,
-    "costUsdPer1k": 0.1577562,
-    "perPartMiss": {
+    "accuracy": 0.78,
+    "accuracyLenient": 0.83,
+    "wrongRate": 0.11,
+    "fallbackRate": 0.06,
+    "reduction": 0.7174634535306105,
+    "meanPromptTokens": 6377.98,
+    "latencyP50": 173.72529199999985,
+    "latencyP95": 224.53499999999985,
+    "selectorTokensPerCall": 1682.1,
+    "costUsdPer1k": 0.07064820000000001,
+    "perAnswer": {
       "account_terms": {
-        "gold": 7,
-        "missed": 0
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
       },
       "application_docs": {
-        "gold": 8,
-        "missed": 0
+        "n": 8,
+        "ok": 6,
+        "wrong": 1,
+        "fallback": 1
       },
       "career_advice": {
-        "gold": 7,
-        "missed": 0
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
       },
       "company_info": {
-        "gold": 7,
-        "missed": 1
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
       },
       "error_handling": {
-        "gold": 5,
-        "missed": 0
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
       },
       "interview_prep": {
-        "gold": 8,
-        "missed": 0
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
       },
       "out_of_scope": {
-        "gold": 9,
-        "missed": 4
+        "n": 8,
+        "ok": 5,
+        "wrong": 3,
+        "fallback": 0
       },
       "query_normalization": {
-        "gold": 17,
-        "missed": 1
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
       },
       "reviews": {
-        "gold": 7,
-        "missed": 1
+        "n": 5,
+        "ok": 5,
+        "wrong": 0,
+        "fallback": 0
       },
       "salary_benefits": {
-        "gold": 15,
-        "missed": 0
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
       },
       "search_conditions": {
-        "gold": 25,
-        "missed": 0
+        "n": 24,
+        "ok": 22,
+        "wrong": 1,
+        "fallback": 1
+      },
+      "base": {
+        "n": 13,
+        "ok": 3,
+        "wrong": 6,
+        "fallback": 4
       }
-    }
+    },
+    "confusion": [
+      {
+        "answer": "base",
+        "chosen": "search_conditions",
+        "count": 3
+      },
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 3
+      },
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "out_of_scope",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "interview_prep",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "variant": {
+      "key": "choice_ja@0.7",
+      "label": "C choice(日本語) 確信度<0.7は全部載せ",
+      "config": "choice_ja",
+      "cutoff": 0.7
+    },
+    "n": 100,
+    "accuracy": 0.65,
+    "accuracyLenient": 0.67,
+    "wrongRate": 0.08,
+    "fallbackRate": 0.25,
+    "reduction": 0.5719110481084433,
+    "meanPromptTokens": 9663.68,
+    "latencyP50": 173.72529199999985,
+    "latencyP95": 224.53499999999985,
+    "selectorTokensPerCall": 1682.1,
+    "costUsdPer1k": 0.07064820000000001,
+    "perAnswer": {
+      "account_terms": {
+        "n": 7,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "application_docs": {
+        "n": 8,
+        "ok": 6,
+        "wrong": 1,
+        "fallback": 1
+      },
+      "career_advice": {
+        "n": 6,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 2
+      },
+      "company_info": {
+        "n": 7,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "error_handling": {
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "interview_prep": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "out_of_scope": {
+        "n": 8,
+        "ok": 4,
+        "wrong": 2,
+        "fallback": 2
+      },
+      "query_normalization": {
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "reviews": {
+        "n": 5,
+        "ok": 3,
+        "wrong": 0,
+        "fallback": 2
+      },
+      "salary_benefits": {
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "search_conditions": {
+        "n": 24,
+        "ok": 15,
+        "wrong": 1,
+        "fallback": 8
+      },
+      "base": {
+        "n": 13,
+        "ok": 1,
+        "wrong": 4,
+        "fallback": 8
+      }
+    },
+    "confusion": [
+      {
+        "answer": "base",
+        "chosen": "search_conditions",
+        "count": 2
+      },
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 2
+      },
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "out_of_scope",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "variant": {
+      "key": "choice_ja@0.9",
+      "label": "C choice(日本語) 確信度<0.9は全部載せ",
+      "config": "choice_ja",
+      "cutoff": 0.9
+    },
+    "n": 100,
+    "accuracy": 0.55,
+    "accuracyLenient": 0.57,
+    "wrongRate": 0.02,
+    "fallbackRate": 0.41,
+    "reduction": 0.44887879861787894,
+    "meanPromptTokens": 12441.01,
+    "latencyP50": 173.72529199999985,
+    "latencyP95": 224.53499999999985,
+    "selectorTokensPerCall": 1682.1,
+    "costUsdPer1k": 0.07064820000000001,
+    "perAnswer": {
+      "account_terms": {
+        "n": 7,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 3
+      },
+      "application_docs": {
+        "n": 8,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 2
+      },
+      "career_advice": {
+        "n": 6,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 2
+      },
+      "company_info": {
+        "n": 7,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "error_handling": {
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "interview_prep": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "out_of_scope": {
+        "n": 8,
+        "ok": 4,
+        "wrong": 1,
+        "fallback": 3
+      },
+      "query_normalization": {
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "reviews": {
+        "n": 5,
+        "ok": 2,
+        "wrong": 0,
+        "fallback": 3
+      },
+      "salary_benefits": {
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "search_conditions": {
+        "n": 24,
+        "ok": 9,
+        "wrong": 0,
+        "fallback": 15
+      },
+      "base": {
+        "n": 13,
+        "ok": 0,
+        "wrong": 1,
+        "fallback": 12
+      }
+    },
+    "confusion": [
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "search_conditions",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "variant": {
+      "key": "choice_en@0",
+      "label": "C' choice(英語)",
+      "config": "choice_en",
+      "cutoff": 0
+    },
+    "n": 100,
+    "accuracy": 0.83,
+    "accuracyLenient": 0.89,
+    "wrongRate": 0.11,
+    "fallbackRate": 0,
+    "reduction": 0.7659541950916984,
+    "meanPromptTokens": 5283.35,
+    "latencyP50": 170.75345800000014,
+    "latencyP95": 241.74675000000025,
+    "selectorTokensPerCall": 1114.42,
+    "costUsdPer1k": 0.04680564,
+    "perAnswer": {
+      "account_terms": {
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "application_docs": {
+        "n": 8,
+        "ok": 7,
+        "wrong": 1,
+        "fallback": 0
+      },
+      "career_advice": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "company_info": {
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "error_handling": {
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "interview_prep": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "out_of_scope": {
+        "n": 8,
+        "ok": 5,
+        "wrong": 3,
+        "fallback": 0
+      },
+      "query_normalization": {
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "reviews": {
+        "n": 5,
+        "ok": 5,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "salary_benefits": {
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "search_conditions": {
+        "n": 24,
+        "ok": 23,
+        "wrong": 1,
+        "fallback": 0
+      },
+      "base": {
+        "n": 13,
+        "ok": 7,
+        "wrong": 6,
+        "fallback": 0
+      }
+    },
+    "confusion": [
+      {
+        "answer": "base",
+        "chosen": "search_conditions",
+        "count": 3
+      },
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 3
+      },
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "out_of_scope",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "interview_prep",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "variant": {
+      "key": "choice_en@0.5",
+      "label": "C' choice(英語) 確信度<0.5は全部載せ",
+      "config": "choice_en",
+      "cutoff": 0.5
+    },
+    "n": 100,
+    "accuracy": 0.78,
+    "accuracyLenient": 0.81,
+    "wrongRate": 0.1,
+    "fallbackRate": 0.09,
+    "reduction": 0.6965907681403385,
+    "meanPromptTokens": 6849.16,
+    "latencyP50": 170.75345800000014,
+    "latencyP95": 241.74675000000025,
+    "selectorTokensPerCall": 1114.42,
+    "costUsdPer1k": 0.04680564,
+    "perAnswer": {
+      "account_terms": {
+        "n": 7,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "application_docs": {
+        "n": 8,
+        "ok": 6,
+        "wrong": 1,
+        "fallback": 1
+      },
+      "career_advice": {
+        "n": 6,
+        "ok": 5,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "company_info": {
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "error_handling": {
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "interview_prep": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "out_of_scope": {
+        "n": 8,
+        "ok": 5,
+        "wrong": 2,
+        "fallback": 1
+      },
+      "query_normalization": {
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "reviews": {
+        "n": 5,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "salary_benefits": {
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "search_conditions": {
+        "n": 24,
+        "ok": 20,
+        "wrong": 1,
+        "fallback": 3
+      },
+      "base": {
+        "n": 13,
+        "ok": 6,
+        "wrong": 6,
+        "fallback": 1
+      }
+    },
+    "confusion": [
+      {
+        "answer": "base",
+        "chosen": "search_conditions",
+        "count": 3
+      },
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 2
+      },
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "out_of_scope",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "interview_prep",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "variant": {
+      "key": "choice_en@0.7",
+      "label": "C' choice(英語) 確信度<0.7は全部載せ",
+      "config": "choice_en",
+      "cutoff": 0.7
+    },
+    "n": 100,
+    "accuracy": 0.72,
+    "accuracyLenient": 0.74,
+    "wrongRate": 0.06,
+    "fallbackRate": 0.2,
+    "reduction": 0.6116337379285904,
+    "meanPromptTokens": 8766.98,
+    "latencyP50": 170.75345800000014,
+    "latencyP95": 241.74675000000025,
+    "selectorTokensPerCall": 1114.42,
+    "costUsdPer1k": 0.04680564,
+    "perAnswer": {
+      "account_terms": {
+        "n": 7,
+        "ok": 5,
+        "wrong": 0,
+        "fallback": 2
+      },
+      "application_docs": {
+        "n": 8,
+        "ok": 6,
+        "wrong": 1,
+        "fallback": 1
+      },
+      "career_advice": {
+        "n": 6,
+        "ok": 5,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "company_info": {
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "error_handling": {
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "interview_prep": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "out_of_scope": {
+        "n": 8,
+        "ok": 5,
+        "wrong": 2,
+        "fallback": 1
+      },
+      "query_normalization": {
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "reviews": {
+        "n": 5,
+        "ok": 3,
+        "wrong": 0,
+        "fallback": 2
+      },
+      "salary_benefits": {
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "search_conditions": {
+        "n": 24,
+        "ok": 17,
+        "wrong": 0,
+        "fallback": 7
+      },
+      "base": {
+        "n": 13,
+        "ok": 4,
+        "wrong": 3,
+        "fallback": 6
+      }
+    },
+    "confusion": [
+      {
+        "answer": "base",
+        "chosen": "search_conditions",
+        "count": 2
+      },
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 2
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "variant": {
+      "key": "choice_en@0.9",
+      "label": "C' choice(英語) 確信度<0.9は全部載せ",
+      "config": "choice_en",
+      "cutoff": 0.9
+    },
+    "n": 100,
+    "accuracy": 0.55,
+    "accuracyLenient": 0.57,
+    "wrongRate": 0.03,
+    "fallbackRate": 0.4,
+    "reduction": 0.45749357668113755,
+    "meanPromptTokens": 12246.54,
+    "latencyP50": 170.75345800000014,
+    "latencyP95": 241.74675000000025,
+    "selectorTokensPerCall": 1114.42,
+    "costUsdPer1k": 0.04680564,
+    "perAnswer": {
+      "account_terms": {
+        "n": 7,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 3
+      },
+      "application_docs": {
+        "n": 8,
+        "ok": 5,
+        "wrong": 1,
+        "fallback": 2
+      },
+      "career_advice": {
+        "n": 6,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 2
+      },
+      "company_info": {
+        "n": 7,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "error_handling": {
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "interview_prep": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "out_of_scope": {
+        "n": 8,
+        "ok": 4,
+        "wrong": 1,
+        "fallback": 3
+      },
+      "query_normalization": {
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "reviews": {
+        "n": 5,
+        "ok": 2,
+        "wrong": 0,
+        "fallback": 3
+      },
+      "salary_benefits": {
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "search_conditions": {
+        "n": 24,
+        "ok": 9,
+        "wrong": 0,
+        "fallback": 15
+      },
+      "base": {
+        "n": 13,
+        "ok": 1,
+        "wrong": 1,
+        "fallback": 11
+      }
+    },
+    "confusion": [
+      {
+        "answer": "base",
+        "chosen": "search_conditions",
+        "count": 1
+      },
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "variant": {
+      "key": "choice_ja_v2@0",
+      "label": "C2 choice(日本語・説明改善)",
+      "config": "choice_ja_v2",
+      "cutoff": 0
+    },
+    "n": 100,
+    "accuracy": 0.91,
+    "accuracyLenient": 0.96,
+    "wrongRate": 0.04,
+    "fallbackRate": 0,
+    "reduction": 0.7675892619828121,
+    "meanPromptTokens": 5246.44,
+    "latencyP50": 175.52612500000032,
+    "latencyP95": 238.2717500000017,
+    "selectorTokensPerCall": 1757.1,
+    "costUsdPer1k": 0.0737982,
+    "perAnswer": {
+      "account_terms": {
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "application_docs": {
+        "n": 8,
+        "ok": 7,
+        "wrong": 1,
+        "fallback": 0
+      },
+      "career_advice": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "company_info": {
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "error_handling": {
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "interview_prep": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "out_of_scope": {
+        "n": 8,
+        "ok": 8,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "query_normalization": {
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "reviews": {
+        "n": 5,
+        "ok": 5,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "salary_benefits": {
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "search_conditions": {
+        "n": 24,
+        "ok": 23,
+        "wrong": 1,
+        "fallback": 0
+      },
+      "base": {
+        "n": 13,
+        "ok": 11,
+        "wrong": 2,
+        "fallback": 0
+      }
+    },
+    "confusion": [
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "career_advice",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "variant": {
+      "key": "choice_ja_v2@0.5",
+      "label": "C2 choice(日本語・説明改善) 確信度<0.5は全部載せ",
+      "config": "choice_ja_v2",
+      "cutoff": 0.5
+    },
+    "n": 100,
+    "accuracy": 0.87,
+    "accuracyLenient": 0.9,
+    "wrongRate": 0.03,
+    "fallbackRate": 0.07,
+    "reduction": 0.7130982546292195,
+    "meanPromptTokens": 6476.52,
+    "latencyP50": 175.52612500000032,
+    "latencyP95": 238.2717500000017,
+    "selectorTokensPerCall": 1757.1,
+    "costUsdPer1k": 0.0737982,
+    "perAnswer": {
+      "account_terms": {
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "application_docs": {
+        "n": 8,
+        "ok": 6,
+        "wrong": 1,
+        "fallback": 1
+      },
+      "career_advice": {
+        "n": 6,
+        "ok": 5,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "company_info": {
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "error_handling": {
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "interview_prep": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "out_of_scope": {
+        "n": 8,
+        "ok": 8,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "query_normalization": {
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "reviews": {
+        "n": 5,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "salary_benefits": {
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "search_conditions": {
+        "n": 24,
+        "ok": 22,
+        "wrong": 1,
+        "fallback": 1
+      },
+      "base": {
+        "n": 13,
+        "ok": 9,
+        "wrong": 1,
+        "fallback": 3
+      }
+    },
+    "confusion": [
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "variant": {
+      "key": "choice_ja_v2@0.7",
+      "label": "C2 choice(日本語・説明改善) 確信度<0.7は全部載せ",
+      "config": "choice_ja_v2",
+      "cutoff": 0.7
+    },
+    "n": 100,
+    "accuracy": 0.79,
+    "accuracyLenient": 0.81,
+    "wrongRate": 0.03,
+    "fallbackRate": 0.16,
+    "reduction": 0.6455466465845663,
+    "meanPromptTokens": 8001.43,
+    "latencyP50": 175.52612500000032,
+    "latencyP95": 238.2717500000017,
+    "selectorTokensPerCall": 1757.1,
+    "costUsdPer1k": 0.0737982,
+    "perAnswer": {
+      "account_terms": {
+        "n": 7,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "application_docs": {
+        "n": 8,
+        "ok": 6,
+        "wrong": 1,
+        "fallback": 1
+      },
+      "career_advice": {
+        "n": 6,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 2
+      },
+      "company_info": {
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "error_handling": {
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "interview_prep": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "out_of_scope": {
+        "n": 8,
+        "ok": 8,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "query_normalization": {
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "reviews": {
+        "n": 5,
+        "ok": 3,
+        "wrong": 0,
+        "fallback": 2
+      },
+      "salary_benefits": {
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "search_conditions": {
+        "n": 24,
+        "ok": 16,
+        "wrong": 1,
+        "fallback": 7
+      },
+      "base": {
+        "n": 13,
+        "ok": 9,
+        "wrong": 1,
+        "fallback": 3
+      }
+    },
+    "confusion": [
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "variant": {
+      "key": "choice_ja_v2@0.9",
+      "label": "C2 choice(日本語・説明改善) 確信度<0.9は全部載せ",
+      "config": "choice_ja_v2",
+      "cutoff": 0.9
+    },
+    "n": 100,
+    "accuracy": 0.67,
+    "accuracyLenient": 0.69,
+    "wrongRate": 0,
+    "fallbackRate": 0.31,
+    "reduction": 0.5312598564720474,
+    "meanPromptTokens": 10581.34,
+    "latencyP50": 175.52612500000032,
+    "latencyP95": 238.2717500000017,
+    "selectorTokensPerCall": 1757.1,
+    "costUsdPer1k": 0.0737982,
+    "perAnswer": {
+      "account_terms": {
+        "n": 7,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 3
+      },
+      "application_docs": {
+        "n": 8,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 2
+      },
+      "career_advice": {
+        "n": 6,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 2
+      },
+      "company_info": {
+        "n": 7,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "error_handling": {
+        "n": 4,
+        "ok": 3,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "interview_prep": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "out_of_scope": {
+        "n": 8,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 1
+      },
+      "query_normalization": {
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "reviews": {
+        "n": 5,
+        "ok": 2,
+        "wrong": 0,
+        "fallback": 3
+      },
+      "salary_benefits": {
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "search_conditions": {
+        "n": 24,
+        "ok": 10,
+        "wrong": 0,
+        "fallback": 14
+      },
+      "base": {
+        "n": 13,
+        "ok": 9,
+        "wrong": 0,
+        "fallback": 4
+      }
+    },
+    "confusion": []
+  },
+  {
+    "variant": {
+      "key": "noul_ja@0",
+      "label": "B noul 最大値(日本語)",
+      "config": "noul_ja",
+      "cutoff": 0
+    },
+    "n": 100,
+    "accuracy": 0.81,
+    "accuracyLenient": 0.89,
+    "wrongRate": 0.11,
+    "fallbackRate": 0,
+    "reduction": 0.7691118100469567,
+    "meanPromptTokens": 5212.07,
+    "latencyP50": 175.12079099999937,
+    "latencyP95": 243.2439999999997,
+    "selectorTokensPerCall": 3756.1,
+    "costUsdPer1k": 0.1577562,
+    "perAnswer": {
+      "account_terms": {
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "application_docs": {
+        "n": 8,
+        "ok": 7,
+        "wrong": 1,
+        "fallback": 0
+      },
+      "career_advice": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "company_info": {
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "error_handling": {
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "interview_prep": {
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "out_of_scope": {
+        "n": 8,
+        "ok": 5,
+        "wrong": 3,
+        "fallback": 0
+      },
+      "query_normalization": {
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "reviews": {
+        "n": 5,
+        "ok": 4,
+        "wrong": 1,
+        "fallback": 0
+      },
+      "salary_benefits": {
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
+      },
+      "search_conditions": {
+        "n": 24,
+        "ok": 22,
+        "wrong": 2,
+        "fallback": 0
+      },
+      "base": {
+        "n": 13,
+        "ok": 9,
+        "wrong": 4,
+        "fallback": 0
+      }
+    },
+    "confusion": [
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 3
+      },
+      {
+        "answer": "base",
+        "chosen": "search_conditions",
+        "count": 2
+      },
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "out_of_scope",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "search_conditions",
+        "chosen": "base",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "reviews",
+        "chosen": "base",
+        "count": 1
+      }
+    ]
   },
   {
     "variant": {
       "key": "noul_ja@0.5",
-      "label": "B noul(日本語) t=0.5",
+      "label": "B noul 最大値(日本語) 確信度<0.5は全部載せ",
       "config": "noul_ja",
-      "threshold": 0.5,
-      "fallback": true
+      "cutoff": 0.5
     },
     "n": 100,
-    "meanPromptTokens": 6570.38,
-    "reduction": 0.7089403738814566,
-    "recall": 0.9304347826086956,
-    "caseMissRate": 0.09195402298850575,
-    "precision": 0.6948051948051948,
-    "fallbackRate": 0.01,
-    "latencyP50": 183.1364160000012,
-    "latencyP95": 272.90637499999997,
+    "accuracy": 0.81,
+    "accuracyLenient": 0.89,
+    "wrongRate": 0.11,
+    "fallbackRate": 0,
+    "reduction": 0.7691118100469567,
+    "meanPromptTokens": 5212.07,
+    "latencyP50": 175.12079099999937,
+    "latencyP95": 243.2439999999997,
     "selectorTokensPerCall": 3756.1,
     "costUsdPer1k": 0.1577562,
-    "perPartMiss": {
+    "perAnswer": {
       "account_terms": {
-        "gold": 7,
-        "missed": 0
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
       },
       "application_docs": {
-        "gold": 8,
-        "missed": 1
+        "n": 8,
+        "ok": 7,
+        "wrong": 1,
+        "fallback": 0
       },
       "career_advice": {
-        "gold": 7,
-        "missed": 0
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
       },
       "company_info": {
-        "gold": 7,
-        "missed": 1
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
       },
       "error_handling": {
-        "gold": 5,
-        "missed": 0
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
       },
       "interview_prep": {
-        "gold": 8,
-        "missed": 0
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
       },
       "out_of_scope": {
-        "gold": 9,
-        "missed": 4
+        "n": 8,
+        "ok": 5,
+        "wrong": 3,
+        "fallback": 0
       },
       "query_normalization": {
-        "gold": 17,
-        "missed": 1
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
       },
       "reviews": {
-        "gold": 7,
-        "missed": 1
+        "n": 5,
+        "ok": 4,
+        "wrong": 1,
+        "fallback": 0
       },
       "salary_benefits": {
-        "gold": 15,
-        "missed": 0
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
       },
       "search_conditions": {
-        "gold": 25,
-        "missed": 0
+        "n": 24,
+        "ok": 22,
+        "wrong": 2,
+        "fallback": 0
+      },
+      "base": {
+        "n": 13,
+        "ok": 9,
+        "wrong": 4,
+        "fallback": 0
       }
-    }
+    },
+    "confusion": [
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 3
+      },
+      {
+        "answer": "base",
+        "chosen": "search_conditions",
+        "count": 2
+      },
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "out_of_scope",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "search_conditions",
+        "chosen": "base",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "reviews",
+        "chosen": "base",
+        "count": 1
+      }
+    ]
   },
   {
     "variant": {
       "key": "noul_ja@0.7",
-      "label": "B noul(日本語) t=0.7",
+      "label": "B noul 最大値(日本語) 確信度<0.7は全部載せ",
       "config": "noul_ja",
-      "threshold": 0.7,
-      "fallback": true
+      "cutoff": 0.7
     },
     "n": 100,
-    "meanPromptTokens": 6047.65,
-    "reduction": 0.7320966598741916,
-    "recall": 0.8695652173913043,
-    "caseMissRate": 0.14942528735632185,
-    "precision": 0.78125,
-    "fallbackRate": 0.01,
-    "latencyP50": 183.1364160000012,
-    "latencyP95": 272.90637499999997,
+    "accuracy": 0.78,
+    "accuracyLenient": 0.85,
+    "wrongRate": 0.08,
+    "fallbackRate": 0.07,
+    "reduction": 0.7127726588110215,
+    "meanPromptTokens": 6483.87,
+    "latencyP50": 175.12079099999937,
+    "latencyP95": 243.2439999999997,
     "selectorTokensPerCall": 3756.1,
     "costUsdPer1k": 0.1577562,
-    "perPartMiss": {
+    "perAnswer": {
       "account_terms": {
-        "gold": 7,
-        "missed": 0
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
       },
       "application_docs": {
-        "gold": 8,
-        "missed": 3
+        "n": 8,
+        "ok": 5,
+        "wrong": 1,
+        "fallback": 2
       },
       "career_advice": {
-        "gold": 7,
-        "missed": 1
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
       },
       "company_info": {
-        "gold": 7,
-        "missed": 1
+        "n": 7,
+        "ok": 7,
+        "wrong": 0,
+        "fallback": 0
       },
       "error_handling": {
-        "gold": 5,
-        "missed": 0
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
       },
       "interview_prep": {
-        "gold": 8,
-        "missed": 1
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
       },
       "out_of_scope": {
-        "gold": 9,
-        "missed": 4
+        "n": 8,
+        "ok": 5,
+        "wrong": 3,
+        "fallback": 0
       },
       "query_normalization": {
-        "gold": 17,
-        "missed": 3
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
       },
       "reviews": {
-        "gold": 7,
-        "missed": 1
+        "n": 5,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 1
       },
       "salary_benefits": {
-        "gold": 15,
-        "missed": 0
+        "n": 12,
+        "ok": 12,
+        "wrong": 0,
+        "fallback": 0
       },
       "search_conditions": {
-        "gold": 25,
-        "missed": 1
+        "n": 24,
+        "ok": 22,
+        "wrong": 1,
+        "fallback": 1
+      },
+      "base": {
+        "n": 13,
+        "ok": 7,
+        "wrong": 3,
+        "fallback": 3
       }
-    }
+    },
+    "confusion": [
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 3
+      },
+      {
+        "answer": "base",
+        "chosen": "search_conditions",
+        "count": 2
+      },
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
+      },
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
+      },
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
+      }
+    ]
   },
   {
     "variant": {
-      "key": "noul_ja@0.2_nofb",
-      "label": "B noul(日本語) t=0.2 逃げ道なし",
+      "key": "noul_ja@0.9",
+      "label": "B noul 最大値(日本語) 確信度<0.9は全部載せ",
       "config": "noul_ja",
-      "threshold": 0.2,
-      "fallback": false
+      "cutoff": 0.9
     },
     "n": 100,
-    "meanPromptTokens": 7355.93,
-    "reduction": 0.674141490209976,
-    "recall": 0.9652173913043478,
-    "caseMissRate": 0.04597701149425287,
-    "precision": 0.5634517766497462,
-    "fallbackRate": 0,
-    "latencyP50": 183.1364160000012,
-    "latencyP95": 272.90637499999997,
+    "accuracy": 0.63,
+    "accuracyLenient": 0.7,
+    "wrongRate": 0.04,
+    "fallbackRate": 0.26,
+    "reduction": 0.5641689554354568,
+    "meanPromptTokens": 9838.45,
+    "latencyP50": 175.12079099999937,
+    "latencyP95": 243.2439999999997,
     "selectorTokensPerCall": 3756.1,
     "costUsdPer1k": 0.1577562,
-    "perPartMiss": {
+    "perAnswer": {
       "account_terms": {
-        "gold": 7,
-        "missed": 0
+        "n": 7,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 1
       },
       "application_docs": {
-        "gold": 8,
-        "missed": 0
+        "n": 8,
+        "ok": 5,
+        "wrong": 1,
+        "fallback": 2
       },
       "career_advice": {
-        "gold": 7,
-        "missed": 0
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
       },
       "company_info": {
-        "gold": 7,
-        "missed": 0
+        "n": 7,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 3
       },
       "error_handling": {
-        "gold": 5,
-        "missed": 0
+        "n": 4,
+        "ok": 4,
+        "wrong": 0,
+        "fallback": 0
       },
       "interview_prep": {
-        "gold": 8,
-        "missed": 0
+        "n": 6,
+        "ok": 6,
+        "wrong": 0,
+        "fallback": 0
       },
       "out_of_scope": {
-        "gold": 9,
-        "missed": 3
+        "n": 8,
+        "ok": 4,
+        "wrong": 1,
+        "fallback": 3
       },
       "query_normalization": {
-        "gold": 17,
-        "missed": 1
+        "n": 0,
+        "ok": 0,
+        "wrong": 0,
+        "fallback": 0
       },
       "reviews": {
-        "gold": 7,
-        "missed": 0
+        "n": 5,
+        "ok": 3,
+        "wrong": 0,
+        "fallback": 2
       },
       "salary_benefits": {
-        "gold": 15,
-        "missed": 0
+        "n": 12,
+        "ok": 11,
+        "wrong": 0,
+        "fallback": 1
       },
       "search_conditions": {
-        "gold": 25,
-        "missed": 0
+        "n": 24,
+        "ok": 18,
+        "wrong": 1,
+        "fallback": 5
+      },
+      "base": {
+        "n": 13,
+        "ok": 3,
+        "wrong": 1,
+        "fallback": 9
       }
-    }
-  },
-  {
-    "variant": {
-      "key": "noul_ja@0.3_nofb",
-      "label": "B noul(日本語) t=0.3 逃げ道なし",
-      "config": "noul_ja",
-      "threshold": 0.3,
-      "fallback": false
     },
-    "n": 100,
-    "meanPromptTokens": 6809.81,
-    "reduction": 0.6983339239833437,
-    "recall": 0.9391304347826087,
-    "caseMissRate": 0.08045977011494253,
-    "precision": 0.6467065868263473,
-    "fallbackRate": 0,
-    "latencyP50": 183.1364160000012,
-    "latencyP95": 272.90637499999997,
-    "selectorTokensPerCall": 3756.1,
-    "costUsdPer1k": 0.1577562,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 0
+    "confusion": [
+      {
+        "answer": "search_conditions",
+        "chosen": "error_handling",
+        "count": 1
       },
-      "application_docs": {
-        "gold": 8,
-        "missed": 0
+      {
+        "answer": "out_of_scope",
+        "chosen": "base",
+        "count": 1
       },
-      "career_advice": {
-        "gold": 7,
-        "missed": 0
+      {
+        "answer": "base",
+        "chosen": "salary_benefits",
+        "count": 1
       },
-      "company_info": {
-        "gold": 7,
-        "missed": 1
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 0
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 1
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 1
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 0
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 0
+      {
+        "answer": "application_docs",
+        "chosen": "error_handling",
+        "count": 1
       }
-    }
-  },
-  {
-    "variant": {
-      "key": "noul_ja@0.5_nofb",
-      "label": "B noul(日本語) t=0.5 逃げ道なし",
-      "config": "noul_ja",
-      "threshold": 0.5,
-      "fallback": false
-    },
-    "n": 100,
-    "meanPromptTokens": 6431.44,
-    "reduction": 0.7150952423141668,
-    "recall": 0.9304347826086956,
-    "caseMissRate": 0.09195402298850575,
-    "precision": 0.7328767123287672,
-    "fallbackRate": 0,
-    "latencyP50": 183.1364160000012,
-    "latencyP95": 272.90637499999997,
-    "selectorTokensPerCall": 3756.1,
-    "costUsdPer1k": 0.1577562,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 0
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 1
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 0
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 1
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 0
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 1
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 1
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 0
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 0
-      }
-    }
-  },
-  {
-    "variant": {
-      "key": "noul_ja@0.7_nofb",
-      "label": "B noul(日本語) t=0.7 逃げ道なし",
-      "config": "noul_ja",
-      "threshold": 0.7,
-      "fallback": false
-    },
-    "n": 100,
-    "meanPromptTokens": 5875.24,
-    "reduction": 0.7397342074953486,
-    "recall": 0.8695652173913043,
-    "caseMissRate": 0.14942528735632185,
-    "precision": 0.847457627118644,
-    "fallbackRate": 0,
-    "latencyP50": 183.1364160000012,
-    "latencyP95": 272.90637499999997,
-    "selectorTokensPerCall": 3756.1,
-    "costUsdPer1k": 0.1577562,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 0
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 3
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 1
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 1
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 1
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 3
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 1
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 0
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 1
-      }
-    }
-  },
-  {
-    "variant": {
-      "key": "noul_en@0.2",
-      "label": "B' noul(英語) t=0.2",
-      "config": "noul_en",
-      "threshold": 0.2,
-      "fallback": true
-    },
-    "n": 100,
-    "meanPromptTokens": 7296.59,
-    "reduction": 0.6767701780809781,
-    "recall": 0.9652173913043478,
-    "caseMissRate": 0.04597701149425287,
-    "precision": 0.578125,
-    "fallbackRate": 0.01,
-    "latencyP50": 179.62654099999963,
-    "latencyP95": 246.14449999999943,
-    "selectorTokensPerCall": 2488.42,
-    "costUsdPer1k": 0.10451364,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 0
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 0
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 0
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 0
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 0
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 0
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 0
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 0
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 0
-      }
-    }
-  },
-  {
-    "variant": {
-      "key": "noul_en@0.3",
-      "label": "B' noul(英語) t=0.3",
-      "config": "noul_en",
-      "threshold": 0.3,
-      "fallback": true
-    },
-    "n": 100,
-    "meanPromptTokens": 6872.84,
-    "reduction": 0.6955417737219811,
-    "recall": 0.9391304347826087,
-    "caseMissRate": 0.08045977011494253,
-    "precision": 0.6390532544378699,
-    "fallbackRate": 0.01,
-    "latencyP50": 179.62654099999963,
-    "latencyP95": 246.14449999999943,
-    "selectorTokensPerCall": 2488.42,
-    "costUsdPer1k": 0.10451364,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 0
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 1
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 0
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 0
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 0
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 1
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 1
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 0
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 0
-      }
-    }
-  },
-  {
-    "variant": {
-      "key": "noul_en@0.5",
-      "label": "B' noul(英語) t=0.5",
-      "config": "noul_en",
-      "threshold": 0.5,
-      "fallback": true
-    },
-    "n": 100,
-    "meanPromptTokens": 6466.11,
-    "reduction": 0.7135594046247896,
-    "recall": 0.9130434782608695,
-    "caseMissRate": 0.10344827586206896,
-    "precision": 0.7094594594594594,
-    "fallbackRate": 0.01,
-    "latencyP50": 179.62654099999963,
-    "latencyP95": 246.14449999999943,
-    "selectorTokensPerCall": 2488.42,
-    "costUsdPer1k": 0.10451364,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 0
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 1
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 0
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 1
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 0
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 2
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 1
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 0
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 1
-      }
-    }
-  },
-  {
-    "variant": {
-      "key": "noul_en@0.7",
-      "label": "B' noul(英語) t=0.7",
-      "config": "noul_en",
-      "threshold": 0.7,
-      "fallback": true
-    },
-    "n": 100,
-    "meanPromptTokens": 5931.48,
-    "reduction": 0.7372428457517498,
-    "recall": 0.8347826086956521,
-    "caseMissRate": 0.20689655172413793,
-    "precision": 0.7868852459016393,
-    "fallbackRate": 0.01,
-    "latencyP50": 179.62654099999963,
-    "latencyP95": 246.14449999999943,
-    "selectorTokensPerCall": 2488.42,
-    "costUsdPer1k": 0.10451364,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 0
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 2
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 2
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 2
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 0
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 5
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 2
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 1
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 1
-      }
-    }
-  },
-  {
-    "variant": {
-      "key": "noul_en@0.2_nofb",
-      "label": "B' noul(英語) t=0.2 逃げ道なし",
-      "config": "noul_en",
-      "threshold": 0.2,
-      "fallback": false
-    },
-    "n": 100,
-    "meanPromptTokens": 7154.92,
-    "reduction": 0.6830459821033047,
-    "recall": 0.9652173913043478,
-    "caseMissRate": 0.04597701149425287,
-    "precision": 0.6032608695652174,
-    "fallbackRate": 0,
-    "latencyP50": 179.62654099999963,
-    "latencyP95": 246.14449999999943,
-    "selectorTokensPerCall": 2488.42,
-    "costUsdPer1k": 0.10451364,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 0
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 0
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 0
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 0
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 0
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 0
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 0
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 0
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 0
-      }
-    }
-  },
-  {
-    "variant": {
-      "key": "noul_en@0.3_nofb",
-      "label": "B' noul(英語) t=0.3 逃げ道なし",
-      "config": "noul_en",
-      "threshold": 0.3,
-      "fallback": false
-    },
-    "n": 100,
-    "meanPromptTokens": 6731.17,
-    "reduction": 0.7018175777443076,
-    "recall": 0.9391304347826087,
-    "caseMissRate": 0.08045977011494253,
-    "precision": 0.6708074534161491,
-    "fallbackRate": 0,
-    "latencyP50": 179.62654099999963,
-    "latencyP95": 246.14449999999943,
-    "selectorTokensPerCall": 2488.42,
-    "costUsdPer1k": 0.10451364,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 0
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 1
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 0
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 0
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 0
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 1
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 1
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 0
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 0
-      }
-    }
-  },
-  {
-    "variant": {
-      "key": "noul_en@0.5_nofb",
-      "label": "B' noul(英語) t=0.5 逃げ道なし",
-      "config": "noul_en",
-      "threshold": 0.5,
-      "fallback": false
-    },
-    "n": 100,
-    "meanPromptTokens": 6293.23,
-    "reduction": 0.721217772658811,
-    "recall": 0.9130434782608695,
-    "caseMissRate": 0.10344827586206896,
-    "precision": 0.7608695652173914,
-    "fallbackRate": 0,
-    "latencyP50": 179.62654099999963,
-    "latencyP95": 246.14449999999943,
-    "selectorTokensPerCall": 2488.42,
-    "costUsdPer1k": 0.10451364,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 0
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 1
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 0
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 1
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 0
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 2
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 1
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 0
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 1
-      }
-    }
-  },
-  {
-    "variant": {
-      "key": "noul_en@0.7_nofb",
-      "label": "B' noul(英語) t=0.7 逃げ道なし",
-      "config": "noul_en",
-      "threshold": 0.7,
-      "fallback": false
-    },
-    "n": 100,
-    "meanPromptTokens": 5742.93,
-    "reduction": 0.7455953752104191,
-    "recall": 0.8260869565217391,
-    "caseMissRate": 0.21839080459770116,
-    "precision": 0.8558558558558559,
-    "fallbackRate": 0,
-    "latencyP50": 179.62654099999963,
-    "latencyP95": 246.14449999999943,
-    "selectorTokensPerCall": 2488.42,
-    "costUsdPer1k": 0.10451364,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 1
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 2
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 2
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 2
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 0
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 5
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 2
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 1
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 1
-      }
-    }
-  },
-  {
-    "variant": {
-      "key": "choice_ja",
-      "label": "C choice",
-      "config": "choice_ja",
-      "fallback": true
-    },
-    "n": 100,
-    "meanPromptTokens": 5477.03,
-    "reduction": 0.7573744130415523,
-    "recall": 0.7130434782608696,
-    "caseMissRate": 0.367816091954023,
-    "precision": 0.803921568627451,
-    "fallbackRate": 0.01,
-    "latencyP50": 172.92483300000094,
-    "latencyP95": 226.48687500000005,
-    "selectorTokensPerCall": 1680.1,
-    "costUsdPer1k": 0.0705642,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 1
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 2
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 2
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 2
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 1
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 17
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 0
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 3
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 1
-      }
-    }
-  },
-  {
-    "variant": {
-      "key": "choice_ja_nofb",
-      "label": "C choice 逃げ道なし",
-      "config": "choice_ja",
-      "fallback": false
-    },
-    "n": 100,
-    "meanPromptTokens": 5288.48,
-    "reduction": 0.7657269425002216,
-    "recall": 0.7130434782608696,
-    "caseMissRate": 0.367816091954023,
-    "precision": 0.9010989010989011,
-    "fallbackRate": 0,
-    "latencyP50": 172.92483300000094,
-    "latencyP95": 226.48687500000005,
-    "selectorTokensPerCall": 1680.1,
-    "costUsdPer1k": 0.0705642,
-    "perPartMiss": {
-      "account_terms": {
-        "gold": 7,
-        "missed": 1
-      },
-      "application_docs": {
-        "gold": 8,
-        "missed": 2
-      },
-      "career_advice": {
-        "gold": 7,
-        "missed": 2
-      },
-      "company_info": {
-        "gold": 7,
-        "missed": 2
-      },
-      "error_handling": {
-        "gold": 5,
-        "missed": 0
-      },
-      "interview_prep": {
-        "gold": 8,
-        "missed": 1
-      },
-      "out_of_scope": {
-        "gold": 9,
-        "missed": 4
-      },
-      "query_normalization": {
-        "gold": 17,
-        "missed": 17
-      },
-      "reviews": {
-        "gold": 7,
-        "missed": 0
-      },
-      "salary_benefits": {
-        "gold": 15,
-        "missed": 3
-      },
-      "search_conditions": {
-        "gold": 25,
-        "missed": 1
-      }
-    }
+    ]
   }
 ]

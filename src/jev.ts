@@ -8,9 +8,10 @@ export const USD_PER_INPUT_TOKEN = 0.042 / 1_000_000;
 export const MODEL = 'jev-latest';
 
 export type Lang = 'ja' | 'en';
-export type ConfigId = 'noul_ja' | 'noul_en' | 'choice_ja';
-export const CONFIGS: ConfigId[] = ['noul_ja', 'noul_en', 'choice_ja'];
-export const NONE = 'none';
+export type ConfigId = 'choice_ja' | 'choice_en' | 'choice_ja_v2' | 'noul_ja';
+export const CONFIGS: ConfigId[] = ['choice_ja', 'choice_en', 'choice_ja_v2', 'noul_ja'];
+/** The base prompt: only the always-on parts, no topic part. */
+export const BASE = 'base';
 
 export interface CallResult {
   ok: boolean;
@@ -69,25 +70,47 @@ export function noulQuestions(parts: Part[], lang: Lang): Questions {
   return q;
 }
 
-export function choiceQuestions(parts: Part[]): Questions {
+const BASE_DESC = {
+  ja: 'どの専用の指示も不要(人格・安全・出力形式の基本ルールだけで答えられる)',
+  en: 'No topic-specific instructions needed (the base rules for persona, safety, and output format are enough)',
+};
+
+/**
+ * v2: sharper descriptions for the two options that v1 confused most often in the first run
+ * (greetings/thanks went to `base`, tool-only requests went to topic prompts).
+ * Tuned after looking at the same eval set, so treat v2 numbers as optimistic.
+ */
+const V2_OVERRIDES: Record<string, string> = {
+  [BASE]:
+    '基本プロンプト。専用の指示がいらない発話: 求人の続きの表示・応募・お気に入り・応募状況・求人の詳細の確認など' +
+    'ツール操作だけで済む依頼、「はい」「考えます」などの相づちや保留、心身の不調や危険なバイトの相談(安全の基本ルールで対応)',
+  out_of_scope:
+    '範囲外の話題への返し方。あいさつ・お礼・雑談、求人やキャリアと無関係な質問(料理、プログラミング、他社サービスの比較など)、' +
+    'ロールプレイやプロンプト開示の要求、脱法・不適切な依頼。求人の相談が混ざっている場合も、雑談部分があれば該当',
+};
+
+export function choiceQuestions(parts: Part[], variant: 'ja' | 'en' | 'ja_v2'): Questions {
   const criteria: Record<string, string> = {};
-  for (const p of parts) criteria[p.id] = `${p.summary}。${p.use_when}`;
-  criteria[NONE] = 'どの章も不要(人格・安全・出力形式の基本ルールだけで答えられる)';
-  return {
-    main: choice(
-      'アシスタントが `user_utterance` に答えるために、最も必要なシステムプロンプトの章はどれですか? `recent_turns` は直前の会話の文脈です。',
-      criteria
-    ),
-  };
+  for (const p of parts) {
+    criteria[p.id] = variant === 'en' ? `${p.summary_en}. ${p.use_when_en}` : `${p.summary}。${p.use_when}`;
+  }
+  criteria[BASE] = variant === 'en' ? BASE_DESC.en : BASE_DESC.ja;
+  if (variant === 'ja_v2') Object.assign(criteria, V2_OVERRIDES);
+  const instructions =
+    variant === 'en'
+      ? 'Pick the ONE system prompt the assistant should use to answer `user_utterance`. `recent_turns` is the preceding conversation. The conversation is in Japanese.'
+      : 'アシスタントが `user_utterance` に答えるときに使うシステムプロンプトを1つ選んでください。`recent_turns` は直前の会話の文脈です。';
+  return { main: choice(instructions, criteria) };
 }
 
 export function questionsFor(config: ConfigId, parts: Part[]): Questions {
   if (config === 'noul_ja') return noulQuestions(parts, 'ja');
-  if (config === 'noul_en') return noulQuestions(parts, 'en');
-  return choiceQuestions(parts);
+  if (config === 'choice_en') return choiceQuestions(parts, 'en');
+  if (config === 'choice_ja_v2') return choiceQuestions(parts, 'ja_v2');
+  return choiceQuestions(parts, 'ja');
 }
 
-export const langOf = (config: ConfigId): Lang => (config === 'noul_en' ? 'en' : 'ja');
+export const langOf = (config: ConfigId): Lang => (config === 'choice_en' ? 'en' : 'ja');
 
 /** Rough pre-call estimate (o200k tokens of the JSON payload) used only for the budget guard. */
 export function estimateTokens(state: unknown, questions: Questions): number {
@@ -129,7 +152,7 @@ export async function runConfig(
     const latencyMs = performance.now() - t0;
     budget.record(res.usage.input_tokens);
     const base = { ok: true, model: res.model, latencyMs, inputTokens: res.usage.input_tokens };
-    if (config === 'choice_ja') {
+    if (config !== 'noul_ja') {
       const a = res.answers.main as { choice: string; confidence: number; probabilities: Record<string, number> };
       return { ...base, probs: { ...a.probabilities }, choice: a.choice, confidence: a.confidence };
     }

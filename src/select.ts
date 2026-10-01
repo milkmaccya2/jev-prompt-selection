@@ -1,45 +1,30 @@
-import { type CallResult, NONE } from './jev.js';
+import { BASE, type CallResult, type ConfigId } from './jev.js';
 
-export const THRESHOLDS = [0.2, 0.3, 0.5, 0.7];
+/** Confidence cut-offs to compare: below the cut-off we do not trust the pick and load everything. */
+export const CUTOFFS = [0, 0.5, 0.7, 0.9];
+/** noul_ja picks the top part when its probability is at least this, else the base prompt. */
+export const NOUL_MIN = 0.5;
 
-/** "Not sure" escape hatch: fall back to loading every part. */
-export const FALLBACK = {
-  /** noul values inside this band count as "uncertain". */
-  uncertainBand: [0.35, 0.65] as const,
-  /** Fall back when at least this many parts are uncertain. */
-  uncertainMin: 3,
-  /** choice: fall back when confidence is below this. */
-  choiceMinConfidence: 0.3,
-};
-
-export type FallbackReason = 'error' | 'uncertain' | 'low_confidence';
-
-export interface Selection {
-  /** Parts chosen by the selector itself (before fallback). */
-  chosen: string[];
-  /** Why we fell back to all parts, or null. */
-  fallback: FallbackReason | null;
+export interface Pick {
+  chosen: string;
+  confidence: number;
 }
 
-export function selectNoul(r: CallResult, threshold: number): Selection {
-  if (!r.ok) return { chosen: [], fallback: 'error' };
-  const chosen = Object.entries(r.probs)
-    .filter(([, p]) => p >= threshold)
-    .map(([id]) => id);
-  const [lo, hi] = FALLBACK.uncertainBand;
-  const uncertain = Object.values(r.probs).filter((p) => p >= lo && p <= hi).length;
-  return { chosen, fallback: uncertain >= FALLBACK.uncertainMin ? 'uncertain' : null };
+/** One prompt per call. choice: the answer itself; noul: the most probable part (or base). */
+export function pickPrompt(r: CallResult | undefined, config: ConfigId): Pick | null {
+  if (!r?.ok) return null;
+  if (config !== 'noul_ja') return { chosen: r.choice as string, confidence: r.confidence ?? 0 };
+  const [id, p] = Object.entries(r.probs).sort((a, b) => b[1] - a[1])[0];
+  return p >= NOUL_MIN ? { chosen: id, confidence: p } : { chosen: BASE, confidence: 1 - p };
 }
 
-export function selectChoice(r: CallResult): Selection {
-  if (!r.ok || !r.choice) return { chosen: [], fallback: 'error' };
-  const chosen = r.choice === NONE ? [] : [r.choice];
-  const low = (r.confidence ?? 0) < FALLBACK.choiceMinConfidence;
-  return { chosen, fallback: low ? 'low_confidence' : null };
-}
+export type Decision =
+  | { kind: 'prompt'; chosen: string; confidence: number }
+  | { kind: 'fallback'; reason: 'error' | 'low_confidence'; chosen?: string; confidence?: number };
 
-/** Parts actually loaded. Errors always fall back; other reasons only when the hatch is on. */
-export function loaded(s: Selection, allIds: string[], useFallback: boolean): string[] {
-  if (s.fallback === 'error' || (useFallback && s.fallback)) return allIds;
-  return s.chosen;
+/** Escape hatch: on an error or a low-confidence pick, load every part instead. */
+export function decide(pick: Pick | null, cutoff: number): Decision {
+  if (!pick) return { kind: 'fallback', reason: 'error' };
+  if (pick.confidence < cutoff) return { kind: 'fallback', reason: 'low_confidence', ...pick };
+  return { kind: 'prompt', ...pick };
 }
