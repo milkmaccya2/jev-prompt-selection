@@ -1,0 +1,6560 @@
+{
+  "startedAt": "2026-10-01T01:59:55.271Z",
+  "requestedModel": "jev-latest",
+  "configs": [
+    "noul_ja",
+    "noul_en",
+    "choice_ja"
+  ],
+  "budgetUsd": 0.2,
+  "spentUsd": 0.03328340399999997,
+  "stoppedByBudget": null,
+  "parts": [
+    {
+      "id": "account_terms",
+      "tokens": 1567
+    },
+    {
+      "id": "application_docs",
+      "tokens": 1828
+    },
+    {
+      "id": "career_advice",
+      "tokens": 1868
+    },
+    {
+      "id": "company_info",
+      "tokens": 1614
+    },
+    {
+      "id": "error_handling",
+      "tokens": 1236
+    },
+    {
+      "id": "interview_prep",
+      "tokens": 1704
+    },
+    {
+      "id": "out_of_scope",
+      "tokens": 1273
+    },
+    {
+      "id": "query_normalization",
+      "tokens": 2475
+    },
+    {
+      "id": "reviews",
+      "tokens": 1479
+    },
+    {
+      "id": "salary_benefits",
+      "tokens": 1848
+    },
+    {
+      "id": "search_conditions",
+      "tokens": 1963
+    }
+  ],
+  "cases": [
+    {
+      "id": "e001",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 272.90637499999997,
+          "inputTokens": 3734,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.06,
+            "company_info": 0.05,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.92,
+            "reviews": 0.06,
+            "salary_benefits": 0.06,
+            "search_conditions": 0.95
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 163.24695799999995,
+          "inputTokens": 2468,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.05,
+            "company_info": 0.06,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.91,
+            "reviews": 0.05,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.94
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 208.624958,
+          "inputTokens": 1658,
+          "probs": {
+            "salary_benefits": 0,
+            "out_of_scope": 0,
+            "search_conditions": 0.62,
+            "error_handling": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "reviews": 0,
+            "none": 0,
+            "company_info": 0,
+            "interview_prep": 0,
+            "query_normalization": 0.38,
+            "account_terms": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.58
+        }
+      }
+    },
+    {
+      "id": "e002",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 250.59724999999997,
+          "inputTokens": 3738,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.07,
+            "career_advice": 0.13,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.83,
+            "reviews": 0.06,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.96
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 170.7579159999999,
+          "inputTokens": 2472,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.05,
+            "career_advice": 0.09,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.76,
+            "reviews": 0.06,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.96
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 158.87675000000002,
+          "inputTokens": 1662,
+          "probs": {
+            "query_normalization": 0.04,
+            "application_docs": 0,
+            "out_of_scope": 0,
+            "search_conditions": 0.96,
+            "none": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "error_handling": 0,
+            "reviews": 0,
+            "interview_prep": 0,
+            "company_info": 0,
+            "account_terms": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.95
+        }
+      }
+    },
+    {
+      "id": "e003",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 285.402333,
+          "inputTokens": 3730,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.05,
+            "company_info": 0.06,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.6,
+            "reviews": 0.05,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.92
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 185.40770900000007,
+          "inputTokens": 2464,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.04,
+            "company_info": 0.06,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.66,
+            "reviews": 0.04,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.94
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 160.563125,
+          "inputTokens": 1654,
+          "probs": {
+            "query_normalization": 0.25,
+            "application_docs": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "career_advice": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "company_info": 0,
+            "none": 0,
+            "account_terms": 0,
+            "search_conditions": 0.75,
+            "interview_prep": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.72
+        }
+      }
+    },
+    {
+      "id": "e004",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 258.34425,
+          "inputTokens": 3794,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.06,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.58,
+            "reviews": 0.04,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.93
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 192.08945900000003,
+          "inputTokens": 2520,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.05,
+            "company_info": 0.04,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.69,
+            "reviews": 0.04,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.93
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 156.88545899999997,
+          "inputTokens": 1718,
+          "probs": {
+            "account_terms": 0,
+            "error_handling": 0,
+            "none": 0,
+            "career_advice": 0,
+            "company_info": 0,
+            "interview_prep": 0,
+            "search_conditions": 0.76,
+            "salary_benefits": 0,
+            "query_normalization": 0.24,
+            "application_docs": 0,
+            "reviews": 0,
+            "out_of_scope": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.74
+        }
+      }
+    },
+    {
+      "id": "e005",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 183.10945800000013,
+          "inputTokens": 3729,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.05,
+            "career_advice": 0.55,
+            "company_info": 0.06,
+            "error_handling": 0.03,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.16,
+            "reviews": 0.08,
+            "salary_benefits": 0.06,
+            "search_conditions": 0.97
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 176.64374999999995,
+          "inputTokens": 2463,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.45,
+            "company_info": 0.07,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.12,
+            "reviews": 0.09,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.97
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 158.289,
+          "inputTokens": 1653,
+          "probs": {
+            "error_handling": 0,
+            "career_advice": 0,
+            "query_normalization": 0,
+            "account_terms": 0,
+            "out_of_scope": 0,
+            "reviews": 0,
+            "none": 0,
+            "salary_benefits": 0,
+            "search_conditions": 1,
+            "interview_prep": 0,
+            "company_info": 0,
+            "application_docs": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e006",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 197.7505000000001,
+          "inputTokens": 3726,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.15,
+            "career_advice": 0.59,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.21,
+            "out_of_scope": 0.09,
+            "query_normalization": 0.09,
+            "reviews": 0.36,
+            "salary_benefits": 0.09,
+            "search_conditions": 0.89
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 154.86083299999996,
+          "inputTokens": 2460,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.58,
+            "company_info": 0.1,
+            "error_handling": 0.02,
+            "interview_prep": 0.05,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.1,
+            "reviews": 0.34,
+            "salary_benefits": 0.06,
+            "search_conditions": 0.93
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 164.60616600000003,
+          "inputTokens": 1650,
+          "probs": {
+            "account_terms": 0,
+            "out_of_scope": 0,
+            "none": 0.01,
+            "interview_prep": 0,
+            "search_conditions": 0.97,
+            "error_handling": 0,
+            "query_normalization": 0,
+            "salary_benefits": 0,
+            "reviews": 0,
+            "company_info": 0,
+            "application_docs": 0,
+            "career_advice": 0.02
+          },
+          "choice": "search_conditions",
+          "confidence": 0.97
+        }
+      }
+    },
+    {
+      "id": "e007",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 214.4178750000001,
+          "inputTokens": 3732,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.06,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.85,
+            "reviews": 0.08,
+            "salary_benefits": 0.07,
+            "search_conditions": 0.93
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 175.166792,
+          "inputTokens": 2466,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.04,
+            "career_advice": 0.05,
+            "company_info": 0.08,
+            "error_handling": 0.02,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.78,
+            "reviews": 0.06,
+            "salary_benefits": 0.06,
+            "search_conditions": 0.93
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 184.38699999999994,
+          "inputTokens": 1656,
+          "probs": {
+            "career_advice": 0,
+            "none": 0,
+            "application_docs": 0,
+            "search_conditions": 0.58,
+            "error_handling": 0,
+            "reviews": 0,
+            "interview_prep": 0,
+            "out_of_scope": 0,
+            "query_normalization": 0.42,
+            "company_info": 0,
+            "salary_benefits": 0,
+            "account_terms": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.54
+        }
+      }
+    },
+    {
+      "id": "e008",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 248.98608400000012,
+          "inputTokens": 3729,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.07,
+            "career_advice": 0.14,
+            "company_info": 0.06,
+            "error_handling": 0.03,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.77,
+            "reviews": 0.06,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.96
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 172.42658299999994,
+          "inputTokens": 2463,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.05,
+            "career_advice": 0.11,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.64,
+            "reviews": 0.07,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.96
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 160.6656250000001,
+          "inputTokens": 1653,
+          "probs": {
+            "error_handling": 0,
+            "career_advice": 0,
+            "query_normalization": 0.03,
+            "out_of_scope": 0,
+            "account_terms": 0,
+            "salary_benefits": 0,
+            "none": 0,
+            "reviews": 0,
+            "search_conditions": 0.97,
+            "interview_prep": 0,
+            "company_info": 0,
+            "application_docs": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.97
+        }
+      }
+    },
+    {
+      "id": "e009",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 157.05104200000005,
+          "inputTokens": 3857,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.13,
+            "reviews": 0.04,
+            "salary_benefits": 0.86,
+            "search_conditions": 0.96
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 186.07391700000016,
+          "inputTokens": 2583,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.11,
+            "reviews": 0.03,
+            "salary_benefits": 0.43,
+            "search_conditions": 0.96
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 179.01233300000013,
+          "inputTokens": 1781,
+          "probs": {
+            "company_info": 0,
+            "search_conditions": 0.98,
+            "none": 0,
+            "interview_prep": 0,
+            "reviews": 0,
+            "out_of_scope": 0,
+            "error_handling": 0,
+            "query_normalization": 0,
+            "salary_benefits": 0.02,
+            "career_advice": 0,
+            "account_terms": 0,
+            "application_docs": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.98
+        }
+      }
+    },
+    {
+      "id": "e010",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 152.49675000000002,
+          "inputTokens": 3849,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.05,
+            "error_handling": 0.04,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.08,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.71
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 172.77204199999983,
+          "inputTokens": 2575,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.07,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.82
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 157.682417,
+          "inputTokens": 1773,
+          "probs": {
+            "career_advice": 0,
+            "reviews": 0,
+            "out_of_scope": 0,
+            "salary_benefits": 0,
+            "application_docs": 0,
+            "company_info": 0,
+            "error_handling": 0,
+            "search_conditions": 0.93,
+            "query_normalization": 0,
+            "interview_prep": 0,
+            "none": 0.07,
+            "account_terms": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.92
+        }
+      }
+    },
+    {
+      "id": "e011",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 242.01654200000007,
+          "inputTokens": 3735,
+          "probs": {
+            "account_terms": 0.07,
+            "application_docs": 0.15,
+            "career_advice": 0.14,
+            "company_info": 0.06,
+            "error_handling": 0.91,
+            "interview_prep": 0.08,
+            "out_of_scope": 0.1,
+            "query_normalization": 0.07,
+            "reviews": 0.21,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.78
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 163.269583,
+          "inputTokens": 2469,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.09,
+            "career_advice": 0.05,
+            "company_info": 0.06,
+            "error_handling": 0.91,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.12,
+            "query_normalization": 0.05,
+            "reviews": 0.2,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.83
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 156.36033300000008,
+          "inputTokens": 1659,
+          "probs": {
+            "application_docs": 0,
+            "company_info": 0,
+            "error_handling": 0.77,
+            "search_conditions": 0.23,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "career_advice": 0,
+            "none": 0,
+            "out_of_scope": 0,
+            "query_normalization": 0,
+            "reviews": 0,
+            "salary_benefits": 0
+          },
+          "choice": "error_handling",
+          "confidence": 0.74
+        }
+      }
+    },
+    {
+      "id": "e012",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 173.93466599999988,
+          "inputTokens": 3729,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.13,
+            "career_advice": 0.17,
+            "company_info": 0.14,
+            "error_handling": 0.03,
+            "interview_prep": 0.13,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.82,
+            "reviews": 0.31,
+            "salary_benefits": 0.09,
+            "search_conditions": 0.83
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 247.48074999999994,
+          "inputTokens": 2463,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.05,
+            "career_advice": 0.1,
+            "company_info": 0.21,
+            "error_handling": 0.02,
+            "interview_prep": 0.05,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.82,
+            "reviews": 0.29,
+            "salary_benefits": 0.1,
+            "search_conditions": 0.84
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 194.45445900000004,
+          "inputTokens": 1653,
+          "probs": {
+            "error_handling": 0,
+            "account_terms": 0,
+            "search_conditions": 0.51,
+            "query_normalization": 0.49,
+            "none": 0,
+            "salary_benefits": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "out_of_scope": 0,
+            "career_advice": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.46
+        }
+      }
+    },
+    {
+      "id": "e013",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 158.25783399999978,
+          "inputTokens": 3729,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.05,
+            "career_advice": 0.16,
+            "company_info": 0.05,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.87,
+            "reviews": 0.07,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.95
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 158.94133299999976,
+          "inputTokens": 2463,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.05,
+            "career_advice": 0.13,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.81,
+            "reviews": 0.07,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.94
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 157.76024999999981,
+          "inputTokens": 1653,
+          "probs": {
+            "interview_prep": 0,
+            "application_docs": 0,
+            "none": 0,
+            "salary_benefits": 0,
+            "search_conditions": 0.88,
+            "account_terms": 0,
+            "query_normalization": 0.12,
+            "error_handling": 0,
+            "company_info": 0,
+            "out_of_scope": 0,
+            "career_advice": 0,
+            "reviews": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.87
+        }
+      }
+    },
+    {
+      "id": "e014",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 163.67550000000028,
+          "inputTokens": 3744,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.07,
+            "company_info": 0.05,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.83,
+            "reviews": 0.06,
+            "salary_benefits": 0.15,
+            "search_conditions": 0.94
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 159.47312499999998,
+          "inputTokens": 2478,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.06,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.83,
+            "reviews": 0.05,
+            "salary_benefits": 0.07,
+            "search_conditions": 0.95
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 165.32879200000025,
+          "inputTokens": 1668,
+          "probs": {
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "interview_prep": 0,
+            "company_info": 0,
+            "account_terms": 0,
+            "salary_benefits": 0,
+            "reviews": 0,
+            "application_docs": 0,
+            "none": 0,
+            "query_normalization": 0.04,
+            "search_conditions": 0.96,
+            "career_advice": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.96
+        }
+      }
+    },
+    {
+      "id": "e015",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 168.27595900000006,
+          "inputTokens": 3732,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.06,
+            "company_info": 0.93,
+            "error_handling": 0.03,
+            "interview_prep": 0.06,
+            "out_of_scope": 0.56,
+            "query_normalization": 0.38,
+            "reviews": 0.15,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.05
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 156.93150000000014,
+          "inputTokens": 2466,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.02,
+            "career_advice": 0.05,
+            "company_info": 0.95,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.45,
+            "query_normalization": 0.33,
+            "reviews": 0.15,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.05
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 197.4949999999999,
+          "inputTokens": 1656,
+          "probs": {
+            "none": 0,
+            "salary_benefits": 0,
+            "reviews": 0,
+            "interview_prep": 0,
+            "career_advice": 0,
+            "out_of_scope": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "application_docs": 0,
+            "search_conditions": 0,
+            "company_info": 0.99,
+            "query_normalization": 0.01
+          },
+          "choice": "company_info",
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "id": "e016",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 210.7628749999999,
+          "inputTokens": 3837,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.11,
+            "company_info": 0.7,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.08,
+            "reviews": 0.94,
+            "salary_benefits": 0.16,
+            "search_conditions": 0.07
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 156.7482500000001,
+          "inputTokens": 2563,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.1,
+            "company_info": 0.6,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.12,
+            "reviews": 0.95,
+            "salary_benefits": 0.15,
+            "search_conditions": 0.08
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 172.77716599999985,
+          "inputTokens": 1761,
+          "probs": {
+            "reviews": 0.97,
+            "company_info": 0.03,
+            "search_conditions": 0,
+            "interview_prep": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "error_handling": 0,
+            "salary_benefits": 0,
+            "query_normalization": 0,
+            "none": 0,
+            "account_terms": 0,
+            "out_of_scope": 0
+          },
+          "choice": "reviews",
+          "confidence": 0.97
+        }
+      }
+    },
+    {
+      "id": "e017",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 194.89200000000028,
+          "inputTokens": 3730,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.02,
+            "career_advice": 0.04,
+            "company_info": 0.11,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.86,
+            "query_normalization": 0.24,
+            "reviews": 0.88,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.05
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 214.25854200000003,
+          "inputTokens": 2464,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.02,
+            "career_advice": 0.02,
+            "company_info": 0.12,
+            "error_handling": 0.03,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.8,
+            "query_normalization": 0.21,
+            "reviews": 0.59,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.03
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 232.4395830000003,
+          "inputTokens": 1654,
+          "probs": {
+            "career_advice": 0,
+            "search_conditions": 0,
+            "interview_prep": 0,
+            "application_docs": 0,
+            "error_handling": 0,
+            "reviews": 1,
+            "none": 0,
+            "out_of_scope": 0,
+            "account_terms": 0,
+            "company_info": 0,
+            "salary_benefits": 0,
+            "query_normalization": 0
+          },
+          "choice": "reviews",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e018",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 186.75258399999984,
+          "inputTokens": 3834,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.08,
+            "company_info": 0.19,
+            "error_handling": 0.03,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.07,
+            "reviews": 0.96,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.09
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 177.95375000000013,
+          "inputTokens": 2560,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.06,
+            "company_info": 0.18,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.08,
+            "reviews": 0.96,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.09
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 181.38458300000002,
+          "inputTokens": 1758,
+          "probs": {
+            "none": 0,
+            "error_handling": 0,
+            "career_advice": 0,
+            "out_of_scope": 0,
+            "search_conditions": 0,
+            "salary_benefits": 0,
+            "interview_prep": 0,
+            "application_docs": 0,
+            "query_normalization": 0,
+            "account_terms": 0,
+            "company_info": 0,
+            "reviews": 1
+          },
+          "choice": "reviews",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e019",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 161.7084579999996,
+          "inputTokens": 3736,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.27,
+            "company_info": 0.38,
+            "error_handling": 0.03,
+            "interview_prep": 0.05,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.56,
+            "reviews": 0.95,
+            "salary_benefits": 0.96,
+            "search_conditions": 0.15
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 173.03312499999993,
+          "inputTokens": 2470,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.23,
+            "company_info": 0.48,
+            "error_handling": 0.02,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.5,
+            "reviews": 0.94,
+            "salary_benefits": 0.96,
+            "search_conditions": 0.16
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 161.78324999999995,
+          "inputTokens": 1660,
+          "probs": {
+            "none": 0,
+            "error_handling": 0,
+            "career_advice": 0,
+            "out_of_scope": 0,
+            "search_conditions": 0,
+            "salary_benefits": 0.24,
+            "interview_prep": 0,
+            "application_docs": 0,
+            "query_normalization": 0.01,
+            "account_terms": 0,
+            "company_info": 0.12,
+            "reviews": 0.63
+          },
+          "choice": "reviews",
+          "confidence": 0.6
+        }
+      }
+    },
+    {
+      "id": "e020",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 172.54491700000017,
+          "inputTokens": 3730,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.21,
+            "company_info": 0.29,
+            "error_handling": 0.03,
+            "interview_prep": 0.16,
+            "out_of_scope": 0.09,
+            "query_normalization": 0.71,
+            "reviews": 0.95,
+            "salary_benefits": 0.81,
+            "search_conditions": 0.1
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 193.862666,
+          "inputTokens": 2464,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.11,
+            "company_info": 0.49,
+            "error_handling": 0.02,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.71,
+            "reviews": 0.95,
+            "salary_benefits": 0.57,
+            "search_conditions": 0.11
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 171.65641700000015,
+          "inputTokens": 1654,
+          "probs": {
+            "none": 0,
+            "error_handling": 0,
+            "career_advice": 0,
+            "out_of_scope": 0,
+            "search_conditions": 0,
+            "salary_benefits": 0.04,
+            "interview_prep": 0,
+            "application_docs": 0,
+            "query_normalization": 0.01,
+            "account_terms": 0,
+            "company_info": 0.01,
+            "reviews": 0.94
+          },
+          "choice": "reviews",
+          "confidence": 0.93
+        }
+      }
+    },
+    {
+      "id": "e021",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 192.3871250000002,
+          "inputTokens": 3834,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.06,
+            "reviews": 0.04,
+            "salary_benefits": 0.96,
+            "search_conditions": 0.06
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 176.1049579999999,
+          "inputTokens": 2560,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.06,
+            "reviews": 0.04,
+            "salary_benefits": 0.92,
+            "search_conditions": 0.07
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 195.87458300000026,
+          "inputTokens": 1758,
+          "probs": {
+            "career_advice": 0,
+            "account_terms": 0,
+            "none": 0,
+            "query_normalization": 0,
+            "interview_prep": 0,
+            "application_docs": 0,
+            "out_of_scope": 0,
+            "error_handling": 0,
+            "search_conditions": 0,
+            "salary_benefits": 1,
+            "reviews": 0,
+            "company_info": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e022",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 187.3344579999998,
+          "inputTokens": 3728,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.03,
+            "career_advice": 0.05,
+            "company_info": 0.05,
+            "error_handling": 0.03,
+            "interview_prep": 0.09,
+            "out_of_scope": 0.14,
+            "query_normalization": 0.09,
+            "reviews": 0.13,
+            "salary_benefits": 0.96,
+            "search_conditions": 0.07
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 170.66054199999962,
+          "inputTokens": 2462,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.04,
+            "company_info": 0.04,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.12,
+            "reviews": 0.05,
+            "salary_benefits": 0.95,
+            "search_conditions": 0.05
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 178.23304099999996,
+          "inputTokens": 1652,
+          "probs": {
+            "reviews": 0,
+            "search_conditions": 0,
+            "application_docs": 0,
+            "account_terms": 0,
+            "salary_benefits": 1,
+            "company_info": 0,
+            "out_of_scope": 0,
+            "career_advice": 0,
+            "interview_prep": 0,
+            "error_handling": 0,
+            "none": 0,
+            "query_normalization": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e023",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 199.1505000000002,
+          "inputTokens": 3741,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.02,
+            "career_advice": 0.04,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.15,
+            "query_normalization": 0.08,
+            "reviews": 0.04,
+            "salary_benefits": 0.96,
+            "search_conditions": 0.08
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 226.26587500000005,
+          "inputTokens": 2475,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.07,
+            "reviews": 0.02,
+            "salary_benefits": 0.97,
+            "search_conditions": 0.07
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 189.01966600000014,
+          "inputTokens": 1665,
+          "probs": {
+            "search_conditions": 0,
+            "reviews": 0,
+            "error_handling": 0,
+            "query_normalization": 0,
+            "career_advice": 0,
+            "none": 0,
+            "company_info": 0,
+            "interview_prep": 0,
+            "salary_benefits": 1,
+            "account_terms": 0,
+            "application_docs": 0,
+            "out_of_scope": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e024",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 185.3704170000001,
+          "inputTokens": 3739,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.08,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.6,
+            "reviews": 0.04,
+            "salary_benefits": 0.98,
+            "search_conditions": 0.11
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 181.17558299999973,
+          "inputTokens": 2473,
+          "probs": {
+            "account_terms": 0.01,
+            "application_docs": 0.02,
+            "career_advice": 0.06,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.71,
+            "reviews": 0.02,
+            "salary_benefits": 0.98,
+            "search_conditions": 0.11
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 226.48687500000005,
+          "inputTokens": 1663,
+          "probs": {
+            "interview_prep": 0,
+            "application_docs": 0,
+            "none": 0,
+            "salary_benefits": 1,
+            "error_handling": 0,
+            "account_terms": 0,
+            "query_normalization": 0,
+            "search_conditions": 0,
+            "company_info": 0,
+            "out_of_scope": 0,
+            "career_advice": 0,
+            "reviews": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e025",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 180.13650000000007,
+          "inputTokens": 3736,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.05,
+            "company_info": 0.05,
+            "error_handling": 0.03,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.25,
+            "query_normalization": 0.06,
+            "reviews": 0.04,
+            "salary_benefits": 0.89,
+            "search_conditions": 0.08
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 278.9392499999999,
+          "inputTokens": 2470,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.05,
+            "reviews": 0.03,
+            "salary_benefits": 0.66,
+            "search_conditions": 0.05
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 185.17066700000032,
+          "inputTokens": 1660,
+          "probs": {
+            "career_advice": 0,
+            "reviews": 0,
+            "out_of_scope": 0,
+            "salary_benefits": 0.99,
+            "application_docs": 0,
+            "company_info": 0,
+            "error_handling": 0,
+            "search_conditions": 0,
+            "query_normalization": 0,
+            "interview_prep": 0,
+            "none": 0.01,
+            "account_terms": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "id": "e026",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 164.1830829999999,
+          "inputTokens": 3741,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.09,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.15,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.08,
+            "reviews": 0.05,
+            "salary_benefits": 0.97,
+            "search_conditions": 0.07
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 160.99545799999987,
+          "inputTokens": 2475,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.06,
+            "company_info": 0.04,
+            "error_handling": 0.02,
+            "interview_prep": 0.08,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.07,
+            "reviews": 0.03,
+            "salary_benefits": 0.98,
+            "search_conditions": 0.06
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 218.06941700000016,
+          "inputTokens": 1665,
+          "probs": {
+            "search_conditions": 0,
+            "reviews": 0,
+            "error_handling": 0,
+            "query_normalization": 0,
+            "career_advice": 0,
+            "none": 0,
+            "company_info": 0,
+            "interview_prep": 0,
+            "salary_benefits": 1,
+            "account_terms": 0,
+            "application_docs": 0,
+            "out_of_scope": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e027",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 152.36149999999998,
+          "inputTokens": 3742,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.41,
+            "company_info": 0.03,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.72,
+            "reviews": 0.04,
+            "salary_benefits": 0.98,
+            "search_conditions": 0.39
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 183.08725000000004,
+          "inputTokens": 2476,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.14,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.65,
+            "reviews": 0.03,
+            "salary_benefits": 0.98,
+            "search_conditions": 0.47
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 170.2631250000004,
+          "inputTokens": 1666,
+          "probs": {
+            "career_advice": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "account_terms": 0,
+            "search_conditions": 0,
+            "company_info": 0,
+            "salary_benefits": 1,
+            "interview_prep": 0,
+            "query_normalization": 0,
+            "none": 0,
+            "reviews": 0,
+            "application_docs": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e028",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 172.20125000000053,
+          "inputTokens": 3739,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.05,
+            "career_advice": 0.97,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.06,
+            "reviews": 0.07,
+            "salary_benefits": 0.07,
+            "search_conditions": 0.53
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 203.47012499999983,
+          "inputTokens": 2473,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.05,
+            "career_advice": 0.97,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.05,
+            "reviews": 0.07,
+            "salary_benefits": 0.06,
+            "search_conditions": 0.6
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 209.49391699999978,
+          "inputTokens": 1663,
+          "probs": {
+            "company_info": 0,
+            "application_docs": 0,
+            "out_of_scope": 0,
+            "salary_benefits": 0,
+            "career_advice": 1,
+            "error_handling": 0,
+            "account_terms": 0,
+            "reviews": 0,
+            "none": 0,
+            "search_conditions": 0,
+            "query_normalization": 0,
+            "interview_prep": 0
+          },
+          "choice": "career_advice",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e029",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 214.62991599999987,
+          "inputTokens": 3734,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.06,
+            "career_advice": 0.97,
+            "company_info": 0.03,
+            "error_handling": 0.03,
+            "interview_prep": 0.05,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.05,
+            "reviews": 0.05,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.67
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 213.98191700000007,
+          "inputTokens": 2468,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.04,
+            "career_advice": 0.96,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.04,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.82
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 167.46120800000062,
+          "inputTokens": 1658,
+          "probs": {
+            "none": 0,
+            "salary_benefits": 0,
+            "search_conditions": 0,
+            "reviews": 0,
+            "company_info": 0,
+            "account_terms": 0,
+            "query_normalization": 0,
+            "career_advice": 1,
+            "out_of_scope": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "error_handling": 0
+          },
+          "choice": "career_advice",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e030",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 339.48333400000047,
+          "inputTokens": 3738,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.07,
+            "career_advice": 0.95,
+            "company_info": 0.03,
+            "error_handling": 0.03,
+            "interview_prep": 0.07,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.21,
+            "reviews": 0.04,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.21
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 182.48745900000085,
+          "inputTokens": 2472,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.04,
+            "career_advice": 0.94,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.14,
+            "reviews": 0.03,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.21
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 154.45349999999962,
+          "inputTokens": 1662,
+          "probs": {
+            "account_terms": 0,
+            "application_docs": 0,
+            "career_advice": 1,
+            "company_info": 0,
+            "error_handling": 0,
+            "interview_prep": 0,
+            "out_of_scope": 0,
+            "query_normalization": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "search_conditions": 0,
+            "none": 0
+          },
+          "choice": "career_advice",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e031",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 182.66487499999948,
+          "inputTokens": 3736,
+          "probs": {
+            "account_terms": 0.3,
+            "application_docs": 0.67,
+            "career_advice": 0.93,
+            "company_info": 0.06,
+            "error_handling": 0.04,
+            "interview_prep": 0.72,
+            "out_of_scope": 0.13,
+            "query_normalization": 0.05,
+            "reviews": 0.11,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.5
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 162.76283300000068,
+          "inputTokens": 2470,
+          "probs": {
+            "account_terms": 0.24,
+            "application_docs": 0.33,
+            "career_advice": 0.87,
+            "company_info": 0.06,
+            "error_handling": 0.05,
+            "interview_prep": 0.54,
+            "out_of_scope": 0.2,
+            "query_normalization": 0.04,
+            "reviews": 0.09,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.43
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 308.79583399999956,
+          "inputTokens": 1660,
+          "probs": {
+            "application_docs": 0.01,
+            "company_info": 0,
+            "interview_prep": 0.01,
+            "none": 0,
+            "career_advice": 0.98,
+            "search_conditions": 0,
+            "salary_benefits": 0,
+            "query_normalization": 0,
+            "account_terms": 0,
+            "out_of_scope": 0,
+            "reviews": 0,
+            "error_handling": 0
+          },
+          "choice": "career_advice",
+          "confidence": 0.97
+        }
+      }
+    },
+    {
+      "id": "e032",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 159.2994579999995,
+          "inputTokens": 3819,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.94,
+            "career_advice": 0.64,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.71,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.03,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.04
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 174.10541600000033,
+          "inputTokens": 2545,
+          "probs": {
+            "account_terms": 0.01,
+            "application_docs": 0.93,
+            "career_advice": 0.54,
+            "company_info": 0.02,
+            "error_handling": 0.02,
+            "interview_prep": 0.85,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.03,
+            "reviews": 0.02,
+            "salary_benefits": 0.01,
+            "search_conditions": 0.04
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 229.1026670000001,
+          "inputTokens": 1743,
+          "probs": {
+            "account_terms": 0,
+            "search_conditions": 0,
+            "career_advice": 0.09,
+            "error_handling": 0,
+            "salary_benefits": 0,
+            "query_normalization": 0,
+            "none": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "application_docs": 0.91,
+            "interview_prep": 0,
+            "out_of_scope": 0
+          },
+          "choice": "application_docs",
+          "confidence": 0.9
+        }
+      }
+    },
+    {
+      "id": "e033",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 184.6674579999999,
+          "inputTokens": 3731,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.97,
+            "career_advice": 0.06,
+            "company_info": 0.02,
+            "error_handling": 0.03,
+            "interview_prep": 0.06,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.06,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.05
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 310.32620899999984,
+          "inputTokens": 2465,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.98,
+            "career_advice": 0.04,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.06,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.07
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 171.61625000000004,
+          "inputTokens": 1655,
+          "probs": {
+            "application_docs": 1,
+            "none": 0,
+            "search_conditions": 0,
+            "reviews": 0,
+            "company_info": 0,
+            "account_terms": 0,
+            "query_normalization": 0,
+            "career_advice": 0,
+            "out_of_scope": 0,
+            "salary_benefits": 0,
+            "interview_prep": 0,
+            "error_handling": 0
+          },
+          "choice": "application_docs",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e034",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 374.18124999999964,
+          "inputTokens": 3758,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.96,
+            "career_advice": 0.07,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.87,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.05,
+            "reviews": 0.06,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.06
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 159.46904199999972,
+          "inputTokens": 2492,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.96,
+            "career_advice": 0.06,
+            "company_info": 0.1,
+            "error_handling": 0.02,
+            "interview_prep": 0.83,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.04,
+            "reviews": 0.05,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.05
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 164.82679199999984,
+          "inputTokens": 1682,
+          "probs": {
+            "application_docs": 1,
+            "error_handling": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "company_info": 0,
+            "out_of_scope": 0,
+            "none": 0,
+            "salary_benefits": 0,
+            "query_normalization": 0,
+            "reviews": 0,
+            "search_conditions": 0,
+            "career_advice": 0
+          },
+          "choice": "application_docs",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e035",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 190.39495799999986,
+          "inputTokens": 3741,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.96,
+            "career_advice": 0.22,
+            "company_info": 0.03,
+            "error_handling": 0.03,
+            "interview_prep": 0.37,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.05,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.07
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 158.12962499999958,
+          "inputTokens": 2475,
+          "probs": {
+            "account_terms": 0.01,
+            "application_docs": 0.94,
+            "career_advice": 0.14,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.31,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.05,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.05
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 162.78366599999936,
+          "inputTokens": 1665,
+          "probs": {
+            "application_docs": 1,
+            "company_info": 0,
+            "error_handling": 0,
+            "search_conditions": 0,
+            "career_advice": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "none": 0,
+            "out_of_scope": 0,
+            "query_normalization": 0,
+            "reviews": 0,
+            "salary_benefits": 0
+          },
+          "choice": "application_docs",
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "id": "e036",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 173.63362499999948,
+          "inputTokens": 3742,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.97,
+            "career_advice": 0.12,
+            "company_info": 0.03,
+            "error_handling": 0.03,
+            "interview_prep": 0.05,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.08,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.08
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 164.47883400000046,
+          "inputTokens": 2476,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.96,
+            "career_advice": 0.07,
+            "company_info": 0.03,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.07,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.09
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 159.93041600000015,
+          "inputTokens": 1666,
+          "probs": {
+            "reviews": 0,
+            "none": 0,
+            "application_docs": 1,
+            "salary_benefits": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "query_normalization": 0,
+            "search_conditions": 0,
+            "company_info": 0,
+            "career_advice": 0,
+            "out_of_scope": 0,
+            "interview_prep": 0
+          },
+          "choice": "application_docs",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e037",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 194.84783399999924,
+          "inputTokens": 3734,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.06,
+            "career_advice": 0.06,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.98,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.06,
+            "reviews": 0.04,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.06
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 240.91045799999938,
+          "inputTokens": 2468,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.04,
+            "career_advice": 0.05,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.97,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.06,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.06
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 155.23833399999967,
+          "inputTokens": 1658,
+          "probs": {
+            "account_terms": 0,
+            "application_docs": 0,
+            "career_advice": 0,
+            "company_info": 0,
+            "error_handling": 0,
+            "interview_prep": 1,
+            "out_of_scope": 0,
+            "query_normalization": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "search_conditions": 0,
+            "none": 0
+          },
+          "choice": "interview_prep",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e038",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 178.0682909999996,
+          "inputTokens": 3735,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.04,
+            "career_advice": 0.06,
+            "company_info": 0.03,
+            "error_handling": 0.03,
+            "interview_prep": 0.98,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.17,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.07
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 174.96600000000035,
+          "inputTokens": 2469,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.04,
+            "error_handling": 0.02,
+            "interview_prep": 0.97,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.11,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.09
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 162.59162500000002,
+          "inputTokens": 1659,
+          "probs": {
+            "application_docs": 0,
+            "company_info": 0,
+            "error_handling": 0,
+            "search_conditions": 0,
+            "account_terms": 0,
+            "career_advice": 0,
+            "interview_prep": 1,
+            "none": 0,
+            "out_of_scope": 0,
+            "query_normalization": 0,
+            "reviews": 0,
+            "salary_benefits": 0
+          },
+          "choice": "interview_prep",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e039",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 174.389459,
+          "inputTokens": 3731,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.28,
+            "career_advice": 0.21,
+            "company_info": 0.15,
+            "error_handling": 0.03,
+            "interview_prep": 0.94,
+            "out_of_scope": 0.24,
+            "query_normalization": 0.05,
+            "reviews": 0.23,
+            "salary_benefits": 0.11,
+            "search_conditions": 0.2
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 158.45283299999937,
+          "inputTokens": 2465,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.04,
+            "career_advice": 0.12,
+            "company_info": 0.15,
+            "error_handling": 0.02,
+            "interview_prep": 0.93,
+            "out_of_scope": 0.27,
+            "query_normalization": 0.05,
+            "reviews": 0.25,
+            "salary_benefits": 0.08,
+            "search_conditions": 0.2
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 155.19587500000034,
+          "inputTokens": 1655,
+          "probs": {
+            "error_handling": 0,
+            "query_normalization": 0,
+            "application_docs": 0,
+            "company_info": 0,
+            "account_terms": 0,
+            "salary_benefits": 0,
+            "reviews": 0,
+            "interview_prep": 1,
+            "none": 0,
+            "out_of_scope": 0,
+            "search_conditions": 0,
+            "career_advice": 0
+          },
+          "choice": "interview_prep",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e040",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 161.40383399999973,
+          "inputTokens": 3741,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.06,
+            "career_advice": 0.06,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.97,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.05,
+            "reviews": 0.03,
+            "salary_benefits": 0.97,
+            "search_conditions": 0.11
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 191.40133400000013,
+          "inputTokens": 2475,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.04,
+            "career_advice": 0.05,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.97,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.05,
+            "reviews": 0.02,
+            "salary_benefits": 0.98,
+            "search_conditions": 0.09
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 165.53912500000024,
+          "inputTokens": 1665,
+          "probs": {
+            "application_docs": 0,
+            "company_info": 0,
+            "none": 0,
+            "career_advice": 0,
+            "interview_prep": 0.9,
+            "search_conditions": 0,
+            "query_normalization": 0,
+            "salary_benefits": 0.1,
+            "account_terms": 0,
+            "out_of_scope": 0,
+            "reviews": 0,
+            "error_handling": 0
+          },
+          "choice": "interview_prep",
+          "confidence": 0.89
+        }
+      }
+    },
+    {
+      "id": "e041",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 175.84987499999988,
+          "inputTokens": 3730,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.19,
+            "career_advice": 0.08,
+            "company_info": 0.16,
+            "error_handling": 0.05,
+            "interview_prep": 0.97,
+            "out_of_scope": 0.08,
+            "query_normalization": 0.18,
+            "reviews": 0.09,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.12
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 181.35662499999944,
+          "inputTokens": 2464,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.18,
+            "career_advice": 0.08,
+            "company_info": 0.42,
+            "error_handling": 0.04,
+            "interview_prep": 0.95,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.27,
+            "reviews": 0.29,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.12
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 156.57175000000007,
+          "inputTokens": 1654,
+          "probs": {
+            "reviews": 0,
+            "search_conditions": 0,
+            "application_docs": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "company_info": 0,
+            "out_of_scope": 0,
+            "career_advice": 0,
+            "interview_prep": 1,
+            "salary_benefits": 0,
+            "none": 0,
+            "query_normalization": 0
+          },
+          "choice": "interview_prep",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e042",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 189.8456670000005,
+          "inputTokens": 3740,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.07,
+            "career_advice": 0.07,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.95,
+            "out_of_scope": 0.08,
+            "query_normalization": 0.05,
+            "reviews": 0.05,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.05
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 171.499417,
+          "inputTokens": 2474,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.04,
+            "career_advice": 0.05,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.95,
+            "out_of_scope": 0.07,
+            "query_normalization": 0.06,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.04
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 171.71029200000066,
+          "inputTokens": 1664,
+          "probs": {
+            "error_handling": 0,
+            "career_advice": 0,
+            "query_normalization": 0,
+            "out_of_scope": 0,
+            "account_terms": 0,
+            "reviews": 0,
+            "none": 0,
+            "salary_benefits": 0,
+            "search_conditions": 0,
+            "interview_prep": 1,
+            "company_info": 0,
+            "application_docs": 0
+          },
+          "choice": "interview_prep",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e043",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 187.06470799999988,
+          "inputTokens": 3727,
+          "probs": {
+            "account_terms": 0.97,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.02,
+            "error_handling": 0.93,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.15,
+            "query_normalization": 0.03,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.03
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 190.03095800000028,
+          "inputTokens": 2461,
+          "probs": {
+            "account_terms": 0.98,
+            "application_docs": 0.01,
+            "career_advice": 0.01,
+            "company_info": 0.02,
+            "error_handling": 0.91,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.08,
+            "query_normalization": 0.04,
+            "reviews": 0.02,
+            "salary_benefits": 0.01,
+            "search_conditions": 0.02
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 205.0152079999998,
+          "inputTokens": 1651,
+          "probs": {
+            "interview_prep": 0,
+            "error_handling": 0.01,
+            "application_docs": 0,
+            "account_terms": 0.99,
+            "query_normalization": 0,
+            "out_of_scope": 0,
+            "none": 0,
+            "salary_benefits": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "career_advice": 0,
+            "search_conditions": 0
+          },
+          "choice": "account_terms",
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "id": "e044",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 203.58858400000008,
+          "inputTokens": 3727,
+          "probs": {
+            "account_terms": 0.97,
+            "application_docs": 0.02,
+            "career_advice": 0.02,
+            "company_info": 0.02,
+            "error_handling": 0.07,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.35,
+            "query_normalization": 0.03,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.03
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 171.1274999999996,
+          "inputTokens": 2461,
+          "probs": {
+            "account_terms": 0.97,
+            "application_docs": 0.01,
+            "career_advice": 0.01,
+            "company_info": 0.02,
+            "error_handling": 0.16,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.14,
+            "query_normalization": 0.03,
+            "reviews": 0.01,
+            "salary_benefits": 0.01,
+            "search_conditions": 0.02
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 199.97558300000037,
+          "inputTokens": 1651,
+          "probs": {
+            "career_advice": 0,
+            "reviews": 0,
+            "none": 0,
+            "application_docs": 0,
+            "search_conditions": 0,
+            "interview_prep": 0,
+            "out_of_scope": 0,
+            "company_info": 0,
+            "account_terms": 1,
+            "query_normalization": 0,
+            "salary_benefits": 0,
+            "error_handling": 0
+          },
+          "choice": "account_terms",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e045",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 220.75258399999984,
+          "inputTokens": 3735,
+          "probs": {
+            "account_terms": 0.96,
+            "application_docs": 0.04,
+            "career_advice": 0.07,
+            "company_info": 0.03,
+            "error_handling": 0.04,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.12,
+            "query_normalization": 0.06,
+            "reviews": 0.05,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.07
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 203.08316599999944,
+          "inputTokens": 2469,
+          "probs": {
+            "account_terms": 0.97,
+            "application_docs": 0.02,
+            "career_advice": 0.04,
+            "company_info": 0.03,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.09,
+            "query_normalization": 0.09,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.09
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 177.8252080000002,
+          "inputTokens": 1659,
+          "probs": {
+            "application_docs": 0,
+            "company_info": 0,
+            "none": 0,
+            "interview_prep": 0,
+            "career_advice": 0,
+            "search_conditions": 0,
+            "query_normalization": 0,
+            "salary_benefits": 0,
+            "out_of_scope": 0,
+            "account_terms": 1,
+            "reviews": 0,
+            "error_handling": 0
+          },
+          "choice": "account_terms",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e046",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 212.52420800000073,
+          "inputTokens": 3724,
+          "probs": {
+            "account_terms": 0.97,
+            "application_docs": 0.12,
+            "career_advice": 0.26,
+            "company_info": 0.04,
+            "error_handling": 0.04,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.11,
+            "query_normalization": 0.04,
+            "reviews": 0.11,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.05
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 189.70537499999955,
+          "inputTokens": 2458,
+          "probs": {
+            "account_terms": 0.89,
+            "application_docs": 0.04,
+            "career_advice": 0.22,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.11,
+            "query_normalization": 0.03,
+            "reviews": 0.09,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.05
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 202.08808299999964,
+          "inputTokens": 1648,
+          "probs": {
+            "none": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "query_normalization": 0,
+            "interview_prep": 0,
+            "account_terms": 1,
+            "reviews": 0,
+            "search_conditions": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "company_info": 0
+          },
+          "choice": "account_terms",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e047",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 243.24820799999998,
+          "inputTokens": 3736,
+          "probs": {
+            "account_terms": 0.97,
+            "application_docs": 0.02,
+            "career_advice": 0.02,
+            "company_info": 0.02,
+            "error_handling": 0.97,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.14,
+            "query_normalization": 0.04,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.03
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 246.14449999999943,
+          "inputTokens": 2470,
+          "probs": {
+            "account_terms": 0.98,
+            "application_docs": 0.01,
+            "career_advice": 0.01,
+            "company_info": 0.02,
+            "error_handling": 0.97,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.08,
+            "query_normalization": 0.04,
+            "reviews": 0.02,
+            "salary_benefits": 0.01,
+            "search_conditions": 0.02
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 176.89820899999995,
+          "inputTokens": 1660,
+          "probs": {
+            "career_advice": 0,
+            "account_terms": 0.49,
+            "out_of_scope": 0,
+            "none": 0,
+            "reviews": 0,
+            "company_info": 0,
+            "query_normalization": 0,
+            "search_conditions": 0,
+            "interview_prep": 0,
+            "application_docs": 0,
+            "salary_benefits": 0,
+            "error_handling": 0.51
+          },
+          "choice": "error_handling",
+          "confidence": 0.46
+        }
+      }
+    },
+    {
+      "id": "e048",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 190.5660829999997,
+          "inputTokens": 3732,
+          "probs": {
+            "account_terms": 0.09,
+            "application_docs": 0.06,
+            "career_advice": 0.05,
+            "company_info": 0.03,
+            "error_handling": 0.97,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.05,
+            "reviews": 0.04,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.07
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 189.03962500000034,
+          "inputTokens": 2466,
+          "probs": {
+            "account_terms": 0.11,
+            "application_docs": 0.03,
+            "career_advice": 0.03,
+            "company_info": 0.03,
+            "error_handling": 0.96,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.04,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.06
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 168.18366700000024,
+          "inputTokens": 1656,
+          "probs": {
+            "application_docs": 0,
+            "company_info": 0,
+            "error_handling": 1,
+            "search_conditions": 0,
+            "career_advice": 0,
+            "account_terms": 0,
+            "interview_prep": 0,
+            "none": 0,
+            "out_of_scope": 0,
+            "query_normalization": 0,
+            "reviews": 0,
+            "salary_benefits": 0
+          },
+          "choice": "error_handling",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e049",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 244.11549999999988,
+          "inputTokens": 3744,
+          "probs": {
+            "account_terms": 0.08,
+            "application_docs": 0.05,
+            "career_advice": 0.04,
+            "company_info": 0.03,
+            "error_handling": 0.98,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.05,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.06
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 154.30183299999953,
+          "inputTokens": 2478,
+          "probs": {
+            "account_terms": 0.13,
+            "application_docs": 0.03,
+            "career_advice": 0.03,
+            "company_info": 0.02,
+            "error_handling": 0.97,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.04,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.06
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 189.7140419999996,
+          "inputTokens": 1668,
+          "probs": {
+            "query_normalization": 0,
+            "account_terms": 0,
+            "error_handling": 1,
+            "out_of_scope": 0,
+            "career_advice": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "company_info": 0,
+            "none": 0,
+            "application_docs": 0,
+            "search_conditions": 0,
+            "interview_prep": 0
+          },
+          "choice": "error_handling",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e050",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 157.34720899999957,
+          "inputTokens": 3731,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.03,
+            "error_handling": 0.98,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.11,
+            "query_normalization": 0.04,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.07
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 179.30349999999999,
+          "inputTokens": 2465,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.02,
+            "career_advice": 0.02,
+            "company_info": 0.03,
+            "error_handling": 0.97,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.09,
+            "query_normalization": 0.03,
+            "reviews": 0.04,
+            "salary_benefits": 0.01,
+            "search_conditions": 0.11
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 166.42925000000014,
+          "inputTokens": 1655,
+          "probs": {
+            "account_terms": 0,
+            "out_of_scope": 0,
+            "interview_prep": 0,
+            "reviews": 0,
+            "error_handling": 1,
+            "search_conditions": 0,
+            "career_advice": 0,
+            "salary_benefits": 0,
+            "application_docs": 0,
+            "query_normalization": 0,
+            "none": 0,
+            "company_info": 0
+          },
+          "choice": "error_handling",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e051",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 163.42683399999987,
+          "inputTokens": 3829,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.08,
+            "error_handling": 0.95,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.07,
+            "reviews": 0.04,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.15
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 183.58283399999982,
+          "inputTokens": 2555,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.08,
+            "error_handling": 0.91,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.06,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.17
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 166.87620900000002,
+          "inputTokens": 1753,
+          "probs": {
+            "application_docs": 0,
+            "error_handling": 1,
+            "company_info": 0,
+            "account_terms": 0,
+            "interview_prep": 0,
+            "out_of_scope": 0,
+            "none": 0,
+            "salary_benefits": 0,
+            "query_normalization": 0,
+            "reviews": 0,
+            "search_conditions": 0,
+            "career_advice": 0
+          },
+          "choice": "error_handling",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e052",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 186.11149999999998,
+          "inputTokens": 3830,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.06,
+            "career_advice": 0.04,
+            "company_info": 0.07,
+            "error_handling": 0.04,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.06,
+            "reviews": 0.04,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.08
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 185.16412500000024,
+          "inputTokens": 2556,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.04,
+            "career_advice": 0.03,
+            "company_info": 0.05,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.05,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.08
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 213.0141249999997,
+          "inputTokens": 1754,
+          "probs": {
+            "salary_benefits": 0,
+            "interview_prep": 0,
+            "reviews": 0,
+            "error_handling": 0.03,
+            "career_advice": 0,
+            "search_conditions": 0.04,
+            "query_normalization": 0,
+            "application_docs": 0.4,
+            "out_of_scope": 0.01,
+            "account_terms": 0.01,
+            "none": 0.51,
+            "company_info": 0
+          },
+          "choice": "none",
+          "confidence": 0.45
+        }
+      }
+    },
+    {
+      "id": "e053",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 191.2454170000001,
+          "inputTokens": 3856,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.06,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.07,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.11
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 188.9772920000005,
+          "inputTokens": 2582,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.07,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.17
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 183.386708,
+          "inputTokens": 1780,
+          "probs": {
+            "career_advice": 0,
+            "reviews": 0,
+            "out_of_scope": 0.01,
+            "salary_benefits": 0,
+            "application_docs": 0,
+            "company_info": 0,
+            "error_handling": 0,
+            "search_conditions": 0.38,
+            "query_normalization": 0,
+            "interview_prep": 0,
+            "none": 0.61,
+            "account_terms": 0
+          },
+          "choice": "none",
+          "confidence": 0.57
+        }
+      }
+    },
+    {
+      "id": "e054",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 166.12704099999974,
+          "inputTokens": 3731,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.09,
+            "career_advice": 0.05,
+            "company_info": 0.04,
+            "error_handling": 0.06,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.08,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.06
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 180.526167,
+          "inputTokens": 2465,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.03,
+            "career_advice": 0.03,
+            "company_info": 0.03,
+            "error_handling": 0.05,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.07,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.06
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 160.49833300000046,
+          "inputTokens": 1655,
+          "probs": {
+            "salary_benefits": 0,
+            "out_of_scope": 0.07,
+            "search_conditions": 0.01,
+            "career_advice": 0.01,
+            "error_handling": 0.15,
+            "none": 0.47,
+            "reviews": 0,
+            "application_docs": 0.19,
+            "query_normalization": 0.01,
+            "interview_prep": 0.03,
+            "company_info": 0.02,
+            "account_terms": 0.04
+          },
+          "choice": "none",
+          "confidence": 0.42
+        }
+      }
+    },
+    {
+      "id": "e055",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 197.87924999999996,
+          "inputTokens": 3730,
+          "probs": {
+            "account_terms": 0.13,
+            "application_docs": 0.1,
+            "career_advice": 0.14,
+            "company_info": 0.03,
+            "error_handling": 0.05,
+            "interview_prep": 0.05,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.05,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.07
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 189.5766250000006,
+          "inputTokens": 2464,
+          "probs": {
+            "account_terms": 0.12,
+            "application_docs": 0.04,
+            "career_advice": 0.1,
+            "company_info": 0.03,
+            "error_handling": 0.04,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.04,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.07
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 177.85570800000096,
+          "inputTokens": 1654,
+          "probs": {
+            "reviews": 0,
+            "company_info": 0,
+            "search_conditions": 0.1,
+            "interview_prep": 0,
+            "career_advice": 0.02,
+            "application_docs": 0.19,
+            "error_handling": 0.08,
+            "salary_benefits": 0,
+            "query_normalization": 0,
+            "none": 0.3,
+            "out_of_scope": 0.03,
+            "account_terms": 0.28
+          },
+          "choice": "none",
+          "confidence": 0.23
+        }
+      }
+    },
+    {
+      "id": "e056",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 155.39641699999993,
+          "inputTokens": 3810,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.56,
+            "career_advice": 0.04,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.05,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.05
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 189.53491600000052,
+          "inputTokens": 2536,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.85,
+            "career_advice": 0.04,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.06,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.06
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 176.48233399999845,
+          "inputTokens": 1734,
+          "probs": {
+            "none": 0.01,
+            "out_of_scope": 0,
+            "error_handling": 0,
+            "query_normalization": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "reviews": 0,
+            "search_conditions": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0.99,
+            "company_info": 0
+          },
+          "choice": "application_docs",
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "id": "e057",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 186.51145800000086,
+          "inputTokens": 3732,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.01,
+            "career_advice": 0.01,
+            "company_info": 0.02,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.96,
+            "query_normalization": 0.03,
+            "reviews": 0.02,
+            "salary_benefits": 0.01,
+            "search_conditions": 0.02
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 151.70125000000007,
+          "inputTokens": 2466,
+          "probs": {
+            "account_terms": 0.01,
+            "application_docs": 0.01,
+            "career_advice": 0.01,
+            "company_info": 0.01,
+            "error_handling": 0.02,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.96,
+            "query_normalization": 0.03,
+            "reviews": 0.01,
+            "salary_benefits": 0.01,
+            "search_conditions": 0.01
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 179.38145900000018,
+          "inputTokens": 1656,
+          "probs": {
+            "reviews": 0,
+            "application_docs": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "query_normalization": 0,
+            "search_conditions": 0,
+            "career_advice": 0,
+            "interview_prep": 0,
+            "company_info": 0,
+            "out_of_scope": 0.99,
+            "salary_benefits": 0,
+            "none": 0.01
+          },
+          "choice": "out_of_scope",
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "id": "e058",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 182.36554199999955,
+          "inputTokens": 3737,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.02,
+            "career_advice": 0.02,
+            "company_info": 0.02,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.93,
+            "query_normalization": 0.04,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.02
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 176.92312500000116,
+          "inputTokens": 2471,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.01,
+            "career_advice": 0.01,
+            "company_info": 0.02,
+            "error_handling": 0.03,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.91,
+            "query_normalization": 0.03,
+            "reviews": 0.04,
+            "salary_benefits": 0.01,
+            "search_conditions": 0.01
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 159.15641600000163,
+          "inputTokens": 1661,
+          "probs": {
+            "career_advice": 0,
+            "search_conditions": 0,
+            "application_docs": 0,
+            "none": 0.04,
+            "error_handling": 0,
+            "reviews": 0,
+            "interview_prep": 0,
+            "out_of_scope": 0.96,
+            "account_terms": 0,
+            "company_info": 0,
+            "salary_benefits": 0,
+            "query_normalization": 0
+          },
+          "choice": "out_of_scope",
+          "confidence": 0.96
+        }
+      }
+    },
+    {
+      "id": "e059",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 160.55754200000047,
+          "inputTokens": 3731,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.03,
+            "career_advice": 0.03,
+            "company_info": 0.03,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.96,
+            "query_normalization": 0.03,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.03
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 170.05695900000137,
+          "inputTokens": 2465,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.01,
+            "career_advice": 0.03,
+            "company_info": 0.02,
+            "error_handling": 0.03,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.95,
+            "query_normalization": 0.02,
+            "reviews": 0.02,
+            "salary_benefits": 0.01,
+            "search_conditions": 0.03
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 168.92616599999928,
+          "inputTokens": 1655,
+          "probs": {
+            "none": 0.01,
+            "salary_benefits": 0,
+            "search_conditions": 0,
+            "reviews": 0,
+            "company_info": 0,
+            "account_terms": 0,
+            "query_normalization": 0,
+            "career_advice": 0,
+            "out_of_scope": 0.99,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "error_handling": 0
+          },
+          "choice": "out_of_scope",
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "id": "e060",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 215.37820900000042,
+          "inputTokens": 3720,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.03,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.89,
+            "query_normalization": 0.03,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.04
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 198.46037500000057,
+          "inputTokens": 2454,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.93,
+            "query_normalization": 0.02,
+            "reviews": 0.02,
+            "salary_benefits": 0.01,
+            "search_conditions": 0.05
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 241.136708,
+          "inputTokens": 1644,
+          "probs": {
+            "account_terms": 0,
+            "out_of_scope": 0.34,
+            "none": 0.66,
+            "interview_prep": 0,
+            "search_conditions": 0,
+            "error_handling": 0,
+            "query_normalization": 0,
+            "salary_benefits": 0,
+            "reviews": 0,
+            "application_docs": 0,
+            "career_advice": 0,
+            "company_info": 0
+          },
+          "choice": "none",
+          "confidence": 0.62
+        }
+      }
+    },
+    {
+      "id": "e061",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 156.347667,
+          "inputTokens": 3848,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.08,
+            "query_normalization": 0.05,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.1
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 164.97604199999842,
+          "inputTokens": 2574,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.08,
+            "query_normalization": 0.03,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.14
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 145.2472089999992,
+          "inputTokens": 1772,
+          "probs": {
+            "reviews": 0,
+            "company_info": 0,
+            "search_conditions": 0.01,
+            "application_docs": 0,
+            "career_advice": 0,
+            "interview_prep": 0,
+            "error_handling": 0,
+            "salary_benefits": 0,
+            "query_normalization": 0,
+            "none": 0.94,
+            "account_terms": 0,
+            "out_of_scope": 0.05
+          },
+          "choice": "none",
+          "confidence": 0.94
+        }
+      }
+    },
+    {
+      "id": "e062",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 166.67058299999917,
+          "inputTokens": 3733,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.07,
+            "company_info": 0.02,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.62,
+            "query_normalization": 0.04,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.04
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 182.9225409999999,
+          "inputTokens": 2467,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.01,
+            "career_advice": 0.07,
+            "company_info": 0.02,
+            "error_handling": 0.02,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.07,
+            "query_normalization": 0.05,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.03
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 177.47245900000053,
+          "inputTokens": 1657,
+          "probs": {
+            "search_conditions": 0,
+            "none": 0.17,
+            "interview_prep": 0,
+            "career_advice": 0.03,
+            "error_handling": 0,
+            "company_info": 0,
+            "salary_benefits": 0,
+            "application_docs": 0,
+            "query_normalization": 0,
+            "reviews": 0,
+            "account_terms": 0,
+            "out_of_scope": 0.8
+          },
+          "choice": "out_of_scope",
+          "confidence": 0.78
+        }
+      }
+    },
+    {
+      "id": "e063",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 167.39612500000112,
+          "inputTokens": 3736,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.04,
+            "career_advice": 0.08,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.23,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.91
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 189.18154200000026,
+          "inputTokens": 2470,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.07,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.22,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.92
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 202.8963330000006,
+          "inputTokens": 1660,
+          "probs": {
+            "search_conditions": 0.99,
+            "reviews": 0,
+            "error_handling": 0,
+            "query_normalization": 0.01,
+            "interview_prep": 0,
+            "none": 0,
+            "company_info": 0,
+            "career_advice": 0,
+            "salary_benefits": 0,
+            "account_terms": 0,
+            "application_docs": 0,
+            "out_of_scope": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.98
+        }
+      }
+    },
+    {
+      "id": "e064",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 207.59270800000013,
+          "inputTokens": 3734,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.02,
+            "career_advice": 0.05,
+            "company_info": 0.02,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.23,
+            "query_normalization": 0.06,
+            "reviews": 0.03,
+            "salary_benefits": 0.1,
+            "search_conditions": 0.12
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 161.20166699999936,
+          "inputTokens": 2468,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.05,
+            "company_info": 0.02,
+            "error_handling": 0.02,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.11,
+            "reviews": 0.02,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.13
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 165.7868750000016,
+          "inputTokens": 1658,
+          "probs": {
+            "account_terms": 0.01,
+            "salary_benefits": 0.01,
+            "error_handling": 0,
+            "search_conditions": 0.01,
+            "company_info": 0,
+            "application_docs": 0,
+            "none": 0.21,
+            "career_advice": 0.11,
+            "interview_prep": 0,
+            "out_of_scope": 0.65,
+            "reviews": 0,
+            "query_normalization": 0
+          },
+          "choice": "out_of_scope",
+          "confidence": 0.62
+        }
+      }
+    },
+    {
+      "id": "e065",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 169.5944159999999,
+          "inputTokens": 3742,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.23,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.05,
+            "out_of_scope": 0.08,
+            "query_normalization": 0.18,
+            "reviews": 0.22,
+            "salary_benefits": 0.94,
+            "search_conditions": 0.16
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 178.38941599999998,
+          "inputTokens": 2476,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.4,
+            "company_info": 0.06,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.13,
+            "reviews": 0.18,
+            "salary_benefits": 0.93,
+            "search_conditions": 0.15
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 174.3313330000001,
+          "inputTokens": 1666,
+          "probs": {
+            "career_advice": 0.04,
+            "none": 0.03,
+            "interview_prep": 0,
+            "search_conditions": 0,
+            "error_handling": 0,
+            "reviews": 0,
+            "application_docs": 0,
+            "out_of_scope": 0.01,
+            "account_terms": 0,
+            "company_info": 0,
+            "salary_benefits": 0.92,
+            "query_normalization": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 0.9
+        }
+      }
+    },
+    {
+      "id": "e066",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 152.24120799999946,
+          "inputTokens": 3730,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.02,
+            "company_info": 0.02,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.96,
+            "query_normalization": 0.03,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.02
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 152.54479099999844,
+          "inputTokens": 2464,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.01,
+            "career_advice": 0.02,
+            "company_info": 0.01,
+            "error_handling": 0.02,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.97,
+            "query_normalization": 0.02,
+            "reviews": 0.01,
+            "salary_benefits": 0.01,
+            "search_conditions": 0.01
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 181.11266599999908,
+          "inputTokens": 1654,
+          "probs": {
+            "error_handling": 0,
+            "search_conditions": 0,
+            "query_normalization": 0,
+            "company_info": 0,
+            "account_terms": 0,
+            "salary_benefits": 0,
+            "reviews": 0,
+            "out_of_scope": 0.95,
+            "none": 0.05,
+            "application_docs": 0,
+            "career_advice": 0,
+            "interview_prep": 0
+          },
+          "choice": "out_of_scope",
+          "confidence": 0.94
+        }
+      }
+    },
+    {
+      "id": "e067",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 159.9566249999989,
+          "inputTokens": 3737,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.05,
+            "reviews": 0.05,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.13
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 221.6465420000004,
+          "inputTokens": 2471,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.05,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.15
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 156.9963749999988,
+          "inputTokens": 1661,
+          "probs": {
+            "career_advice": 0,
+            "error_handling": 0,
+            "out_of_scope": 0.11,
+            "account_terms": 0.02,
+            "search_conditions": 0.1,
+            "reviews": 0.02,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "query_normalization": 0,
+            "none": 0.73,
+            "salary_benefits": 0,
+            "company_info": 0.02
+          },
+          "choice": "none",
+          "confidence": 0.69
+        }
+      }
+    },
+    {
+      "id": "e068",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 157.46875,
+          "inputTokens": 3747,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.06,
+            "career_advice": 0.22,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.18,
+            "query_normalization": 0.87,
+            "reviews": 0.05,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.9
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 168.43454200000087,
+          "inputTokens": 2481,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.04,
+            "career_advice": 0.15,
+            "company_info": 0.05,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.12,
+            "query_normalization": 0.82,
+            "reviews": 0.04,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.91
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 159.13220899999942,
+          "inputTokens": 1671,
+          "probs": {
+            "query_normalization": 0.19,
+            "none": 0,
+            "out_of_scope": 0.01,
+            "search_conditions": 0.8,
+            "salary_benefits": 0,
+            "application_docs": 0,
+            "career_advice": 0,
+            "error_handling": 0,
+            "reviews": 0,
+            "interview_prep": 0,
+            "company_info": 0,
+            "account_terms": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.78
+        }
+      }
+    },
+    {
+      "id": "e069",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 153.05283299999974,
+          "inputTokens": 3854,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.18,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.05,
+            "reviews": 0.09,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.44
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 152.8416670000006,
+          "inputTokens": 2580,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.11,
+            "company_info": 0.1,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.05,
+            "reviews": 0.08,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.61
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 155.60662500000035,
+          "inputTokens": 1778,
+          "probs": {
+            "application_docs": 0,
+            "company_info": 0,
+            "error_handling": 0,
+            "search_conditions": 0.32,
+            "interview_prep": 0,
+            "career_advice": 0.22,
+            "account_terms": 0,
+            "none": 0.44,
+            "out_of_scope": 0.02,
+            "query_normalization": 0,
+            "reviews": 0,
+            "salary_benefits": 0
+          },
+          "choice": "none",
+          "confidence": 0.38
+        }
+      }
+    },
+    {
+      "id": "e070",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 152.04062500000146,
+          "inputTokens": 3802,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.05,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.07,
+            "reviews": 0.04,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.73
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 170.29808299999968,
+          "inputTokens": 2528,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.04,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.06,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.85
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 162.7077500000014,
+          "inputTokens": 1726,
+          "probs": {
+            "error_handling": 0,
+            "salary_benefits": 0,
+            "search_conditions": 0.91,
+            "reviews": 0,
+            "company_info": 0,
+            "account_terms": 0,
+            "query_normalization": 0,
+            "career_advice": 0,
+            "out_of_scope": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "none": 0.09
+          },
+          "choice": "search_conditions",
+          "confidence": 0.89
+        }
+      }
+    },
+    {
+      "id": "e071",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 198.94545900000048,
+          "inputTokens": 3802,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.05,
+            "company_info": 0.04,
+            "error_handling": 0.02,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.21,
+            "reviews": 0.03,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.92
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 197.88379200000054,
+          "inputTokens": 2528,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.04,
+            "company_info": 0.04,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.45,
+            "reviews": 0.03,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.93
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 167.88604199999827,
+          "inputTokens": 1726,
+          "probs": {
+            "query_normalization": 0,
+            "out_of_scope": 0,
+            "none": 0,
+            "salary_benefits": 0,
+            "application_docs": 0,
+            "search_conditions": 1,
+            "career_advice": 0,
+            "reviews": 0,
+            "error_handling": 0,
+            "interview_prep": 0,
+            "company_info": 0,
+            "account_terms": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e072",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 156.92737500000112,
+          "inputTokens": 3736,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.05,
+            "career_advice": 0.12,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.91,
+            "reviews": 0.09,
+            "salary_benefits": 0.79,
+            "search_conditions": 0.89
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 195.4085410000007,
+          "inputTokens": 2470,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.09,
+            "company_info": 0.07,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.9,
+            "reviews": 0.07,
+            "salary_benefits": 0.74,
+            "search_conditions": 0.94
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 193.18224999999984,
+          "inputTokens": 1660,
+          "probs": {
+            "company_info": 0,
+            "application_docs": 0,
+            "none": 0,
+            "interview_prep": 0,
+            "error_handling": 0,
+            "account_terms": 0,
+            "reviews": 0,
+            "query_normalization": 0.16,
+            "out_of_scope": 0,
+            "career_advice": 0,
+            "salary_benefits": 0,
+            "search_conditions": 0.84
+          },
+          "choice": "search_conditions",
+          "confidence": 0.82
+        }
+      }
+    },
+    {
+      "id": "e073",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 161.91916700000002,
+          "inputTokens": 3750,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.32,
+            "company_info": 0.05,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.73,
+            "reviews": 0.05,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.94
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 180.93645800000013,
+          "inputTokens": 2484,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.34,
+            "company_info": 0.05,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.67,
+            "reviews": 0.04,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.94
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 148.8684170000015,
+          "inputTokens": 1674,
+          "probs": {
+            "reviews": 0,
+            "interview_prep": 0,
+            "query_normalization": 0.02,
+            "none": 0,
+            "out_of_scope": 0,
+            "application_docs": 0,
+            "account_terms": 0,
+            "career_advice": 0,
+            "search_conditions": 0.98,
+            "error_handling": 0,
+            "company_info": 0,
+            "salary_benefits": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.98
+        }
+      }
+    },
+    {
+      "id": "e074",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 164.88004200000069,
+          "inputTokens": 3736,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.19,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.22,
+            "query_normalization": 0.26,
+            "reviews": 0.1,
+            "salary_benefits": 0.96,
+            "search_conditions": 0.06
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 256.71266600000126,
+          "inputTokens": 2470,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.01,
+            "career_advice": 0.12,
+            "company_info": 0.04,
+            "error_handling": 0.02,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.24,
+            "reviews": 0.06,
+            "salary_benefits": 0.94,
+            "search_conditions": 0.06
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 166.50374999999985,
+          "inputTokens": 1660,
+          "probs": {
+            "company_info": 0,
+            "interview_prep": 0,
+            "none": 0.01,
+            "application_docs": 0,
+            "reviews": 0,
+            "out_of_scope": 0,
+            "salary_benefits": 0.99,
+            "query_normalization": 0,
+            "error_handling": 0,
+            "career_advice": 0,
+            "account_terms": 0,
+            "search_conditions": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 0.98
+        }
+      }
+    },
+    {
+      "id": "e075",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 202.25270799999998,
+          "inputTokens": 3834,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.32,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.07,
+            "reviews": 0.06,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.09
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 172.4812499999989,
+          "inputTokens": 2560,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.07,
+            "company_info": 0.07,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.1,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.1
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 218.5951669999995,
+          "inputTokens": 1758,
+          "probs": {
+            "interview_prep": 0,
+            "none": 0.19,
+            "application_docs": 0,
+            "salary_benefits": 0.09,
+            "error_handling": 0,
+            "account_terms": 0,
+            "query_normalization": 0,
+            "search_conditions": 0.15,
+            "company_info": 0.09,
+            "career_advice": 0.48,
+            "out_of_scope": 0,
+            "reviews": 0
+          },
+          "choice": "career_advice",
+          "confidence": 0.42
+        }
+      }
+    },
+    {
+      "id": "e076",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 183.1364160000012,
+          "inputTokens": 3828,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.06,
+            "error_handling": 0.03,
+            "interview_prep": 0.11,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.06,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.06
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 174.37695899999926,
+          "inputTokens": 2554,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.02,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.08,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.06,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.06
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 181.0122080000001,
+          "inputTokens": 1752,
+          "probs": {
+            "application_docs": 0.01,
+            "company_info": 0.14,
+            "error_handling": 0,
+            "search_conditions": 0.01,
+            "interview_prep": 0.68,
+            "account_terms": 0,
+            "career_advice": 0,
+            "none": 0.14,
+            "out_of_scope": 0.01,
+            "query_normalization": 0,
+            "reviews": 0,
+            "salary_benefits": 0.01
+          },
+          "choice": "interview_prep",
+          "confidence": 0.65
+        }
+      }
+    },
+    {
+      "id": "e077",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 188.61620800000128,
+          "inputTokens": 3832,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.06,
+            "reviews": 0.03,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.06
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 159.3598750000001,
+          "inputTokens": 2558,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.02,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.05,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.06
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 181.4930000000004,
+          "inputTokens": 1756,
+          "probs": {
+            "search_conditions": 0.25,
+            "reviews": 0,
+            "error_handling": 0.01,
+            "query_normalization": 0,
+            "interview_prep": 0,
+            "none": 0.5,
+            "company_info": 0.14,
+            "career_advice": 0,
+            "salary_benefits": 0.07,
+            "account_terms": 0,
+            "application_docs": 0.02,
+            "out_of_scope": 0.01
+          },
+          "choice": "none",
+          "confidence": 0.44
+        }
+      }
+    },
+    {
+      "id": "e078",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 200.14004199999908,
+          "inputTokens": 3833,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.08,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.07,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.22
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 179.62654099999963,
+          "inputTokens": 2559,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.08,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.07,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.35
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 188.34087499999987,
+          "inputTokens": 1757,
+          "probs": {
+            "search_conditions": 0.81,
+            "query_normalization": 0,
+            "none": 0.06,
+            "career_advice": 0,
+            "account_terms": 0,
+            "interview_prep": 0,
+            "salary_benefits": 0,
+            "application_docs": 0,
+            "company_info": 0.13,
+            "error_handling": 0,
+            "reviews": 0,
+            "out_of_scope": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.78
+        }
+      }
+    },
+    {
+      "id": "e079",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 201.16499999999905,
+          "inputTokens": 3741,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.09,
+            "company_info": 0.24,
+            "error_handling": 0.03,
+            "interview_prep": 0.67,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.56,
+            "reviews": 0.95,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.07
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 182.1438330000001,
+          "inputTokens": 2475,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.07,
+            "company_info": 0.26,
+            "error_handling": 0.02,
+            "interview_prep": 0.6,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.52,
+            "reviews": 0.96,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.08
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 167.39758299999994,
+          "inputTokens": 1665,
+          "probs": {
+            "query_normalization": 0,
+            "out_of_scope": 0,
+            "application_docs": 0,
+            "salary_benefits": 0,
+            "search_conditions": 0,
+            "none": 0,
+            "career_advice": 0,
+            "reviews": 0.89,
+            "error_handling": 0,
+            "interview_prep": 0.1,
+            "company_info": 0.01,
+            "account_terms": 0
+          },
+          "choice": "reviews",
+          "confidence": 0.88
+        }
+      }
+    },
+    {
+      "id": "e080",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 170.26704100000097,
+          "inputTokens": 3744,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.07,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.88,
+            "reviews": 0.09,
+            "salary_benefits": 0.18,
+            "search_conditions": 0.95
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 182.12883300000067,
+          "inputTokens": 2478,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.05,
+            "company_info": 0.08,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.87,
+            "reviews": 0.07,
+            "salary_benefits": 0.06,
+            "search_conditions": 0.95
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 167.13250000000153,
+          "inputTokens": 1668,
+          "probs": {
+            "search_conditions": 0.9,
+            "account_terms": 0,
+            "career_advice": 0,
+            "query_normalization": 0.1,
+            "salary_benefits": 0,
+            "error_handling": 0,
+            "none": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "application_docs": 0,
+            "out_of_scope": 0,
+            "interview_prep": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.89
+        }
+      }
+    },
+    {
+      "id": "e081",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 162.9213749999999,
+          "inputTokens": 3738,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.07,
+            "career_advice": 0.38,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.06,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.74,
+            "reviews": 0.14,
+            "salary_benefits": 0.48,
+            "search_conditions": 0.93
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 203.91279199999917,
+          "inputTokens": 2472,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.18,
+            "company_info": 0.1,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.7,
+            "reviews": 0.09,
+            "salary_benefits": 0.64,
+            "search_conditions": 0.9
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 170.45595800000046,
+          "inputTokens": 1662,
+          "probs": {
+            "career_advice": 0,
+            "account_terms": 0,
+            "company_info": 0,
+            "query_normalization": 0.18,
+            "reviews": 0,
+            "out_of_scope": 0,
+            "none": 0,
+            "search_conditions": 0.81,
+            "interview_prep": 0,
+            "application_docs": 0,
+            "salary_benefits": 0.01,
+            "error_handling": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.78
+        }
+      }
+    },
+    {
+      "id": "e082",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 160.38337500000125,
+          "inputTokens": 3733,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.07,
+            "career_advice": 0.58,
+            "company_info": 0.06,
+            "error_handling": 0.03,
+            "interview_prep": 0.07,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.56,
+            "reviews": 0.07,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.89
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 156.18820899999992,
+          "inputTokens": 2467,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.45,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.44,
+            "reviews": 0.06,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.8
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 174.96716699999888,
+          "inputTokens": 1657,
+          "probs": {
+            "career_advice": 0.1,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "reviews": 0,
+            "search_conditions": 0.83,
+            "company_info": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "query_normalization": 0.06,
+            "none": 0.01,
+            "account_terms": 0,
+            "salary_benefits": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.8
+        }
+      }
+    },
+    {
+      "id": "e083",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 161.18612500000017,
+          "inputTokens": 3730,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.05,
+            "career_advice": 0.12,
+            "company_info": 0.1,
+            "error_handling": 0.03,
+            "interview_prep": 0.05,
+            "out_of_scope": 0.52,
+            "query_normalization": 0.19,
+            "reviews": 0.12,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.52
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 175.06025000000045,
+          "inputTokens": 2464,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.1,
+            "company_info": 0.15,
+            "error_handling": 0.02,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.17,
+            "query_normalization": 0.22,
+            "reviews": 0.14,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.38
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 192.19145800000115,
+          "inputTokens": 1654,
+          "probs": {
+            "account_terms": 0,
+            "interview_prep": 0,
+            "out_of_scope": 0.19,
+            "error_handling": 0,
+            "reviews": 0,
+            "search_conditions": 0.66,
+            "company_info": 0.01,
+            "salary_benefits": 0,
+            "application_docs": 0,
+            "query_normalization": 0.05,
+            "none": 0.08,
+            "career_advice": 0.01
+          },
+          "choice": "search_conditions",
+          "confidence": 0.62
+        }
+      }
+    },
+    {
+      "id": "e084",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 221.14754100000027,
+          "inputTokens": 3740,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.05,
+            "career_advice": 0.96,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.08,
+            "reviews": 0.07,
+            "salary_benefits": 0.97,
+            "search_conditions": 0.56
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 226.07966599999963,
+          "inputTokens": 2474,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.93,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.07,
+            "reviews": 0.06,
+            "salary_benefits": 0.97,
+            "search_conditions": 0.58
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 165.71254200000112,
+          "inputTokens": 1664,
+          "probs": {
+            "error_handling": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "company_info": 0,
+            "out_of_scope": 0,
+            "none": 0,
+            "salary_benefits": 0.43,
+            "query_normalization": 0,
+            "reviews": 0,
+            "career_advice": 0.5700000000000001,
+            "search_conditions": 0
+          },
+          "choice": "career_advice",
+          "confidence": 0.52
+        }
+      }
+    },
+    {
+      "id": "e085",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 173.40970799999923,
+          "inputTokens": 3739,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.64,
+            "career_advice": 0.07,
+            "company_info": 0.03,
+            "error_handling": 0.03,
+            "interview_prep": 0.61,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.05,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.09
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 219.02449999999953,
+          "inputTokens": 2473,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.55,
+            "career_advice": 0.05,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.71,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.05,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.12
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 172.92483300000094,
+          "inputTokens": 1663,
+          "probs": {
+            "error_handling": 0,
+            "account_terms": 0,
+            "query_normalization": 0,
+            "search_conditions": 0,
+            "none": 0.08,
+            "salary_benefits": 0,
+            "out_of_scope": 0,
+            "interview_prep": 0.48,
+            "company_info": 0,
+            "reviews": 0,
+            "application_docs": 0.3,
+            "career_advice": 0.14
+          },
+          "choice": "interview_prep",
+          "confidence": 0.43
+        }
+      }
+    },
+    {
+      "id": "e086",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 216.9840830000012,
+          "inputTokens": 3746,
+          "probs": {
+            "account_terms": 0.05,
+            "application_docs": 0.05,
+            "career_advice": 0.17,
+            "company_info": 0.89,
+            "error_handling": 0.03,
+            "interview_prep": 0.06,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.61,
+            "reviews": 0.76,
+            "salary_benefits": 0.07,
+            "search_conditions": 0.09
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 184.33216700000048,
+          "inputTokens": 2480,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.14,
+            "company_info": 0.92,
+            "error_handling": 0.03,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.68,
+            "reviews": 0.75,
+            "salary_benefits": 0.07,
+            "search_conditions": 0.09
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 178.68104099999982,
+          "inputTokens": 1670,
+          "probs": {
+            "none": 0,
+            "reviews": 0,
+            "query_normalization": 0.03,
+            "application_docs": 0,
+            "search_conditions": 0,
+            "company_info": 0.97,
+            "out_of_scope": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "career_advice": 0,
+            "salary_benefits": 0,
+            "error_handling": 0
+          },
+          "choice": "company_info",
+          "confidence": 0.97
+        }
+      }
+    },
+    {
+      "id": "e087",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 235.71441700000105,
+          "inputTokens": 3742,
+          "probs": {
+            "account_terms": 0.09,
+            "application_docs": 0.4,
+            "career_advice": 0.05,
+            "company_info": 0.03,
+            "error_handling": 0.95,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.06,
+            "reviews": 0.03,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.11
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 167.6821659999987,
+          "inputTokens": 2476,
+          "probs": {
+            "account_terms": 0.1,
+            "application_docs": 0.26,
+            "career_advice": 0.03,
+            "company_info": 0.03,
+            "error_handling": 0.94,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.06,
+            "reviews": 0.02,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.09
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 191.11383299999943,
+          "inputTokens": 1666,
+          "probs": {
+            "interview_prep": 0,
+            "none": 0,
+            "reviews": 0,
+            "company_info": 0,
+            "salary_benefits": 0,
+            "out_of_scope": 0,
+            "error_handling": 0.76,
+            "application_docs": 0.24,
+            "career_advice": 0,
+            "query_normalization": 0,
+            "search_conditions": 0,
+            "account_terms": 0
+          },
+          "choice": "error_handling",
+          "confidence": 0.73
+        }
+      }
+    },
+    {
+      "id": "e088",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 158.48054199999933,
+          "inputTokens": 3729,
+          "probs": {
+            "account_terms": 0.93,
+            "application_docs": 0.31,
+            "career_advice": 0.14,
+            "company_info": 0.06,
+            "error_handling": 0.03,
+            "interview_prep": 0.15,
+            "out_of_scope": 0.13,
+            "query_normalization": 0.07,
+            "reviews": 0.07,
+            "salary_benefits": 0.26,
+            "search_conditions": 0.1
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 167.69012499999917,
+          "inputTokens": 2463,
+          "probs": {
+            "account_terms": 0.61,
+            "application_docs": 0.08,
+            "career_advice": 0.09,
+            "company_info": 0.1,
+            "error_handling": 0.04,
+            "interview_prep": 0.04,
+            "out_of_scope": 0.38,
+            "query_normalization": 0.08,
+            "reviews": 0.08,
+            "salary_benefits": 0.37,
+            "search_conditions": 0.13
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 201.46533399999862,
+          "inputTokens": 1653,
+          "probs": {
+            "career_advice": 0,
+            "account_terms": 0.87,
+            "none": 0.04,
+            "query_normalization": 0,
+            "interview_prep": 0,
+            "application_docs": 0.01,
+            "out_of_scope": 0.02,
+            "error_handling": 0,
+            "search_conditions": 0.01,
+            "salary_benefits": 0.05,
+            "reviews": 0,
+            "company_info": 0
+          },
+          "choice": "account_terms",
+          "confidence": 0.86
+        }
+      }
+    },
+    {
+      "id": "e089",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 162.61370799999895,
+          "inputTokens": 3739,
+          "probs": {
+            "account_terms": 0.74,
+            "application_docs": 0.21,
+            "career_advice": 0.05,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.09,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.04,
+            "reviews": 0.04,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.05
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 174.53066600000056,
+          "inputTokens": 2473,
+          "probs": {
+            "account_terms": 0.81,
+            "application_docs": 0.07,
+            "career_advice": 0.03,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.05,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.05,
+            "reviews": 0.03,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.05
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 252.48558299999968,
+          "inputTokens": 1663,
+          "probs": {
+            "career_advice": 0.01,
+            "error_handling": 0,
+            "out_of_scope": 0.01,
+            "application_docs": 0.07,
+            "search_conditions": 0,
+            "salary_benefits": 0,
+            "reviews": 0,
+            "interview_prep": 0,
+            "query_normalization": 0,
+            "none": 0.06,
+            "company_info": 0.02,
+            "account_terms": 0.83
+          },
+          "choice": "account_terms",
+          "confidence": 0.8
+        }
+      }
+    },
+    {
+      "id": "e090",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 322.276167,
+          "inputTokens": 3744,
+          "probs": {
+            "account_terms": 0.08,
+            "application_docs": 0.29,
+            "career_advice": 0.77,
+            "company_info": 0.1,
+            "error_handling": 0.03,
+            "interview_prep": 0.12,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.09,
+            "reviews": 0.84,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.9
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 199.24383300000045,
+          "inputTokens": 2478,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.09,
+            "career_advice": 0.59,
+            "company_info": 0.11,
+            "error_handling": 0.03,
+            "interview_prep": 0.05,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.09,
+            "reviews": 0.87,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.88
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 187.19237500000054,
+          "inputTokens": 1668,
+          "probs": {
+            "salary_benefits": 0,
+            "out_of_scope": 0,
+            "search_conditions": 0.66,
+            "error_handling": 0,
+            "career_advice": 0.17,
+            "none": 0.01,
+            "reviews": 0.16,
+            "application_docs": 0,
+            "company_info": 0,
+            "interview_prep": 0,
+            "query_normalization": 0,
+            "account_terms": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.62
+        }
+      }
+    },
+    {
+      "id": "e091",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 186.53304099999878,
+          "inputTokens": 3740,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.05,
+            "company_info": 0.07,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.92,
+            "reviews": 0.14,
+            "salary_benefits": 0.47,
+            "search_conditions": 0.94
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 224.21004100000027,
+          "inputTokens": 2474,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.04,
+            "company_info": 0.12,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.88,
+            "reviews": 0.13,
+            "salary_benefits": 0.23,
+            "search_conditions": 0.94
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 153.63441599999896,
+          "inputTokens": 1664,
+          "probs": {
+            "query_normalization": 0.23,
+            "out_of_scope": 0,
+            "none": 0,
+            "search_conditions": 0.77,
+            "salary_benefits": 0,
+            "application_docs": 0,
+            "career_advice": 0,
+            "error_handling": 0,
+            "reviews": 0,
+            "interview_prep": 0,
+            "company_info": 0,
+            "account_terms": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.74
+        }
+      }
+    },
+    {
+      "id": "e092",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 172.4385000000002,
+          "inputTokens": 3738,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.08,
+            "company_info": 0.05,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.36,
+            "query_normalization": 0.05,
+            "reviews": 0.2,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.03
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 155.167958,
+          "inputTokens": 2472,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.02,
+            "career_advice": 0.05,
+            "company_info": 0.04,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.05,
+            "reviews": 0.27,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.03
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 183.5102079999997,
+          "inputTokens": 1662,
+          "probs": {
+            "interview_prep": 0,
+            "account_terms": 0,
+            "reviews": 0.67,
+            "company_info": 0,
+            "salary_benefits": 0,
+            "out_of_scope": 0.22,
+            "error_handling": 0,
+            "application_docs": 0,
+            "career_advice": 0.01,
+            "query_normalization": 0,
+            "search_conditions": 0,
+            "none": 0.1
+          },
+          "choice": "reviews",
+          "confidence": 0.63
+        }
+      }
+    },
+    {
+      "id": "e093",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 193.75824999999895,
+          "inputTokens": 3855,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.04,
+            "company_info": 0.05,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.07,
+            "reviews": 0.04,
+            "salary_benefits": 0.94,
+            "search_conditions": 0.11
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 194.24745799999982,
+          "inputTokens": 2581,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.03,
+            "company_info": 0.05,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.07,
+            "reviews": 0.03,
+            "salary_benefits": 0.89,
+            "search_conditions": 0.15
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 169.4470829999991,
+          "inputTokens": 1779,
+          "probs": {
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "reviews": 0,
+            "company_info": 0,
+            "application_docs": 0,
+            "none": 0,
+            "search_conditions": 0,
+            "account_terms": 0,
+            "query_normalization": 0,
+            "salary_benefits": 1,
+            "interview_prep": 0,
+            "career_advice": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e094",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 189.2057079999995,
+          "inputTokens": 3729,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.05,
+            "career_advice": 0.07,
+            "company_info": 0.11,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.79,
+            "reviews": 0.1,
+            "salary_benefits": 0.13,
+            "search_conditions": 0.89
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 326.3607919999995,
+          "inputTokens": 2463,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.06,
+            "company_info": 0.1,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.78,
+            "reviews": 0.14,
+            "salary_benefits": 0.09,
+            "search_conditions": 0.92
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 154.01095899999927,
+          "inputTokens": 1653,
+          "probs": {
+            "interview_prep": 0,
+            "none": 0,
+            "application_docs": 0,
+            "salary_benefits": 0,
+            "search_conditions": 0.81,
+            "account_terms": 0,
+            "query_normalization": 0.19,
+            "error_handling": 0,
+            "company_info": 0,
+            "career_advice": 0,
+            "out_of_scope": 0,
+            "reviews": 0
+          },
+          "choice": "search_conditions",
+          "confidence": 0.79
+        }
+      }
+    },
+    {
+      "id": "e095",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 201.0625,
+          "inputTokens": 3739,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.03,
+            "career_advice": 0.07,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.07,
+            "query_normalization": 0.64,
+            "reviews": 0.04,
+            "salary_benefits": 0.97,
+            "search_conditions": 0.14
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 186.76920800000153,
+          "inputTokens": 2473,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.06,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.61,
+            "reviews": 0.02,
+            "salary_benefits": 0.97,
+            "search_conditions": 0.12
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 177.81883299999936,
+          "inputTokens": 1663,
+          "probs": {
+            "reviews": 0,
+            "application_docs": 0,
+            "search_conditions": 0,
+            "account_terms": 0,
+            "out_of_scope": 0,
+            "company_info": 0,
+            "salary_benefits": 0.99,
+            "career_advice": 0,
+            "interview_prep": 0,
+            "error_handling": 0,
+            "none": 0,
+            "query_normalization": 0.01
+          },
+          "choice": "salary_benefits",
+          "confidence": 0.99
+        }
+      }
+    },
+    {
+      "id": "e096",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 351.3908339999998,
+          "inputTokens": 3836,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.07,
+            "company_info": 0.08,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.03,
+            "query_normalization": 0.07,
+            "reviews": 0.1,
+            "salary_benefits": 0.97,
+            "search_conditions": 0.07
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 190.22645799999918,
+          "inputTokens": 2562,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.05,
+            "company_info": 0.09,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.08,
+            "reviews": 0.06,
+            "salary_benefits": 0.95,
+            "search_conditions": 0.09
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 219.6416250000002,
+          "inputTokens": 1760,
+          "probs": {
+            "company_info": 0,
+            "reviews": 0,
+            "search_conditions": 0,
+            "application_docs": 0,
+            "career_advice": 0,
+            "interview_prep": 0,
+            "error_handling": 0,
+            "salary_benefits": 1,
+            "query_normalization": 0,
+            "none": 0,
+            "out_of_scope": 0,
+            "account_terms": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e097",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 173.17124999999942,
+          "inputTokens": 3738,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.05,
+            "company_info": 0.04,
+            "error_handling": 0.03,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.05,
+            "query_normalization": 0.63,
+            "reviews": 0.04,
+            "salary_benefits": 0.97,
+            "search_conditions": 0.16
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 160.4429999999993,
+          "inputTokens": 2472,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.04,
+            "company_info": 0.03,
+            "error_handling": 0.02,
+            "interview_prep": 0.01,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.61,
+            "reviews": 0.03,
+            "salary_benefits": 0.97,
+            "search_conditions": 0.26
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 187.94608300000073,
+          "inputTokens": 1662,
+          "probs": {
+            "error_handling": 0,
+            "reviews": 0,
+            "search_conditions": 0,
+            "query_normalization": 0,
+            "interview_prep": 0,
+            "none": 0,
+            "company_info": 0,
+            "career_advice": 0,
+            "account_terms": 0,
+            "salary_benefits": 1,
+            "application_docs": 0,
+            "out_of_scope": 0
+          },
+          "choice": "salary_benefits",
+          "confidence": 1
+        }
+      }
+    },
+    {
+      "id": "e098",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 176.00383300000067,
+          "inputTokens": 3740,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.03,
+            "career_advice": 0.06,
+            "company_info": 0.78,
+            "error_handling": 0.03,
+            "interview_prep": 0.03,
+            "out_of_scope": 0.08,
+            "query_normalization": 0.7,
+            "reviews": 0.07,
+            "salary_benefits": 0.05,
+            "search_conditions": 0.17
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 200.5603749999991,
+          "inputTokens": 2474,
+          "probs": {
+            "account_terms": 0.04,
+            "application_docs": 0.02,
+            "career_advice": 0.04,
+            "company_info": 0.84,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.06,
+            "query_normalization": 0.71,
+            "reviews": 0.08,
+            "salary_benefits": 0.04,
+            "search_conditions": 0.24
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 184.60112499999923,
+          "inputTokens": 1664,
+          "probs": {
+            "application_docs": 0,
+            "interview_prep": 0,
+            "error_handling": 0,
+            "account_terms": 0,
+            "company_info": 0.95,
+            "out_of_scope": 0,
+            "none": 0,
+            "salary_benefits": 0,
+            "query_normalization": 0.05,
+            "reviews": 0,
+            "search_conditions": 0,
+            "career_advice": 0
+          },
+          "choice": "company_info",
+          "confidence": 0.94
+        }
+      }
+    },
+    {
+      "id": "e099",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 171.92241600000125,
+          "inputTokens": 3739,
+          "probs": {
+            "account_terms": 0.03,
+            "application_docs": 0.04,
+            "career_advice": 0.54,
+            "company_info": 0.8,
+            "error_handling": 0.03,
+            "interview_prep": 0.07,
+            "out_of_scope": 0.4,
+            "query_normalization": 0.43,
+            "reviews": 0.57,
+            "salary_benefits": 0.11,
+            "search_conditions": 0.15
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 176.32941700000083,
+          "inputTokens": 2473,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.02,
+            "career_advice": 0.58,
+            "company_info": 0.84,
+            "error_handling": 0.02,
+            "interview_prep": 0.02,
+            "out_of_scope": 0.15,
+            "query_normalization": 0.34,
+            "reviews": 0.52,
+            "salary_benefits": 0.08,
+            "search_conditions": 0.16
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 158.46166699999958,
+          "inputTokens": 1663,
+          "probs": {
+            "career_advice": 0,
+            "search_conditions": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "error_handling": 0,
+            "reviews": 0,
+            "none": 0,
+            "out_of_scope": 0,
+            "account_terms": 0,
+            "company_info": 0.98,
+            "salary_benefits": 0,
+            "query_normalization": 0.02
+          },
+          "choice": "company_info",
+          "confidence": 0.98
+        }
+      }
+    },
+    {
+      "id": "e100",
+      "results": {
+        "noul_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 183.67191600000115,
+          "inputTokens": 3751,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.09,
+            "career_advice": 0.08,
+            "company_info": 0.86,
+            "error_handling": 0.03,
+            "interview_prep": 0.86,
+            "out_of_scope": 0.04,
+            "query_normalization": 0.43,
+            "reviews": 0.06,
+            "salary_benefits": 0.03,
+            "search_conditions": 0.08
+          }
+        },
+        "noul_en": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 188.1608750000014,
+          "inputTokens": 2485,
+          "probs": {
+            "account_terms": 0.02,
+            "application_docs": 0.05,
+            "career_advice": 0.07,
+            "company_info": 0.93,
+            "error_handling": 0.02,
+            "interview_prep": 0.72,
+            "out_of_scope": 0.02,
+            "query_normalization": 0.45,
+            "reviews": 0.06,
+            "salary_benefits": 0.02,
+            "search_conditions": 0.07
+          }
+        },
+        "choice_ja": {
+          "ok": true,
+          "model": "jev-1.13.0",
+          "latencyMs": 175.37570799999958,
+          "inputTokens": 1675,
+          "probs": {
+            "company_info": 0.92,
+            "application_docs": 0,
+            "none": 0,
+            "query_normalization": 0,
+            "error_handling": 0,
+            "account_terms": 0,
+            "reviews": 0,
+            "interview_prep": 0.08,
+            "out_of_scope": 0,
+            "career_advice": 0,
+            "salary_benefits": 0,
+            "search_conditions": 0
+          },
+          "choice": "company_info",
+          "confidence": 0.91
+        }
+      }
+    }
+  ]
+}

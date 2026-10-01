@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>部品選択ビューア</title>
+<style>
+:root {
+  color-scheme: light;
+  --bg: #fcfcfb; --panel: #ffffff; --line: #e6e5e1;
+  --text: #0b0b0b; --text2: #52514e; --muted: #8a8984;
+  --accent: #2a78d6; --accent-soft: #cde2fb; --bar-off: #d9d8d3;
+  --good: #0f7a3d; --good-bg: #e3f4e9; --bad: #c42b2b; --bad-bg: #fbe6e6; --extra-bg: #efeeea;
+  --warn-bg: #fff4d6; --warn: #7a5600;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #1a1a19; --panel: #232322; --line: #383835;
+    --text: #ffffff; --text2: #c3c2b7; --muted: #8f8e86;
+    --accent: #3987e5; --accent-soft: #1c3f6b; --bar-off: #4a4a46;
+    --good: #5cc98a; --good-bg: #173a26; --bad: #ff8a8a; --bad-bg: #4a1f1f; --extra-bg: #2f2f2d;
+    --warn-bg: #3d3110; --warn: #f2c95c;
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #1a1a19; --panel: #232322; --line: #383835;
+  --text: #ffffff; --text2: #c3c2b7; --muted: #8f8e86;
+  --accent: #3987e5; --accent-soft: #1c3f6b; --bar-off: #4a4a46;
+  --good: #5cc98a; --good-bg: #173a26; --bad: #ff8a8a; --bad-bg: #4a1f1f; --extra-bg: #2f2f2d;
+  --warn-bg: #3d3110; --warn: #f2c95c;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text);
+  font: 15px/1.6 system-ui, "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif; }
+main { max-width: 1080px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+.sub { color: var(--text2); margin: 0 0 20px; font-size: 14px; }
+.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 20px; }
+.tabs button { background: none; border: 0; border-bottom: 2px solid transparent; padding: 8px 14px;
+  font: inherit; color: var(--text2); cursor: pointer; }
+.tabs button[aria-selected="true"] { color: var(--text); border-color: var(--accent); font-weight: 600; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 16px; margin-bottom: 16px; }
+label { font-size: 13px; color: var(--text2); display: block; margin-bottom: 4px; }
+textarea, input[type=text], select { width: 100%; font: inherit; color: var(--text); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 6px; padding: 8px; }
+textarea { resize: vertical; min-height: 40px; }
+.row { display: grid; gap: 12px; grid-template-columns: 1fr 1fr; }
+@media (max-width: 640px) { .row { grid-template-columns: 1fr; } }
+.btn { background: var(--accent); color: #fff; border: 0; border-radius: 6px; padding: 9px 18px; font: inherit; font-weight: 600; cursor: pointer; }
+.btn:disabled { opacity: .5; cursor: default; }
+.ex { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.ex button { font: inherit; font-size: 13px; background: var(--extra-bg); color: var(--text2); border: 0; border-radius: 999px; padding: 3px 10px; cursor: pointer; }
+.controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: end; margin-bottom: 12px; }
+.controls > div { min-width: 140px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.stat { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.stat b { display: block; font-size: 24px; font-variant-numeric: tabular-nums; }
+.stat span { font-size: 12px; color: var(--text2); }
+.bars { display: grid; gap: 6px; }
+.bar { display: grid; grid-template-columns: 170px 1fr 52px; gap: 10px; align-items: center; font-size: 14px; }
+.bar .track { position: relative; height: 18px; background: var(--extra-bg); border-radius: 4px; }
+.bar .fill { position: absolute; inset: 0 auto 0 0; border-radius: 4px; background: var(--bar-off); }
+.bar.on .fill { background: var(--accent); }
+.bar.on .name { font-weight: 600; }
+.bar .thr { position: absolute; top: -3px; bottom: -3px; width: 2px; background: var(--text); opacity: .6; }
+.bar .val { text-align: right; font-variant-numeric: tabular-nums; color: var(--text2); }
+@media (max-width: 640px) { .bar { grid-template-columns: 110px 1fr 44px; font-size: 13px; } }
+.banner { background: var(--warn-bg); color: var(--warn); border-radius: 8px; padding: 8px 12px; margin: 10px 0; font-size: 14px; }
+.meta { color: var(--text2); font-size: 13px; margin-top: 10px; }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; color: var(--text2); font-weight: 600; }
+tr.case { cursor: pointer; }
+tr.case:hover { background: var(--extra-bg); }
+.chip { display: inline-block; border-radius: 4px; padding: 0 6px; margin: 1px 2px; font-size: 12px; white-space: nowrap; }
+.hit { background: var(--good-bg); color: var(--good); }
+.miss { background: var(--bad-bg); color: var(--bad); font-weight: 600; }
+.extra { background: var(--extra-bg); color: var(--muted); }
+.fb { background: var(--warn-bg); color: var(--warn); }
+.ctx { color: var(--muted); font-size: 12px; }
+.legend { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12px; color: var(--text2); margin-bottom: 8px; }
+.detail td { background: var(--bg); }
+.hidden { display: none; }
+.choice { font-size: 14px; }
+.table-wrap { overflow-x: auto; }
+</style>
+</head>
+<body>
+<main>
+  <h1>部品選択ビューア</h1>
+  <p class="sub">求人相談AI(架空のサービス「ハタラクラフト」)のシステムプロンプトを部品に分け、Jev が発話ごとに必要な部品を選んだ結果を見ます。</p>
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="try">試す</button>
+    <button role="tab" aria-selected="false" data-tab="eval">評価結果(100件)</button>
+  </div>
+
+  <section id="tab-try">
+    <div class="panel">
+      <div class="row">
+        <div><label for="c-user">直前のユーザー発話(任意)</label><textarea id="c-user" rows="1"></textarea></div>
+        <div><label for="c-asst">直前のアシスタント応答(任意)</label><textarea id="c-asst" rows="1"></textarea></div>
+      </div>
+      <div style="margin-top:12px"><label for="utt">今回のユーザー発話</label>
+        <input id="utt" type="text" placeholder="例: 名駅あたりで事務の正社員ない?"></div>
+      <div style="margin-top:12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+        <button class="btn" id="run">Jev で判定</button>
+        <span class="meta" id="budget"></span>
+      </div>
+      <div class="ex" id="examples"></div>
+    </div>
+    <div class="panel hidden" id="live">
+      <div class="controls">
+        <div><label for="l-cfg">質問文</label>
+          <select id="l-cfg"><option value="noul_ja">B noul(日本語)</option><option value="noul_en">B' noul(英語)</option></select></div>
+        <div style="flex:1; min-width:220px"><label for="l-thr">しきい値 <b id="l-thr-v"></b></label>
+          <input id="l-thr" type="range" min="0.05" max="0.95" step="0.05" value="0.3" style="width:100%"></div>
+      </div>
+      <div id="l-fb"></div>
+      <div class="stats" id="l-stats"></div>
+      <div class="bars" id="l-bars"></div>
+      <p class="choice" id="l-choice"></p>
+      <p class="meta" id="l-meta"></p>
+    </div>
+  </section>
+
+  <section id="tab-eval" class="hidden">
+    <div class="panel">
+      <div class="controls">
+        <div><label for="e-cfg">構成</label>
+          <select id="e-cfg"><option value="noul_ja">B noul(日本語)</option><option value="noul_en">B' noul(英語)</option><option value="choice_ja">C choice</option></select></div>
+        <div style="flex:1; min-width:200px" id="e-thr-wrap"><label for="e-thr">しきい値 <b id="e-thr-v"></b></label>
+          <input id="e-thr" type="range" min="0.05" max="0.95" step="0.05" value="0.3" style="width:100%"></div>
+        <div><label><input type="checkbox" id="e-fb" checked> 迷ったら全部載せ</label></div>
+        <div><label for="e-tag">タグ</label><select id="e-tag"><option value="">すべて</option></select></div>
+        <div><label><input type="checkbox" id="e-missonly"> 取りこぼしのみ</label></div>
+      </div>
+      <div class="stats" id="e-stats"></div>
+      <p class="meta" id="e-run"></p>
+    </div>
+    <div class="legend">
+      <span><span class="chip hit">✓ 必要で載せた</span></span>
+      <span><span class="chip miss">✗ 必要なのに落とした</span></span>
+      <span><span class="chip extra">+ 余計に載せた</span></span>
+      <span><span class="chip fb">全部載せに倒した</span></span>
+      <span>行をクリックすると各部品の確率を表示</span>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>id</th><th>発話</th><th>結果</th><th>削減</th></tr></thead>
+      <tbody id="e-rows"></tbody>
+    </table></div>
+  </section>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const pct = (v) => (v == null ? '-' : `${(v * 100).toFixed(1)}%`);
+const SHORT = {
+  search_conditions: '検索条件の聞き出し', query_normalization: '地名・職種の言い換え', company_info: '企業情報',
+  reviews: 'クチコミ', salary_benefits: '給与・待遇', career_advice: 'キャリア相談', application_docs: '応募書類',
+  interview_prep: '面接対策', account_terms: 'ログイン・規約', error_handling: 'エラー時', out_of_scope: '範囲外の話題',
+};
+let D, sel, allIds, tok, alwaysTok, fullTok, lastLive = null;
+
+// Same rules as src/select.ts
+function choose(r, cfg, thr, useFb) {
+  if (!r || !r.ok) return { loaded: allIds, chosen: [], fb: 'error' };
+  let chosen, fb = null;
+  if (cfg === 'choice_ja') {
+    chosen = r.choice === 'none' ? [] : [r.choice];
+    if ((r.confidence ?? 0) < D.fallback.choiceMinConfidence) fb = 'low_confidence';
+  } else {
+    chosen = allIds.filter((id) => r.probs[id] >= thr);
+    const [lo, hi] = D.fallback.uncertainBand;
+    if (allIds.filter((id) => r.probs[id] >= lo && r.probs[id] <= hi).length >= D.fallback.uncertainMin) fb = 'uncertain';
+  }
+  return { loaded: useFb && fb ? allIds : chosen, chosen, fb: useFb ? fb : null };
+}
+const tokensOf = (ids) => alwaysTok + ids.reduce((s, id) => s + tok[id], 0);
+const FB_TEXT = { uncertain: '確信が持てない部品が多いため、全部載せに倒しました', low_confidence: 'choice の確信度が低いため、全部載せに倒しました', error: 'API エラーのため全部載せ' };
+
+function barsHtml(probs, thr, loaded, gold) {
+  return allIds.map((id) => ({ id, p: probs[id] ?? 0 })).sort((a, b) => b.p - a.p).map(({ id, p }) => {
+    const on = loaded.includes(id);
+    const g = gold ? (gold.includes(id) ? (on ? ' <span class="chip hit">✓正解</span>' : ' <span class="chip miss">✗正解</span>') : '') : '';
+    return `<div class="bar${on ? ' on' : ''}"><span class="name">${esc(SHORT[id] ?? id)}${g}</span>
+      <span class="track"><span class="fill" style="width:${(p * 100).toFixed(1)}%"></span>${thr != null ? `<span class="thr" style="left:${thr * 100}%"></span>` : ''}</span>
+      <span class="val">${p.toFixed(2)}</span></div>`;
+  }).join('');
+}
+
+// ---------- 試す ----------
+function renderLive() {
+  if (!lastLive) return;
+  const cfg = $('l-cfg').value, thr = Number($('l-thr').value);
+  $('l-thr-v').textContent = thr.toFixed(2);
+  const r = lastLive.results[cfg];
+  const s = choose(r, cfg, thr, true);
+  $('l-fb').innerHTML = s.fb ? `<div class="banner">${FB_TEXT[s.fb]}</div>` : '';
+  const t = tokensOf(s.loaded);
+  $('l-stats').innerHTML = `
+    <div class="stat"><b>${s.loaded.length} / ${allIds.length}</b><span>載せる部品(常に載せる3個は別)</span></div>
+    <div class="stat"><b>${t.toLocaleString()}</b><span>プロンプトのトークン(全部載せ ${fullTok.toLocaleString()})</span></div>
+    <div class="stat"><b>${pct(1 - t / fullTok)}</b><span>削減率</span></div>
+    <div class="stat"><b>${r.ok ? Math.round(r.latencyMs) + 'ms' : '-'}</b><span>選択にかかった時間</span></div>`;
+  $('l-bars').innerHTML = r.ok ? barsHtml(r.probs, thr, s.loaded) : `<p>${esc(r.error)}</p>`;
+  const c = lastLive.results.choice_ja;
+  if (c?.ok) {
+    const top = Object.entries(c.probabilities ?? c.probs).sort((a, b) => b[1] - a[1]).slice(0, 3)
+      .map(([k, v]) => `${esc(SHORT[k] ?? (k === 'none' ? '不要' : k))} ${v.toFixed(2)}`).join(' / ');
+    $('l-choice').innerHTML = `比較: <b>C choice</b> は「${esc(SHORT[c.choice] ?? (c.choice === 'none' ? 'どれも不要' : c.choice))}」を選択(確信度 ${c.confidence.toFixed(2)})。上位: ${top}`;
+  }
+  const inTok = Object.values(lastLive.results).reduce((s, x) => s + (x.inputTokens || 0), 0);
+  $('l-meta').textContent = `モデル ${r.model ?? '-'} / 3構成の選択に使った入力 ${inTok.toLocaleString()} tok`;
+}
+function showBudget(b) { $('budget').textContent = `この画面の費用: $${b.spentUsd.toFixed(4)} / 上限 $${b.limitUsd}`; }
+$('run').onclick = async () => {
+  const utterance = $('utt').value.trim();
+  if (!utterance) return;
+  const context = [{ role: 'user', text: $('c-user').value }, { role: 'assistant', text: $('c-asst').value }];
+  $('run').disabled = true; $('run').textContent = '判定中…';
+  try {
+    const res = await fetch('/api/select', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ context, utterance }) });
+    const j = await res.json();
+    if (!res.ok) throw new Error(j.error);
+    lastLive = j; showBudget(j.budget);
+    $('live').classList.remove('hidden'); renderLive();
+  } catch (e) { $('budget').textContent = 'エラー: ' + e.message; }
+  finally { $('run').disabled = false; $('run').textContent = 'Jev で判定'; }
+};
+$('utt').addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing) $('run').click(); });
+$('l-cfg').onchange = renderLive; $('l-thr').oninput = renderLive;
+
+// ---------- 評価結果 ----------
+const results = () => new Map((D.run?.cases ?? []).map((c) => [c.id, c.results]));
+let openId = null;
+function renderEval() {
+  const cfg = $('e-cfg').value, thr = Number($('e-thr').value), useFb = $('e-fb').checked;
+  $('e-thr-v').textContent = thr.toFixed(2);
+  $('e-thr-wrap').style.opacity = cfg === 'choice_ja' ? .4 : 1;
+  const R = results(), tag = $('e-tag').value, missOnly = $('e-missonly').checked;
+  const rows = D.cases.filter((c) => R.has(c.id)).map((c) => {
+    const r = R.get(c.id)[cfg]; const s = choose(r, cfg, thr, useFb);
+    return { c, r, s, missed: c.gold.filter((g) => !s.loaded.includes(g)), extra: s.loaded.filter((x) => !c.gold.includes(x)), tokens: tokensOf(s.loaded) };
+  });
+  const goldN = rows.reduce((a, x) => a + x.c.gold.length, 0), hit = rows.reduce((a, x) => a + x.c.gold.length - x.missed.length, 0);
+  const loadedN = rows.reduce((a, x) => a + x.s.loaded.length, 0), withGold = rows.filter((x) => x.c.gold.length);
+  const meanTok = rows.reduce((a, x) => a + x.tokens, 0) / rows.length;
+  $('e-stats').innerHTML = `
+    <div class="stat"><b>${pct(1 - meanTok / fullTok)}</b><span>入力トークン削減率</span></div>
+    <div class="stat"><b>${pct(hit / goldN)}</b><span>再現率(必要な部品を載せた割合)</span></div>
+    <div class="stat"><b>${pct(withGold.filter((x) => x.missed.length).length / withGold.length)}</b><span>1つでも落とした件</span></div>
+    <div class="stat"><b>${pct(loadedN ? hit / loadedN : null)}</b><span>適合率</span></div>
+    <div class="stat"><b>${pct(rows.filter((x) => x.s.fb).length / rows.length)}</b><span>全部載せに倒した件</span></div>`;
+  $('e-run').textContent = D.run ? `実行 ${D.run.startedAt} / ${rows.length}件 / 評価の費用 $${D.run.spentUsd.toFixed(4)}` : '評価データがありません(npm run eval)';
+  const view = rows.filter((x) => (!tag || x.c.tags.includes(tag)) && (!missOnly || x.missed.length));
+  $('e-rows').innerHTML = view.map((x) => {
+    const chips = [
+      ...x.c.gold.map((g) => x.missed.includes(g) ? `<span class="chip miss">✗ ${esc(SHORT[g])}</span>` : `<span class="chip hit">✓ ${esc(SHORT[g])}</span>`),
+      ...(x.s.fb ? [`<span class="chip fb">全部載せ</span>`] : x.extra.map((e) => `<span class="chip extra">+ ${esc(SHORT[e])}</span>`)),
+    ];
+    if (!x.c.gold.length && !x.s.loaded.length) chips.push('<span class="chip hit">✓ 部品なしで正解</span>');
+    const ctx = x.c.context.length ? `<div class="ctx">文脈: ${esc(x.c.context.map((t) => (t.role === 'user' ? 'U: ' : 'A: ') + t.text.split('\n')[0]).join(' / '))}</div>` : '';
+    const detail = openId === x.c.id ? `<tr class="detail"><td></td><td colspan="3">
+      <div class="bars">${x.r?.ok ? (cfg === 'choice_ja' ? barsHtml(x.r.probs, null, x.s.loaded, x.c.gold) : barsHtml(x.r.probs, thr, x.s.loaded, x.c.gold)) : esc(x.r?.error ?? '')}</div>
+      <div class="meta">タグ: ${esc(x.c.tags.join(', '))}${x.c.note ? ' / メモ: ' + esc(x.c.note) : ''}${x.r?.ok ? ` / ${Math.round(x.r.latencyMs)}ms` : ''}</div></td></tr>` : '';
+    return `<tr class="case" data-id="${x.c.id}"><td>${x.c.id}</td><td>${esc(x.c.utterance)}${ctx}</td><td>${chips.join('')}</td><td>${pct(1 - x.tokens / fullTok)}</td></tr>${detail}`;
+  }).join('');
+}
+$('e-rows').onclick = (e) => { const tr = e.target.closest('tr.case'); if (!tr) return; openId = openId === tr.dataset.id ? null : tr.dataset.id; renderEval(); };
+for (const id of ['e-cfg', 'e-thr', 'e-fb', 'e-tag', 'e-missonly']) $(id).addEventListener('input', renderEval);
+
+document.querySelectorAll('.tabs button').forEach((b) => b.onclick = () => {
+  document.querySelectorAll('.tabs button').forEach((x) => x.setAttribute('aria-selected', x === b));
+  $('tab-try').classList.toggle('hidden', b.dataset.tab !== 'try');
+  $('tab-eval').classList.toggle('hidden', b.dataset.tab !== 'eval');
+});
+
+(async () => {
+  D = await (await fetch('/api/data')).json();
+  sel = D.parts.filter((p) => p.kind === 'selectable'); allIds = sel.map((p) => p.id);
+  tok = Object.fromEntries(D.parts.map((p) => [p.id, p.tokens]));
+  alwaysTok = D.parts.filter((p) => p.kind === 'always').reduce((s, p) => s + p.tokens, 0);
+  fullTok = D.parts.reduce((s, p) => s + p.tokens, 0);
+  showBudget(D.budget);
+  if (!D.live) { $('run').disabled = true; $('budget').textContent = 'TYPESAFE_API_KEY が未設定のため、判定は使えません'; }
+  const ex = ['名駅あたりで事務の正社員ない?', 'Nホームって残業多い?', '天気いいし仕事探す気にならん笑 でも一応関西で事務あれば', '面接で希望年収聞かれたらなんて答えればいい?', '他の求人サイトとどっちが使いやすい?'];
+  $('examples').innerHTML = ex.map((t) => `<button>${esc(t)}</button>`).join('');
+  $('examples').onclick = (e) => { if (e.target.tagName === 'BUTTON') { $('utt').value = e.target.textContent; $('run').click(); } };
+  const tags = [...new Set(D.cases.flatMap((c) => c.tags))].sort();
+  $('e-tag').innerHTML += tags.map((t) => `<option>${esc(t)}</option>`).join('');
+  renderEval();
+})();
+</script>
+</body>
+</html>

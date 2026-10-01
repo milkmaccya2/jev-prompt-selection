@@ -10,10 +10,11 @@ export interface Part {
   kind: PartKind;
   summary: string;
   summary_en: string;
-  use_when?: string;
-  use_when_en?: string;
-  not_when?: string;
-  not_when_en?: string;
+  /** Selection hints; empty for always-on parts. */
+  use_when: string;
+  use_when_en: string;
+  not_when: string;
+  not_when_en: string;
   lines: number;
   tokens: number;
   body: string;
@@ -28,8 +29,15 @@ export function loadParts(): Part[] {
     .map((f) => {
       const { data, content } = matter(readFileSync(join(PROMPTS_DIR, f), 'utf8'));
       const body = content.trim();
+      if (data.kind === 'selectable') {
+        for (const k of ['use_when', 'use_when_en', 'not_when', 'not_when_en']) {
+          if (!data[k]) throw new Error(`${f}: missing ${k}`);
+        }
+      }
+      const hints = { use_when: '', use_when_en: '', not_when: '', not_when_en: '' };
       return {
-        ...(data as Omit<Part, 'lines' | 'tokens' | 'body'>),
+        ...hints,
+        ...(data as Partial<Part> & Pick<Part, 'id' | 'kind' | 'summary' | 'summary_en'>),
         lines: body.split('\n').length,
         tokens: countTokens(body),
         body,

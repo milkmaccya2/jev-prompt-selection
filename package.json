@@ -10,10 +10,12 @@
     "index": "tsx src/buildIndex.ts",
     "check:data": "tsx src/checkData.ts",
     "eval": "tsx --env-file-if-exists=.env src/eval.ts",
-    "charts": "tsx src/charts.ts",
+    "report": "tsx src/report.ts",
+    "web": "tsx --env-file-if-exists=.env src/server.ts",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^26.6.3",
     "tsx": "^4.23.15",
     "typescript": "^7.0.2"

@@ -2,6 +2,5 @@ node_modules/
 .env
 .env.*
 !.env.example
-results/raw/
 *.log
 .DS_Store
