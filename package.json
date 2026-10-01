@@ -1,0 +1,26 @@
+{
+  "name": "jev-prompt-selection",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "index": "tsx src/buildIndex.ts",
+    "check:data": "tsx src/checkData.ts",
+    "eval": "tsx --env-file-if-exists=.env src/eval.ts",
+    "charts": "tsx src/charts.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "^0.6.0",
+    "gpt-tokenizer": "^4.0.0",
+    "gray-matter": "^4.0.3"
+  }
+}
