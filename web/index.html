@@ -191,7 +191,7 @@ function renderLive() {
   $('l-bars').innerHTML = r?.ok ? barsHtml(r, cfg, d) : '';
   $('l-meta').textContent = `モデル ${r?.model ?? '-'} / 判定に使った入力 ${(r?.inputTokens ?? 0).toLocaleString()} tok`;
 }
-function showBudget(b) { $('budget').textContent = `この画面の費用: $${b.spentUsd.toFixed(4)} / 上限 $${b.limitUsd}`; }
+function showBudget(b) { $('budget').textContent = b ? `この画面の費用: $${b.spentUsd.toFixed(4)} / 上限 $${b.limitUsd}` : ''; }
 $('run').onclick = async () => {
   const utterance = $('utt').value.trim();
   if (!utterance) return;

@@ -12,13 +12,18 @@
     "eval": "tsx --env-file-if-exists=.env src/eval.ts",
     "report": "tsx src/report.ts",
     "web": "tsx --env-file-if-exists=.env src/server.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit && tsc --noEmit -p worker",
+    "build:web": "tsx src/buildWebData.ts",
+    "cf:dev": "npm run build:web && wrangler dev",
+    "cf:deploy": "npm run build:web && wrangler deploy"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261001.1",
     "@resvg/resvg-js": "^2.6.2",
     "@types/node": "^26.6.3",
     "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "typescript": "^7.0.2",
+    "wrangler": "^4.145.0"
   },
   "dependencies": {
     "@typesafe-ai/sdk": "^0.6.0",

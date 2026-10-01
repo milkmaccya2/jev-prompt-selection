@@ -38,3 +38,13 @@ npm run web                                   # http://localhost:4319 振り分�
 
 ## 結果
 [results/summary.md](results/summary.md)
+
+## Cloudflare Workers で公開する
+```sh
+npx wrangler login
+npx wrangler secret put TYPESAFE_API_KEY   # キーは Cloudflare 側にだけ置く
+npm run cf:deploy                          # worker/data.json を作ってからデプロイ
+```
+- `npm run cf:dev` でローカル確認(`.env` のキーを使う)
+- 画面は `web/index.html`、API は `worker/index.ts`(`/api/data`, `/api/select`)。評価結果は最新の `results/raw/run-*.json` から焼き込む
+- 公開版には費用の上限がない(Jev のアカウント側の課金上限に任せる)。入力は1〜300文字に制限している

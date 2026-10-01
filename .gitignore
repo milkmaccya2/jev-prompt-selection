@@ -4,3 +4,6 @@ node_modules/
 !.env.example
 *.log
 .DS_Store
+.wrangler/
+worker/data.json
+.dev.vars

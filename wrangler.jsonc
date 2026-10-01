@@ -1,0 +1,9 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "jev-prompt-selection",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-09-01",
+  "assets": { "directory": "web", "binding": "ASSETS", "run_worker_first": ["/api/*"] },
+  "observability": { "enabled": true }
+  // TYPESAFE_API_KEY: set with `npx wrangler secret put TYPESAFE_API_KEY` (never commit it)
+}
