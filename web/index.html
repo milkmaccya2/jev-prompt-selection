@@ -116,14 +116,12 @@ tr.case:hover { background: var(--extra-bg); }
     </div>
     <div class="panel hidden" id="live">
       <div class="controls">
-        <div><label for="l-cfg">構成</label><select id="l-cfg"></select></div>
-        <div style="flex:1; min-width:220px"><label for="l-cut">確信度の下限(下回ったら全部載せ) <b id="l-cut-v"></b></label>
+                <div style="flex:1; min-width:220px"><label for="l-cut">確信度の下限(下回ったら全部載せ) <b id="l-cut-v"></b></label>
           <input id="l-cut" type="range" min="0" max="0.95" step="0.05" value="0" style="width:100%"></div>
       </div>
       <div id="l-fb"></div>
       <div class="stats" id="l-stats"></div>
       <div class="bars" id="l-bars"></div>
-      <div class="who" id="l-who"></div>
       <p class="meta" id="l-meta"></p>
     </div>
   </section>
@@ -131,8 +129,7 @@ tr.case:hover { background: var(--extra-bg); }
   <section id="tab-eval" class="hidden">
     <div class="panel">
       <div class="controls">
-        <div><label for="e-cfg">構成</label><select id="e-cfg"></select></div>
-        <div style="flex:1; min-width:200px"><label for="e-cut">確信度の下限 <b id="e-cut-v"></b></label>
+                <div style="flex:1; min-width:200px"><label for="e-cut">確信度の下限 <b id="e-cut-v"></b></label>
           <input id="e-cut" type="range" min="0" max="0.95" step="0.05" value="0" style="width:100%"></div>
         <div><label for="e-tag">タグ</label><select id="e-tag"><option value="">すべて</option></select></div>
         <div><label><input type="checkbox" id="e-wrong"> 間違いのみ</label></div>
@@ -148,7 +145,7 @@ tr.case:hover { background: var(--extra-bg); }
       <span>行をクリックすると各候補の確率を表示</span>
     </div>
     <div class="table-wrap"><table>
-      <thead><tr><th>id</th><th>発話</th><th>正解</th><th>Jev が選んだ</th><th>確信度</th><th>削減</th></tr></thead>
+      <thead><tr><th>id</th><th>発話</th><th>正解</th><th>Jev が選んだ</th><th>確信度</th></tr></thead>
       <tbody id="e-rows"></tbody>
     </table></div>
   </section>
@@ -163,9 +160,8 @@ const LABEL = {
   reviews: 'クチコミ', salary_benefits: '給与・待遇', career_advice: 'キャリア相談', application_docs: '応募書類',
   interview_prep: '面接対策', account_terms: 'ログイン・規約', error_handling: 'エラー時', out_of_scope: '範囲外の話題', base: '基本プロンプト',
 };
-const CFG = { choice_ja: 'C choice(日本語)', choice_en: "C' choice(英語)", choice_ja_v2: 'C2 choice(説明改善)', noul_ja: 'B noul 最大値' };
 const lab = (id) => LABEL[id] ?? id;
-let D, allIds, tok, alwaysTok, fullTok, lastLive = null;
+let D, lastLive = null;
 
 // Same rules as src/select.ts
 function pick(r, cfg) {
@@ -179,7 +175,6 @@ function decide(r, cfg, cut) {
   if (!p) return { fb: 'error' };
   return p.confidence < cut ? { ...p, fb: 'low' } : p;
 }
-const tokensOf = (d) => (d.fb ? fullTok : d.chosen === BASE ? alwaysTok : alwaysTok + tok[d.chosen]);
 
 function barsHtml(r, cfg, d, answer, acceptable) {
   const entries = Object.entries(r.probs).sort((a, b) => b[1] - a[1]);
@@ -196,22 +191,16 @@ function barsHtml(r, cfg, d, answer, acceptable) {
 // ---------- 試す ----------
 function renderLive() {
   if (!lastLive) return;
-  const cfg = $('l-cfg').value, cut = Number($('l-cut').value);
+  const cfg = D.main, cut = Number($('l-cut').value);
   $('l-cut-v').textContent = cut ? cut.toFixed(2) : 'なし';
-  const r = lastLive.results[cfg], d = decide(r, cfg, cut), t = tokensOf(d);
+  const r = lastLive.result, d = decide(r, cfg, cut);
   $('l-fb').innerHTML = d.fb === 'low' ? `<div class="banner">確信度 ${d.confidence.toFixed(2)} が下限を下回ったため、全部載せにします(Jev の候補: ${esc(lab(d.chosen))})</div>` : d.fb === 'error' ? `<div class="banner">API エラーのため全部載せ: ${esc(r?.error ?? '')}</div>` : '';
   $('l-stats').innerHTML = `
     <div class="stat"><b class="pick">${d.fb ? '全部載せ' : esc(lab(d.chosen))}</b><span>使うプロンプト</span></div>
     <div class="stat"><b>${d.confidence != null ? d.confidence.toFixed(2) : '-'}</b><span>確信度${cfg === 'noul_ja' ? '(noul の最大値)' : ''}</span></div>
-    <div class="stat"><b>${t.toLocaleString()}</b><span>プロンプトのトークン(全部載せ ${fullTok.toLocaleString()})</span></div>
-    <div class="stat"><b>${pct(1 - t / fullTok)}</b><span>削減率</span></div>`;
+    <div class="stat"><b>${r?.ok ? Math.round(r.latencyMs) + 'ms' : '-'}</b><span>判定にかかった時間</span></div>`;
   $('l-bars').innerHTML = r?.ok ? barsHtml(r, cfg, d) : '';
-  $('l-who').innerHTML = Object.keys(CFG).map((k) => {
-    const x = decide(lastLive.results[k], k, cut);
-    return `<div><b>${esc(CFG[k])}</b><br>${x.fb ? '全部載せ' : esc(lab(x.chosen))}${x.confidence != null ? ` (${x.confidence.toFixed(2)})` : ''} · ${lastLive.results[k]?.ok ? Math.round(lastLive.results[k].latencyMs) + 'ms' : 'エラー'}</div>`;
-  }).join('');
-  const inTok = Object.values(lastLive.results).reduce((s, x) => s + (x.inputTokens || 0), 0);
-  $('l-meta').textContent = `モデル ${r?.model ?? '-'} / 4構成の判定に使った入力 ${inTok.toLocaleString()} tok`;
+  $('l-meta').textContent = `モデル ${r?.model ?? '-'} / 判定に使った入力 ${(r?.inputTokens ?? 0).toLocaleString()} tok`;
 }
 function showBudget(b) { $('budget').textContent = `この画面の費用: $${b.spentUsd.toFixed(4)} / 上限 $${b.limitUsd}`; }
 $('run').onclick = async () => {
@@ -229,28 +218,26 @@ $('run').onclick = async () => {
   finally { $('run').disabled = false; $('run').textContent = 'Jev で判定'; }
 };
 $('utt').addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing) $('run').click(); });
-$('l-cfg').onchange = renderLive; $('l-cut').oninput = renderLive;
+$('l-cut').oninput = renderLive;
 
 // ---------- 評価結果 ----------
 let openId = null;
 function renderEval() {
-  const cfg = $('e-cfg').value, cut = Number($('e-cut').value);
+  const cfg = D.main, cut = Number($('e-cut').value);
   $('e-cut-v').textContent = cut ? cut.toFixed(2) : 'なし';
   const R = new Map((D.run?.cases ?? []).map((c) => [c.id, c.results]));
   const tag = $('e-tag').value, wrongOnly = $('e-wrong').checked;
   const rows = D.cases.filter((c) => R.has(c.id)).map((c) => {
     const r = R.get(c.id)[cfg], d = decide(r, cfg, cut);
     const v = d.fb ? 'fallback' : d.chosen === c.answer ? 'correct' : c.acceptable.includes(d.chosen) ? 'acceptable' : 'wrong';
-    return { c, r, d, v, tokens: tokensOf(d) };
+    return { c, r, d, v };
   });
   const n = rows.length, k = (v) => rows.filter((x) => x.v === v).length;
-  const meanTok = rows.reduce((a, x) => a + x.tokens, 0) / n;
   $('e-stats').innerHTML = `
     <div class="stat"><b>${pct(k('correct') / n)}</b><span>正解率</span></div>
     <div class="stat"><b>${pct((k('correct') + k('acceptable')) / n)}</b><span>「これでも可」込み</span></div>
     <div class="stat"><b>${pct(k('wrong') / n)}</b><span>誤ったプロンプトを渡した</span></div>
-    <div class="stat"><b>${pct(k('fallback') / n)}</b><span>全部載せに倒した</span></div>
-    <div class="stat"><b>${pct(1 - meanTok / fullTok)}</b><span>入力トークン削減率</span></div>`;
+    <div class="stat"><b>${pct(k('fallback') / n)}</b><span>全部載せに倒した</span></div>`;
   $('e-run').textContent = D.run ? `実行 ${D.run.startedAt} / ${n}件 / 評価の費用 $${D.run.spentUsd.toFixed(4)}` : '評価データがありません(npm run eval)';
   const view = rows.filter((x) => (!tag || x.c.tags.includes(tag)) && (!wrongOnly || x.v === 'wrong'));
   $('e-rows').innerHTML = view.map((x) => {
@@ -260,14 +247,14 @@ function renderEval() {
       : `<span class="chip miss">✗ ${esc(lab(x.d.chosen))}</span>`;
     const ans = esc(lab(x.c.answer)) + (x.c.acceptable.length ? `<div class="ctx">可: ${esc(x.c.acceptable.map(lab).join('、'))}</div>` : '');
     const ctx = x.c.context.length ? `<div class="ctx">文脈: ${esc(x.c.context.map((t) => (t.role === 'user' ? 'U: ' : 'A: ') + t.text.split('\n')[0]).join(' / '))}</div>` : '';
-    const detail = openId === x.c.id ? `<tr class="detail"><td></td><td colspan="5">
+    const detail = openId === x.c.id ? `<tr class="detail"><td></td><td colspan="4">
       <div class="bars">${x.r?.ok ? barsHtml(x.r, cfg, x.d, x.c.answer, x.c.acceptable) : esc(x.r?.error ?? '')}</div>
       <div class="meta">タグ: ${esc(x.c.tags.join(', '))}${x.c.note ? ' / メモ: ' + esc(x.c.note) : ''}${x.r?.ok ? ` / ${Math.round(x.r.latencyMs)}ms` : ''}</div></td></tr>` : '';
-    return `<tr class="case" data-id="${x.c.id}"><td>${x.c.id}</td><td>${esc(x.c.utterance)}${ctx}</td><td>${ans}</td><td>${chip}</td><td>${x.d.confidence != null ? x.d.confidence.toFixed(2) : '-'}</td><td>${pct(1 - x.tokens / fullTok)}</td></tr>${detail}`;
+    return `<tr class="case" data-id="${x.c.id}"><td>${x.c.id}</td><td>${esc(x.c.utterance)}${ctx}</td><td>${ans}</td><td>${chip}</td><td>${x.d.confidence != null ? x.d.confidence.toFixed(2) : '-'}</td></tr>${detail}`;
   }).join('');
 }
 $('e-rows').onclick = (e) => { const tr = e.target.closest('tr.case'); if (!tr) return; openId = openId === tr.dataset.id ? null : tr.dataset.id; renderEval(); };
-for (const id of ['e-cfg', 'e-cut', 'e-tag', 'e-wrong']) $(id).addEventListener('input', renderEval);
+for (const id of ['e-cut', 'e-tag', 'e-wrong']) $(id).addEventListener('input', renderEval);
 
 document.querySelectorAll('.tabs button').forEach((b) => b.onclick = () => {
   document.querySelectorAll('.tabs button').forEach((x) => x.setAttribute('aria-selected', x === b));
@@ -277,12 +264,6 @@ document.querySelectorAll('.tabs button').forEach((b) => b.onclick = () => {
 
 (async () => {
   D = await (await fetch('/api/data')).json();
-  allIds = D.parts.filter((p) => p.kind === 'selectable').map((p) => p.id);
-  tok = Object.fromEntries(D.parts.map((p) => [p.id, p.tokens]));
-  alwaysTok = D.parts.filter((p) => p.kind === 'always').reduce((s, p) => s + p.tokens, 0);
-  fullTok = D.parts.reduce((s, p) => s + p.tokens, 0);
-  const opts = Object.entries(CFG).map(([k, v]) => `<option value="${k}">${esc(v)}</option>`).join('');
-  $('l-cfg').innerHTML = opts; $('e-cfg').innerHTML = opts;
   showBudget(D.budget);
   if (!D.live) { $('run').disabled = true; $('budget').textContent = 'TYPESAFE_API_KEY が未設定のため、判定は使えません'; }
   const ex = ['名駅あたりで事務の正社員ない?', 'Nホームって残業多い?', 'ありがとう!助かった', '面接で希望年収聞かれたらなんて答えればいい?', 'この求人に応募したい'];

@@ -13,7 +13,7 @@ export interface RawRun {
 export interface Variant {
   key: string;
   label: string;
-  config: ConfigId | 'all';
+  config: ConfigId;
   cutoff: number;
 }
 
@@ -26,7 +26,6 @@ export interface CaseOutcome {
   chosen: string | null;
   confidence: number | null;
   verdict: Verdict;
-  tokens: number;
 }
 
 export interface VariantMetrics {
@@ -39,8 +38,6 @@ export interface VariantMetrics {
   /** a prompt that is neither answer nor acceptable was used */
   wrongRate: number;
   fallbackRate: number;
-  reduction: number;
-  meanPromptTokens: number;
   latencyP50: number | null;
   latencyP95: number | null;
   selectorTokensPerCall: number | null;
@@ -50,21 +47,20 @@ export interface VariantMetrics {
   outcomes: CaseOutcome[];
 }
 
-export const CONFIG_LABEL: Record<ConfigId | 'all', string> = {
-  all: 'A 全部載せ',
-  choice_ja: 'C choice(日本語)',
-  choice_en: "C' choice(英語)",
-  choice_ja_v2: 'C2 choice(日本語・説明改善)',
-  noul_ja: 'B noul 最大値(日本語)',
+export const CONFIG_LABEL: Record<ConfigId, string> = {
+  choice_ja: 'choice(日本語)',
+  choice_en: 'choice(英語の説明)',
+  noul_ja: 'noul ×11 の最大値',
 };
 
 export function variantsFor(configs: ConfigId[]): Variant[] {
-  const v: Variant[] = [{ key: 'A', label: CONFIG_LABEL.all, config: 'all', cutoff: 0 }];
-  for (const c of configs) {
+  const v: Variant[] = [];
+  // raw runs may hold configs that were dropped later (e.g. an earlier description variant)
+  for (const c of configs.filter((x) => x in CONFIG_LABEL)) {
     for (const cut of CUTOFFS) {
       v.push({
         key: `${c}@${cut}`,
-        label: cut ? `${CONFIG_LABEL[c]} 確信度<${cut}は全部載せ` : CONFIG_LABEL[c],
+        label: cut ? `${CONFIG_LABEL[c]} 下限${cut}` : `${CONFIG_LABEL[c]} 下限なし`,
         config: c,
         cutoff: cut,
       });
@@ -79,15 +75,7 @@ const pct = (xs: number[], q: number) => {
   return s[Math.min(s.length - 1, Math.ceil(q * s.length) - 1)];
 };
 
-export function promptTokens(parts: Part[]) {
-  const always = parts.filter((p) => p.kind === 'always').reduce((s, p) => s + p.tokens, 0);
-  const full = parts.reduce((s, p) => s + p.tokens, 0);
-  const tok = new Map(parts.map((p) => [p.id, p.tokens]));
-  return { always, full, of: (id: string) => (id === BASE ? always : always + (tok.get(id) ?? 0)) };
-}
-
 export function computeMetrics(run: RawRun, cases: EvalCase[], parts: Part[]): VariantMetrics[] {
-  const T = promptTokens(parts);
   const answerIds = [...parts.filter((p) => p.kind === 'selectable').map((p) => p.id), BASE];
   const byId = new Map(cases.map((c) => [c.id, c]));
   const rows = run.cases.filter((r) => byId.has(r.id));
@@ -99,10 +87,6 @@ export function computeMetrics(run: RawRun, cases: EvalCase[], parts: Part[]): V
     let calls = 0;
     for (const row of rows) {
       const c = byId.get(row.id) as EvalCase;
-      if (variant.config === 'all') {
-        outcomes.push({ id: c.id, answer: c.answer, acceptable: c.acceptable, chosen: null, confidence: null, verdict: 'fallback', tokens: T.full });
-        continue;
-      }
       const r = row.results[variant.config];
       if (!r) continue;
       latencies.push(r.latencyMs);
@@ -125,7 +109,6 @@ export function computeMetrics(run: RawRun, cases: EvalCase[], parts: Part[]): V
         chosen,
         confidence: d.confidence ?? null,
         verdict,
-        tokens: d.kind === 'fallback' ? T.full : T.of(d.chosen),
       });
     }
     const n = outcomes.length || 1;
@@ -145,7 +128,6 @@ export function computeMetrics(run: RawRun, cases: EvalCase[], parts: Part[]): V
         conf.set(k, (conf.get(k) ?? 0) + 1);
       }
     }
-    const meanPromptTokens = outcomes.reduce((s, o) => s + o.tokens, 0) / n;
     return {
       variant,
       n: outcomes.length,
@@ -153,8 +135,6 @@ export function computeMetrics(run: RawRun, cases: EvalCase[], parts: Part[]): V
       accuracyLenient: count((o) => o.verdict === 'correct' || o.verdict === 'acceptable') / n,
       wrongRate: count((o) => o.verdict === 'wrong') / n,
       fallbackRate: count((o) => o.verdict === 'fallback') / n,
-      reduction: 1 - meanPromptTokens / T.full,
-      meanPromptTokens,
       latencyP50: pct(latencies, 0.5),
       latencyP95: pct(latencies, 0.95),
       selectorTokensPerCall: calls ? selTokens / calls : null,

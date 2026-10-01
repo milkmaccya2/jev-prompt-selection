@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from 'node:fs';
 import { createServer } from 'node:http';
 import type { Turn } from './data.js';
 import { loadEval } from './data.js';
-import { Budget, BudgetExceeded, CONFIGS, makeClient, runConfig } from './jev.js';
+import { Budget, BudgetExceeded, MAIN, makeClient, runConfig } from './jev.js';
 import { loadParts, selectable } from './parts.js';
 import { CUTOFFS, NOUL_MIN } from './select.js';
 
@@ -37,6 +37,7 @@ createServer(async (req, res) => {
         parts: parts.map(({ body: _b, ...p }) => p),
         cases: loadEval(),
         run: latestRun(),
+        main: MAIN,
         cutoffs: CUTOFFS,
         noulMin: NOUL_MIN,
         live: Boolean(client),
@@ -51,10 +52,8 @@ createServer(async (req, res) => {
       const { context = [], utterance = '' } = JSON.parse(raw) as { context?: Turn[]; utterance?: string };
       if (!utterance.trim() || utterance.length > 1000) return json(res, 400, { error: '発話を1〜1000文字で入力してください' });
       const ctx = context.filter((t) => t.text?.trim()).slice(-4);
-      const entries = await Promise.all(
-        CONFIGS.map(async (cfg) => [cfg, await runConfig(client, budget, cfg, sel, ctx, utterance)] as const)
-      );
-      json(res, 200, { results: Object.fromEntries(entries), budget: { limitUsd: budget.limitUsd, spentUsd: budget.spentUsd } });
+      const result = await runConfig(client, budget, MAIN, sel, ctx, utterance);
+      json(res, 200, { result, budget: { limitUsd: budget.limitUsd, spentUsd: budget.spentUsd } });
       return;
     }
     json(res, 404, { error: 'not found' });
