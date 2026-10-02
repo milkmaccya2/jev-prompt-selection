@@ -20,7 +20,7 @@ export interface ClassifyResult {
   probs: Record<string, number> | null;
   model: string | null;
   latencyMs: number;
-  usage: { input: number; cachedInput: number; output: number; reasoning: number };
+  usage: { input: number; cachedInput: number; cacheWrite: number; output: number; reasoning: number };
   costUsd: number;
   error?: string;
 }
@@ -31,16 +31,16 @@ export interface ClassifierSpec {
   provider: 'typesafe' | 'openai';
   model: string;
   reasoningEffort?: 'none' | 'low';
-  /** $ per token. Sources and dates: results/v2/PRICING.md */
-  price: { input: number; cachedInput: number; output: number };
+  /** $ per token. Sources and dates: results/v2/PRICING.md. cacheWrite: GPT-5.6+ bills cache writes at 1.25x input. */
+  price: { input: number; cachedInput: number; cacheWrite?: number; output: number };
 }
 
 export const CLASSIFIERS: ClassifierSpec[] = [
   { key: 'jev', label: 'Jev', provider: 'typesafe', model: JEV_MODEL, price: { input: 0.042 / 1e6, cachedInput: 0.042 / 1e6, output: 0 } },
-  { key: 'luna', label: 'gpt-6-luna(推論なし)', provider: 'openai', model: 'gpt-6-luna', reasoningEffort: 'none', price: { input: 0.1 / 1e6, cachedInput: 0.01 / 1e6, output: 0.5 / 1e6 } },
-  { key: 'sol', label: 'gpt-6-sol(推論なし)', provider: 'openai', model: 'gpt-6-sol', reasoningEffort: 'none', price: { input: 2 / 1e6, cachedInput: 0.2 / 1e6, output: 10 / 1e6 } },
+  { key: 'luna', label: 'gpt-6-luna(推論なし)', provider: 'openai', model: 'gpt-6-luna', reasoningEffort: 'none', price: { input: 0.1 / 1e6, cachedInput: 0.01 / 1e6, cacheWrite: 0.125 / 1e6, output: 0.5 / 1e6 } },
+  { key: 'sol', label: 'gpt-6-sol(推論なし)', provider: 'openai', model: 'gpt-6-sol', reasoningEffort: 'none', price: { input: 2 / 1e6, cachedInput: 0.2 / 1e6, cacheWrite: 2.5 / 1e6, output: 10 / 1e6 } },
   { key: 'nano', label: 'gpt-5.4-nano(推論なし)', provider: 'openai', model: 'gpt-5.4-nano', reasoningEffort: 'none', price: { input: 0.2 / 1e6, cachedInput: 0.02 / 1e6, output: 1.25 / 1e6 } },
-  { key: 'luna_low', label: 'gpt-6-luna(推論 low・参考)', provider: 'openai', model: 'gpt-6-luna', reasoningEffort: 'low', price: { input: 0.1 / 1e6, cachedInput: 0.01 / 1e6, output: 0.5 / 1e6 } },
+  { key: 'luna_low', label: 'gpt-6-luna(推論 low・参考)', provider: 'openai', model: 'gpt-6-luna', reasoningEffort: 'low', price: { input: 0.1 / 1e6, cachedInput: 0.01 / 1e6, cacheWrite: 0.125 / 1e6, output: 0.5 / 1e6 } },
 ];
 
 const JEV_INSTRUCTIONS =
@@ -57,7 +57,7 @@ const fail = (t0: number, e: unknown): ClassifyResult => ({
   probs: null,
   model: null,
   latencyMs: performance.now() - t0,
-  usage: { input: 0, cachedInput: 0, output: 0, reasoning: 0 },
+  usage: { input: 0, cachedInput: 0, cacheWrite: 0, output: 0, reasoning: 0 },
   costUsd: 0,
   error: (e instanceof Error ? `${e.name}: ${e.message}` : String(e)).slice(0, 300),
 });
@@ -87,7 +87,7 @@ export async function classifyJev(
       probs: { ...a.probabilities },
       model: res.model,
       latencyMs,
-      usage: { input, cachedInput: 0, output: res.usage.output_tokens, reasoning: 0 },
+      usage: { input, cachedInput: 0, cacheWrite: 0, output: res.usage.output_tokens, reasoning: 0 },
       costUsd: input * spec.price.input,
     };
   } catch (e) {
@@ -125,6 +125,8 @@ export async function classifyOpenAI(
     const chosen = (JSON.parse(msg.content ?? '{}') as { prompt_id?: string }).prompt_id ?? null;
     const u = res.usage;
     const cached = u?.prompt_tokens_details?.cached_tokens ?? 0;
+    // GPT-5.6+ reports cache writes here (not yet in the SDK types)
+    const written = (u?.prompt_tokens_details as { cache_write_tokens?: number } | undefined)?.cache_write_tokens ?? 0;
     const input = u?.prompt_tokens ?? 0;
     const output = u?.completion_tokens ?? 0;
     return {
@@ -134,8 +136,12 @@ export async function classifyOpenAI(
       probs: null,
       model: res.model,
       latencyMs,
-      usage: { input, cachedInput: cached, output, reasoning: u?.completion_tokens_details?.reasoning_tokens ?? 0 },
-      costUsd: (input - cached) * spec.price.input + cached * spec.price.cachedInput + output * spec.price.output,
+      usage: { input, cachedInput: cached, cacheWrite: written, output, reasoning: u?.completion_tokens_details?.reasoning_tokens ?? 0 },
+      costUsd:
+        (input - cached - written) * spec.price.input +
+        cached * spec.price.cachedInput +
+        written * (spec.price.cacheWrite ?? spec.price.input) +
+        output * spec.price.output,
     };
   } catch (e) {
     return fail(t0, e);

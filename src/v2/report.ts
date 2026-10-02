@@ -91,7 +91,11 @@ const ms: M[] = run.configs.map((cfg) => {
       m.lat.push(r.latencyMs);
       m.cost.push(r.costUsd);
       const price = CLASSIFIERS.find((x) => x.key === cfg.classifier)?.price;
-      if (price) m.costNoCache.push(r.usage.input * price.input + r.usage.output * price.output);
+      // "every call misses the cache": the cacheable prefix is written (1.25x on GPT-5.6+), the rest billed as input
+      if (price) {
+        const prefix = r.usage.cachedInput || (r.usage as { cacheWrite?: number }).cacheWrite || 0;
+        m.costNoCache.push((r.usage.input - prefix) * price.input + prefix * (price.cacheWrite ?? price.input) + r.usage.output * price.output);
+      }
       if (r.usage.input) m.cachedShare.push(r.usage.cachedInput / r.usage.input);
       m.reasoningTok.push(r.usage.reasoning);
       if (r.confidence !== null && r.ok) m.conf.push({ c: r.confidence, ok, okL });
@@ -114,7 +118,7 @@ const G = { fine: '12候補', coarse: '6分類' } as const;
 
 // ---- main table ----
 const table = [
-  '| 構成 | 粒度 | 正解率 [95%CI] | 「これでも可」込み [95%CI] | 判定時間 p50 / p95 | 費用 / 1000回(実績) | 同(キャッシュなし換算) | 選択後のプロンプト(平均) | エラー |',
+  '| 構成 | 粒度 | 正解率 [95%CI] | 「これでも可」込み [95%CI] | 判定時間 p50 / p95 | 費用 / 1000回(実績) | 同(毎回キャッシュ切れ) | 選択後のプロンプト(平均) | エラー |',
   '|---|---|---:|---:|---:|---:|---:|---:|---:|',
   ...ms.map(
     (m) =>
@@ -199,7 +203,7 @@ writeFileSync(
           const actual = { classifier: m.classifier, label: m.label, usd: mean(m.cost) * 1000 };
           const noCache = mean(m.costNoCache) * 1000;
           return m.classifier !== 'jev' && noCache > actual.usd * 1.05
-            ? [actual, { classifier: m.classifier, label: `${m.label} キャッシュなし`, usd: noCache, faded: true }]
+            ? [actual, { classifier: m.classifier, label: `${m.label} 毎回キャッシュ切れ`, usd: noCache, faded: true }]
             : [actual];
         })
     )
@@ -272,7 +276,30 @@ ${agreeLines}
 - 候補の説明文・直前の会話・発話・指示文は同じものを渡した
 - Jev は \`state\`(会話)と choice の質問として、LLM は system に指示と候補一覧、user に会話の JSON として受け取る
 - LLM は Chat Completions、構造化出力(候補 id の enum)、\`reasoning_effort: none\`(参考の1構成だけ low)。gpt-6-sol の後継の gpt-6.1-sol は \`none\` に対応していないため使っていない
-- LLM の system(指示と候補一覧)は全件で同じなので、OpenAI 側の自動プロンプトキャッシュが効いた。入力のうちキャッシュから読まれた割合の平均: ${ms.filter((m) => m.classifier !== 'jev').map((m) => `${m.label} ${G[m.g]} ${pct(mean(m.cachedShare))}`).join('、')}。費用の表は実績(キャッシュ込み)とキャッシュなし換算の両方を載せた。Jev にはキャッシュの割引がない
+- LLM の system(指示と候補一覧)は全件で同じなので、OpenAI 側の自動プロンプトキャッシュが効いた。入力のうちキャッシュから読まれた割合の平均: ${ms.filter((m) => m.classifier !== 'jev').map((m) => `${m.label} ${G[m.g]} ${pct(mean(m.cachedShare))}`).join('、')}。Jev にはキャッシュの割引がない
+
+## キャッシュの有効期限を考えた費用
+
+OpenAI のプロンプトキャッシュは、GPT-5.6 以降では最後に使われてから30分有効で、書き込みは入力単価の1.25倍、読み出しは0.1倍(https://developers.openai.com/api/docs/guides/prompt-caching 、2026-10-02 確認)。
+費用はヒット率で決まるので、両端と、Jev と同じ費用になるヒット率を示す(12候補、1000回あたり)。
+
+| 構成 | 毎回キャッシュが効く | 毎回キャッシュ切れ(書き込み) | Jev と並ぶヒット率 |
+|---|---:|---:|---:|
+${ms
+  .filter((m) => m.classifier !== 'jev' && m.g === 'fine')
+  .map((m) => {
+    const jevCost = mean((ms.find((x) => x.classifier === 'jev' && x.g === 'fine') as M).cost) * 1000;
+    const warm = mean(m.cost) * 1000;
+    const cold = mean(m.costNoCache) * 1000;
+    const be = cold - warm > 1e-9 ? (cold - jevCost) / (cold - warm) : Number.NaN;
+    const beText = Number.isNaN(be) ? 'キャッシュされない' : be > 1 ? 'なし(常に Jev より高い)' : be < 0 ? '0%(常に Jev より安い)' : pct(be);
+    return `| ${m.label} | $${warm.toFixed(3)} | $${cold.toFixed(3)} | ${beText} |`;
+  })
+  .join('\n')}
+
+- 今回の実行では、ウォームアップで書き込みが済み、採点した100件はすべてキャッシュに当たった(呼び出し間隔は約15秒)
+- 30分の有効期限は使われるたびに延びるので、判定の呼び出しが30分に1回以上ある限り、キャッシュは切れない。ヒット率が下がるのは、呼び出しがまばらな場合や、負荷分散で別のマシンに振られた場合、候補の説明を変えた直後
+- gpt-5.4-nano は、同じプロンプトを続けて送ってもキャッシュに乗らなかった(理由は未確認)
 `;
 writeFileSync('results/v2/summary.md', md);
 console.log(table);
