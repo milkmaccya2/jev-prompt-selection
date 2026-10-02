@@ -21,7 +21,8 @@ const buildState = (context: Turn[], utterance: string) => ({
 
 async function select(req: Request, env: Env): Promise<Response> {
   if (!env.TYPESAFE_API_KEY) return json({ error: 'TYPESAFE_API_KEY が未設定です' }, 400);
-  const body = (await req.json().catch(() => ({}))) as { context?: Turn[]; utterance?: string };
+  const body = (await req.json().catch(() => ({}))) as { context?: Turn[]; utterance?: string; granularity?: string };
+  const questions = data.questions[body.granularity === 'coarse' ? 'coarse' : 'fine'];
   const utterance = (body.utterance ?? '').trim();
   if (!utterance || utterance.length > 300) return json({ error: '発話を1〜300文字で入力してください' }, 400);
   const context = (body.context ?? [])
@@ -34,14 +35,14 @@ async function select(req: Request, env: Env): Promise<Response> {
     const res = await fetch('https://api.typesafe.ai/v1/systemone', {
       method: 'POST',
       headers: { authorization: `Bearer ${env.TYPESAFE_API_KEY}`, 'content-type': 'application/json' },
-      body: JSON.stringify({ model: data.model, state: buildState(context, utterance), questions: data.questions }),
+      body: JSON.stringify({ model: data.model, state: buildState(context, utterance), questions }),
       signal: AbortSignal.timeout(15_000),
     });
     const latencyMs = Date.now() - t0;
     if (!res.ok) {
       // never echo request headers; status + short body only
       const detail = (await res.text()).slice(0, 200);
-      return json({ result: { ok: false, probs: {}, latencyMs, inputTokens: 0, error: `HTTP ${res.status}: ${detail}` } });
+      return json({ result: { ok: false, chosen: null, probs: {}, latencyMs, inputTokens: 0, error: `HTTP ${res.status}: ${detail}` } });
     }
     const r = (await res.json()) as {
       model: string;
@@ -54,14 +55,15 @@ async function select(req: Request, env: Env): Promise<Response> {
         ok: true,
         model: r.model,
         probs: a.probabilities,
-        choice: a.choice,
+        chosen: a.choice,
         confidence: a.confidence,
         latencyMs,
         inputTokens: r.usage.input_tokens,
+        costUsd: r.usage.input_tokens * 0.042e-6,
       },
     });
   } catch (e) {
-    return json({ result: { ok: false, probs: {}, latencyMs: Date.now() - t0, inputTokens: 0, error: String(e).slice(0, 200) } });
+    return json({ result: { ok: false, chosen: null, probs: {}, latencyMs: Date.now() - t0, inputTokens: 0, error: String(e).slice(0, 200) } });
   }
 }
 

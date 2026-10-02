@@ -15,7 +15,11 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p worker",
     "build:web": "tsx src/buildWebData.ts",
     "cf:dev": "npm run build:web && wrangler dev",
-    "cf:deploy": "npm run build:web && wrangler deploy"
+    "cf:deploy": "npm run build:web && wrangler deploy",
+    "v2:label": "tsx --env-file-if-exists=.env src/v2/label.ts",
+    "v2:agree": "tsx src/v2/agree.ts",
+    "v2:eval": "tsx --env-file-if-exists=.env src/v2/eval.ts",
+    "v2:report": "tsx src/v2/report.ts"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20261001.1",
@@ -26,8 +30,11 @@
     "wrangler": "^4.145.0"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.131.0",
     "@typesafe-ai/sdk": "^0.6.0",
     "gpt-tokenizer": "^4.0.0",
-    "gray-matter": "^4.0.3"
+    "gray-matter": "^4.0.3",
+    "openai": "^7.27.0",
+    "zod": "^4.6.5"
   }
 }

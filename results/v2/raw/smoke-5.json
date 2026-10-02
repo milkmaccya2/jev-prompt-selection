@@ -1,0 +1,888 @@
+{
+  "startedAt": "2026-10-02T12:49:36.554Z",
+  "data": "data/eval.v2.jsonl",
+  "env": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "node": "v24.18.0"
+  },
+  "warmup": 1,
+  "configs": [
+    {
+      "key": "jev@fine",
+      "classifier": "jev",
+      "label": "Jev",
+      "model": "jev-latest",
+      "reasoningEffort": null,
+      "granularity": "fine"
+    },
+    {
+      "key": "jev@coarse",
+      "classifier": "jev",
+      "label": "Jev",
+      "model": "jev-latest",
+      "reasoningEffort": null,
+      "granularity": "coarse"
+    },
+    {
+      "key": "nano@fine",
+      "classifier": "nano",
+      "label": "gpt-5.4-nano(推論なし)",
+      "model": "gpt-5.4-nano",
+      "reasoningEffort": "none",
+      "granularity": "fine"
+    },
+    {
+      "key": "nano@coarse",
+      "classifier": "nano",
+      "label": "gpt-5.4-nano(推論なし)",
+      "model": "gpt-5.4-nano",
+      "reasoningEffort": "none",
+      "granularity": "coarse"
+    },
+    {
+      "key": "luna@fine",
+      "classifier": "luna",
+      "label": "gpt-6-luna(推論なし)",
+      "model": "gpt-6-luna",
+      "reasoningEffort": "none",
+      "granularity": "fine"
+    },
+    {
+      "key": "luna@coarse",
+      "classifier": "luna",
+      "label": "gpt-6-luna(推論なし)",
+      "model": "gpt-6-luna",
+      "reasoningEffort": "none",
+      "granularity": "coarse"
+    },
+    {
+      "key": "sol@fine",
+      "classifier": "sol",
+      "label": "gpt-6-sol(推論なし)",
+      "model": "gpt-6-sol",
+      "reasoningEffort": "none",
+      "granularity": "fine"
+    },
+    {
+      "key": "sol@coarse",
+      "classifier": "sol",
+      "label": "gpt-6-sol(推論なし)",
+      "model": "gpt-6-sol",
+      "reasoningEffort": "none",
+      "granularity": "coarse"
+    },
+    {
+      "key": "luna_low@fine",
+      "classifier": "luna_low",
+      "label": "gpt-6-luna(推論 low・参考)",
+      "model": "gpt-6-luna",
+      "reasoningEffort": "low",
+      "granularity": "fine"
+    }
+  ],
+  "spentUsd": 0.008989958000000001,
+  "stoppedByBudget": false,
+  "cases": [
+    {
+      "id": "e001",
+      "results": {
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.6,
+          "probs": {
+            "out_of_scope": 0,
+            "query_normalization": 0.36,
+            "account_terms": 0,
+            "career_advice": 0,
+            "company_info": 0,
+            "error_handling": 0,
+            "search_conditions": 0.64,
+            "interview_prep": 0,
+            "application_docs": 0,
+            "reviews": 0,
+            "base": 0,
+            "salary_benefits": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 314.2523339999989,
+          "usage": {
+            "input": 1750,
+            "cachedInput": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.00007350000000000001
+        },
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "docs": 0,
+            "base": 0,
+            "consult": 1,
+            "out_of_scope": 0,
+            "howto": 0,
+            "info": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 151.33316700000069,
+          "usage": {
+            "input": 1719,
+            "cachedInput": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.00007219800000000002
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 686.2656669999997,
+          "usage": {
+            "input": 1200,
+            "cachedInput": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0002575
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 1043.3015410000007,
+          "usage": {
+            "input": 1167,
+            "cachedInput": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00024965
+        },
+        "luna@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 1025.071082999999,
+          "usage": {
+            "input": 1200,
+            "cachedInput": 1197,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00001927
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 1029.795082999999,
+          "usage": {
+            "input": 1167,
+            "cachedInput": 1164,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00001844
+        },
+        "sol@fine": {
+          "ok": true,
+          "chosen": "query_normalization",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-sol",
+          "latencyMs": 1121.552834,
+          "usage": {
+            "input": 1200,
+            "cachedInput": 1197,
+            "output": 15,
+            "reasoning": 0
+          },
+          "costUsd": 0.0003954
+        },
+        "sol@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-sol",
+          "latencyMs": 978.7609589999993,
+          "usage": {
+            "input": 1167,
+            "cachedInput": 1164,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.0003688000000000001
+        },
+        "luna_low@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 1806.2606670000005,
+          "usage": {
+            "input": 1200,
+            "cachedInput": 1197,
+            "output": 102,
+            "reasoning": 82
+          },
+          "costUsd": 0.00006327
+        }
+      }
+    },
+    {
+      "id": "e002",
+      "results": {
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.95,
+          "probs": {
+            "company_info": 0,
+            "interview_prep": 0,
+            "search_conditions": 0.95,
+            "application_docs": 0,
+            "query_normalization": 0.05,
+            "salary_benefits": 0,
+            "account_terms": 0,
+            "out_of_scope": 0,
+            "reviews": 0,
+            "error_handling": 0,
+            "base": 0,
+            "career_advice": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 214.5125420000004,
+          "usage": {
+            "input": 1754,
+            "cachedInput": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.00007366800000000001
+        },
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "base": 0,
+            "out_of_scope": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 218.52104099999997,
+          "usage": {
+            "input": 1723,
+            "cachedInput": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.000072366
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 642.6587500000023,
+          "usage": {
+            "input": 1203,
+            "cachedInput": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00025810000000000004
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 670.1724580000009,
+          "usage": {
+            "input": 1170,
+            "cachedInput": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00025025000000000004
+        },
+        "luna@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 1112.8157079999983,
+          "usage": {
+            "input": 1203,
+            "cachedInput": 1200,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0000193
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 707.9539169999989,
+          "usage": {
+            "input": 1170,
+            "cachedInput": 1167,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00001847
+        },
+        "sol@fine": {
+          "ok": true,
+          "chosen": "query_normalization",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-sol",
+          "latencyMs": 962.8600000000006,
+          "usage": {
+            "input": 1203,
+            "cachedInput": 1200,
+            "output": 15,
+            "reasoning": 0
+          },
+          "costUsd": 0.00039600000000000003
+        },
+        "sol@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-sol",
+          "latencyMs": 1075.8349170000001,
+          "usage": {
+            "input": 1170,
+            "cachedInput": 1167,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00036940000000000003
+        },
+        "luna_low@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 856.4152080000022,
+          "usage": {
+            "input": 1203,
+            "cachedInput": 1200,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0000193
+        }
+      }
+    },
+    {
+      "id": "e003",
+      "results": {
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.62,
+          "probs": {
+            "reviews": 0,
+            "career_advice": 0,
+            "query_normalization": 0.34,
+            "salary_benefits": 0,
+            "company_info": 0,
+            "out_of_scope": 0,
+            "search_conditions": 0.65,
+            "base": 0.01,
+            "interview_prep": 0,
+            "application_docs": 0,
+            "account_terms": 0,
+            "error_handling": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 189.5491669999974,
+          "usage": {
+            "input": 1746,
+            "cachedInput": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.00007333200000000001
+        },
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 0.99,
+          "probs": {
+            "out_of_scope": 0,
+            "info": 0,
+            "consult": 0.99,
+            "howto": 0,
+            "docs": 0,
+            "base": 0.01
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 196.99133300000176,
+          "usage": {
+            "input": 1715,
+            "cachedInput": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.00007203000000000001
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 624.4291249999987,
+          "usage": {
+            "input": 1196,
+            "cachedInput": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0002567
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 603.6581249999981,
+          "usage": {
+            "input": 1163,
+            "cachedInput": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00024885
+        },
+        "luna@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 815.9491249999992,
+          "usage": {
+            "input": 1196,
+            "cachedInput": 1193,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00001923
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 724.0823750000018,
+          "usage": {
+            "input": 1163,
+            "cachedInput": 1160,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.0000184
+        },
+        "sol@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-sol",
+          "latencyMs": 2591.9999169999974,
+          "usage": {
+            "input": 1196,
+            "cachedInput": 1193,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0003846
+        },
+        "sol@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-sol",
+          "latencyMs": 978.0771249999998,
+          "usage": {
+            "input": 1163,
+            "cachedInput": 1160,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00036800000000000005
+        },
+        "luna_low@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 751.5083750000013,
+          "usage": {
+            "input": 1196,
+            "cachedInput": 1193,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00001923
+        }
+      }
+    },
+    {
+      "id": "e004",
+      "results": {
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.8,
+          "probs": {
+            "account_terms": 0,
+            "search_conditions": 0.82,
+            "out_of_scope": 0,
+            "query_normalization": 0.18,
+            "error_handling": 0,
+            "application_docs": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "base": 0,
+            "interview_prep": 0,
+            "reviews": 0,
+            "company_info": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 214.47562499999913,
+          "usage": {
+            "input": 1810,
+            "cachedInput": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.00007602000000000001
+        },
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "info": 0,
+            "out_of_scope": 0,
+            "base": 0,
+            "docs": 0,
+            "consult": 1,
+            "howto": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 169.53933300000062,
+          "usage": {
+            "input": 1779,
+            "cachedInput": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.00007471800000000001
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "query_normalization",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 641.8630419999972,
+          "usage": {
+            "input": 1231,
+            "cachedInput": 0,
+            "output": 15,
+            "reasoning": 0
+          },
+          "costUsd": 0.00026495
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 625.9216249999954,
+          "usage": {
+            "input": 1198,
+            "cachedInput": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00025585
+        },
+        "luna@fine": {
+          "ok": true,
+          "chosen": "query_normalization",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 1044.209041999995,
+          "usage": {
+            "input": 1231,
+            "cachedInput": 1228,
+            "output": 15,
+            "reasoning": 0
+          },
+          "costUsd": 0.00002008
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 764.1601660000015,
+          "usage": {
+            "input": 1198,
+            "cachedInput": 1195,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.000018750000000000002
+        },
+        "sol@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-sol",
+          "latencyMs": 1008.3570829999953,
+          "usage": {
+            "input": 1231,
+            "cachedInput": 1228,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0003916
+        },
+        "sol@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-sol",
+          "latencyMs": 1914.6182499999995,
+          "usage": {
+            "input": 1198,
+            "cachedInput": 1195,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.000375
+        },
+        "luna_low@fine": {
+          "ok": true,
+          "chosen": "query_normalization",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 3531.0281250000044,
+          "usage": {
+            "input": 1231,
+            "cachedInput": 1228,
+            "output": 225,
+            "reasoning": 204
+          },
+          "costUsd": 0.00012508
+        }
+      }
+    },
+    {
+      "id": "e005",
+      "results": {
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 1,
+          "probs": {
+            "salary_benefits": 0,
+            "application_docs": 0,
+            "out_of_scope": 0,
+            "base": 0,
+            "interview_prep": 0,
+            "error_handling": 0,
+            "company_info": 0,
+            "career_advice": 0,
+            "query_normalization": 0,
+            "search_conditions": 1,
+            "reviews": 0,
+            "account_terms": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 219.27229200000147,
+          "usage": {
+            "input": 1745,
+            "cachedInput": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.00007329000000000001
+        },
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "howto": 0,
+            "out_of_scope": 0,
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 179.50658400000248,
+          "usage": {
+            "input": 1714,
+            "cachedInput": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.00007198800000000002
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 629.9175839999953,
+          "usage": {
+            "input": 1194,
+            "cachedInput": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00025630000000000005
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 777.3434999999954,
+          "usage": {
+            "input": 1161,
+            "cachedInput": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00024845000000000005
+        },
+        "luna@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 969.4597090000025,
+          "usage": {
+            "input": 1194,
+            "cachedInput": 1191,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00001921
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 836.4404159999976,
+          "usage": {
+            "input": 1161,
+            "cachedInput": 1158,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00001838
+        },
+        "sol@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-sol",
+          "latencyMs": 1555.953499999996,
+          "usage": {
+            "input": 1194,
+            "cachedInput": 1191,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0003842
+        },
+        "sol@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-sol",
+          "latencyMs": 973.1544580000045,
+          "usage": {
+            "input": 1161,
+            "cachedInput": 1158,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00036760000000000004
+        },
+        "luna_low@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 850.0674999999974,
+          "usage": {
+            "input": 1194,
+            "cachedInput": 1191,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00001921
+        }
+      }
+    }
+  ]
+}

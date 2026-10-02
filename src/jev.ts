@@ -74,9 +74,11 @@ export function noulQuestions(parts: Part[], lang: Lang): Questions {
 }
 
 const BASE_DESC = {
-  ja: 'どの専用の指示も不要(人格・安全・出力形式の基本ルールだけで答えられる)',
-  en: 'No topic-specific instructions needed (the base rules for persona, safety, and output format are enough)',
+  ja: '基本プロンプト(人格・安全・出力形式の基本ルールだけ)。専用の指示がなくても普通に返せる発話: あいさつ・お礼・相づち、ツールの操作だけで済む依頼(応募・お気に入り・求人の詳細や続きの表示)、安全の基本ルールで対応する相談',
+  en: 'Base prompt (only the base rules for persona, safety, and output format). For utterances that need no topic-specific instructions: greetings, thanks, acknowledgements, requests handled by tools alone (apply, save, show job details or more results), and concerns covered by the base safety rules',
 };
+
+export const baseDescription = (lang: Lang) => BASE_DESC[lang];
 
 export function choiceQuestions(parts: Part[], variant: Lang): Questions {
   const criteria: Record<string, string> = {};
