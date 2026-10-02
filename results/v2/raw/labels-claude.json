@@ -1,0 +1,1199 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "labeledAt": "2026-10-02T12:42:12.474Z",
+  "spentUsd": 2.148443999999999,
+  "stoppedByBudget": false,
+  "labels": [
+    {
+      "id": "e001",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "目的は名駅周辺の事務正社員の求人探しであり、「名駅」の言い換えは検索のための付随的な処理にすぎないため、search_conditionsを主とし、query_normalizationを可とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4614,
+        "output_tokens": 107
+      }
+    },
+    {
+      "id": "e002",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "「フルリモ」「フロントエンド」といった口語の言い換えは含まれるが、目的は求人探しなので search_conditions を主とし、言い換えに役立つ query_normalization を別解とした。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4616,
+        "output_tokens": 104
+      }
+    },
+    {
+      "id": "e003",
+      "answer": "search_conditions",
+      "acceptable": [],
+      "reason": "勤務地と職種を指定して求人を探したいという依頼で、地名・職種に言い換えが必要な口語や略称も含まれないため、求人の希望条件を扱うsearch_conditionsが適切です。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4610,
+        "output_tokens": 101
+      }
+    },
+    {
+      "id": "e004",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "直前に経理の求人を探しておりアシスタントの勤務地の質問への返答なので目的は求人条件の整理であり、「横浜あたり」という口語的な地名の言い換えは補助的に必要となる。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4688,
+        "output_tokens": 108
+      }
+    },
+    {
+      "id": "e005",
+      "answer": "search_conditions",
+      "acceptable": [],
+      "reason": "希望条件が曖昧なまま仕事を探している発話なので、条件の聞き出し・整理を担う search_conditions が該当する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4609,
+        "output_tokens": 75
+      }
+    },
+    {
+      "id": "e006",
+      "answer": "search_conditions",
+      "acceptable": [
+        "career_advice"
+      ],
+      "reason": "「楽な仕事がいい」は希望条件が曖昧なまま仕事を探している発話なので、条件の聞き出し・整理を行うsearch_conditionsが主で、向いている仕事の相談としてcareer_adviceも許容できる。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4607,
+        "output_tokens": 118
+      }
+    },
+    {
+      "id": "e007",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "ひらがな表記の職種・地名(かんごし・ふくおか)を含むが、目的は福岡の看護師求人を探すことなので求人探しのプロンプトを選び、表記の言い換えは別解とした。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4612,
+        "output_tokens": 109
+      }
+    },
+    {
+      "id": "e008",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "目的は経理の求人探しであり、「経里」という誤字の正規化は付随的な処理にすぎないため、search_conditionsを主とし、query_normalizationを別解とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4607,
+        "output_tokens": 96
+      }
+    },
+    {
+      "id": "e009",
+      "answer": "search_conditions",
+      "acceptable": [],
+      "reason": "直前の求人検索の条件に年収の下限を加えて絞り込みたいという依頼であり、希望条件の変更・絞り込みに当たるためsearch_conditionsとする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4753,
+        "output_tokens": 91
+      }
+    },
+    {
+      "id": "e010",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "直前の検索と同じ条件で残りの求人を表示するだけのツール操作で済む依頼なので、基本ルール4によりbaseとなる。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4746,
+        "output_tokens": 76
+      }
+    },
+    {
+      "id": "e011",
+      "answer": "search_conditions",
+      "acceptable": [
+        "error_handling"
+      ],
+      "reason": "検索結果が0件だったという相談で、主な目的は条件を見直して広げ、求人を見つけることなので希望条件の整理が最も効きますが、検索の不具合の可能性もあるため不具合対応も別解とします。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4612,
+        "output_tokens": 269
+      }
+    },
+    {
+      "id": "e012",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "目的は府中での倉庫バイトの求人探しなので search_conditions とし、「府中」は東京都と広島県のどちらか曖昧で言い換えが必要になりうるため query_normalization も可とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4609,
+        "output_tokens": 171
+      }
+    },
+    {
+      "id": "e013",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "「CS」という職種の略称を含むが、発話の目的は求人を探すことなので search_conditions を正解とし、略称の言い換えに必要な query_normalization も許容とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4609,
+        "output_tokens": 148
+      }
+    },
+    {
+      "id": "e014",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "介護職で週3・夜勤なしという希望条件で求人を探すのが目的であり、「多摩のほう」という曖昧な地名の言い換えは付随的な要素にとどまるため、search_conditionsを主とし、query_normalizationを許容とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4627,
+        "output_tokens": 123
+      }
+    },
+    {
+      "id": "e015",
+      "answer": "company_info",
+      "acceptable": [],
+      "reason": "特定企業「Kデジタル」がどんな会社かを知りたいという質問で、企業の基本情報を説明する company_info が該当する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4611,
+        "output_tokens": 74
+      }
+    },
+    {
+      "id": "e016",
+      "answer": "company_info",
+      "acceptable": [
+        "reviews"
+      ],
+      "reason": "直前に提示した特定企業について「大丈夫か・ブラックではないか」と安定性や働き方を尋ねており、残業時間や離職率などの公開データで説明する company_info が主で、評判や残業の実態を伝えるクチコミ紹介(reviews)も回答に役立つため。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4736,
+        "output_tokens": 394
+      }
+    },
+    {
+      "id": "e017",
+      "answer": "reviews",
+      "acceptable": [],
+      "reason": "特定企業(Mフーズ)の口コミを見たいという依頼で、社員のクチコミ紹介の指示が必要なため reviews とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4611,
+        "output_tokens": 77
+      }
+    },
+    {
+      "id": "e018",
+      "answer": "reviews",
+      "acceptable": [],
+      "reason": "直前に紹介したKデジタルについて、実際に働いている社員の声(クチコミ)を知りたがっているため、クチコミ紹介の方針を持つ reviews が該当する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4731,
+        "output_tokens": 90
+      }
+    },
+    {
+      "id": "e019",
+      "answer": "reviews",
+      "acceptable": [
+        "salary_benefits"
+      ],
+      "reason": "特定企業の評判(クチコミ)を主に尋ねており、年収についても聞いているため、主目的を reviews とし、待遇面の salary_benefits も許容とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4615,
+        "output_tokens": 215
+      }
+    },
+    {
+      "id": "e020",
+      "answer": "company_info",
+      "acceptable": [
+        "reviews"
+      ],
+      "reason": "特定企業(Nホーム)の残業の多さを尋ねる発話で、平均残業時間などの公開データで答えられるため company_info を主とし、社員の声による「残業の実態」として答える reviews も別解とした。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4608,
+        "output_tokens": 452
+      }
+    },
+    {
+      "id": "e021",
+      "answer": "salary_benefits",
+      "acceptable": [
+        "base"
+      ],
+      "reason": "直前に提示した求人の月給の内訳(基本給・手当・固定残業代など)を尋ねており、求人詳細の取得だけでも答えられますが、求人票の給与欄の読み方の指示が回答の質に最も効くため salary_benefits を選びました。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4732,
+        "output_tokens": 286
+      }
+    },
+    {
+      "id": "e022",
+      "answer": "salary_benefits",
+      "acceptable": [],
+      "reason": "固定残業という待遇・求人票の用語について聞いており、給与・待遇の相談と求人票の読み方を扱うプロンプトが該当するため。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4607,
+        "output_tokens": 82
+      }
+    },
+    {
+      "id": "e023",
+      "answer": "salary_benefits",
+      "acceptable": [],
+      "reason": "月給25万円の場合の手取り額を尋ねており、給与・手取りの相談なので salary_benefits が該当する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4617,
+        "output_tokens": 71
+      }
+    },
+    {
+      "id": "e024",
+      "answer": "salary_benefits",
+      "acceptable": [],
+      "reason": "福岡で経理経験5年の年収相場を尋ねており、求人探しではなく給与の相場に関する相談なのでsalary_benefitsが適切です。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4619,
+        "output_tokens": 84
+      }
+    },
+    {
+      "id": "e025",
+      "answer": "salary_benefits",
+      "acceptable": [],
+      "reason": "休日制度の表記の違いという求人票の読み方・待遇に関する質問なので、給与・休日・求人票の読み方を扱うsalary_benefitsが該当する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4614,
+        "output_tokens": 89
+      }
+    },
+    {
+      "id": "e026",
+      "answer": "salary_benefits",
+      "acceptable": [
+        "career_advice"
+      ],
+      "reason": "内定後の年収交渉の可否という待遇・年収交渉の相談なので salary_benefits が主で、転職判断の文脈として career_advice も許容できる。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4619,
+        "output_tokens": 90
+      }
+    },
+    {
+      "id": "e027",
+      "answer": "salary_benefits",
+      "acceptable": [
+        "career_advice"
+      ],
+      "reason": "東京で未経験のITエンジニアの給与相場を尋ねており、主な目的は相場という待遇の情報なのでsalary_benefitsとし、未経験転職の観点を含むためcareer_adviceも可とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4622,
+        "output_tokens": 111
+      }
+    },
+    {
+      "id": "e028",
+      "answer": "career_advice",
+      "acceptable": [],
+      "reason": "今の仕事を辞めたいが転職すべきか迷っているという転職の迷いの相談であり、キャリア相談の指示が最も回答に効くため。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4618,
+        "output_tokens": 81
+      }
+    },
+    {
+      "id": "e029",
+      "answer": "career_advice",
+      "acceptable": [],
+      "reason": "向いている仕事が分からないという相談は、基準書でキャリア相談(career_advice)の対象として明示されているためです。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4612,
+        "output_tokens": 69
+      }
+    },
+    {
+      "id": "e030",
+      "answer": "career_advice",
+      "acceptable": [],
+      "reason": "38歳という年齢の不安と未経験職種への転職可否を相談しており、キャリア相談の指示が最も回答の質に効くため。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4615,
+        "output_tokens": 75
+      }
+    },
+    {
+      "id": "e031",
+      "answer": "career_advice",
+      "acceptable": [],
+      "reason": "2年のブランクがあることへの不安を相談しており、ブランクはキャリア相談の対象として明示されているためcareer_adviceが適切です。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4617,
+        "output_tokens": 78
+      }
+    },
+    {
+      "id": "e032",
+      "answer": "application_docs",
+      "acceptable": [
+        "career_advice"
+      ],
+      "reason": "直前の会話から目的は自己PRの作成であり、強みが思いつかないという発話はその作成過程での相談なので application_docs が主で、強みの整理として career_advice も回答に役立つ。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4708,
+        "output_tokens": 168
+      }
+    },
+    {
+      "id": "e033",
+      "answer": "application_docs",
+      "acceptable": [],
+      "reason": "職務経歴書の書き方を尋ねる発話で、応募書類の作成・添削に関する指示が回答に必要なため。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4611,
+        "output_tokens": 71
+      }
+    },
+    {
+      "id": "e034",
+      "answer": "application_docs",
+      "acceptable": [],
+      "reason": "ユーザーは自分で書いた志望動機の添削を求めており、応募書類の作成・添削を担うapplication_docsが該当する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4636,
+        "output_tokens": 75
+      }
+    },
+    {
+      "id": "e035",
+      "answer": "application_docs",
+      "acceptable": [],
+      "reason": "短期間で辞めた職歴を履歴書に記載すべきかという、応募書類の書き方そのものについての相談であるため application_docs が適切です。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4623,
+        "output_tokens": 208
+      }
+    },
+    {
+      "id": "e036",
+      "answer": "application_docs",
+      "acceptable": [],
+      "reason": "5社分の職歴を職務経歴書にどうまとめるかという応募書類の作成相談であり、application_docsの指示が回答に最も効くため。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4623,
+        "output_tokens": 79
+      }
+    },
+    {
+      "id": "e037",
+      "answer": "interview_prep",
+      "acceptable": [],
+      "reason": "翌日の面接で想定される質問を知りたいという面接対策の相談であり、他分野にまたがらないためinterview_prepのみが該当する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4614,
+        "output_tokens": 79
+      }
+    },
+    {
+      "id": "e038",
+      "answer": "interview_prep",
+      "acceptable": [],
+      "reason": "営業職を想定した模擬面接の依頼であり、面接対策の指示が回答に最も必要なため。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4613,
+        "output_tokens": 65
+      }
+    },
+    {
+      "id": "e039",
+      "answer": "interview_prep",
+      "acceptable": [],
+      "reason": "面接での逆質問の内容について相談しており、面接対策の指示が最も回答に効くためinterview_prepとする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4611,
+        "output_tokens": 69
+      }
+    },
+    {
+      "id": "e040",
+      "answer": "interview_prep",
+      "acceptable": [
+        "salary_benefits"
+      ],
+      "reason": "面接での答え方を尋ねる面接対策が主目的であり、希望年収という給与の観点も回答に必要なため salary_benefits も許容する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4620,
+        "output_tokens": 87
+      }
+    },
+    {
+      "id": "e041",
+      "answer": "interview_prep",
+      "acceptable": [],
+      "reason": "Web面接の背景という面接当日の準備・マナーに関する相談なので面接対策のプロンプトが適切です。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4609,
+        "output_tokens": 69
+      }
+    },
+    {
+      "id": "e042",
+      "answer": "interview_prep",
+      "acceptable": [],
+      "reason": "面接で家族のことを聞かれたのは普通かという、面接での質問とその受け止め方・答え方に関する相談なので面接対策が最も適しています。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4621,
+        "output_tokens": 217
+      }
+    },
+    {
+      "id": "e043",
+      "answer": "account_terms",
+      "acceptable": [
+        "error_handling"
+      ],
+      "reason": "「ログインできない」はアカウント・ログインの案内が主な目的であり、画面の不具合の可能性もあるため、不具合対応も間違いではない。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4603,
+        "output_tokens": 190
+      }
+    },
+    {
+      "id": "e044",
+      "answer": "account_terms",
+      "acceptable": [],
+      "reason": "パスワードを忘れたというログイン・アカウント関連の相談であり、パスワード再設定の案内が必要なため account_terms を選ぶ。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4606,
+        "output_tokens": 79
+      }
+    },
+    {
+      "id": "e045",
+      "answer": "account_terms",
+      "acceptable": [],
+      "reason": "スカウトメールの通知停止は通知設定の案内に該当するため account_terms を選ぶ。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4612,
+        "output_tokens": 62
+      }
+    },
+    {
+      "id": "e046",
+      "answer": "account_terms",
+      "acceptable": [],
+      "reason": "退会の手続きを知りたいという発話で、ログイン・登録・退会・規約の案内を担当するaccount_termsが該当する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4602,
+        "output_tokens": 74
+      }
+    },
+    {
+      "id": "e047",
+      "answer": "account_terms",
+      "acceptable": [
+        "error_handling"
+      ],
+      "reason": "ログインできないという相談はログイン案内の分野が主な目的ですが、エラーの報告も含むため不具合対応のプロンプトも別解になります。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4611,
+        "output_tokens": 344
+      }
+    },
+    {
+      "id": "e048",
+      "answer": "error_handling",
+      "acceptable": [],
+      "reason": "応募ボタンを押しても反応しないという画面の不具合の報告なので、不具合への対応を担当するerror_handlingを選ぶ。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4611,
+        "output_tokens": 77
+      }
+    },
+    {
+      "id": "e049",
+      "answer": "error_handling",
+      "acceptable": [],
+      "reason": "応募ボタンを押した後に画面が固まったという不具合の報告であり、応募状況の確認も不具合対応の一部として扱えるため error_handling が最適。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4619,
+        "output_tokens": 84
+      }
+    },
+    {
+      "id": "e050",
+      "answer": "error_handling",
+      "acceptable": [],
+      "reason": "検索結果ページが真っ白で表示されないという画面の不具合の報告なので、不具合対応の指示を持つerror_handlingを選ぶ。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4609,
+        "output_tokens": 80
+      }
+    },
+    {
+      "id": "e051",
+      "answer": "error_handling",
+      "acceptable": [
+        "base"
+      ],
+      "reason": "直前の求人詳細の取得が失敗しており、その再実行の依頼なので、再度失敗した場合の対応も含めて不具合対応の指示が最も回答の質に効くが、ツール操作だけで済む依頼とも読めるため base も許容する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4720,
+        "output_tokens": 295
+      }
+    },
+    {
+      "id": "e052",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "直前に提示された求人への応募はツール操作だけで済む依頼なので、基本ルールに従いbaseとなる。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4726,
+        "output_tokens": 66
+      }
+    },
+    {
+      "id": "e053",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "直前に紹介した求人の2件目をお気に入りに保存するというツール操作だけで済む依頼なので、基準の基本ルール4に従いbaseとする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4752,
+        "output_tokens": 81
+      }
+    },
+    {
+      "id": "e054",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "応募した求人の選考結果を知りたいという依頼で、応募状況の確認ツールを使うだけで答えられるため、分野の指示が要らない base とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4610,
+        "output_tokens": 147
+      }
+    },
+    {
+      "id": "e055",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "応募の取り消しは応募・応募状況の確認といったツール操作の範囲で対応できる依頼で、分野専用の指示がなくても普通に返せるためbaseとします。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4610,
+        "output_tokens": 329
+      }
+    },
+    {
+      "id": "e056",
+      "answer": "application_docs",
+      "acceptable": [],
+      "reason": "直前に応募メッセージを添えるか尋ねられ、「なんか書いて」と応募メッセージの作成を依頼しているので、応募書類の作成・添削のプロンプトが最も効く。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4700,
+        "output_tokens": 180
+      }
+    },
+    {
+      "id": "e057",
+      "answer": "out_of_scope",
+      "acceptable": [],
+      "reason": "晩ごはんの相談は求人・キャリアと無関係な質問であり、答えずに本来の相談に戻す必要があるため out_of_scope とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4612,
+        "output_tokens": 83
+      }
+    },
+    {
+      "id": "e058",
+      "answer": "out_of_scope",
+      "acceptable": [],
+      "reason": "求人やキャリアと関係のないプログラミングのコード作成依頼であり、断って本来の求人相談に戻す必要があるため。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4615,
+        "output_tokens": 76
+      }
+    },
+    {
+      "id": "e059",
+      "answer": "out_of_scope",
+      "acceptable": [],
+      "reason": "プロンプトの開示要求は断る必要がある依頼なので、基準書の境目どおりout_of_scopeとなる。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4608,
+        "output_tokens": 72
+      }
+    },
+    {
+      "id": "e060",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "直前の会話がない単純なあいさつで、断る必要もなく基本ルールだけで普通にあいさつを返せるため、v2基準に従いbaseとする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4603,
+        "output_tokens": 81
+      }
+    },
+    {
+      "id": "e061",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "求人紹介に対するお礼の発話であり、v2基準ではお礼は専用の指示なしで普通に返せるため base とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4748,
+        "output_tokens": 70
+      }
+    },
+    {
+      "id": "e062",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "仕事のストレスによる不眠という心身の不調の訴えであり、基準書では安全の基本ルールが担当するため専用の指示が要らない base とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4612,
+        "output_tokens": 237
+      }
+    },
+    {
+      "id": "e063",
+      "answer": "search_conditions",
+      "acceptable": [],
+      "reason": "Pythonという語が含まれていても目的はスキルを活かせる求人探しであり、基準書の「範囲外に見えて求人の相談」に該当するため求人条件の整理を担うsearch_conditionsを選ぶ。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4613,
+        "output_tokens": 107
+      }
+    },
+    {
+      "id": "e064",
+      "answer": "out_of_scope",
+      "acceptable": [],
+      "reason": "「バレずに稼ぐ副業」は基準書で脱法・不適切な依頼の例として挙げられており、断る必要があるため out_of_scope とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4616,
+        "output_tokens": 84
+      }
+    },
+    {
+      "id": "e065",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "荷物を受け取るだけで日給3万円という闇バイトが疑われる危険なバイトの相談であり、基準書ではこうした相談は安全の基本ルールが担当するため base とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4622,
+        "output_tokens": 264
+      }
+    },
+    {
+      "id": "e066",
+      "answer": "out_of_scope",
+      "acceptable": [],
+      "reason": "恋人へのなりきりはロールプレイ・人格変更の要求であり、断って本来の求人相談に戻す必要があるため out_of_scope とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4607,
+        "output_tokens": 83
+      }
+    },
+    {
+      "id": "e067",
+      "answer": "out_of_scope",
+      "acceptable": [],
+      "reason": "他社の求人サービスとの比較を求める発話であり、基準書では範囲外の部品に「他社サービスについては答えない」指示があるため out_of_scope とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4616,
+        "output_tokens": 87
+      }
+    },
+    {
+      "id": "e068",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "天気の雑談は混じっていますが、主な目的は関西での事務の求人探しなので search_conditions とし、雑談部分は断る必要がないため out_of_scope は付けず、「関西」を府県名に直す言い換えのみ acceptable としました。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4627,
+        "output_tokens": 276
+      }
+    },
+    {
+      "id": "e069",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "「ちょっと考えます」は直前の求人紹介に対する保留の相づちであり、専用の指示がなくても基本ルールだけで自然に返せるためbaseとする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4751,
+        "output_tokens": 85
+      }
+    },
+    {
+      "id": "e070",
+      "answer": "base",
+      "acceptable": [
+        "search_conditions"
+      ],
+      "reason": "「はい」は直前に確認した条件(営業職・大阪市内・正社員)で検索してよいかへの返事で、あとは求人検索ツールを実行するだけで済むため基本プロンプトで足ります。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4698,
+        "output_tokens": 228
+      }
+    },
+    {
+      "id": "e071",
+      "answer": "search_conditions",
+      "acceptable": [],
+      "reason": "直前のアシスタントの雇用形態の問いかけに「派遣で」と答えて求人探しの希望条件を追加しているため、条件の聞き出し・整理を担う search_conditions を選ぶ。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4700,
+        "output_tokens": 100
+      }
+    },
+    {
+      "id": "e072",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "職種・年収・勤務地・転勤なしという希望条件を並べて求人を探す発話で、目的は求人探しのため search_conditions とし、SE・23区といった略称の言い換えは query_normalization を許容とした。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4615,
+        "output_tokens": 111
+      }
+    },
+    {
+      "id": "e073",
+      "answer": "search_conditions",
+      "acceptable": [
+        "career_advice",
+        "query_normalization"
+      ],
+      "reason": "インフラ経験を活かしたクラウド系への転職について触れているものの、主な目的は「どんな求人ある?」という求人探しなので search_conditions とし、キャリアの方向転換の相談要素と「クラウド系」などの口語を職種名に直す要素は別解とした。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4627,
+        "output_tokens": 287
+      }
+    },
+    {
+      "id": "e074",
+      "answer": "salary_benefits",
+      "acceptable": [
+        "career_advice"
+      ],
+      "reason": "保育士という職種の給与水準(相場)の低さについての疑問であり、給与・相場を扱う salary_benefits が主な目的に対応し、不満からキャリアの迷いに発展する可能性があるため career_advice も許容する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4615,
+        "output_tokens": 115
+      }
+    },
+    {
+      "id": "e075",
+      "answer": "base",
+      "acceptable": [
+        "career_advice"
+      ],
+      "reason": "直前に示した特定求人の応募資格(未経験可否)を尋ねており、求人詳細ツールで確認すれば答えられるので基本ルールだけで対応できるが、未経験からの挑戦という相談の面もあるため career_advice も許容する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4730,
+        "output_tokens": 276
+      }
+    },
+    {
+      "id": "e076",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "直前に提示された求人について面接回数を尋ねており、求人詳細ツールを見れば答えられるツール操作だけで済む依頼なので基準のルール4によりbaseとなる。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4726,
+        "output_tokens": 89
+      }
+    },
+    {
+      "id": "e077",
+      "answer": "base",
+      "acceptable": [],
+      "reason": "直前に提示された求人の応募締切を尋ねており、求人詳細ツールを見れば答えられるツール操作だけで済む依頼なのでbaseとする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4728,
+        "output_tokens": 81
+      }
+    },
+    {
+      "id": "e078",
+      "answer": "base",
+      "acceptable": [
+        "search_conditions"
+      ],
+      "reason": "直前に表示したKデジタルの他の求人を見たいという依頼で、企業名で求人検索するツール操作だけで済み、条件の聞き出しは要らないため base とし、求人探しとして search_conditions も許容する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4730,
+        "output_tokens": 254
+      }
+    },
+    {
+      "id": "e079",
+      "answer": "reviews",
+      "acceptable": [
+        "interview_prep"
+      ],
+      "reason": "特定企業の面接の様子を口コミで知りたいという発話なのでクチコミ紹介の指示が主となり、面接対策にもつながるため interview_prep も別解とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4621,
+        "output_tokens": 198
+      }
+    },
+    {
+      "id": "e080",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "時短勤務・さいたま新都心付近という希望条件で求人を探す発話なので主目的は求人探しであり、駅名の検索用への言い換えは補助として許容する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4623,
+        "output_tokens": 95
+      }
+    },
+    {
+      "id": "e081",
+      "answer": "search_conditions",
+      "acceptable": [
+        "salary_benefits"
+      ],
+      "reason": "大型免許を活かして稼げるドライバーの求人を探したいという求人探しが主目的であり、高収入という希望条件の整理が中心となるため search_conditions とし、稼ぎ(年収相場)の観点から salary_benefits も可とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4618,
+        "output_tokens": 122
+      }
+    },
+    {
+      "id": "e082",
+      "answer": "search_conditions",
+      "acceptable": [],
+      "reason": "飛び込み営業を除いた営業職の求人を探したいという希望条件の提示なので、求人の条件整理を担うsearch_conditionsが適切。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4614,
+        "output_tokens": 82
+      }
+    },
+    {
+      "id": "e083",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "「うんちゃん」は運転手を指す口語ですが、発話の目的は求人探しなので search_conditions を主とし、職種名の言い換えに使う query_normalization も可とします。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4611,
+        "output_tokens": 143
+      }
+    },
+    {
+      "id": "e084",
+      "answer": "career_advice",
+      "acceptable": [
+        "salary_benefits"
+      ],
+      "reason": "年収アップを理由に転職すべきか迷っている相談が主な目的なのでキャリア相談とし、年収の相場の説明も必要になるため給与・待遇も別解とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4616,
+        "output_tokens": 347
+      }
+    },
+    {
+      "id": "e085",
+      "answer": "application_docs",
+      "acceptable": [
+        "interview_prep"
+      ],
+      "reason": "履歴書と面接のどちらから準備するかという選考準備の進め方の相談で、通常は書類選考が先に来るため応募書類を主とし、面接対策も回答に関わるので別解とした。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4617,
+        "output_tokens": 207
+      }
+    },
+    {
+      "id": "e086",
+      "answer": "company_info",
+      "acceptable": [
+        "reviews"
+      ],
+      "reason": "スカウトを受けた特定企業「Tロジ」がどんな会社かを知りたいという企業情報の質問であり、雰囲気を含めて答える場合はクチコミも参考になり得る。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4626,
+        "output_tokens": 98
+      }
+    },
+    {
+      "id": "e087",
+      "answer": "error_handling",
+      "acceptable": [
+        "application_docs"
+      ],
+      "reason": "応募しようとして「Web履歴書が埋まっていない」という表示が出て応募できないという画面上の報告が中心のため不具合対応を主とし、Web履歴書の中身を埋める支援として応募書類の作成も間違いではない。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4620,
+        "output_tokens": 328
+      }
+    },
+    {
+      "id": "e088",
+      "answer": "account_terms",
+      "acceptable": [],
+      "reason": "サービスの利用料金について聞いており、料金・規約の案内を担う account_terms が該当するため。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4608,
+        "output_tokens": 62
+      }
+    },
+    {
+      "id": "e089",
+      "answer": "account_terms",
+      "acceptable": [],
+      "reason": "応募先企業に自分の個人情報がどこまで開示されるかという、サービス上の個人情報の扱いに関する質問なので account_terms を選ぶ。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4616,
+        "output_tokens": 156
+      }
+    },
+    {
+      "id": "e090",
+      "answer": "career_advice",
+      "acceptable": [
+        "search_conditions",
+        "reviews"
+      ],
+      "reason": "ハラスメントを理由に辞めたいという転職の相談が中心で、まずキャリア相談として受け止めるのが適切です。ただ、次の職場の希望条件(人間関係の良さ)を整理する求人探しや、人間関係の実態をクチコミで確かめる要素も含まれています。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4624,
+        "output_tokens": 668
+      }
+    },
+    {
+      "id": "e091",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "テスト期間に休める天神周辺のバイトを探すという求人探しが目的であり、「天神らへん」という地名の口語の言い換えは目的そのものではないため、search_conditionsを正解とし、query_normalizationも可とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4619,
+        "output_tokens": 116
+      }
+    },
+    {
+      "id": "e092",
+      "answer": "reviews",
+      "acceptable": [
+        "out_of_scope"
+      ],
+      "reason": "クチコミ投稿の相談なので reviews が主で、上司個人への悪口は投稿ルールに沿った書き方へ導く必要があり、不適切な依頼として断る out_of_scope も誤りではない。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4618,
+        "output_tokens": 356
+      }
+    },
+    {
+      "id": "e093",
+      "answer": "salary_benefits",
+      "acceptable": [
+        "base"
+      ],
+      "reason": "直前に提示された求人のうち2件の給与を比べる依頼で、求人詳細ツールで情報は取れるものの、固定残業や賞与を含めた求人票の読み方の指示が回答の質に最も効くため salary_benefits を主とし、ツール操作で済むとみなす base も可とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4752,
+        "output_tokens": 252
+      }
+    },
+    {
+      "id": "e094",
+      "answer": "search_conditions",
+      "acceptable": [
+        "query_normalization"
+      ],
+      "reason": "「看語師」は看護師の誤字だが、発話の目的は夜勤なしの看護師求人を探すことなので求人探しが主で、誤字の言い換えは別解とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4610,
+        "output_tokens": 96
+      }
+    },
+    {
+      "id": "e095",
+      "answer": "salary_benefits",
+      "acceptable": [],
+      "reason": "東京でのWebデザイナーの年収の相場を尋ねる発話であり、目的は給与相場の情報提供のため salary_benefits が最適です。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4618,
+        "output_tokens": 82
+      }
+    },
+    {
+      "id": "e096",
+      "answer": "salary_benefits",
+      "acceptable": [],
+      "reason": "提示された求人の給与が相場と比べて高いかを聞いており、給与・相場の相談に当たるため salary_benefits を選ぶ。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4731,
+        "output_tokens": 79
+      }
+    },
+    {
+      "id": "e097",
+      "answer": "salary_benefits",
+      "acceptable": [
+        "search_conditions"
+      ],
+      "reason": "大阪の介護パートの時給相場という待遇の相場を知りたい発話なので salary_benefits が主で、求人検索で相場を示す可能性から search_conditions も許容する。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4617,
+        "output_tokens": 98
+      }
+    },
+    {
+      "id": "e098",
+      "answer": "company_info",
+      "acceptable": [
+        "search_conditions"
+      ],
+      "reason": "主な目的は「Tロジ」がどんな会社かを知ることなので company_info とし、ドライバー求人の有無を確かめる部分は求人探しにあたるため search_conditions も可とする。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4618,
+        "output_tokens": 247
+      }
+    },
+    {
+      "id": "e099",
+      "answer": "company_info",
+      "acceptable": [],
+      "reason": "特定の2社の安定性を比較したいという、企業の事業・規模・安定性に関する質問なので company_info を選ぶ。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4618,
+        "output_tokens": 71
+      }
+    },
+    {
+      "id": "e100",
+      "answer": "company_info",
+      "acceptable": [
+        "interview_prep"
+      ],
+      "reason": "面接準備が背景にあるものの、発話の目的は特定企業(Sメディカル)の事業内容を知ることなので company_info を主とし、面接対策の観点も役立つため interview_prep も可とした。",
+      "stop_reason": "end_turn",
+      "usage": {
+        "input_tokens": 4629,
+        "output_tokens": 211
+      }
+    }
+  ]
+}

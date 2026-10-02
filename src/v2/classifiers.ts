@@ -39,6 +39,7 @@ export const CLASSIFIERS: ClassifierSpec[] = [
   { key: 'jev', label: 'Jev', provider: 'typesafe', model: JEV_MODEL, price: { input: 0.042 / 1e6, cachedInput: 0.042 / 1e6, output: 0 } },
   { key: 'luna', label: 'gpt-6-luna(推論なし)', provider: 'openai', model: 'gpt-6-luna', reasoningEffort: 'none', price: { input: 0.1 / 1e6, cachedInput: 0.01 / 1e6, output: 0.5 / 1e6 } },
   { key: 'sol', label: 'gpt-6-sol(推論なし)', provider: 'openai', model: 'gpt-6-sol', reasoningEffort: 'none', price: { input: 2 / 1e6, cachedInput: 0.2 / 1e6, output: 10 / 1e6 } },
+  { key: 'nano', label: 'gpt-5.4-nano(推論なし)', provider: 'openai', model: 'gpt-5.4-nano', reasoningEffort: 'none', price: { input: 0.2 / 1e6, cachedInput: 0.02 / 1e6, output: 1.25 / 1e6 } },
   { key: 'luna_low', label: 'gpt-6-luna(推論 low・参考)', provider: 'openai', model: 'gpt-6-luna', reasoningEffort: 'low', price: { input: 0.1 / 1e6, cachedInput: 0.01 / 1e6, output: 0.5 / 1e6 } },
 ];
 

@@ -16,6 +16,7 @@
 - **gpt-6-luna**: 「focused, high-volume tasks 向けの最も効率的なモデル」と説明されている。reasoning effort は none / low / medium(既定)/ high / xhigh / max。**既定が medium なので `none` を明示して呼ぶ**。Structured Outputs に対応。キャッシュ書き込みは $0.125 / 1M。
 - **gpt-6-sol**: 「複雑なコーディングとエージェント向け」と説明されている。reasoning effort は luna と同じ(既定 medium、`none` 可)。Structured Outputs に対応。**対応エンドポイントは Chat Completions と Batch のみ**(Responses 非対応)なので、luna・sol とも Chat Completions で呼ぶ。キャッシュ書き込みは $2.50 / 1M。
 - **gpt-6.1-sol**: 新しい Sol だが **`none` に対応していない**ため、「推論なし」で比べる条件を満たせず不採用。
-- 当初の依頼は gpt-5.4-nano と上位モデルだったが、相談のうえ GPT-6 の luna(軽量)と sol(上位)に変更した。
+- **gpt-5.4-nano**: reasoning effort は none(既定)/ low / medium / high / xhigh。Structured Outputs に対応。Chat Completions で呼ぶ。
+- 比較相手は gpt-5.4-nano(当初の依頼)に、GPT-6 の luna(軽量)と sol(上位)を加えた3モデル。
 - **Claude Opus 5.5**: thinking は無効にできない(effort で深さを調整する)。費用はラベル付け100件分のみ。
 - いずれも Standard(通常)料金。Batch 料金は使わない(判定時間を測るため)。

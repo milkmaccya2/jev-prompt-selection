@@ -16,7 +16,7 @@ const { values: args } = parseArgs({
   options: {
     data: { type: 'string', default: 'data/eval.v2.jsonl' },
     limit: { type: 'string' },
-    classifiers: { type: 'string', default: 'jev,luna,sol,luna_low' },
+    classifiers: { type: 'string', default: 'jev,nano,luna,sol,luna_low' },
     granularity: { type: 'string', default: 'fine,coarse' },
     warmup: { type: 'string', default: '3' },
     'budget-usd': { type: 'string', default: '3' },

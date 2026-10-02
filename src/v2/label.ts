@@ -47,7 +47,9 @@ ${readFileSync('data/LABELING.v2.md', 'utf8')}`;
 let cases = loadEval();
 if (args.limit) cases = cases.slice(0, Number(args.limit));
 
-const client = new Anthropic();
+// Keys that are not scoped to a workspace must name one (API error: "must include the anthropic-workspace-id header").
+const workspaceId = process.env.ANTHROPIC_WORKSPACE_ID;
+const client = new Anthropic(workspaceId ? { defaultHeaders: { 'anthropic-workspace-id': workspaceId } } : {});
 const budget = Number(args['budget-usd']);
 let spent = 0;
 let stopped = false;
