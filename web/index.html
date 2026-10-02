@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>部品選択ビューア</title>
+<title>プロンプト選択ビューア</title>
 <style>
 :root {
   color-scheme: light;
@@ -89,15 +89,22 @@ tr.case:hover { background: var(--extra-bg); }
 .hidden { display: none; }
 .choice { font-size: 14px; }
 .table-wrap { overflow-x: auto; }
+.overview td, .overview th { white-space: nowrap; }
+.overview tr.sel td { background: var(--accent-soft); }
+.overview tr { cursor: pointer; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg button { font: inherit; font-size: 14px; border: 0; background: var(--bg); color: var(--text2); padding: 6px 12px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.num { text-align: right; font-variant-numeric: tabular-nums; }
 </style>
 </head>
 <body>
 <main>
   <h1>プロンプト選択ビューア</h1>
-  <p class="sub">求人相談AI(架空のサービス「ハタラクラフト」)で、Jev が発話ごとにシステムプロンプトを1つ選んだ結果を見ます。候補は専用プロンプト11個と基本プロンプトの12個です。</p>
+  <p class="sub">求人相談AI(架空のサービス「ハタラクラフト」)で、発話ごとにシステムプロンプトを1つ選びます。Jev と LLM 分類器(gpt-5.4-nano / gpt-6-luna / gpt-6-sol)を、12候補と6分類で比べた結果を見られます。</p>
   <div class="tabs" role="tablist">
-    <button role="tab" aria-selected="true" data-tab="try">試す</button>
-    <button role="tab" aria-selected="false" data-tab="eval">評価結果(100件)</button>
+    <button role="tab" aria-selected="true" data-tab="try">試す(Jev)</button>
+    <button role="tab" aria-selected="false" data-tab="eval">比較(100件)</button>
   </div>
 
   <section id="tab-try">
@@ -109,6 +116,7 @@ tr.case:hover { background: var(--extra-bg); }
       <div style="margin-top:12px"><label for="utt">今回のユーザー発話</label>
         <input id="utt" type="text" placeholder="例: 名駅あたりで事務の正社員ない?"></div>
       <div style="margin-top:12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap">
+        <div class="seg" id="t-gran"><button data-g="fine" aria-pressed="true">12候補</button><button data-g="coarse" aria-pressed="false">6分類</button></div>
         <button class="btn" id="run">Jev で判定</button>
         <span class="meta" id="budget"></span>
       </div>
@@ -123,122 +131,144 @@ tr.case:hover { background: var(--extra-bg); }
 
   <section id="tab-eval" class="hidden">
     <div class="panel">
+      <div class="table-wrap"><table class="overview">
+        <thead><tr><th>構成</th><th>粒度</th><th class="num">正解率 [95%CI]</th><th class="num">これでも可込み</th><th class="num">判定時間 p50 / p95</th><th class="num">費用 / 1000回</th></tr></thead>
+        <tbody id="o-rows"></tbody>
+      </table></div>
+      <p class="meta" id="e-run"></p>
+    </div>
+    <div class="panel">
       <div class="controls">
+        <div><label for="e-cfg">構成</label><select id="e-cfg"></select></div>
         <div><label for="e-tag">タグ</label><select id="e-tag"><option value="">すべて</option></select></div>
         <div><label><input type="checkbox" id="e-wrong"> 間違いのみ</label></div>
       </div>
-      <div class="stats" id="e-stats"></div>
-      <p class="meta" id="e-run"></p>
+      <div class="legend">
+        <span><span class="chip hit">✓ 正解</span></span>
+        <span><span class="chip ok2">✓ これでも可</span></span>
+        <span><span class="chip miss">✗ 間違い</span></span>
+        <span>Jev の行はクリックすると候補ごとの確率を表示</span>
+      </div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>id</th><th>発話</th><th>正解</th><th>選んだもの</th><th class="num">確信度</th><th class="num">時間</th></tr></thead>
+        <tbody id="e-rows"></tbody>
+      </table></div>
     </div>
-    <div class="legend">
-      <span><span class="chip hit">✓ 正解</span></span>
-      <span><span class="chip ok2">✓ これでも可</span></span>
-      <span><span class="chip miss">✗ 間違い</span></span>
-      <span>行をクリックすると各候補の確率を表示</span>
-    </div>
-    <div class="table-wrap"><table>
-      <thead><tr><th>id</th><th>発話</th><th>正解</th><th>Jev が選んだ</th><th>確信度</th></tr></thead>
-      <tbody id="e-rows"></tbody>
-    </table></div>
   </section>
 </main>
 <script>
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-const pct = (v) => (v == null ? '-' : `${(v * 100).toFixed(1)}%`);
+const pct = (v) => (v == null ? '-' : `${Math.round(v * 100)}%`);
+const sec = (ms) => (ms == null ? '-' : ms >= 1000 ? `${(ms / 1000).toFixed(2)}秒` : `${Math.round(ms)}ms`);
 const BASE = 'base';
 const LABEL = {
-  search_conditions: '検索条件の聞き出し', query_normalization: '地名・職種の言い換え', company_info: '企業情報',
-  reviews: 'クチコミ', salary_benefits: '給与・待遇', career_advice: 'キャリア相談', application_docs: '応募書類',
-  interview_prep: '面接対策', account_terms: 'ログイン・規約', error_handling: 'エラー時', out_of_scope: '範囲外の話題', base: '基本プロンプト',
+  search_conditions: '検索条件', query_normalization: '地名・職種の言い換え', company_info: '企業情報', reviews: 'クチコミ',
+  salary_benefits: '給与・待遇', career_advice: 'キャリア相談', application_docs: '応募書類', interview_prep: '面接対策',
+  account_terms: 'ログイン・規約', error_handling: 'エラー時', out_of_scope: '範囲外', base: '基本',
+  consult: '相談', docs: '書類作成', info: '情報提供', howto: 'ハウツー',
 };
+const GRAN = { fine: '12候補', coarse: '6分類' };
 const lab = (id) => LABEL[id] ?? id;
-let D, lastLive = null;
+let D, gran = 'fine', lastLive = null;
 
-// Same rules as src/select.ts
-function pick(r, cfg) {
-  if (!r || !r.ok) return null;
-  if (cfg !== 'noul_ja') return { chosen: r.choice, confidence: r.confidence ?? 0 };
-  const [id, p] = Object.entries(r.probs).sort((a, b) => b[1] - a[1])[0];
-  return p >= D.noulMin ? { chosen: id, confidence: p } : { chosen: BASE, confidence: 1 - p };
+const toCoarse = (id) => D.coarse.find((c) => c.members.includes(id))?.id ?? id;
+function gold(c, g) {
+  if (g === 'fine') return { answer: c.answer, acc: c.acceptable };
+  const a = toCoarse(c.answer);
+  return { answer: a, acc: [...new Set(c.acceptable.map(toCoarse))].filter((x) => x !== a) };
 }
-// Same rule as src/select.ts: if Jev cannot be used, fall back to the base prompt.
-function decide(r, cfg) {
-  return pick(r, cfg) ?? { chosen: BASE, confidence: null, failed: true };
+function wilson(k, n, z = 1.96) {
+  const p = k / n, d = 1 + (z * z) / n, c = p + (z * z) / (2 * n);
+  const h = z * Math.sqrt((p * (1 - p)) / n + (z * z) / (4 * n * n));
+  return [(c - h) / d, (c + h) / d];
 }
+const pctl = (xs, q) => { const s = [...xs].sort((a, b) => a - b); return s[Math.min(s.length - 1, Math.ceil(q * s.length) - 1)]; };
 
-function barsHtml(r, cfg, d, answer, acceptable) {
-  const entries = Object.entries(r.probs).sort((a, b) => b[1] - a[1]);
-  return entries.map(([id, p]) => {
-    const on = id === d.chosen;
+function barsHtml(probs, chosen, answer, acceptable) {
+  return Object.entries(probs).sort((a, b) => b[1] - a[1]).map(([id, p]) => {
     const tag = answer ? (id === answer ? ' <span class="chip hit">正解</span>' : (acceptable ?? []).includes(id) ? ' <span class="chip ok2">可</span>' : '') : '';
-    const thr = cfg === 'noul_ja' ? `<span class="thr" style="left:${D.noulMin * 100}%"></span>` : '';
-    return `<div class="bar${on ? ' on' : ''}"><span class="name">${esc(lab(id))}${tag}</span>
-      <span class="track"><span class="fill" style="width:${(p * 100).toFixed(1)}%"></span>${thr}</span>
+    return `<div class="bar${id === chosen ? ' on' : ''}"><span class="name">${esc(lab(id))}${tag}</span>
+      <span class="track"><span class="fill" style="width:${(p * 100).toFixed(1)}%"></span></span>
       <span class="val">${p.toFixed(2)}</span></div>`;
   }).join('');
 }
 
 // ---------- 試す ----------
 function renderLive() {
-  if (!lastLive) return;
-  const cfg = D.main;
-  const r = lastLive.result, d = decide(r, cfg);
+  const r = lastLive?.result;
+  if (!r) return;
+  const chosen = r.ok ? r.chosen : BASE;
   $('l-stats').innerHTML = `
-    <div class="stat"><b class="pick">${esc(lab(d.chosen))}</b><span>使うプロンプト${d.failed ? `(判定できず: ${esc(r?.error ?? '')})` : ''}</span></div>
-    <div class="stat"><b>${d.confidence != null ? d.confidence.toFixed(2) : '-'}</b><span>確信度${cfg === 'noul_ja' ? '(noul の最大値)' : ''}</span></div>
-    <div class="stat"><b>${r?.ok ? Math.round(r.latencyMs) + 'ms' : '-'}</b><span>判定にかかった時間</span></div>`;
-  $('l-bars').innerHTML = r?.ok ? barsHtml(r, cfg, d) : '';
-  $('l-meta').textContent = `モデル ${r?.model ?? '-'} / 判定に使った入力 ${(r?.inputTokens ?? 0).toLocaleString()} tok`;
+    <div class="stat"><b class="pick">${esc(lab(chosen))}</b><span>使うプロンプト(${GRAN[lastLive.g]})${r.ok ? '' : `<br>判定できず基本を使用: ${esc(r.error ?? '')}`}</span></div>
+    <div class="stat"><b>${r.confidence != null ? r.confidence.toFixed(2) : '-'}</b><span>確信度</span></div>
+    <div class="stat"><b>${sec(r.latencyMs)}</b><span>判定にかかった時間</span></div>`;
+  $('l-bars').innerHTML = r.ok ? barsHtml(r.probs, chosen) : '';
+  $('l-meta').textContent = r.ok ? `モデル ${r.model} / 判定に使った入力 ${r.inputTokens.toLocaleString()} tok` : '';
 }
 function showBudget(b) { $('budget').textContent = b ? `この画面の費用: $${b.spentUsd.toFixed(4)} / 上限 $${b.limitUsd}` : ''; }
+$('t-gran').onclick = (e) => {
+  const g = e.target.dataset?.g; if (!g) return;
+  gran = g; $('t-gran').querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.g === g));
+};
 $('run').onclick = async () => {
   const utterance = $('utt').value.trim();
   if (!utterance) return;
   const context = [{ role: 'user', text: $('c-user').value }, { role: 'assistant', text: $('c-asst').value }];
   $('run').disabled = true; $('run').textContent = '判定中…';
   try {
-    const res = await fetch('/api/select', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ context, utterance }) });
+    const res = await fetch('/api/select', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ context, utterance, granularity: gran }) });
     const j = await res.json();
     if (!res.ok) throw new Error(j.error);
-    lastLive = j; showBudget(j.budget);
+    lastLive = { ...j, g: gran }; showBudget(j.budget);
     $('live').classList.remove('hidden'); renderLive();
   } catch (e) { $('budget').textContent = 'エラー: ' + e.message; }
   finally { $('run').disabled = false; $('run').textContent = 'Jev で判定'; }
 };
 $('utt').addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing) $('run').click(); });
 
-// ---------- 評価結果 ----------
-let openId = null;
-function renderEval() {
-  const cfg = D.main;
-  const R = new Map((D.run?.cases ?? []).map((c) => [c.id, c.results]));
-  const tag = $('e-tag').value, wrongOnly = $('e-wrong').checked;
-  const rows = D.cases.filter((c) => R.has(c.id)).map((c) => {
-    const r = R.get(c.id)[cfg], d = decide(r, cfg);
-    const v = d.chosen === c.answer ? 'correct' : c.acceptable.includes(d.chosen) ? 'acceptable' : 'wrong';
-    return { c, r, d, v };
+// ---------- 比較 ----------
+let cfgKey = 'jev@fine', openId = null;
+function scored(cfg) {
+  const R = new Map(D.run.cases.map((c) => [c.id, c.results[cfg.key]]));
+  return D.cases.filter((c) => R.has(c.id)).map((c) => {
+    const r = R.get(c.id), g = gold(c, cfg.granularity);
+    const chosen = r?.ok && r.chosen ? r.chosen : BASE;
+    const v = chosen === g.answer ? 'correct' : g.acc.includes(chosen) ? 'acceptable' : 'wrong';
+    return { c, r, g, chosen, v };
   });
-  const n = rows.length, k = (v) => rows.filter((x) => x.v === v).length;
-  $('e-stats').innerHTML = `
-    <div class="stat"><b>${pct(k('correct') / n)}</b><span>正解率</span></div>
-    <div class="stat"><b>${pct((k('correct') + k('acceptable')) / n)}</b><span>「これでも可」込み</span></div>
-    <div class="stat"><b>${pct(k('wrong') / n)}</b><span>誤ったプロンプトを選んだ</span></div>`;
-  $('e-run').textContent = D.run ? `実行 ${D.run.startedAt} / ${n}件 / 評価の費用 $${D.run.spentUsd.toFixed(4)}` : '評価データがありません(npm run eval)';
-  const view = rows.filter((x) => (!tag || x.c.tags.includes(tag)) && (!wrongOnly || x.v === 'wrong'));
+}
+function renderOverview() {
+  $('o-rows').innerHTML = D.run.configs.map((cfg) => {
+    const rows = scored(cfg), n = rows.length;
+    const k = rows.filter((x) => x.v === 'correct').length, kl = rows.filter((x) => x.v !== 'wrong').length;
+    const [lo, hi] = wilson(k, n);
+    const lat = rows.map((x) => x.r.latencyMs), cost = rows.reduce((s, x) => s + x.r.costUsd, 0) / n * 1000;
+    return `<tr data-key="${cfg.key}" class="${cfg.key === cfgKey ? 'sel' : ''}"><td>${esc(cfg.label)}</td><td>${GRAN[cfg.granularity]}</td><td class="num">${pct(k / n)} [${pct(lo)}–${pct(hi)}]</td><td class="num">${pct(kl / n)}</td><td class="num">${sec(pctl(lat, 0.5))} / ${sec(pctl(lat, 0.95))}</td><td class="num">$${cost.toFixed(3)}</td></tr>`;
+  }).join('');
+  $('e-run').textContent = `実行 ${D.run.startedAt} / ${D.run.cases.length}件 / 正解は data/eval.v2.jsonl。費用は実績(OpenAI はプロンプトキャッシュ込み)。行をクリックすると下の一覧が切り替わります`;
+}
+$('o-rows').onclick = (e) => { const tr = e.target.closest('tr'); if (!tr) return; cfgKey = tr.dataset.key; $('e-cfg').value = cfgKey; openId = null; renderEval(); };
+function renderEval() {
+  renderOverview();
+  const cfg = D.run.configs.find((x) => x.key === cfgKey);
+  const isJev = cfg.classifier === 'jev';
+  const tag = $('e-tag').value, wrongOnly = $('e-wrong').checked;
+  const view = scored(cfg).filter((x) => (!tag || x.c.tags.includes(tag)) && (!wrongOnly || x.v === 'wrong'));
   $('e-rows').innerHTML = view.map((x) => {
-    const chip = x.v === 'correct' ? `<span class="chip hit">✓ ${esc(lab(x.d.chosen))}</span>`
-      : x.v === 'acceptable' ? `<span class="chip ok2">✓ ${esc(lab(x.d.chosen))}(可)</span>`
-      : `<span class="chip miss">✗ ${esc(lab(x.d.chosen))}</span>`;
-    const ans = esc(lab(x.c.answer)) + (x.c.acceptable.length ? `<div class="ctx">可: ${esc(x.c.acceptable.map(lab).join('、'))}</div>` : '');
+    const chip = x.v === 'correct' ? `<span class="chip hit">✓ ${esc(lab(x.chosen))}</span>`
+      : x.v === 'acceptable' ? `<span class="chip ok2">✓ ${esc(lab(x.chosen))}(可)</span>`
+      : `<span class="chip miss">✗ ${esc(lab(x.chosen))}</span>`;
+    const ans = esc(lab(x.g.answer)) + (x.g.acc.length ? `<div class="ctx">可: ${esc(x.g.acc.map(lab).join('、'))}</div>` : '');
     const ctx = x.c.context.length ? `<div class="ctx">文脈: ${esc(x.c.context.map((t) => (t.role === 'user' ? 'U: ' : 'A: ') + t.text.split('\n')[0]).join(' / '))}</div>` : '';
-    const detail = openId === x.c.id ? `<tr class="detail"><td></td><td colspan="4">
-      <div class="bars">${x.r?.ok ? barsHtml(x.r, cfg, x.d, x.c.answer, x.c.acceptable) : esc(x.r?.error ?? '')}</div>
-      <div class="meta">タグ: ${esc(x.c.tags.join(', '))}${x.c.note ? ' / メモ: ' + esc(x.c.note) : ''}${x.r?.ok ? ` / ${Math.round(x.r.latencyMs)}ms` : ''}</div></td></tr>` : '';
-    return `<tr class="case" data-id="${x.c.id}"><td>${x.c.id}</td><td>${esc(x.c.utterance)}${ctx}</td><td>${ans}</td><td>${chip}</td><td>${x.d.confidence != null ? x.d.confidence.toFixed(2) : '-'}</td></tr>${detail}`;
+    const detail = openId === x.c.id && isJev && x.r?.probs ? `<tr class="detail"><td></td><td colspan="5">
+      <div class="bars">${barsHtml(x.r.probs, x.chosen, x.g.answer, x.g.acc)}</div>
+      <div class="meta">ラベルの理由: ${esc(x.c.label_reason ?? '')}</div></td></tr>` : '';
+    return `<tr class="case" data-id="${x.c.id}"><td>${x.c.id}</td><td>${esc(x.c.utterance)}${ctx}</td><td>${ans}</td><td>${chip}</td><td class="num">${x.r?.confidence != null ? x.r.confidence.toFixed(2) : '-'}</td><td class="num">${sec(x.r?.latencyMs)}</td></tr>${detail}`;
   }).join('');
 }
 $('e-rows').onclick = (e) => { const tr = e.target.closest('tr.case'); if (!tr) return; openId = openId === tr.dataset.id ? null : tr.dataset.id; renderEval(); };
+$('e-cfg').addEventListener('input', () => { cfgKey = $('e-cfg').value; openId = null; renderEval(); });
 for (const id of ['e-tag', 'e-wrong']) $(id).addEventListener('input', renderEval);
 
 document.querySelectorAll('.tabs button').forEach((b) => b.onclick = () => {
@@ -251,9 +281,10 @@ document.querySelectorAll('.tabs button').forEach((b) => b.onclick = () => {
   D = await (await fetch('/api/data')).json();
   showBudget(D.budget);
   if (!D.live) { $('run').disabled = true; $('budget').textContent = 'TYPESAFE_API_KEY が未設定のため、判定は使えません'; }
-  const ex = ['名駅あたりで事務の正社員ない?', 'Nホームって残業多い?', 'ありがとう!助かった', '面接で希望年収聞かれたらなんて答えればいい?', 'この求人に応募したい'];
+  const ex = ['名駅あたりで事務の正社員ない?', 'Nホームって残業多い?', 'ありがとう!助かった', '面接で希望年収聞かれたらなんて答えればいい?', '他の求人サイトとどっちが使いやすい?'];
   $('examples').innerHTML = ex.map((t) => `<button>${esc(t)}</button>`).join('');
   $('examples').onclick = (e) => { if (e.target.tagName === 'BUTTON') { $('utt').value = e.target.textContent; $('run').click(); } };
+  $('e-cfg').innerHTML = D.run.configs.map((c) => `<option value="${c.key}">${esc(c.label)} / ${GRAN[c.granularity]}</option>`).join('');
   const tags = [...new Set(D.cases.flatMap((c) => c.tags))].sort();
   $('e-tag').innerHTML += tags.map((t) => `<option>${esc(t)}</option>`).join('');
   renderEval();
