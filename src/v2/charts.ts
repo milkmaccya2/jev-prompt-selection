@@ -39,7 +39,7 @@ export interface Point {
 
 /** Chart 1: accuracy (with 95% CI) vs latency p50 on a log axis. Filled = 12 candidates, hollow = 6 classes. */
 export function accuracyLatencyChart(pts: Point[]): string {
-  const L = 110, R = 60, T = 150, B = 90;
+  const L = 110, R = 60, T = 180, B = 90;
   const pw = W - L - R, ph = H - T - B;
   const lat = pts.map((p) => p.latencyMs);
   const lx0 = Math.log10(Math.min(...lat) * 0.7), lx1 = Math.log10(Math.max(...lat) * 1.4);
@@ -67,9 +67,15 @@ export function accuracyLatencyChart(pts: Point[]): string {
   }
   // legend in one row under the subtitle (identity is never color-alone: names are written)
   let lx = L;
+  let ly = T - 66;
   for (const [k, label] of new Map(pts.map((p) => [p.classifier, p.label]))) {
-    g += `<circle cx="${lx + 8}" cy="${T - 36}" r="8" fill="${CLASSIFIER_COLOR[k] ?? C.axis}"/><text x="${lx + 24}" y="${T - 30}" font-size="17" fill="${C.text}">${esc(label)}</text>`;
-    lx += label.length * 15 + 60;
+    const w = label.length * 15 + 60;
+    if (lx + w > W - 40) {
+      lx = L;
+      ly += 30;
+    }
+    g += `<circle cx="${lx + 8}" cy="${ly - 6}" r="8" fill="${CLASSIFIER_COLOR[k] ?? C.axis}"/><text x="${lx + 24}" y="${ly}" font-size="17" fill="${C.text}">${esc(label)}</text>`;
+    lx += w;
   }
   // direct value labels
   for (const p of pts) {
@@ -102,13 +108,15 @@ export function calibrationChart(series: { name: string; color: string; bins: Bi
   g += `<text x="${x(0.62)}" y="${y(0.62) - 12}" font-size="16" fill="${C.text2}" transform="rotate(-${(Math.atan2(s, s) * 180) / Math.PI} ${x(0.62)} ${y(0.62) - 12})">理想(確信度 = 正解率)</text>`;
   g += `<text x="${L + s / 2}" y="${H - 22}" text-anchor="middle" font-size="20" fill="${C.text2}">確信度(区間内の平均)→</text>`;
   g += `<text transform="translate(30 ${T + s / 2}) rotate(-90)" text-anchor="middle" font-size="20" fill="${C.text2}">実際の正解率</text>`;
-  g += `<text x="${L + s + 80}" y="${T + s / 2 + 90}" font-size="15" fill="${C.text2}">n = 区間に入った件数</text>`;
+  g += `<text x="${L + s + 80}" y="${T + s / 2 + 90}" font-size="15" fill="${C.text2}">n = 区間に入った件数。5件未満は薄く表示</text>`;
   series.forEach((se, si) => {
     const pts = se.bins.filter((b) => b.n > 0);
-    if (pts.length > 1) g += `<polyline fill="none" stroke="${se.color}" stroke-width="2" points="${pts.map((b) => `${x(b.meanConf)},${y(b.acc)}`).join(' ')}"/>`;
+    const solid = pts.filter((b) => b.n >= 5);
+    if (solid.length > 1) g += `<polyline fill="none" stroke="${se.color}" stroke-width="2" points="${solid.map((b) => `${x(b.meanConf)},${y(b.acc)}`).join(' ')}"/>`;
     for (const b of pts) {
-      g += `<circle cx="${x(b.meanConf)}" cy="${y(b.acc)}" r="8" fill="${si === 0 ? se.color : C.surface}" stroke="${se.color}" stroke-width="3"/>`;
-      g += `<text x="${x(b.meanConf) + (si === 0 ? -12 : 12)}" y="${y(b.acc) + (si === 0 ? -12 : 24)}" text-anchor="${si === 0 ? 'end' : 'start'}" font-size="15" fill="${C.text2}" ${halo}>n=${b.n}</text>`;
+      const op = b.n >= 5 ? 1 : 0.35;
+      g += `<circle cx="${x(b.meanConf)}" cy="${y(b.acc)}" r="8" fill="${si === 0 ? se.color : C.surface}" fill-opacity="${op}" stroke="${se.color}" stroke-opacity="${op}" stroke-width="3"/>`;
+      g += `<text x="${x(b.meanConf) + (si === 0 ? -12 : 12)}" y="${y(b.acc) + (si === 0 ? -12 : 24)}" text-anchor="${si === 0 ? 'end' : 'start'}" font-size="15" fill="${C.text2}" ${halo}>n=${b.n}${b.n < 5 ? '(参考)' : ''}</text>`;
     }
     const ly = T + s / 2 + si * 34;
     g += `<circle cx="${L + s + 80}" cy="${ly - 6}" r="8" fill="${si === 0 ? se.color : C.surface}" stroke="${se.color}" stroke-width="3"/><text x="${L + s + 96}" y="${ly}" font-size="17" fill="${C.text}">${esc(se.name)}</text>`;

@@ -187,7 +187,7 @@ writeFileSync(
   'results/v2/chart-accuracy-latency.png',
   toPng(accuracyLatencyChart(ms.map((m) => { const k = sum(m.strict); const [lo, hi] = wilson(k, N); return { classifier: m.classifier, label: m.label, granularity: m.g, acc: k / N, lo, hi, latencyMs: p50(m) }; })))
 );
-const jevSeries = ms.filter((m) => m.conf.length).map((m) => ({ name: `Jev ${G[m.g]}`, color: CLASSIFIER_COLOR.jev, bins: bins(m) }));
+const jevSeries = ms.filter((m) => m.conf.length && m.g === 'fine').map((m) => ({ name: `Jev ${G[m.g]}`, color: CLASSIFIER_COLOR.jev, bins: bins(m) }));
 writeFileSync('results/v2/chart-calibration.png', toPng(calibrationChart(jevSeries)));
 writeFileSync(
   'results/v2/chart-cost.png',
