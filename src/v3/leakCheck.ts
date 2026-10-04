@@ -64,9 +64,7 @@ const verbatim = [
 ].map((v) => ({ ...v, ok: labeling.includes(v.text) }));
 const ng = verbatim.filter((v) => !v.ok);
 
-const md = `> **レビュー前**(承認されたらこの行を消す)
-
-# 評価データが基準書に残っていないことの照合
+const md = `# 評価データが基準書に残っていないことの照合
 
 実行日: ${new Date().toISOString().slice(0, 10)}(\`npx tsx src/v3/leakCheck.ts\`)
 

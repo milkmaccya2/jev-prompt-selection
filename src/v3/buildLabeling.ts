@@ -22,9 +22,7 @@ const exRows = cands.fine
     return `| ${cell(ctx)}「${cell(e.utterance)}」 | \`${e.answer}\` | ${e.acceptable.map((a) => `\`${a}\``).join(', ') || '-'} | ${cell(e.why)} |`;
   });
 
-// remove the next line's marker once step 2 is approved
-const REVIEW = '> **レビュー前**(承認されたらこの行を消す)\n\n';
-const md = `${REVIEW}# ラベル付けの基準 v3
+const md = `# ラベル付けの基準 v3
 
 求人相談AI(架空サービス「ハタラクラフト」)は、ユーザーの発話ごとに**回答に使うプロンプトを1つ選んで**回答します。
 この基準は、各発話に「選ぶべきプロンプト」を付けるためのものです。
