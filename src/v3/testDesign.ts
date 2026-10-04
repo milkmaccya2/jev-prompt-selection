@@ -10,8 +10,12 @@ const gen = JSON.parse(readFileSync('results/v3/raw/test-generation.json', 'utf8
 const sem = (f: string) => JSON.parse(readFileSync(f, 'utf8')) as { checkedAt: string; spentUsd: number; results: { id: string; utterance: string; matches: { example: string; reason: string }[] }[] };
 const semEx = sem('results/v3/raw/semantic-leak-test.json');
 const semDev = sem('results/v3/raw/semantic-test-vs-dev.json');
+const dev = readFileSync('data/eval.v2.jsonl', 'utf8').trim().split('\n').map((l) => JSON.parse(l) as { utterance: string });
+const len = (x: { utterance: string }) => [...x.utterance].length;
+const avg = (xs: { utterance: string }[]) => (xs.reduce((s, x) => s + len(x), 0) / xs.length).toFixed(1);
+const median = (xs: { utterance: string }[]) => xs.map(len).sort((a, b) => a - b)[Math.floor(xs.length / 2)];
 
-const REVIEW = '> **レビュー前**(承認されたらこの行を消す)\n\n';
+const REVIEW = ''; // step 3 approved 2026-10-04
 const classes = [...new Set(slots.map((s) => s.target))];
 const has = (t: T, tag: string) => t.tags.includes(tag);
 const count = (f: (t: T) => boolean) => test.filter(f).length;
@@ -120,7 +124,7 @@ step 2 と同じ判定基準・同じ判定モデル(${JUDGE.model}、推論 ${J
 詳細は \`results/v3/leak-check.md\`。
 
 - 発話がまるごと基準書に含まれる件: 0件
-- 連続6文字以上が基準書と重なる件: 11件。どれも「たいんだけど」「メールアドレス」「求人の勤務地」「登録している」のような日常的な言い回しで、基準書の例の発話との重なりではない。test を直して0件にすると test から普通の言い回しを避けることになるため、直していない(**判断をお願いしたい点**)
+- 連続6文字以上が基準書と重なる件: 11件。どれも「たいんだけど」「メールアドレス」「求人の勤務地」「登録している」のような日常的な言い回しで、基準書の例の発話との重なりではない。test を直して0件にすると test から普通の言い回しを避けることになるため、直していない(step 3 のレビューで、このままでよいと決定)
 
 ### 参考: dev との意味の照合
 
@@ -135,6 +139,11 @@ ${semDev.results.flatMap((r) => r.matches.map((m) => `| ${r.id} | ${cell(r.utter
 - あいさつ(t091 と dev「こんにちは」)は、どう書いても同じ依頼と判定されるため残した
 - 判定モデルは同じ入力でも実行ごとに結果が少し揺れる。直前の実行では t032・t098 は一致と判定されていなかった
 - 判定の基準: ${SAME_REQUEST_CRITERIA.split('\n')[0]}(全文は \`results/v3/leak-check.md\`)
+
+## 既知の偏り(summary の「言えないこと」に書く)
+
+- **test の発話は dev より長い。** 平均 ${avg(test)}文字(中央値 ${median(test)})に対し、dev は平均 ${avg(dev)}文字(中央値 ${median(dev)})。LLM が作った発話は情報が多く、分類しやすい可能性がある。作り直しはしない(step 3 のレビューで決定)
+- 文字の照合の11件(日常的な言い回しの重なり)と、dev との意味の照合の3件は、直さずにそのままとする(step 3 のレビューで決定)
 
 ## サンプル20件
 
