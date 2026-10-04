@@ -13,7 +13,7 @@ const test = new Map(read('data/eval.v3.test.jsonl').map((c) => [c.id, c]));
 const dev = raw.sets.dev.labels;
 const tst = raw.sets.test.labels;
 
-const REVIEW = '> **レビュー前**(承認されたらこの行を消す)\n\n';
+const REVIEW = ''; // step 4 approved 2026-10-04
 const cell = (s: string) => s.replace(/\|/g, '\\|').replace(/\n/g, ' ');
 const code = (id: string) => `\`${id}\``;
 const ansText = (a: string | null | undefined, acc: string[] = []) => `${a ? code(a) : '-'}${acc.length ? `(可: ${acc.map(code).join(', ')})` : ''}`;
@@ -48,6 +48,14 @@ const v1Diff = dev.filter((l) => v1.get(l.id)?.answer !== l.answer);
 const v1Rows = v1Diff.map((l) => { const c = v1.get(l.id) as Case; return `| ${l.id} | ${cell(c.utterance)} | ${ansText(c.answer, c.acceptable)} | ${ansText(l.answer, l.acceptable)} | ${basisText(l.basis)} |`; });
 
 // ---- test: all cases, and the ones that differ from the design target ----
+const SPLIT: Record<string, string> = {
+  t031: 'クチコミの削除は、クチコミの扱いとも、アカウントの操作とも読める',
+  t034: 'クチコミの点数の仕組みは、クチコミの扱いとも、サービスのルールの案内とも読める',
+  t049: '給与への言及があり、待遇の相談とも読める',
+  t096: 'アシスタント自身についての質問は、普通に返せる発話とも、求人と無関係な質問とも読める',
+  t097: '相談を含まない近況の報告は、普通に返せる発話とも、雑談として本来の相談に戻すものとも読める',
+};
+const boundaryN = [...test.values()].filter((c) => c.tags.includes('boundary')).length;
 const mismatch = tst.filter((l) => test.get(l.id)?.design?.target !== l.answer);
 const testRows = tst.map((l) => {
   const c = test.get(l.id) as Case;
@@ -79,6 +87,17 @@ const md = `${REVIEW}# ラベルの確認(v3)
 - user: **${LABELER_INPUTS.join(' と ')}だけ**。test の \`design\`(狙った分類・brief・まぎらわしい相手)と \`tags\`、dev の v1・v2 のラベルは渡していない
 - 出力: 答え(\`answer\`)、別解(\`acceptable\`)、根拠(\`basis\`: どの候補の「扱う範囲」か「境目」か、基本ルール1〜5のどれか)、理由(\`reason\`)
 - 費用: dev $${raw.sets.dev.spentUsd.toFixed(2)}、test $${raw.sets.test.spentUsd.toFixed(2)}(ほかに5件の動作確認 $0.06)。生データ: \`results/v3/raw/labels-claude.json\`
+
+## 人の確認
+
+- **2026-10-04、test 100件を確認し、変更なしで承認。** dev の v2 から変わった7件も、ラベラーの答えのまま承認
+- 判断が分かれうる件として次の5件がある。どれも別解でもう一方を拾っているので、そのままにした
+
+| id | 発話 | 正解 | 別解 | 分かれうる点 |
+|---|---|---|---|---|
+${['t031', 't034', 't049', 't096', 't097'].map((id) => { const l = tst.find((x) => x.id === id) as Lab; const c = test.get(id) as Case; return `| ${id} | ${cell(c.utterance)} | ${code(l.answer as string)} | ${l.acceptable.map(code).join(', ')} | ${SPLIT[id]} |`; }).join('\n')}
+
+- test は、境目の${boundaryN}件も含めて100件すべてで、狙った分類と正解が一致した。分類しやすい発話に寄っている可能性があるので、summary の「言えないこと」に、発話が長いこととあわせて書く
 
 ## dev(100件)
 
