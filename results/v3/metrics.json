@@ -1,0 +1,1118 @@
+{
+  "test": {
+    "raw": "results/v3/raw/run-test-2026-10-04T13-18-05-n100.json",
+    "startedAt": "2026-10-04T13:18:05.329Z",
+    "spentUsd": 0.166662343,
+    "configs": [
+      {
+        "key": "jev@fine",
+        "label": "Jev",
+        "granularity": "fine",
+        "models": {
+          "jev-1.13.0": 100
+        },
+        "n": 100,
+        "correct": 96,
+        "correctLenient": 98,
+        "failures": 0,
+        "accuracy": 0.96,
+        "accuracyCI": [
+          0.9016292850152787,
+          0.9843366961172447
+        ],
+        "accuracyLenient": 0.98,
+        "accuracyExcludingFailures": 0.96,
+        "latencyMs": {
+          "p50": 195.34999999997672,
+          "p95": 288.6222499999858
+        },
+        "usdPer1000": 0.08605002000000002,
+        "usdPer1000NoCache": 0.08605002000000002,
+        "inputTokensPerCall": 2048.81,
+        "cachedShare": null,
+        "calibration": {
+          "confidence": [
+            {
+              "label": "0.5未満",
+              "n": 1,
+              "meanConf": 0.4,
+              "acc": 0,
+              "accL": 0
+            },
+            {
+              "label": "0.5〜0.7",
+              "n": 7,
+              "meanConf": 0.6185714285714284,
+              "acc": 0.7142857142857143,
+              "accL": 0.8571428571428571
+            },
+            {
+              "label": "0.7〜0.9",
+              "n": 11,
+              "meanConf": 0.8172727272727272,
+              "acc": 0.9090909090909091,
+              "accL": 1
+            },
+            {
+              "label": "0.9以上",
+              "n": 81,
+              "meanConf": 0.9886419753086417,
+              "acc": 1,
+              "accL": 1
+            }
+          ],
+          "chosenProbability": [
+            {
+              "label": "0.5未満",
+              "n": 1,
+              "meanConf": 0.46,
+              "acc": 0,
+              "accL": 0
+            },
+            {
+              "label": "0.5〜0.7",
+              "n": 6,
+              "meanConf": 0.645,
+              "acc": 0.6666666666666666,
+              "accL": 0.8333333333333334
+            },
+            {
+              "label": "0.7〜0.9",
+              "n": 9,
+              "meanConf": 0.8033333333333332,
+              "acc": 0.8888888888888888,
+              "accL": 1
+            },
+            {
+              "label": "0.9以上",
+              "n": 84,
+              "meanConf": 0.9879761904761905,
+              "acc": 1,
+              "accL": 1
+            }
+          ]
+        }
+      },
+      {
+        "key": "jev@coarse",
+        "label": "Jev",
+        "granularity": "coarse",
+        "models": {
+          "jev-1.13.0": 100
+        },
+        "n": 100,
+        "correct": 95,
+        "correctLenient": 98,
+        "failures": 0,
+        "accuracy": 0.95,
+        "accuracyCI": [
+          0.8882495301258955,
+          0.9784563209820079
+        ],
+        "accuracyLenient": 0.98,
+        "accuracyExcludingFailures": 0.95,
+        "latencyMs": {
+          "p50": 187.33600000001024,
+          "p95": 241.5272910000058
+        },
+        "usdPer1000": 0.06916602000000001,
+        "usdPer1000NoCache": 0.06916602000000001,
+        "inputTokensPerCall": 1646.81,
+        "cachedShare": null,
+        "calibration": {
+          "confidence": [
+            {
+              "label": "0.5未満",
+              "n": 3,
+              "meanConf": 0.4000000000000001,
+              "acc": 0.6666666666666666,
+              "accL": 0.6666666666666666
+            },
+            {
+              "label": "0.5〜0.7",
+              "n": 6,
+              "meanConf": 0.5516666666666666,
+              "acc": 0.5,
+              "accL": 0.8333333333333334
+            },
+            {
+              "label": "0.7〜0.9",
+              "n": 12,
+              "meanConf": 0.8100000000000002,
+              "acc": 1,
+              "accL": 1
+            },
+            {
+              "label": "0.9以上",
+              "n": 79,
+              "meanConf": 0.9835443037974682,
+              "acc": 0.9873417721518988,
+              "accL": 1
+            }
+          ],
+          "chosenProbability": [
+            {
+              "label": "0.5未満",
+              "n": 1,
+              "meanConf": 0.49,
+              "acc": 1,
+              "accL": 1
+            },
+            {
+              "label": "0.5〜0.7",
+              "n": 8,
+              "meanConf": 0.5974999999999999,
+              "acc": 0.5,
+              "accL": 0.75
+            },
+            {
+              "label": "0.7〜0.9",
+              "n": 9,
+              "meanConf": 0.8233333333333334,
+              "acc": 1,
+              "accL": 1
+            },
+            {
+              "label": "0.9以上",
+              "n": 82,
+              "meanConf": 0.984878048780488,
+              "acc": 0.9878048780487805,
+              "accL": 1
+            }
+          ]
+        }
+      },
+      {
+        "key": "nano@fine",
+        "label": "gpt-5.4-nano(推論なし)",
+        "granularity": "fine",
+        "models": {
+          "gpt-5.4-nano-2026-03-17": 100
+        },
+        "n": 100,
+        "correct": 94,
+        "correctLenient": 98,
+        "failures": 0,
+        "accuracy": 0.94,
+        "accuracyCI": [
+          0.8752318448839115,
+          0.9722138761993719
+        ],
+        "accuracyLenient": 0.98,
+        "accuracyExcludingFailures": 0.94,
+        "latencyMs": {
+          "p50": 720.7805839999346,
+          "p95": 910.7580420000013
+        },
+        "usdPer1000": 0.30657650000000003,
+        "usdPer1000NoCache": 0.30657650000000003,
+        "inputTokensPerCall": 1442.32,
+        "cachedShare": 0
+      },
+      {
+        "key": "nano@coarse",
+        "label": "gpt-5.4-nano(推論なし)",
+        "granularity": "coarse",
+        "models": {
+          "gpt-5.4-nano-2026-03-17": 100
+        },
+        "n": 100,
+        "correct": 93,
+        "correctLenient": 96,
+        "failures": 0,
+        "accuracy": 0.93,
+        "accuracyCI": [
+          0.862504851938476,
+          0.9656807391201875
+        ],
+        "accuracyLenient": 0.96,
+        "accuracyExcludingFailures": 0.93,
+        "latencyMs": {
+          "p50": 693.6367920000339,
+          "p95": 880.4101249999949
+        },
+        "usdPer1000": 0.24136400000000002,
+        "usdPer1000NoCache": 0.24136400000000002,
+        "inputTokensPerCall": 1123.32,
+        "cachedShare": 0
+      },
+      {
+        "key": "luna@fine",
+        "label": "gpt-6-luna(推論なし)",
+        "granularity": "fine",
+        "models": {
+          "gpt-6-luna": 100
+        },
+        "n": 100,
+        "correct": 98,
+        "correctLenient": 100,
+        "failures": 0,
+        "accuracy": 0.98,
+        "accuracyCI": [
+          0.9299882086824252,
+          0.9944980324993383
+        ],
+        "accuracyLenient": 1,
+        "accuracyExcludingFailures": 0.98,
+        "latencyMs": {
+          "p50": 859.8417080000218,
+          "p95": 1419.9371249999967
+        },
+        "usdPer1000": 0.023039449999999996,
+        "usdPer1000NoCache": 0.18744,
+        "inputTokensPerCall": 1442.32,
+        "cachedShare": 0.9912466731223952
+      },
+      {
+        "key": "luna@coarse",
+        "label": "gpt-6-luna(推論なし)",
+        "granularity": "coarse",
+        "models": {
+          "gpt-6-luna": 100
+        },
+        "n": 100,
+        "correct": 97,
+        "correctLenient": 100,
+        "failures": 0,
+        "accuracy": 0.97,
+        "accuracyCI": [
+          0.9154806351014251,
+          0.9897454760557186
+        ],
+        "accuracyLenient": 1,
+        "accuracyExcludingFailures": 0.97,
+        "latencyMs": {
+          "p50": 879.4317909999518,
+          "p95": 1242.0618329999852
+        },
+        "usdPer1000": 0.01931944999999999,
+        "usdPer1000NoCache": 0.147035,
+        "inputTokensPerCall": 1123.32,
+        "cachedShare": 0.9887901653167505
+      },
+      {
+        "key": "sol@fine",
+        "label": "gpt-6-sol(推論なし)",
+        "granularity": "fine",
+        "models": {
+          "gpt-6-sol": 100
+        },
+        "n": 100,
+        "correct": 99,
+        "correctLenient": 100,
+        "failures": 0,
+        "accuracy": 0.99,
+        "accuracyCI": [
+          0.9455138032509934,
+          0.9982325679553906
+        ],
+        "accuracyLenient": 1,
+        "accuracyExcludingFailures": 0.99,
+        "latencyMs": {
+          "p50": 957.2375000000175,
+          "p95": 1321.690917
+        },
+        "usdPer1000": 0.46088900000000005,
+        "usdPer1000NoCache": 3.748899999999999,
+        "inputTokensPerCall": 1442.32,
+        "cachedShare": 0.9912466731223952
+      },
+      {
+        "key": "sol@coarse",
+        "label": "gpt-6-sol(推論なし)",
+        "granularity": "coarse",
+        "models": {
+          "gpt-6-sol": 100
+        },
+        "n": 100,
+        "correct": 97,
+        "correctLenient": 100,
+        "failures": 0,
+        "accuracy": 0.97,
+        "accuracyCI": [
+          0.9154806351014251,
+          0.9897454760557186
+        ],
+        "accuracyLenient": 1,
+        "accuracyExcludingFailures": 0.97,
+        "latencyMs": {
+          "p50": 932.3011249999981,
+          "p95": 1212.0574170000618
+        },
+        "usdPer1000": 0.3865890000000001,
+        "usdPer1000NoCache": 2.9408999999999987,
+        "inputTokensPerCall": 1123.32,
+        "cachedShare": 0.9887901653167505
+      },
+      {
+        "key": "luna_low@fine",
+        "label": "gpt-6-luna(推論 low・参考)",
+        "granularity": "fine",
+        "models": {
+          "gpt-6-luna": 100
+        },
+        "n": 100,
+        "correct": 99,
+        "correctLenient": 100,
+        "failures": 0,
+        "accuracy": 0.99,
+        "accuracyCI": [
+          0.9455138032509934,
+          0.9982325679553906
+        ],
+        "accuracyLenient": 1,
+        "accuracyExcludingFailures": 0.99,
+        "latencyMs": {
+          "p50": 919.8716249999707,
+          "p95": 1841.4874169999966
+        },
+        "usdPer1000": 0.026964449999999997,
+        "usdPer1000NoCache": 0.19136499999999992,
+        "inputTokensPerCall": 1442.32,
+        "cachedShare": 0.9912466731223952,
+        "reasoningTokens": {
+          "zero": 75,
+          "calls": 100,
+          "mean": 6.34
+        }
+      }
+    ],
+    "mcnemar": [
+      {
+        "granularity": "fine",
+        "vs": "nano@fine",
+        "scoring": "answer",
+        "b": 5,
+        "c": 3,
+        "p": 0.7265625,
+        "holm": 1,
+        "primary": true
+      },
+      {
+        "granularity": "fine",
+        "vs": "nano@fine",
+        "scoring": "lenient",
+        "b": 2,
+        "c": 2,
+        "p": 1,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "fine",
+        "vs": "luna@fine",
+        "scoring": "answer",
+        "b": 2,
+        "c": 4,
+        "p": 0.6875,
+        "holm": 1,
+        "primary": true
+      },
+      {
+        "granularity": "fine",
+        "vs": "luna@fine",
+        "scoring": "lenient",
+        "b": 0,
+        "c": 2,
+        "p": 0.5,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "fine",
+        "vs": "sol@fine",
+        "scoring": "answer",
+        "b": 1,
+        "c": 4,
+        "p": 0.375,
+        "holm": 1,
+        "primary": true
+      },
+      {
+        "granularity": "fine",
+        "vs": "sol@fine",
+        "scoring": "lenient",
+        "b": 0,
+        "c": 2,
+        "p": 0.5,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "fine",
+        "vs": "luna_low@fine",
+        "scoring": "answer",
+        "b": 1,
+        "c": 4,
+        "p": 0.375,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "fine",
+        "vs": "luna_low@fine",
+        "scoring": "lenient",
+        "b": 0,
+        "c": 2,
+        "p": 0.5,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "coarse",
+        "vs": "nano@coarse",
+        "scoring": "answer",
+        "b": 4,
+        "c": 2,
+        "p": 0.6875,
+        "holm": 1,
+        "primary": true
+      },
+      {
+        "granularity": "coarse",
+        "vs": "nano@coarse",
+        "scoring": "lenient",
+        "b": 2,
+        "c": 0,
+        "p": 0.5,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "coarse",
+        "vs": "luna@coarse",
+        "scoring": "answer",
+        "b": 2,
+        "c": 4,
+        "p": 0.6875,
+        "holm": 1,
+        "primary": true
+      },
+      {
+        "granularity": "coarse",
+        "vs": "luna@coarse",
+        "scoring": "lenient",
+        "b": 0,
+        "c": 2,
+        "p": 0.5,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "coarse",
+        "vs": "sol@coarse",
+        "scoring": "answer",
+        "b": 1,
+        "c": 3,
+        "p": 0.625,
+        "holm": 1,
+        "primary": true
+      },
+      {
+        "granularity": "coarse",
+        "vs": "sol@coarse",
+        "scoring": "lenient",
+        "b": 0,
+        "c": 2,
+        "p": 0.5,
+        "holm": null,
+        "primary": false
+      }
+    ]
+  },
+  "dev": {
+    "raw": "results/v3/raw/run-dev-2026-10-04T13-30-00-n100.json",
+    "startedAt": "2026-10-04T13:30:00.588Z",
+    "spentUsd": 0.18182714399999986,
+    "configs": [
+      {
+        "key": "jev@fine",
+        "label": "Jev",
+        "granularity": "fine",
+        "models": {
+          "jev-1.13.0": 100
+        },
+        "n": 100,
+        "correct": 90,
+        "correctLenient": 97,
+        "failures": 0,
+        "accuracy": 0.9,
+        "accuracyCI": [
+          0.8256343377898756,
+          0.9447708631949274
+        ],
+        "accuracyLenient": 0.97,
+        "accuracyExcludingFailures": 0.9,
+        "latencyMs": {
+          "p50": 187.0808340000076,
+          "p95": 309.9779169999965
+        },
+        "usdPer1000": 0.08555819999999999,
+        "usdPer1000NoCache": 0.08555819999999999,
+        "inputTokensPerCall": 2037.1,
+        "cachedShare": null,
+        "calibration": {
+          "confidence": [
+            {
+              "label": "0.5未満",
+              "n": 8,
+              "meanConf": 0.43,
+              "acc": 0.25,
+              "accL": 0.75
+            },
+            {
+              "label": "0.5〜0.7",
+              "n": 5,
+              "meanConf": 0.576,
+              "acc": 0.6,
+              "accL": 1
+            },
+            {
+              "label": "0.7〜0.9",
+              "n": 11,
+              "meanConf": 0.8481818181818181,
+              "acc": 0.8181818181818182,
+              "accL": 0.9090909090909091
+            },
+            {
+              "label": "0.9以上",
+              "n": 76,
+              "meanConf": 0.9868421052631579,
+              "acc": 1,
+              "accL": 1
+            }
+          ],
+          "chosenProbability": [
+            {
+              "label": "0.5未満",
+              "n": 3,
+              "meanConf": 0.4166666666666667,
+              "acc": 0,
+              "accL": 0.3333333333333333
+            },
+            {
+              "label": "0.5〜0.7",
+              "n": 10,
+              "meanConf": 0.569,
+              "acc": 0.5,
+              "accL": 1
+            },
+            {
+              "label": "0.7〜0.9",
+              "n": 8,
+              "meanConf": 0.8487500000000001,
+              "acc": 0.875,
+              "accL": 1
+            },
+            {
+              "label": "0.9以上",
+              "n": 79,
+              "meanConf": 0.9854430379746838,
+              "acc": 0.9873417721518988,
+              "accL": 0.9873417721518988
+            }
+          ]
+        }
+      },
+      {
+        "key": "jev@coarse",
+        "label": "Jev",
+        "granularity": "coarse",
+        "models": {
+          "jev-1.13.0": 100
+        },
+        "n": 100,
+        "correct": 91,
+        "correctLenient": 96,
+        "failures": 0,
+        "accuracy": 0.91,
+        "accuracyCI": [
+          0.8377378707781101,
+          0.951927460231313
+        ],
+        "accuracyLenient": 0.96,
+        "accuracyExcludingFailures": 0.91,
+        "latencyMs": {
+          "p50": 183.5755000000354,
+          "p95": 252.5152919999964
+        },
+        "usdPer1000": 0.06867419999999999,
+        "usdPer1000NoCache": 0.06867419999999999,
+        "inputTokensPerCall": 1635.1,
+        "cachedShare": null,
+        "calibration": {
+          "confidence": [
+            {
+              "label": "0.5未満",
+              "n": 4,
+              "meanConf": 0.41500000000000004,
+              "acc": 0.25,
+              "accL": 0.25
+            },
+            {
+              "label": "0.5〜0.7",
+              "n": 7,
+              "meanConf": 0.5657142857142857,
+              "acc": 0.5714285714285714,
+              "accL": 1
+            },
+            {
+              "label": "0.7〜0.9",
+              "n": 16,
+              "meanConf": 0.8000000000000002,
+              "acc": 0.8125,
+              "accL": 0.9375
+            },
+            {
+              "label": "0.9以上",
+              "n": 73,
+              "meanConf": 0.9849315068493147,
+              "acc": 1,
+              "accL": 1
+            }
+          ],
+          "chosenProbability": [
+            {
+              "label": "0.5未満",
+              "n": 2,
+              "meanConf": 0.48,
+              "acc": 0,
+              "accL": 0
+            },
+            {
+              "label": "0.5〜0.7",
+              "n": 8,
+              "meanConf": 0.61,
+              "acc": 0.625,
+              "accL": 0.875
+            },
+            {
+              "label": "0.7〜0.9",
+              "n": 13,
+              "meanConf": 0.8061538461538462,
+              "acc": 0.7692307692307693,
+              "accL": 0.9230769230769231
+            },
+            {
+              "label": "0.9以上",
+              "n": 77,
+              "meanConf": 0.9845454545454546,
+              "acc": 0.987012987012987,
+              "accL": 1
+            }
+          ]
+        }
+      },
+      {
+        "key": "nano@fine",
+        "label": "gpt-5.4-nano(推論なし)",
+        "granularity": "fine",
+        "models": {
+          "gpt-5.4-nano-2026-03-17": 100
+        },
+        "n": 100,
+        "correct": 88,
+        "correctLenient": 96,
+        "failures": 0,
+        "accuracy": 0.88,
+        "accuracyCI": [
+          0.8018790050092597,
+          0.9300059359263032
+        ],
+        "accuracyLenient": 0.96,
+        "accuracyExcludingFailures": 0.88,
+        "latencyMs": {
+          "p50": 746.1502080000064,
+          "p95": 892.0850419999333
+        },
+        "usdPer1000": 0.30481050000000004,
+        "usdPer1000NoCache": 0.30481050000000004,
+        "inputTokensPerCall": 1433.74,
+        "cachedShare": 0
+      },
+      {
+        "key": "nano@coarse",
+        "label": "gpt-5.4-nano(推論なし)",
+        "granularity": "coarse",
+        "models": {
+          "gpt-5.4-nano-2026-03-17": 100
+        },
+        "n": 100,
+        "correct": 93,
+        "correctLenient": 96,
+        "failures": 0,
+        "accuracy": 0.93,
+        "accuracyCI": [
+          0.862504851938476,
+          0.9656807391201875
+        ],
+        "accuracyLenient": 0.96,
+        "accuracyExcludingFailures": 0.93,
+        "latencyMs": {
+          "p50": 717.4576250000391,
+          "p95": 985.3957909999881
+        },
+        "usdPer1000": 0.23961050000000012,
+        "usdPer1000NoCache": 0.23961050000000012,
+        "inputTokensPerCall": 1114.74,
+        "cachedShare": 0
+      },
+      {
+        "key": "luna@fine",
+        "label": "gpt-6-luna(推論なし)",
+        "granularity": "fine",
+        "models": {
+          "gpt-6-luna": 100
+        },
+        "n": 100,
+        "correct": 92,
+        "correctLenient": 96,
+        "failures": 0,
+        "accuracy": 0.92,
+        "accuracyCI": [
+          0.8500189223072279,
+          0.9589065387268154
+        ],
+        "accuracyLenient": 0.96,
+        "accuracyExcludingFailures": 0.92,
+        "latencyMs": {
+          "p50": 907.0750409999891,
+          "p95": 1328.2488330000197
+        },
+        "usdPer1000": 0.0265775,
+        "usdPer1000NoCache": 0.1863125,
+        "inputTokensPerCall": 1433.74,
+        "cachedShare": 0.9691041301306887
+      },
+      {
+        "key": "luna@coarse",
+        "label": "gpt-6-luna(推論なし)",
+        "granularity": "coarse",
+        "models": {
+          "gpt-6-luna": 100
+        },
+        "n": 100,
+        "correct": 94,
+        "correctLenient": 98,
+        "failures": 0,
+        "accuracy": 0.94,
+        "accuracyCI": [
+          0.8752318448839115,
+          0.9722138761993719
+        ],
+        "accuracyLenient": 0.98,
+        "accuracyExcludingFailures": 0.94,
+        "latencyMs": {
+          "p50": 837.7510420000181,
+          "p95": 1150.777333999984
+        },
+        "usdPer1000": 0.0228625,
+        "usdPer1000NoCache": 0.14591249999999997,
+        "inputTokensPerCall": 1114.74,
+        "cachedShare": 0.9603682135333704
+      },
+      {
+        "key": "sol@fine",
+        "label": "gpt-6-sol(推論なし)",
+        "granularity": "fine",
+        "models": {
+          "gpt-6-sol": 100
+        },
+        "n": 100,
+        "correct": 96,
+        "correctLenient": 99,
+        "failures": 0,
+        "accuracy": 0.96,
+        "accuracyCI": [
+          0.9016292850152787,
+          0.9843366961172447
+        ],
+        "accuracyLenient": 0.99,
+        "accuracyExcludingFailures": 0.96,
+        "latencyMs": {
+          "p50": 954.8172919999924,
+          "p95": 1365.994541
+        },
+        "usdPer1000": 0.53165,
+        "usdPer1000NoCache": 3.726349999999999,
+        "inputTokensPerCall": 1433.74,
+        "cachedShare": 0.9691041301306887
+      },
+      {
+        "key": "sol@coarse",
+        "label": "gpt-6-sol(推論なし)",
+        "granularity": "coarse",
+        "models": {
+          "gpt-6-sol": 100
+        },
+        "n": 100,
+        "correct": 95,
+        "correctLenient": 100,
+        "failures": 0,
+        "accuracy": 0.95,
+        "accuracyCI": [
+          0.8882495301258955,
+          0.9784563209820079
+        ],
+        "accuracyLenient": 1,
+        "accuracyExcludingFailures": 0.95,
+        "latencyMs": {
+          "p50": 949.2583750000049,
+          "p95": 1228.4235000000044
+        },
+        "usdPer1000": 0.45745000000000013,
+        "usdPer1000NoCache": 2.918450000000001,
+        "inputTokensPerCall": 1114.74,
+        "cachedShare": 0.9603682135333704
+      },
+      {
+        "key": "luna_low@fine",
+        "label": "gpt-6-luna(推論 low・参考)",
+        "granularity": "fine",
+        "models": {
+          "gpt-6-luna": 100
+        },
+        "n": 100,
+        "correct": 95,
+        "correctLenient": 98,
+        "failures": 0,
+        "accuracy": 0.95,
+        "accuracyCI": [
+          0.8882495301258955,
+          0.9784563209820079
+        ],
+        "accuracyLenient": 0.98,
+        "accuracyExcludingFailures": 0.95,
+        "latencyMs": {
+          "p50": 970.5229589999653,
+          "p95": 2044.4188750000321
+        },
+        "usdPer1000": 0.0344125,
+        "usdPer1000NoCache": 0.1941475,
+        "inputTokensPerCall": 1433.74,
+        "cachedShare": 0.9691041301306887,
+        "reasoningTokens": {
+          "zero": 71,
+          "calls": 100,
+          "mean": 13.92
+        }
+      }
+    ],
+    "mcnemar": [
+      {
+        "granularity": "fine",
+        "vs": "nano@fine",
+        "scoring": "answer",
+        "b": 7,
+        "c": 5,
+        "p": 0.7744140625,
+        "holm": 1,
+        "primary": true
+      },
+      {
+        "granularity": "fine",
+        "vs": "nano@fine",
+        "scoring": "lenient",
+        "b": 3,
+        "c": 2,
+        "p": 1,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "fine",
+        "vs": "luna@fine",
+        "scoring": "answer",
+        "b": 5,
+        "c": 7,
+        "p": 0.7744140625,
+        "holm": 1,
+        "primary": true
+      },
+      {
+        "granularity": "fine",
+        "vs": "luna@fine",
+        "scoring": "lenient",
+        "b": 3,
+        "c": 2,
+        "p": 1,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "fine",
+        "vs": "sol@fine",
+        "scoring": "answer",
+        "b": 2,
+        "c": 8,
+        "p": 0.109375,
+        "holm": 0.65625,
+        "primary": true
+      },
+      {
+        "granularity": "fine",
+        "vs": "sol@fine",
+        "scoring": "lenient",
+        "b": 1,
+        "c": 3,
+        "p": 0.625,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "fine",
+        "vs": "luna_low@fine",
+        "scoring": "answer",
+        "b": 4,
+        "c": 9,
+        "p": 0.266845703125,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "fine",
+        "vs": "luna_low@fine",
+        "scoring": "lenient",
+        "b": 2,
+        "c": 3,
+        "p": 1,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "coarse",
+        "vs": "nano@coarse",
+        "scoring": "answer",
+        "b": 4,
+        "c": 6,
+        "p": 0.75390625,
+        "holm": 1,
+        "primary": true
+      },
+      {
+        "granularity": "coarse",
+        "vs": "nano@coarse",
+        "scoring": "lenient",
+        "b": 3,
+        "c": 3,
+        "p": 1,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "coarse",
+        "vs": "luna@coarse",
+        "scoring": "answer",
+        "b": 3,
+        "c": 6,
+        "p": 0.5078125,
+        "holm": 1,
+        "primary": true
+      },
+      {
+        "granularity": "coarse",
+        "vs": "luna@coarse",
+        "scoring": "lenient",
+        "b": 1,
+        "c": 3,
+        "p": 0.625,
+        "holm": null,
+        "primary": false
+      },
+      {
+        "granularity": "coarse",
+        "vs": "sol@coarse",
+        "scoring": "answer",
+        "b": 2,
+        "c": 6,
+        "p": 0.2890625,
+        "holm": 1,
+        "primary": true
+      },
+      {
+        "granularity": "coarse",
+        "vs": "sol@coarse",
+        "scoring": "lenient",
+        "b": 0,
+        "c": 4,
+        "p": 0.125,
+        "holm": null,
+        "primary": false
+      }
+    ],
+    "v2": [
+      {
+        "key": "jev@fine",
+        "label": "Jev",
+        "g": "fine",
+        "v2": 91,
+        "v3onV2": 87,
+        "v3": 90
+      },
+      {
+        "key": "jev@coarse",
+        "label": "Jev",
+        "g": "coarse",
+        "v2": 92,
+        "v3onV2": 92,
+        "v3": 91
+      },
+      {
+        "key": "nano@fine",
+        "label": "gpt-5.4-nano(推論なし)",
+        "g": "fine",
+        "v2": 80,
+        "v3onV2": 83,
+        "v3": 88
+      },
+      {
+        "key": "nano@coarse",
+        "label": "gpt-5.4-nano(推論なし)",
+        "g": "coarse",
+        "v2": 89,
+        "v3onV2": 90,
+        "v3": 93
+      },
+      {
+        "key": "luna@fine",
+        "label": "gpt-6-luna(推論なし)",
+        "g": "fine",
+        "v2": 85,
+        "v3onV2": 91,
+        "v3": 92
+      },
+      {
+        "key": "luna@coarse",
+        "label": "gpt-6-luna(推論なし)",
+        "g": "coarse",
+        "v2": 95,
+        "v3onV2": 95,
+        "v3": 94
+      },
+      {
+        "key": "sol@fine",
+        "label": "gpt-6-sol(推論なし)",
+        "g": "fine",
+        "v2": 85,
+        "v3onV2": 94,
+        "v3": 96
+      },
+      {
+        "key": "sol@coarse",
+        "label": "gpt-6-sol(推論なし)",
+        "g": "coarse",
+        "v2": 96,
+        "v3onV2": 96,
+        "v3": 95
+      },
+      {
+        "key": "luna_low@fine",
+        "label": "gpt-6-luna(推論 low・参考)",
+        "g": "fine",
+        "v2": 86,
+        "v3onV2": 92,
+        "v3": 95
+      }
+    ]
+  }
+}

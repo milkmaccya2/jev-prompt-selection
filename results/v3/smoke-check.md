@@ -1,5 +1,3 @@
-レビュー前
-
 # 5件の動作確認(step 6)
 
 - 実行: 2026-10-04 12:57(UTC)、`npm run v3:eval -- --set dev --limit 5 --smoke --budget-usd 0.10`
