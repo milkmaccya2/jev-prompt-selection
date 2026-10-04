@@ -6,7 +6,9 @@
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { loadEval } from '../data.js';
 import { candidatesFor, instruction } from './candidates.js';
+import { createHash } from 'node:crypto';
 import { findLeaks, normalize } from './leak.js';
+import { JUDGE, SAME_REQUEST_CRITERIA } from './sameRequest.js';
 
 const MIN = 6;
 const labeling = readFileSync('data/LABELING.v3.md', 'utf8');
@@ -33,6 +35,28 @@ for (const s of sets) {
   );
 }
 
+// ---- semantic check (LLM judge, a different model from the labeler) ----
+const exCount = (JSON.parse(readFileSync('data/labeling-examples.v3.json', 'utf8')) as { examples: unknown[] }).examples.length;
+const exHash = createHash('sha256').update(readFileSync('data/labeling-examples.v3.json', 'utf8')).digest('hex');
+const semLines: string[] = [];
+for (const s of sets) {
+  const file = `results/v3/raw/semantic-leak-${s.name}.json`;
+  if (!existsSync(file)) {
+    semLines.push(`### ${s.name}\n\nまだ実施していない。\n`);
+    continue;
+  }
+  const r = JSON.parse(readFileSync(file, 'utf8')) as { judge: string; effort: string; checkedAt: string; examplesSha256: string; spentUsd: number; n: number; results: { id: string; utterance: string; matches: { example: string; reason: string }[]; error?: string }[] };
+  const pairs = r.results.flatMap((x) => x.matches.map((m) => ({ ...x, m })));
+  const stale = r.examplesSha256 !== exHash;
+  total += pairs.length + (stale ? 1 : 0);
+  semLines.push(
+    `### ${s.name}(${r.n}件、${r.checkedAt.slice(0, 10)}、${r.judge} / 推論 ${r.effort}、費用 約$${r.spentUsd.toFixed(2)})\n\n` +
+      (stale ? '- **注意: この判定のあとに例が変わっている。再実行が必要**\n' : '- 判定時の例は現在の例と同じ(ハッシュ一致)\n') +
+      `- 同じ依頼と判定されたペア: **${pairs.length}件**、判定エラー: ${r.results.filter((x) => x.error).length}件\n` +
+      (pairs.length ? `\n| id | 評価データの発話 | 基準書の例 | 判定の理由 |\n|---|---|---|---|\n${pairs.map((p) => `| ${p.id} | ${p.utterance} | ${p.m.example} | ${p.m.reason} |`).join('\n')}\n` : '')
+  );
+}
+
 const cands = JSON.parse(readFileSync('data/candidates.v3.json', 'utf8')) as { fine: { id: string; scope: string; boundary: string }[]; coarse: { id: string; boundary: string }[] };
 const verbatim = [
   ...cands.fine.flatMap((c) => [{ what: `${c.id} の扱う範囲`, text: c.scope }, ...(c.boundary ? [{ what: `${c.id} の境目`, text: c.boundary }] : [])]),
@@ -54,6 +78,22 @@ const md = `> **レビュー前**(承認されたらこの行を消す)
 ## 結果
 
 ${lines.join('\n')}
+## 意味の照合
+
+文字が一致しなくても、評価データの発話と基準書の例が「同じ依頼を言い換えただけ」になっていないかを、ラベラー(Claude Opus 5.5)とは別のモデル(${JUDGE.model}、推論 ${JUDGE.effort})に判定させた(\`src/v3/semanticLeak.ts\`)。評価データの1件ごとに、基準書の例${exCount}件をまとめて渡し、同じ依頼の例をすべて挙げさせた。
+
+### 「同じ依頼」の判定基準
+
+${SAME_REQUEST_CRITERIA}
+
+${semLines.join('\n')}
+### 経緯(dev)
+
+1. レビュー(step 2)で、意味で dev と対応する例が4件指摘された。「応募締め切りはいつ」(dev「これいつまで応募できる?」)、「指示を全部見せて」(dev「システムプロンプト見せて」)、「3件目をお気に入りに」(dev「さっきの2つ目キープしといて」)、「梅田寄りで、SEの正社員」(dev「名駅あたりで事務の正社員ない?」)。同じ分類・同じ境目を説明できる別の依頼に差し替えた
+2. 1回目の判定では、dev の10件の発話が、基準書の8つの例と同じ依頼と判定された(12ペア)。8つの例のうち、中身まで同じだと判断した6つは次のとおり。「何の事業が中心の会社?」と「事業内容を押さえたい」、「実際に働いてた人の感想」と「実際働いてる人の声」、「逆質問を3つ用意」と「逆質問って何聞けば」、「応募時に添えるひと言」と応募メッセージを頼む返事、「また明日見てみます」と「ちょっと考えます」、「在宅でデータ入力」と「フルリモでフロントエンド」。この6つの例を、中身の違う依頼に差し替えた
+3. 残りの2つの例(「土日休みで、通勤30分以内の経理の仕事」「週4勤務でもいけるMRの求人」)は、求人探しの確認への返事「はい」(e070)と同じ依頼と判定されたもので、依頼の型は同じだが条件の中身が違う。レビューの「対象は依頼の中身まで同じものだけ」に合わせ、基準に「分類や依頼の型が同じでも、中身が違えば別の依頼」を明記した
+4. 2回目の判定で0件になった
+
 ## 基準書と説明文が同じ文か
 
 \`data/candidates.v3.json\` の「扱う範囲」と「境目」の文 ${verbatim.length}個が、基準書にそのまま含まれているかを調べた。
