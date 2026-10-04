@@ -1,5 +1,4 @@
 {
-  "_status": "レビュー前(承認後にこの行を消し、ハッシュを results/v3/FROZEN.md に記録する)",
   "instruction": "アシスタントが `user_utterance` に答えるときに使うプロンプトを1つ選んでください。ユーザーの主な目的に対応するものを選びます。`recent_turns` は直前の会話の文脈です。",
   "fine": [
     {

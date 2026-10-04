@@ -25,9 +25,7 @@ const leakTable = (hits: ReturnType<typeof findLeaks>) =>
     ? ['| dev の id | 発話 | 一致した場所 | 一致した部分 |', '|---|---|---|---|', ...hits.map((h) => `| ${h.id} | ${h.utterance} | ${h.where} | 「${h.piece}」 |`)].join('\n')
     : '一致なし(0件)';
 
-const md = `> **レビュー前**(承認されたらこの行を消す)
-
-# 説明文の修正差分(v2 → v3)
+const md = `# 説明文の修正差分(v2 → v3)
 
 分類器(Jev・LLM すべて)に渡す文の、v2 と v3 の比較です。v3 の説明文は \`data/candidates.v3.json\` だけを元にしており、プロンプトの部品(\`prompts/\`)の frontmatter からは切り離しました(v2 は今のまま再現できます)。
 
@@ -56,9 +54,9 @@ ${leakTable(findLeaks(dev, textsOf(V2_INSTRUCTION, v2Candidates)))}
 
 ${leakTable(findLeaks(dev, textsOf(instruction(), candidatesFor)))}
 
-## 現時点のハッシュ(参考)
+## ハッシュ
 
-\`sha256: ${descriptionsHash()}\`(指示文・12候補・6分類の説明文。承認後の値を \`results/v3/FROZEN.md\` に記録します)
+\`sha256: ${descriptionsHash()}\`(指示文・12候補・6分類の説明文。2026-10-04 に承認・凍結。\`results/v3/FROZEN.md\` 参照)
 `;
 writeFileSync('results/v3/description-diff.md', md);
 console.log('results/v3/description-diff.md written');
