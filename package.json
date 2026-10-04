@@ -20,7 +20,9 @@
     "v2:agree": "tsx src/v2/agree.ts",
     "v2:eval": "tsx --env-file-if-exists=.env src/v2/eval.ts",
     "v2:report": "tsx src/v2/report.ts",
-    "v3:label": "tsx --env-file-if-exists=.env src/v3/label.ts"
+    "v3:label": "tsx --env-file-if-exists=.env src/v3/label.ts",
+    "v3:eval": "tsx --env-file-if-exists=.env src/v3/eval.ts",
+    "v3:frozen": "tsx src/v3/frozen.ts"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20261001.1",
