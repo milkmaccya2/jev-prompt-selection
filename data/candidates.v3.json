@@ -15,7 +15,7 @@
     {
       "id": "company_info",
       "scope": "特定の企業の公式な情報(事業内容・規模・設立年・拠点・社内制度・企業が公開している残業時間や離職率などの数値)を知りたい",
-      "boundary": "社員の感想や評判を知りたい場合は reviews"
+      "boundary": "社員の感想や評判を知りたい場合は reviews。特定の企業の制度を知りたいなら company_info、待遇の一般的な相談や求人票の読み方なら salary_benefits"
     },
     {
       "id": "reviews",
@@ -25,7 +25,7 @@
     {
       "id": "salary_benefits",
       "scope": "給与・待遇の相談と求人票の読み方(月給・年収・時給・手取り・残業代・固定残業代・賞与・昇給・休日・有給休暇・手当・福利厚生・相場・年収交渉)",
-      "boundary": ""
+      "boundary": "特定の企業の制度だけを知りたいなら company_info。待遇について面接の場での受け答えのしかたが主なら interview_prep。給与を理由に転職するかどうかの迷いが主なら career_advice"
     },
     {
       "id": "career_advice",
@@ -35,12 +35,12 @@
     {
       "id": "application_docs",
       "scope": "応募書類の作成と添削(履歴書・職務経歴書・エントリーシート・志望動機・自己PR・退職理由の書き方、応募時に添えるメッセージ、サイト上の履歴書の入力内容)",
-      "boundary": ""
+      "boundary": "面接での話し方や答え方が主なら interview_prep。書類の中身に関わらない応募の操作(応募ボタンを押す、応募状況を見る)なら base"
     },
     {
       "id": "interview_prep",
       "scope": "面接の準備(想定される質問、答え方、逆質問、模擬面接、オンライン面接の準備、服装やマナー、面接後のお礼)",
-      "boundary": ""
+      "boundary": "給与や待遇そのものの相談が主なら salary_benefits。提出する書類の書き方が主なら application_docs。企業そのものについて調べたいなら company_info"
     },
     {
       "id": "account_terms",
@@ -60,15 +60,63 @@
     {
       "id": "base",
       "scope": "基本プロンプト(人格・安全・出力形式の基本ルールだけ)。専用の指示がなくても普通に返せる発話(あいさつ・お礼・相づちや返事、ツールの操作だけで済む依頼(応募する、保存する、求人の詳細や続きを表示する)、安全の基本ルールで対応する相談(心身の不調、危険な仕事への誘い))",
-      "boundary": ""
+      "boundary": "断るか本来の相談に戻す必要がある依頼なら out_of_scope。分野の相談が少しでも含まれるなら、その分野のプロンプト"
     }
   ],
   "coarse": [
-    { "id": "consult", "name": "相談", "members": ["career_advice", "search_conditions", "query_normalization"], "boundary": "" },
-    { "id": "docs", "name": "書類作成", "members": ["application_docs"], "boundary": "" },
-    { "id": "info", "name": "情報提供", "members": ["company_info", "reviews", "salary_benefits"], "boundary": "" },
-    { "id": "howto", "name": "ハウツー", "members": ["interview_prep", "account_terms", "error_handling"], "boundary": "検索の結果が0件だっただけなら 相談" },
-    { "id": "out_of_scope", "name": "範囲外", "members": ["out_of_scope"], "boundary": "あいさつ・お礼や、雑談まじりでも求人の相談が含まれる発話は選ばない" },
-    { "id": "base", "name": "基本", "members": ["base"], "boundary": "" }
+    {
+      "id": "consult",
+      "name": "相談",
+      "members": [
+        "career_advice",
+        "search_conditions",
+        "query_normalization"
+      ],
+      "boundary": ""
+    },
+    {
+      "id": "docs",
+      "name": "書類作成",
+      "members": [
+        "application_docs"
+      ],
+      "boundary": "面接での話し方や答え方が主なら ハウツー"
+    },
+    {
+      "id": "info",
+      "name": "情報提供",
+      "members": [
+        "company_info",
+        "reviews",
+        "salary_benefits"
+      ],
+      "boundary": "待遇について面接の場での受け答えのしかたが主なら ハウツー"
+    },
+    {
+      "id": "howto",
+      "name": "ハウツー",
+      "members": [
+        "interview_prep",
+        "account_terms",
+        "error_handling"
+      ],
+      "boundary": "検索の結果が0件だっただけなら 相談。待遇そのものの相談なら 情報提供"
+    },
+    {
+      "id": "out_of_scope",
+      "name": "範囲外",
+      "members": [
+        "out_of_scope"
+      ],
+      "boundary": "あいさつ・お礼や、雑談まじりでも求人の相談が含まれる発話は選ばない"
+    },
+    {
+      "id": "base",
+      "name": "基本",
+      "members": [
+        "base"
+      ],
+      "boundary": "断るか本来の相談に戻す必要がある依頼なら 範囲外。分野の相談が少しでも含まれるなら、その分類"
+    }
   ]
 }
