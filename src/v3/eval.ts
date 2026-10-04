@@ -3,10 +3,12 @@
  * - one call at a time from one machine; every config is called on every case
  * - the order of the configs is shuffled per case with a seeded RNG (v2 always called Jev first)
  * - no retries; a failed call is stored as a failure and scored as wrong
- * - the first --warmup cases go through every config once and are not scored
+ * - warmup: 3 utterances that are in neither dev nor test (from the labeling examples) go through
+ *   every config once and are not scored; every scored case is called exactly once per config
+ * - the model name returned by each API is stored per call
  * - the frozen inputs are checked before the first call and after the last one
  */
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { arch, platform } from 'node:os';
 import { parseArgs } from 'node:util';
 import type { TypeSafeClient } from '@typesafe-ai/sdk';
@@ -21,7 +23,7 @@ const { values: args } = parseArgs({
     set: { type: 'string' },
     limit: { type: 'string' },
     classifiers: { type: 'string', default: 'jev,nano,luna,sol,luna_low' },
-    warmup: { type: 'string', default: '3' },
+    'no-warmup': { type: 'boolean', default: false },
     seed: { type: 'string', default: '20261004' },
     'budget-usd': { type: 'string' },
     smoke: { type: 'boolean', default: false },
@@ -44,7 +46,16 @@ const configs = specs.flatMap((spec) =>
 const dataPath = `data/eval.v3.${args.set}.jsonl`;
 let cases = loadEval(new URL(`../../${dataPath}`, import.meta.url));
 if (args.limit) cases = cases.slice(0, Number(args.limit));
-const warmupN = Math.min(Number(args.warmup), cases.length);
+
+/** Warmup utterances: labeling examples #0, #1, #19 (listed in PLAN.md). Not in dev or test, never scored. */
+export const WARMUP_EXAMPLES = [0, 1, 19];
+const examples = (JSON.parse(readFileSync('data/labeling-examples.v3.json', 'utf8')) as { examples: { context?: EvalCase['context']; utterance: string }[] }).examples;
+const warmupCases: EvalCase[] = args['no-warmup']
+  ? []
+  : WARMUP_EXAMPLES.map((i) => ({ id: `warmup-ex${i}`, context: examples[i].context ?? [], utterance: examples[i].utterance, answer: '', acceptable: [], tags: [] }));
+const evalUtterances = new Set(['dev', 'test'].flatMap((s) => loadEval(new URL(`../../data/eval.v3.${s}.jsonl`, import.meta.url)).map((c) => c.utterance)));
+for (const w of warmupCases) if (evalUtterances.has(w.utterance)) throw new Error(`warmup utterance is in the eval sets: ${w.utterance}`);
+const warmupN = warmupCases.length;
 const seed = Number(args.seed);
 
 /** mulberry32: small seeded RNG so the call order can be reproduced from the seed. */
@@ -79,7 +90,7 @@ const worstCaseCost = (c: EvalCase) => configs.reduce((s, cfg) => s + worstCost(
 if (args['dry-run']) {
   const c0 = cases[0];
   for (const cfg of configs) console.log(`${cfg.key.padEnd(16)} ~${estimateInputTokens(cfg.spec, candidatesFor(cfg.g), c0.context, c0.utterance)} input tok/call, worst $${worstCost(cfg.spec, cfg.g, c0).toFixed(5)}/call`);
-  const total = [...cases.slice(0, warmupN), ...cases].reduce((s, c) => s + worstCaseCost(c), 0);
+  const total = [...warmupCases, ...cases].reduce((s, c) => s + worstCaseCost(c), 0);
   console.log(`set=${args.set} cases=${cases.length} warmup=${warmupN} calls=${(cases.length + warmupN) * configs.length} worst-case total ≈ $${total.toFixed(3)}`);
   process.exit(0);
 }
@@ -122,7 +133,7 @@ let stopped = false;
 const fits = (c: EvalCase) => spent + worstCaseCost(c) <= budget;
 
 const warmup: { id: string; order: string[]; results: Record<string, Call> }[] = [];
-for (const c of cases.slice(0, warmupN)) {
+for (const c of warmupCases) {
   if (!fits(c)) {
     stopped = true;
     break;
@@ -160,7 +171,7 @@ writeFileSync(
       smoke: args.smoke,
       env: { platform: platform(), arch: arch(), node: process.version },
       seed,
-      warmup: warmupN,
+      warmup: { examples: WARMUP_EXAMPLES, utterances: warmupCases.map((w) => w.utterance) },
       retries: 0,
       timeoutMs: TIMEOUT_MS,
       budgetUsd: budget,
