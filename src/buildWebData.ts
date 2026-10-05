@@ -3,47 +3,61 @@ import { choice } from '@typesafe-ai/sdk';
 import { loadEval } from './data.js';
 import { MODEL } from './jev.js';
 import { loadParts } from './parts.js';
-import { COARSE, candidatesFor } from './v2/candidates.js';
+import { candidatesFor, coarseDefs, instruction } from './v3/candidates.js';
 
 /**
  * Everything the viewer needs, baked once so the Cloudflare Worker has no Node dependencies.
- * The eval tab shows the latest v2 run (all classifiers × both granularities); the try tab calls Jev live.
+ * The eval tab shows the v3 runs (test = main, dev = reference); the try tab calls Jev live
+ * with the same frozen v3 instruction and descriptions that the eval used.
  */
-const JEV_INSTRUCTIONS =
-  'アシスタントが `user_utterance` に答えるときに使うシステムプロンプトを1つ選んでください。`recent_turns` は直前の会話の文脈です。';
+type RawCall = Record<string, unknown> & { latencyMs: number };
 
-export function buildWebData() {
-  const latest = readdirSync('results/v2/raw')
-    .filter((f) => f.startsWith('run-'))
+function loadRun(set: 'test' | 'dev') {
+  const latest = readdirSync('results/v3/raw')
+    .filter((f) => f.startsWith(`run-${set}-`))
     .sort()
     .at(-1);
-  const raw = latest ? JSON.parse(readFileSync(`results/v2/raw/${latest}`, 'utf8')) : null;
+  if (!latest) return null;
+  const raw = JSON.parse(readFileSync(`results/v3/raw/${latest}`, 'utf8'));
   // keep only what the viewer shows, to keep the payload small
-  const run = raw && {
+  return {
     startedAt: raw.startedAt,
     spentUsd: raw.spentUsd,
-    configs: raw.configs,
-    cases: raw.cases.map((c: { id: string; results: Record<string, Record<string, unknown>> }) => ({
+    configs: raw.configs.map(({ price: _p, ...c }: Record<string, unknown>) => c),
+    cases: raw.cases.map((c: { id: string; results: Record<string, RawCall> }) => ({
       id: c.id,
       results: Object.fromEntries(
         Object.entries(c.results).map(([k, r]) => [
           k,
-          { ok: r.ok, chosen: r.chosen, confidence: r.confidence, probs: r.probs, latencyMs: Math.round(r.latencyMs as number), costUsd: r.costUsd },
+          { ok: r.ok, chosen: r.chosen, confidence: r.confidence, probs: r.probs, model: r.model, latencyMs: Math.round(r.latencyMs), costUsd: r.costUsd },
         ])
       ),
     })),
   };
+}
+
+const loadCases = (set: 'test' | 'dev') =>
+  loadEval(new URL(`../data/eval.v3.${set}.jsonl`, import.meta.url)).map((c) => ({
+    id: c.id,
+    context: c.context,
+    utterance: c.utterance,
+    answer: c.answer,
+    acceptable: c.acceptable,
+    tags: c.tags,
+    reason: (c as { label?: { reason?: string } }).label?.reason ?? '',
+  }));
+
+export function buildWebData() {
   const questions = Object.fromEntries(
-    (['fine', 'coarse'] as const).map((g) => [
-      g,
-      { main: choice(JEV_INSTRUCTIONS, Object.fromEntries(candidatesFor(g).map((c) => [c.id, c.description]))) },
-    ])
+    (['fine', 'coarse'] as const).map((g) => [g, { main: choice(instruction(), Object.fromEntries(candidatesFor(g).map((c) => [c.id, c.description]))) }])
   );
   return {
     parts: loadParts().map(({ body: _b, ...p }) => p),
-    coarse: COARSE,
-    cases: loadEval(new URL('../data/eval.v2.jsonl', import.meta.url)),
-    run,
+    coarse: coarseDefs().map(({ id, name, members }) => ({ id, name, members })),
+    sets: {
+      test: { cases: loadCases('test'), run: loadRun('test') },
+      dev: { cases: loadCases('dev'), run: loadRun('dev') },
+    },
     model: MODEL,
     questions,
   };

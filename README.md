@@ -2,38 +2,36 @@
 
 求人相談AIエージェントの1枚岩のシステムプロンプトを分野ごとに分け、
 **発話ごとに使うプロンプトを1つ、[TypeSafe](https://docs.typesafe.ai/) の System One モデル Jev に選ばせる**検証です。
-v2 では、LLM 分類器(gpt-5.4-nano / gpt-6-luna / gpt-6-sol)と、正解率・判定時間・費用・確信度の当たり具合を比べました。
+v2 では LLM 分類器(gpt-5.4-nano / gpt-6-luna / gpt-6-sol)と比べ、v3 では評価の作り方を直して測り直しました(説明文と正解の基準をそろえる、評価用の発話を新しく作る、測定計画を先に凍結する、呼ぶ順番をランダムにする、リトライなし)。
 
 - デモ: **https://jev-prompt-selection.milkmaccya2.workers.dev**
-  - 「試す(Jev)」: 発話を入れると、Jev が選んだプロンプトと候補ごとの確率が出ます(12候補 / 6分類)
-  - 「比較(100件)」: 9構成の正解率・判定時間・費用と、100件それぞれの正解と選択を見比べられます
-- 結果の詳細: [results/v2/summary.md](results/v2/summary.md)(v1 は [results/summary.md](results/summary.md))
+  - 「試す(Jev)」: 発話を入れると、Jev が選んだプロンプトと候補ごとの確率が出ます(12候補 / 6分類、v3 の説明文)
+  - 「比較(100件)」: 9構成の正解率・判定時間・費用と、100件それぞれの正解と選択を見比べられます(test / dev)
+- 結果の詳細: [results/v3/summary.md](results/v3/summary.md)(測定計画は [results/v3/PLAN.md](results/v3/PLAN.md)、v2 は [results/v2/summary.md](results/v2/summary.md)、v1 は [results/summary.md](results/summary.md))
 
 > **すべて架空の合成データです。** サービス名「ハタラクラフト」、企業名(Kデジタル、Mフーズ など)は実在しません。
 
-## 結果(v2、合成100件)
+## 結果(v3、test 100件)
 
-| 構成 | 粒度 | 正解率 [95%CI] | 「これでも可」込み | 判定時間 p50 / p95 | 費用 / 1000回 |
+| 構成 | 粒度 | 答えと一致 [95%CI] | 別解込み | 判定時間 p50 / p95 | 費用 / 1000回 |
 |---|---|---:|---:|---:|---:|
-| Jev | 12候補 | 91% [84–95] | 99% | 0.23秒 / 0.34秒 | $0.074 |
-| Jev | 6分類 | 92% [85–96] | 97% | 0.18秒 / 0.31秒 | $0.073 |
-| gpt-5.4-nano(推論なし) | 12候補 | 80% [71–87] | 91% | 0.65秒 / 0.87秒 | $0.26 |
-| gpt-6-luna(推論なし) | 12候補 | 85% [77–91] | 98% | 0.80秒 / 1.03秒 | $0.022〜0.158 |
-| gpt-6-luna(推論なし) | 6分類 | 95% [89–98] | 98% | 0.84秒 / 1.19秒 | $0.021〜0.15 |
-| gpt-6-sol(推論なし) | 12候補 | 85% [77–91] | 100% | 1.05秒 / 1.46秒 | $0.45〜3.16 |
-| gpt-6-sol(推論なし) | 6分類 | 96% [90–98] | 98% | 1.05秒 / 1.41秒 | $0.43〜3.1 |
+| Jev | 12候補 | 96% [90–98] | 98% | 0.20秒 / 0.29秒 | $0.086 |
+| Jev | 6分類 | 95% [89–98] | 98% | 0.19秒 / 0.24秒 | $0.069 |
+| gpt-5.4-nano(推論なし) | 12候補 | 94% [88–97] | 98% | 0.72秒 / 0.91秒 | $0.31 |
+| gpt-6-luna(推論なし) | 12候補 | 98% [93–99] | 100% | 0.86秒 / 1.42秒 | $0.023〜0.187 |
+| gpt-6-sol(推論なし) | 12候補 | 99% [95–100] | 100% | 0.96秒 / 1.32秒 | $0.46〜3.75 |
 
-OpenAI の費用は「プロンプトキャッシュが毎回効く 〜 毎回切れる」の幅です(今回の実行は前者)。全9構成は summary を見てください。
+OpenAI の費用は「プロンプトキャッシュが毎回効く 〜 毎回切れる」の幅です(今回の実行は前者)。全9構成と dev(参考)は summary を見てください。
 
-- **判定時間は Jev が3〜5倍速い。**
-- **12候補の正解率は Jev が最も高いが、統計的に差があると言えるのは gpt-5.4-nano との差だけ**(McNemar p=0.007)。LLM の外れの多くは「検索条件」と「地名・職種の言い換え」の境目で、別解込みではほぼ並ぶ。6分類では LLM が追いつく
-- **推論を足しても正解率はほぼ変わらない**(gpt-6-luna 85% → 推論 low 86%、p95 は 1.03秒 → 1.87秒)
-- **費用は Jev が一番安いとは言えない。** gpt-6-luna はキャッシュのヒット率が62%以上なら Jev より安い
-- **Jev の確信度は控えめ。** 確信度0.9以上の67件は正解率96%
+- **正解率は、Jev と各 LLM で差があるとは言えない。** 主な比較6組(12候補・6分類 × 3モデル)は、すべて Holm 補正後 p = 1.000。test は9構成すべてが93〜99%と易しく、差を判断するには件数が足りない
+- **判定時間は Jev が3.5〜5倍速い**(1台の端末・1回の実行で測定)
+- **費用は Jev が一番安いとは言えない。** gpt-6-luna はキャッシュのヒット率が62%以上なら Jev より安い。Jev は1回あたりの入力トークンも LLM より多い(2,049 対 1,442)
+- **Jev の確信度0.9以上の81件は全件正解**だった
+- v2 の「12候補は Jev が最も高い」は、v3 の dev では成り立たない(Jev 90%、gpt-6-sol 96%。この差も有意ではない)
 
-![正解率と判定時間](results/v2/chart-accuracy-latency.png)
+![正解率と判定時間](results/v3/chart-accuracy-latency.png)
 
-**この結果から言えないこと**: 正解は Claude Opus 5.5 が基準書から付けたラベル(作成者のラベルとの一致 97%、kappa 0.966)で、データは合成100件です。判定時間は1台の端末・1回の実行で測りました。応答の品質は測っていません。
+**この結果から言えないこと**: test の発話は LLM(claude-sonnet-5-5)が作ったもので、dev より長く(平均29.3文字 対 15.8文字)、狙った分類と正解が100件すべて一致した。分類しやすい発話に寄っている可能性があります。正解は Claude Opus 5.5 が基準書 v3 から付けたラベルを人が確認したもの。応答の品質は測っていません。
 
 ## 仕組み
 
@@ -94,6 +92,13 @@ npm run v2:agree                              # 元ラベルとの一致率・ka
 npm run v2:eval -- --limit 5 --budget-usd 0.2 # 5件で動作確認
 npm run v2:eval -- --budget-usd 2             # 100件 × 9構成(1件ずつ順番、構成を交互に)
 npm run v2:report                             # results/v2/summary.md とグラフ
+
+# v3: 計画(results/v3/PLAN.md)どおりに測る
+npm run v3:frozen                             # 凍結した入力のハッシュを確認
+npm run v3:eval -- --set dev --limit 5 --smoke --budget-usd 0.10   # 5件で動作確認
+npm run v3:eval -- --set test --budget-usd 1.50                    # test 100件 × 9構成
+npm run v3:eval -- --set dev --budget-usd 1.50                     # dev 100件 × 9構成
+npx tsx src/v3/report.ts                      # results/v3/summary.md・metrics.json・グラフ
 ```
 
 - `--budget-usd` で費用の上限を決められます。上限を超えそうな呼び出しの前で止まります
@@ -110,7 +115,7 @@ npm run cf:deploy               # worker/data.json を作ってからデプロ�
 ```
 
 - `npm run cf:dev` でローカル確認できます(`.env` のキーを使います)
-- 画面は `web/index.html`、API は `worker/index.ts`(`/api/data` と `/api/select`)です。評価結果は最新の `results/raw/run-*.json` から焼き込みます
+- 画面は `web/index.html`、API は `worker/index.ts`(`/api/data` と `/api/select`)です。評価結果は最新の `results/v3/raw/run-test-*.json` と `run-dev-*.json` から焼き込みます。「試す」も v3 の指示文と説明文を使います
 - 公開版には費用の上限がありません。TypeSafe のアカウント側の課金上限に任せています。入力は1〜300文字に制限しています
 
 ## ディレクトリ
@@ -118,14 +123,15 @@ npm run cf:deploy               # worker/data.json を作ってからデプロ�
 | パス | 内容 |
 |---|---|
 | `prompts/` | プロンプト部品(常に載せる3 + 分野11)と `index.json` |
-| `data/` | 評価セット(v1 `eval.jsonl` / v2 `eval.v2.jsonl`)とラベル基準(`LABELING.md` / `LABELING.v2.md`) |
+| `data/` | 評価セット(v1 `eval.jsonl` / v2 `eval.v2.jsonl` / v3 `eval.v3.test.jsonl`・`eval.v3.dev.jsonl`)、ラベル基準(`LABELING.md` / `LABELING.v2.md` / `LABELING.v3.md`)、v3 の説明文 `candidates.v3.json` |
 | `src/jev.ts` | Jev への質問の組み立てと呼び出し、費用の上限 |
 | `src/select.ts` | Jev の返り値からプロンプトを1つ決める |
 | `src/eval.ts` / `src/report.ts` | 評価の実行 / 集計・グラフ・summary.md の生成 |
 | `src/server.ts` / `web/index.html` | ローカル用ビューア |
 | `worker/` | Cloudflare Workers 版 |
 | `src/v2/` | v2 の候補定義・分類器(Jev / OpenAI)・ラベラー・統計・レポート |
-| `results/` | v1 の生データ・集計・グラフ / `results/v2/` に v2 一式(料金の確認記録 `PRICING.md` を含む) |
+| `src/v3/` | v3 の説明文・基準書の生成、test の作成、照合、ラベル付け、凍結の確認、評価の実行、レポート |
+| `results/` | v1 の生データ・集計・グラフ / `results/v2/` に v2 一式 / `results/v3/` に v3 一式(計画 `PLAN.md`、凍結 `FROZEN.md`、料金 `PRICING.md` を含む) |
 
 最初は「部品を複数選んで組み合わせる」構成で試しました。その生データは `results/raw/archive-multipart/` に残しています。
 
