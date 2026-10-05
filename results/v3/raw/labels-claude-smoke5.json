@@ -1,0 +1,90 @@
+{
+  "model": "claude-opus-5-5",
+  "effort": "high",
+  "inputs": [
+    "context(直前の会話)",
+    "utterance(発話)"
+  ],
+  "guide": "data/LABELING.v3.md",
+  "descriptions": "data/candidates.v3.json",
+  "sets": {
+    "test": {
+      "labeledAt": "2026-10-04T12:33:41.994Z",
+      "n": 5,
+      "spentUsd": 0.058018,
+      "stoppedByBudget": false,
+      "labels": [
+        {
+          "id": "t001",
+          "answer": "search_conditions",
+          "acceptable": [],
+          "basis": "scope:search_conditions",
+          "reason": "勤務地・職種・雇用形態・未経験可という希望条件を伝えており、主な目的は仕事探しなので search_conditions を選ぶ。",
+          "stop_reason": "end_turn",
+          "usage": {
+            "input_tokens": 60,
+            "cache_write": 7950,
+            "cache_read": 0,
+            "output_tokens": 94
+          }
+        },
+        {
+          "id": "t002",
+          "answer": "search_conditions",
+          "acceptable": [],
+          "basis": "scope:search_conditions",
+          "reason": "時給や勤務曜日、雇用形態といった希望条件を伝えて求人を探しており、主な目的が仕事探しなので search_conditions を選ぶ。",
+          "stop_reason": "end_turn",
+          "usage": {
+            "input_tokens": 53,
+            "cache_write": 0,
+            "cache_read": 7950,
+            "output_tokens": 98
+          }
+        },
+        {
+          "id": "t003",
+          "answer": "search_conditions",
+          "acceptable": [],
+          "basis": "scope:search_conditions",
+          "reason": "直前の検索結果が少なかったため勤務地の条件を神奈川全体に広げて探し直す依頼で、主な目的が仕事探しの条件変更にあたるため。",
+          "stop_reason": "end_turn",
+          "usage": {
+            "input_tokens": 153,
+            "cache_write": 0,
+            "cache_read": 7950,
+            "output_tokens": 102
+          }
+        },
+        {
+          "id": "t004",
+          "answer": "search_conditions",
+          "acceptable": [],
+          "basis": "scope:search_conditions",
+          "reason": "直前の検索結果を受けて雇用形態を契約社員に絞り込む依頼で、主な目的は条件を変えて仕事を探すことだから。",
+          "stop_reason": "end_turn",
+          "usage": {
+            "input_tokens": 165,
+            "cache_write": 0,
+            "cache_read": 7950,
+            "output_tokens": 94
+          }
+        },
+        {
+          "id": "t005",
+          "answer": "search_conditions",
+          "acceptable": [],
+          "basis": "scope:search_conditions",
+          "reason": "引っ越してきたばかりという事情を添えつつ、家から近い勤務地で働きたいという希望を伝えており、主な目的は希望条件(勤務地)を示した仕事探しである。",
+          "stop_reason": "end_turn",
+          "usage": {
+            "input_tokens": 66,
+            "cache_write": 0,
+            "cache_read": 7950,
+            "output_tokens": 108
+          }
+        }
+      ]
+    }
+  }
+}

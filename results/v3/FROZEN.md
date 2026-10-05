@@ -1,0 +1,17 @@
+# 凍結した入力
+
+v3 の測定で、承認後に変えないものと、そのハッシュです。測定の前と後でこの値を再計算し、変わっていないことを確かめます(`npm run v3:frozen`。中身は `src/v3/candidates.ts` の `descriptionsHash()` と各ファイルの sha256。test の正解を足す前の版の行は、正解つきの行に置き換わったので照合しません)。
+
+| 対象 | 内容 | 承認日 | sha256 |
+|---|---|---|---|
+| 分類器に渡す文 | 指示文 + 12候補の説明文 + 6分類の説明文(実際に組み立てた文字列) | 2026-10-04(step 1) | `3e178125c4a72fa31d18c34ca15cca4169968acb13b155c7540b9794051c65df` |
+| 説明文の元ファイル | `data/candidates.v3.json` | 2026-10-04(step 1) | `8f96ec13e047dc3e6dfda75610b293bffb73cc5e578de3b26afe77a2bf660412` |
+| 基準書 v3 | `data/LABELING.v3.md`(`src/v3/buildLabeling.ts` で生成) | 2026-10-04(step 2) | `1bfc13c298c3bae872ccceea46f5f5d89279825924a6eea78f6278379b628ce2` |
+| 基準書の例 | `data/labeling-examples.v3.json`(29件) | 2026-10-04(step 2) | `6ddc2b9177314b56f272022d51666b69de6667784c2a16887d64465e63bd4fbd` |
+| test の発話(正解を足す前の版) | `data/eval.v3.test.jsonl`(100件、正解なし) | 2026-10-04(step 3) | `31704f8b78f662f7485d8cf49e762179389e1006c54d1bdccbcc3272b572a277` |
+| test の設計 | `data/test-spec.v3.json`(100枠) | 2026-10-04(step 3) | `b6abdf54ba68d7554e725c26ca238032544269b2717baa3f21ea0b352e1dbe0a` |
+| dev の正解(v3) | `data/eval.v3.dev.jsonl`(100件、`src/v3/finalizeLabels.ts` で生成) | 2026-10-04(step 4) | `e432acbe6a7a56f5f6f34e39ba69d4cb020a4cf6d3af1e151fd271fabfa0f7a6` |
+| test の正解つき | `data/eval.v3.test.jsonl`(100件。発話・会話・タグ・設計は step 3 の版から変わっていないことをスクリプトで確認) | 2026-10-04(step 4) | `437f6508af3eed4ee1aa3f84a1daa0ab69bc13a3c7b0e93f514613512bade9c8` |
+| 測定計画 | `results/v3/PLAN.md`(ウォームアップ・モデル名・確信度の指摘を直した版) | 2026-10-04(step 5) | `7a72e97c668698f35710079aac0b63b2f602c892cc6dc7ae6768237b5f1183f5` |
+
+この先の step で承認されたもの(基準書 v3、test、測定計画)も、承認のたびにこの表へ追記します。

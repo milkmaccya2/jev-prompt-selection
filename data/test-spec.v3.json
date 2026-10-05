@@ -1,0 +1,829 @@
+{
+  "slots": [
+    {
+      "slot": "t001",
+      "target": "search_conditions",
+      "brief": "職種と勤務地を指定して正社員の求人を探す",
+      "tags": []
+    },
+    {
+      "slot": "t002",
+      "target": "search_conditions",
+      "brief": "時給と曜日の条件でアルバイトを探す",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t003",
+      "target": "search_conditions",
+      "brief": "前の検索結果を受けて、勤務地の範囲を広げて探し直してほしい",
+      "tags": [
+        "context"
+      ]
+    },
+    {
+      "slot": "t004",
+      "target": "search_conditions",
+      "brief": "前の検索結果を受けて、雇用形態を絞り込みたい",
+      "tags": [
+        "context",
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t005",
+      "target": "search_conditions",
+      "brief": "引っ越したばかりで土地勘がないまま、近くで働ける仕事を探したい(職種は未定)",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t006",
+      "target": "search_conditions",
+      "brief": "資格を活かせる仕事を探したい(資格名を出す)",
+      "tags": []
+    },
+    {
+      "slot": "t007",
+      "target": "search_conditions",
+      "brief": "職種名に誤字があるが、目的は仕事探し",
+      "tags": [
+        "typo"
+      ]
+    },
+    {
+      "slot": "t008",
+      "target": "search_conditions",
+      "brief": "地名をひらがなで書いて仕事を探す",
+      "tags": [
+        "typo",
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t009",
+      "target": "search_conditions",
+      "brief": "地元の人が使う地名の略称・愛称(正式な地名ではないもの)を必ず1つ入れ、事務以外の職種と働き方の条件も付けて仕事を探す(目的は仕事探し)",
+      "tags": [
+        "boundary",
+        "colloquial"
+      ],
+      "boundaryWith": "query_normalization"
+    },
+    {
+      "slot": "t010",
+      "target": "search_conditions",
+      "brief": "職種の略語を含めて仕事を探す(目的は仕事探し)",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "query_normalization"
+    },
+    {
+      "slot": "t011",
+      "target": "search_conditions",
+      "brief": "検索結果が1件しか出ず、条件のせいか不具合か分からないと言いつつ、もっと見たい(画面は正常に動いている)",
+      "tags": [
+        "boundary",
+        "colloquial"
+      ],
+      "boundaryWith": "error_handling"
+    },
+    {
+      "slot": "t012",
+      "target": "search_conditions",
+      "brief": "天気や体調の雑談をしつつ、条件を言って仕事を探す",
+      "tags": [
+        "boundary",
+        "colloquial"
+      ],
+      "boundaryWith": "out_of_scope"
+    },
+    {
+      "slot": "t013",
+      "target": "search_conditions",
+      "brief": "アシスタントの「この条件で探しますか?」に対する短い肯定の返事",
+      "tags": [
+        "context"
+      ]
+    },
+    {
+      "slot": "t014",
+      "target": "search_conditions",
+      "brief": "通勤時間の上限を条件に仕事を探す",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t015",
+      "target": "query_normalization",
+      "brief": "求人の勤務地に書かれた「〇〇エリア」のような広い呼び方が、どの市まで含むのか知りたい",
+      "tags": [
+        "qn_purpose"
+      ]
+    },
+    {
+      "slot": "t016",
+      "target": "query_normalization",
+      "brief": "職種の略語が何の職種のことか知りたい",
+      "tags": [
+        "qn_purpose",
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t017",
+      "target": "query_normalization",
+      "brief": "求人の勤務地に書かれた難しい地名の読み方を知りたい(仕事探しそのものではない)",
+      "tags": [
+        "qn_purpose",
+        "boundary"
+      ],
+      "boundaryWith": "search_conditions"
+    },
+    {
+      "slot": "t018",
+      "target": "query_normalization",
+      "brief": "自分の住んでいる地域の呼び方で検索して通じるか確かめたい",
+      "tags": [
+        "qn_purpose"
+      ]
+    },
+    {
+      "slot": "t019",
+      "target": "query_normalization",
+      "brief": "前の会話で出てきた略称の正式名称を聞き返す",
+      "tags": [
+        "qn_purpose",
+        "context"
+      ]
+    },
+    {
+      "slot": "t020",
+      "target": "query_normalization",
+      "brief": "カタカナ職種名の正しい表記を確かめたい",
+      "tags": [
+        "qn_purpose",
+        "typo"
+      ]
+    },
+    {
+      "slot": "t021",
+      "target": "company_info",
+      "brief": "特定の企業の事業内容以外の公式情報(設立年・従業員数など)を知りたい",
+      "tags": []
+    },
+    {
+      "slot": "t022",
+      "target": "company_info",
+      "brief": "特定の企業の公開されている数値(離職率など)を知りたい",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t023",
+      "target": "company_info",
+      "brief": "前の会話で出た企業の拠点や本社について知りたい",
+      "tags": [
+        "context"
+      ]
+    },
+    {
+      "slot": "t024",
+      "target": "company_info",
+      "brief": "スカウトが来た企業の規模を知りたい",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t025",
+      "target": "company_info",
+      "brief": "特定の企業の社内制度(在宅勤務の制度など)について知りたい",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "salary_benefits"
+    },
+    {
+      "slot": "t026",
+      "target": "company_info",
+      "brief": "特定の企業の公開データを知りたいが、評判にも触れる",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "reviews"
+    },
+    {
+      "slot": "t027",
+      "target": "company_info",
+      "brief": "企業名に誤字があるが、その企業の公式情報を知りたい",
+      "tags": [
+        "typo"
+      ]
+    },
+    {
+      "slot": "t028",
+      "target": "reviews",
+      "brief": "特定の企業で、子育てしながら働いている人のクチコミがあるか知りたい",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t029",
+      "target": "reviews",
+      "brief": "前の会話で出た企業のクチコミで、良い評価と悪い評価の割合を知りたい",
+      "tags": [
+        "context"
+      ]
+    },
+    {
+      "slot": "t030",
+      "target": "reviews",
+      "brief": "特定の企業の上司や人間関係についてのクチコミを知りたい",
+      "tags": []
+    },
+    {
+      "slot": "t031",
+      "target": "reviews",
+      "brief": "自分が以前投稿したクチコミを後から消したい",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t032",
+      "target": "reviews",
+      "brief": "特定の企業の残業の実態について、働いた人の感想を知りたい",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "company_info"
+    },
+    {
+      "slot": "t033",
+      "target": "reviews",
+      "brief": "面接の前に、その会社の社員がどんな人たちかをクチコミで知っておきたい",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "interview_prep"
+    },
+    {
+      "slot": "t034",
+      "target": "reviews",
+      "brief": "クチコミの点数の見方を知りたい",
+      "tags": []
+    },
+    {
+      "slot": "t035",
+      "target": "salary_benefits",
+      "brief": "求人票の給与表記の意味を知りたい",
+      "tags": []
+    },
+    {
+      "slot": "t036",
+      "target": "salary_benefits",
+      "brief": "賞与からも税金や保険料が引かれるのか知りたい",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t037",
+      "target": "salary_benefits",
+      "brief": "休日の表記の違いを知りたい",
+      "tags": []
+    },
+    {
+      "slot": "t038",
+      "target": "salary_benefits",
+      "brief": "前の会話で表示した求人の手当について聞く",
+      "tags": [
+        "context",
+        "boundary"
+      ],
+      "boundaryWith": "base"
+    },
+    {
+      "slot": "t039",
+      "target": "salary_benefits",
+      "brief": "同じ職種で、正社員と派遣とで時給に直したときの差の目安を知りたい",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t040",
+      "target": "salary_benefits",
+      "brief": "試用期間中は給与が下がると書かれているのが一般的なことか知りたい",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t041",
+      "target": "salary_benefits",
+      "brief": "一般的な福利厚生の言葉の意味を知りたい(特定の企業ではない)",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "company_info"
+    },
+    {
+      "slot": "t042",
+      "target": "salary_benefits",
+      "brief": "待遇の条件そのものを比べたい(面接での話し方ではない)",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "interview_prep"
+    },
+    {
+      "slot": "t043",
+      "target": "salary_benefits",
+      "brief": "残業代の計算について知りたい",
+      "tags": [
+        "typo"
+      ]
+    },
+    {
+      "slot": "t044",
+      "target": "career_advice",
+      "brief": "管理職への昇進の話が来ていて、専門職を続けるか迷っている",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t045",
+      "target": "career_advice",
+      "brief": "人と話す仕事と数字を扱う仕事のどちらの道に進むか決められない",
+      "tags": []
+    },
+    {
+      "slot": "t046",
+      "target": "career_advice",
+      "brief": "契約社員から正社員になりたいが、何を準備すればいいか",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t047",
+      "target": "career_advice",
+      "brief": "経験のない分野に挑戦したいが、何から考えればいいか",
+      "tags": []
+    },
+    {
+      "slot": "t048",
+      "target": "career_advice",
+      "brief": "前の会話を受けて、強みの整理を手伝ってほしい",
+      "tags": [
+        "context"
+      ]
+    },
+    {
+      "slot": "t049",
+      "target": "career_advice",
+      "brief": "残業が多くて辞めたいが、給料は良いので迷っている",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "salary_benefits"
+    },
+    {
+      "slot": "t050",
+      "target": "career_advice",
+      "brief": "方向性に迷っていて、求人を見る前に自分の考えを整理したい",
+      "tags": [
+        "boundary",
+        "colloquial"
+      ],
+      "boundaryWith": "search_conditions"
+    },
+    {
+      "slot": "t051",
+      "target": "career_advice",
+      "brief": "地方へ移住しても今の職種で働き続けられるか迷っている",
+      "tags": [
+        "typo"
+      ]
+    },
+    {
+      "slot": "t052",
+      "target": "application_docs",
+      "brief": "履歴書の書き方の基本を知りたい",
+      "tags": []
+    },
+    {
+      "slot": "t053",
+      "target": "application_docs",
+      "brief": "志望動機を応募先ごとに書き分けるコツを知りたい",
+      "tags": []
+    },
+    {
+      "slot": "t054",
+      "target": "application_docs",
+      "brief": "派遣で働いていた期間を職務経歴書にどうまとめるか",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t055",
+      "target": "application_docs",
+      "brief": "前の会話を受けて、自己PRの書き直しを頼む",
+      "tags": [
+        "context"
+      ]
+    },
+    {
+      "slot": "t056",
+      "target": "application_docs",
+      "brief": "退職理由の書き方",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t057",
+      "target": "application_docs",
+      "brief": "書類と面接の両方に関わるが、主に書類の書き方を知りたい",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "interview_prep"
+    },
+    {
+      "slot": "t058",
+      "target": "application_docs",
+      "brief": "応募の操作ではなく、応募フォームの自由記述欄に書く内容を相談したい",
+      "tags": [
+        "boundary",
+        "context"
+      ],
+      "boundaryWith": "base"
+    },
+    {
+      "slot": "t059",
+      "target": "application_docs",
+      "brief": "資格欄の書き方",
+      "tags": [
+        "typo"
+      ]
+    },
+    {
+      "slot": "t060",
+      "target": "interview_prep",
+      "brief": "面接の最後に「何か一言」と言われたときに何を話すか",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t061",
+      "target": "interview_prep",
+      "brief": "面接のあとにお礼のメールを送るべきか、送るなら何を書くか",
+      "tags": []
+    },
+    {
+      "slot": "t062",
+      "target": "interview_prep",
+      "brief": "オンライン面接の準備",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t063",
+      "target": "interview_prep",
+      "brief": "前の会話を受けて、面接での答えの練習を続ける",
+      "tags": [
+        "context"
+      ]
+    },
+    {
+      "slot": "t064",
+      "target": "interview_prep",
+      "brief": "面接で希望の待遇を聞かれたときの答え方",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "salary_benefits"
+    },
+    {
+      "slot": "t065",
+      "target": "interview_prep",
+      "brief": "書類に書いた内容を面接でどう話すか",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "application_docs"
+    },
+    {
+      "slot": "t066",
+      "target": "interview_prep",
+      "brief": "前の会話で表示した求人の選考について、面接の準備として聞く",
+      "tags": [
+        "boundary",
+        "context"
+      ],
+      "boundaryWith": "base"
+    },
+    {
+      "slot": "t067",
+      "target": "interview_prep",
+      "brief": "面接の服装",
+      "tags": [
+        "typo",
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t068",
+      "target": "account_terms",
+      "brief": "登録情報の変更",
+      "tags": []
+    },
+    {
+      "slot": "t069",
+      "target": "account_terms",
+      "brief": "通知を止めたい",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t070",
+      "target": "account_terms",
+      "brief": "退会したあと、同じメールアドレスでまた登録できるか",
+      "tags": []
+    },
+    {
+      "slot": "t071",
+      "target": "account_terms",
+      "brief": "サインインのたびに届く確認コードの仕組みを止めたい",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t072",
+      "target": "account_terms",
+      "brief": "応募を取り下げたら、送った情報は応募先で消してもらえるか",
+      "tags": [
+        "context"
+      ]
+    },
+    {
+      "slot": "t073",
+      "target": "account_terms",
+      "brief": "サインインに使うメールアドレスそのものを忘れてしまった",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "error_handling"
+    },
+    {
+      "slot": "t074",
+      "target": "account_terms",
+      "brief": "利用規約の確認",
+      "tags": [
+        "typo"
+      ]
+    },
+    {
+      "slot": "t075",
+      "target": "error_handling",
+      "brief": "求人の写真が表示されず、灰色の四角のままになる",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t076",
+      "target": "error_handling",
+      "brief": "保存した求人の一覧を開くとエラーコードが表示される",
+      "tags": []
+    },
+    {
+      "slot": "t077",
+      "target": "error_handling",
+      "brief": "前の会話でツールが失敗したことについて、何が起きたのか尋ねる",
+      "tags": [
+        "context"
+      ]
+    },
+    {
+      "slot": "t078",
+      "target": "error_handling",
+      "brief": "アプリが落ちる",
+      "tags": [
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t079",
+      "target": "error_handling",
+      "brief": "サインインはできるのに、マイページを開くと毎回サインアウトされる",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "account_terms"
+    },
+    {
+      "slot": "t080",
+      "target": "error_handling",
+      "brief": "検索の画面自体が動かない(結果が0件なのではない)",
+      "tags": [
+        "boundary"
+      ],
+      "boundaryWith": "search_conditions"
+    },
+    {
+      "slot": "t081",
+      "target": "error_handling",
+      "brief": "表示が崩れる",
+      "tags": [
+        "typo"
+      ]
+    },
+    {
+      "slot": "t082",
+      "target": "out_of_scope",
+      "brief": "説明文に挙げた話題: 料理の相談",
+      "tags": [
+        "topic_listed",
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t083",
+      "target": "out_of_scope",
+      "brief": "説明文に挙げた話題: プログラミングの質問",
+      "tags": [
+        "topic_listed"
+      ]
+    },
+    {
+      "slot": "t084",
+      "target": "out_of_scope",
+      "brief": "説明文に挙げた話題: 天気の雑談だけ(求人の相談を含まない)",
+      "tags": [
+        "topic_listed"
+      ]
+    },
+    {
+      "slot": "t085",
+      "target": "out_of_scope",
+      "brief": "説明文に挙げた話題: 規則を逃れる不適切な依頼(応募書類の経歴を偽る)",
+      "tags": [
+        "topic_listed",
+        "boundary"
+      ],
+      "boundaryWith": "application_docs"
+    },
+    {
+      "slot": "t086",
+      "target": "out_of_scope",
+      "brief": "挙げていない話題: 投資の相談",
+      "tags": [
+        "topic_unlisted",
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t087",
+      "target": "out_of_scope",
+      "brief": "挙げていない話題: 恋愛相談",
+      "tags": [
+        "topic_unlisted"
+      ]
+    },
+    {
+      "slot": "t088",
+      "target": "out_of_scope",
+      "brief": "挙げていない話題: 翻訳の依頼",
+      "tags": [
+        "topic_unlisted"
+      ]
+    },
+    {
+      "slot": "t089",
+      "target": "out_of_scope",
+      "brief": "挙げていない話題: 旅行の計画",
+      "tags": [
+        "topic_unlisted",
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t090",
+      "target": "out_of_scope",
+      "brief": "挙げていない話題: 家電の選び方",
+      "tags": [
+        "topic_unlisted",
+        "context"
+      ]
+    },
+    {
+      "slot": "t091",
+      "target": "base",
+      "brief": "説明文に挙げた話題: あいさつ(仕事終わりに立ち寄った、など一言添える)",
+      "tags": [
+        "topic_listed"
+      ]
+    },
+    {
+      "slot": "t092",
+      "target": "base",
+      "brief": "説明文に挙げた話題: 返事(前の会話でアシスタントが提案したことを、今はいらないと断る。お礼や理解を伝えるだけの返事にはしない)",
+      "tags": [
+        "topic_listed",
+        "context"
+      ]
+    },
+    {
+      "slot": "t093",
+      "target": "base",
+      "brief": "説明文に挙げた話題: ツールの操作だけで済む依頼(保存の解除など)",
+      "tags": [
+        "topic_listed",
+        "context",
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t094",
+      "target": "base",
+      "brief": "説明文に挙げた話題: 心身の不調の訴え",
+      "tags": [
+        "topic_listed"
+      ]
+    },
+    {
+      "slot": "t095",
+      "target": "base",
+      "brief": "説明文に挙げた話題: ツールの操作だけで済む依頼(分野の相談を含まない、前の会話で表示した求人について)",
+      "tags": [
+        "topic_listed",
+        "context",
+        "boundary"
+      ],
+      "boundaryWith": "salary_benefits"
+    },
+    {
+      "slot": "t096",
+      "target": "base",
+      "brief": "挙げていない話題: アシスタント自身についての質問",
+      "tags": [
+        "topic_unlisted",
+        "colloquial",
+        "boundary"
+      ],
+      "boundaryWith": "out_of_scope"
+    },
+    {
+      "slot": "t097",
+      "target": "base",
+      "brief": "挙げていない話題: 相談を含まない近況の報告",
+      "tags": [
+        "topic_unlisted",
+        "colloquial"
+      ]
+    },
+    {
+      "slot": "t098",
+      "target": "base",
+      "brief": "挙げていない話題: 少し待ってほしいと伝える",
+      "tags": [
+        "topic_unlisted",
+        "context"
+      ]
+    },
+    {
+      "slot": "t099",
+      "target": "base",
+      "brief": "挙げていない話題: さっきの自分の発言の言い直し・訂正(内容は相談を含まない)",
+      "tags": [
+        "topic_unlisted",
+        "context"
+      ]
+    },
+    {
+      "slot": "t100",
+      "target": "base",
+      "brief": "挙げていない話題: 話を区切って、また今度にすると伝える",
+      "tags": [
+        "topic_unlisted",
+        "typo"
+      ]
+    }
+  ]
+}

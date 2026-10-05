@@ -38,7 +38,8 @@ export interface Point {
 }
 
 /** Chart 1: accuracy (with 95% CI) vs latency p50 on a log axis. Filled = 12 candidates, hollow = 6 classes. */
-export function accuracyLatencyChart(pts: Point[]): string {
+/** opts (v3): values in the legend, and direct labels only where they do not collide. v2 output is unchanged without opts. */
+export function accuracyLatencyChart(pts: Point[], opts: { legendValues?: boolean } = {}): string {
   const L = 110, R = 60, T = 180, B = 90;
   const pw = W - L - R, ph = H - T - B;
   const lat = pts.map((p) => p.latencyMs);
@@ -68,8 +69,10 @@ export function accuracyLatencyChart(pts: Point[]): string {
   // legend in one row under the subtitle (identity is never color-alone: names are written)
   let lx = L;
   let ly = T - 66;
-  for (const [k, label] of new Map(pts.map((p) => [p.classifier, p.label]))) {
-    const w = label.length * 15 + 60;
+  for (const [k, base] of new Map(pts.map((p) => [p.classifier, p.label]))) {
+    const vals = pts.filter((p) => p.classifier === k).map((p) => `${p.granularity === 'fine' ? '●' : '○'}${Math.round(p.acc * 100)}%`);
+    const label = opts.legendValues ? `${base} ${vals.join(' ')}` : base;
+    const w = label.length * (opts.legendValues ? 13 : 15) + 60;
     if (lx + w > W - 40) {
       lx = L;
       ly += 30;
@@ -80,6 +83,12 @@ export function accuracyLatencyChart(pts: Point[]): string {
   // direct value labels
   for (const p of pts) {
     const right = p.granularity === 'fine';
+    if (opts.legendValues) {
+      const px = x(p.latencyMs);
+      const py = y(p.acc);
+      const crowded = pts.some((q) => q !== p && Math.abs(y(q.acc) - py) < 24 && (right ? x(q.latencyMs) - px : px - x(q.latencyMs)) >= -4 && Math.abs(x(q.latencyMs) - px) < 56);
+      if (crowded) continue;
+    }
     g += `<text x="${x(p.latencyMs) + (right ? 12 : -12)}" y="${y(p.acc) + 6}" text-anchor="${right ? 'start' : 'end'}" font-size="16" fill="${C.text2}" ${halo}>${Math.round(p.acc * 100)}%</text>`;
   }
   return svg(g);
