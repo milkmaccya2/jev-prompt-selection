@@ -7,7 +7,7 @@ v2 では LLM 分類器(gpt-5.4-nano / gpt-6-luna / gpt-6-sol)と比べ、v3 で
 - デモ: **https://jev-prompt-selection.milkmaccya2.workers.dev**
   - 「試す(Jev)」: 発話を入れると、Jev が選んだプロンプトと候補ごとの確率が出ます(12候補 / 6分類、v3 の説明文)
   - 「比較(100件)」: 9構成の正解率・判定時間・費用と、100件それぞれの正解と選択を見比べられます(test / dev)
-- 結果の詳細: [results/v3/summary.md](results/v3/summary.md)(測定計画は [results/v3/PLAN.md](results/v3/PLAN.md)、v2 は [results/v2/summary.md](results/v2/summary.md)、v1 は [results/summary.md](results/summary.md))
+- 結果の詳細: [results/v3/summary.md](results/v3/summary.md)(測定計画は [results/v3/PLAN.md](results/v3/PLAN.md)、Decisions API の追加測定は [results/v3/appendix-decisions/summary.md](results/v3/appendix-decisions/summary.md)、v2 は [results/v2/summary.md](results/v2/summary.md)、v1 は [results/summary.md](results/summary.md))
 
 > **すべて架空の合成データです。** サービス名「ハタラクラフト」、企業名(Kデジタル、Mフーズ など)は実在しません。
 
@@ -32,6 +32,23 @@ OpenAI の費用は「プロンプトキャッシュが毎回効く 〜 毎回�
 ![正解率と判定時間](results/v3/chart-accuracy-latency.png)
 
 **この結果から言えないこと**: test の発話は LLM(claude-sonnet-5-5)が作ったもので、dev より長く(平均29.3文字 対 15.8文字)、狙った分類と正解が100件すべて一致した。分類しやすい発話に寄っている可能性があります。正解は Claude Opus 5.5 が基準書 v3 から付けたラベルを人が確認したもの。応答の品質は測っていません。
+
+### appendix: OpenAI Decisions API(2026-10-08)
+
+v3 のあとで公開された OpenAI の Decisions API(`POST /v1/decisions`、パブリックベータ、モデルは gpt-6-luna のみ)を、v3 と同じ説明文・test・dev・手順で測りました。v3 本編の結果は変えていません。判定時間と費用は、同じ実行の中で呼び直した Jev・gpt-6-luna(Chat)と比べています。
+
+| 構成(test 100件) | 粒度 | 答えと一致 [95%CI] | 判定時間 p50 / p95 | 費用 / 1000回 |
+|---|---|---:|---:|---:|
+| gpt-6-luna(Decisions API) | 12候補 | 97% [92–99] | 0.20秒 / 0.35秒 | $0.145 |
+| Jev | 12候補 | 96% [90–98] | 0.18秒 / 0.23秒 | $0.086 |
+| gpt-6-luna(Chat、推論なし) | 12候補 | 96% [90–98] | 1.22秒 / 1.88秒 | $0.028 |
+
+- **正解率は Jev と差があるとは言えない**(12候補・6分類とも Holm 補正後 p = 1.000)
+- **判定時間は Jev に近く、同じモデルを Chat で呼ぶより約5〜6倍速い**
+- **費用は Jev の約1.7倍**(単価 $0.10 / 1M 対 $0.042 / 1M。入力トークンは Jev のほうが多い)
+- 返すもの(選んだ候補・候補ごとの確率・確信度)は Jev とほぼ同じ。確信度0.9以上の77件は全件正解
+
+詳細: [results/v3/appendix-decisions/summary.md](results/v3/appendix-decisions/summary.md)(計画は [PLAN.md](results/v3/appendix-decisions/PLAN.md))
 
 ## 仕組み
 
@@ -99,6 +116,11 @@ npm run v3:eval -- --set dev --limit 5 --smoke --budget-usd 0.10   # 5件で動�
 npm run v3:eval -- --set test --budget-usd 1.50                    # test 100件 × 9構成
 npm run v3:eval -- --set dev --budget-usd 1.50                     # dev 100件 × 9構成
 npx tsx src/v3/report.ts                      # results/v3/summary.md・metrics.json・グラフ
+
+# appendix: OpenAI Decisions API(results/v3/appendix-decisions/PLAN.md)
+npx tsx --env-file=.env src/v3/evalAppendix.ts --set test --budget-usd 0.30   # Decisions・Jev・gpt-6-luna(Chat) × 12候補・6分類
+npx tsx --env-file=.env src/v3/evalAppendix.ts --set dev --budget-usd 0.30
+npx tsx src/v3/reportAppendix.ts              # results/v3/appendix-decisions/summary.md・グラフ
 ```
 
 - `--budget-usd` で費用の上限を決められます。上限を超えそうな呼び出しの前で止まります
