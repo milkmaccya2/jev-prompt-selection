@@ -1,0 +1,172 @@
+{
+  "test": {
+    "raw": "results/v3/appendix-decisions/raw/run-test-2026-10-08T01-52-02-n100.json",
+    "startedAt": "2026-10-08T01:52:02.223Z",
+    "spentUsd": 0.04807123799999995,
+    "configs": [
+      {
+        "key": "dec@fine",
+        "correct": 97,
+        "correctLenient": 100,
+        "failures": 0,
+        "p50": 203.55137500001,
+        "p95": 347.5635420000035,
+        "usdPer1000": 0.14503200000000002,
+        "inputTokensPerCall": 1450.32,
+        "models": {
+          "gpt-6-luna": 100
+        }
+      },
+      {
+        "key": "dec@coarse",
+        "correct": 97,
+        "correctLenient": 100,
+        "failures": 0,
+        "p50": 205.64037499999904,
+        "p95": 339.11704199999804,
+        "usdPer1000": 0.11523200000000001,
+        "inputTokensPerCall": 1152.32,
+        "models": {
+          "gpt-6-luna": 100
+        }
+      },
+      {
+        "key": "jev@fine",
+        "correct": 96,
+        "correctLenient": 98,
+        "failures": 0,
+        "p50": 182.22241700004088,
+        "p95": 228.99041600000055,
+        "usdPer1000": 0.08605002000000002,
+        "inputTokensPerCall": 2048.81,
+        "models": {
+          "jev-1.13.0": 100
+        }
+      },
+      {
+        "key": "jev@coarse",
+        "correct": 95,
+        "correctLenient": 98,
+        "failures": 0,
+        "p50": 174.1777919999986,
+        "p95": 293.4448330000014,
+        "usdPer1000": 0.06916602000000001,
+        "inputTokensPerCall": 1646.81,
+        "models": {
+          "jev-1.13.0": 100
+        }
+      },
+      {
+        "key": "luna@fine",
+        "correct": 96,
+        "correctLenient": 100,
+        "failures": 0,
+        "p50": 1217.5221250000031,
+        "p95": 1880.6933329999883,
+        "usdPer1000": 0.02769,
+        "inputTokensPerCall": 1442.32,
+        "models": {
+          "gpt-6-luna": 100
+        }
+      },
+      {
+        "key": "luna@coarse",
+        "correct": 98,
+        "correctLenient": 100,
+        "failures": 0,
+        "p50": 1019.8354169999948,
+        "p95": 1721.5419160000165,
+        "usdPer1000": 0.02398499999999999,
+        "inputTokensPerCall": 1123.32,
+        "models": {
+          "gpt-6-luna": 100
+        }
+      }
+    ]
+  },
+  "dev": {
+    "raw": "results/v3/appendix-decisions/raw/run-dev-2026-10-08T01-57-33-n100.json",
+    "startedAt": "2026-10-08T01:57:33.736Z",
+    "spentUsd": 0.04754155400000001,
+    "configs": [
+      {
+        "key": "dec@fine",
+        "correct": 94,
+        "correctLenient": 99,
+        "failures": 0,
+        "p50": 205.79991600000358,
+        "p95": 374.3695829999924,
+        "usdPer1000": 0.144174,
+        "inputTokensPerCall": 1441.74,
+        "models": {
+          "gpt-6-luna": 100
+        }
+      },
+      {
+        "key": "dec@coarse",
+        "correct": 91,
+        "correctLenient": 97,
+        "failures": 0,
+        "p50": 209.0995840000105,
+        "p95": 356.21616700000595,
+        "usdPer1000": 0.11437399999999998,
+        "inputTokensPerCall": 1143.74,
+        "models": {
+          "gpt-6-luna": 100
+        }
+      },
+      {
+        "key": "jev@fine",
+        "correct": 91,
+        "correctLenient": 98,
+        "failures": 0,
+        "p50": 185.40337500002352,
+        "p95": 263.2821249999688,
+        "usdPer1000": 0.08555819999999999,
+        "inputTokensPerCall": 2037.1,
+        "models": {
+          "jev-1.13.0": 100
+        }
+      },
+      {
+        "key": "jev@coarse",
+        "correct": 91,
+        "correctLenient": 96,
+        "failures": 0,
+        "p50": 184.12383300001966,
+        "p95": 358.5928750000312,
+        "usdPer1000": 0.06867419999999999,
+        "inputTokensPerCall": 1635.1,
+        "models": {
+          "jev-1.13.0": 100
+        }
+      },
+      {
+        "key": "luna@fine",
+        "correct": 91,
+        "correctLenient": 95,
+        "failures": 0,
+        "p50": 1299.1140829999931,
+        "p95": 1973.3212500000081,
+        "usdPer1000": 0.026393899999999998,
+        "inputTokensPerCall": 1433.74,
+        "models": {
+          "gpt-6-luna": 100
+        }
+      },
+      {
+        "key": "luna@coarse",
+        "correct": 95,
+        "correctLenient": 99,
+        "failures": 0,
+        "p50": 1023.3378749999974,
+        "p95": 1837.3130410000158,
+        "usdPer1000": 0.022683899999999996,
+        "inputTokensPerCall": 1114.74,
+        "models": {
+          "gpt-6-luna": 100
+        }
+      }
+    ]
+  }
+}

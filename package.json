@@ -37,7 +37,7 @@
     "@typesafe-ai/sdk": "^0.6.0",
     "gpt-tokenizer": "^4.0.0",
     "gray-matter": "^4.0.3",
-    "openai": "^7.27.0",
+    "openai": "^7.30.0",
     "zod": "^4.6.5"
   }
 }
