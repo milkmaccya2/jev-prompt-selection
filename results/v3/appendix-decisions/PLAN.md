@@ -1,5 +1,3 @@
-レビュー前
-
 # appendix: OpenAI Decisions API の追加測定 — 計画
 
 v3 の本編(`results/v3/PLAN.md`、凍結済み)の結果と結論は変えません。v3 の測定のあと(2026-10-08)に公開を知った OpenAI の Decisions API を、v3 と同じ条件で測り、情報として追加します。
