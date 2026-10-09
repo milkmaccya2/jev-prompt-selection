@@ -63,7 +63,12 @@ export function buildWebData() {
   const questions = Object.fromEntries(
     (['fine', 'coarse'] as const).map((g) => [g, { main: choice(instruction(), Object.fromEntries(candidatesFor(g).map((c) => [c.id, c.description]))) }])
   );
+  // Decisions API: same instruction and descriptions, as choices[{ value, description }] (src/v3/decisions.ts)
+  const decisions = Object.fromEntries(
+    (['fine', 'coarse'] as const).map((g) => [g, { instructions: instruction(), choices: candidatesFor(g).map((c) => ({ value: c.id, description: c.description })) }])
+  );
   return {
+    decisions,
     parts: loadParts().map(({ body: _b, ...p }) => p),
     coarse: coarseDefs().map(({ id, name, members }) => ({ id, name, members })),
     sets: {

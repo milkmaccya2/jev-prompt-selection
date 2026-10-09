@@ -5,7 +5,7 @@
 v2 では LLM 分類器(gpt-5.4-nano / gpt-6-luna / gpt-6-sol)と比べ、v3 では評価の作り方を直して測り直しました(説明文と正解の基準をそろえる、評価用の発話を新しく作る、測定計画を先に凍結する、呼ぶ順番をランダムにする、リトライなし)。
 
 - デモ: **https://jev-prompt-selection.milkmaccya2.workers.dev**
-  - 「試す(Jev)」: 発話を入れると、Jev が選んだプロンプトと候補ごとの確率が出ます(12候補 / 6分類、v3 の説明文)
+  - 「試す(Jev / Decisions API)」: 発話を入れると、Jev と OpenAI Decisions API(gpt-6-luna)に同じ指示文・候補で同時に聞き、選んだプロンプト・候補ごとの確率・confidence・判定時間を並べて表示します(12候補 / 6分類)
   - 「比較(100件)」: v4 の4構成(Jev・Decisions API・gpt-6-luna Chat・gpt-5.4-nano Chat、12候補 / 6分類)の正解率・判定時間・費用と、test 100件それぞれの正解と選択を見比べられます
 - 結果の詳細: v4(4構成を同じ実行で比較)は [results/v4/summary.md](results/v4/summary.md)、v3 は [results/v3/summary.md](results/v3/summary.md)(測定計画は [results/v3/PLAN.md](results/v3/PLAN.md)、Decisions API の追加測定は [results/v3/appendix-decisions/summary.md](results/v3/appendix-decisions/summary.md)、v2 は [results/v2/summary.md](results/v2/summary.md)、v1 は [results/summary.md](results/summary.md))
 
@@ -133,12 +133,13 @@ npx tsx src/v3/reportAppendix.ts              # results/v3/appendix-decisions/su
 npx wrangler login
 # キーは Cloudflare 側にだけ置く(! で実行するときは対話入力できないのでパイプで渡す)
 grep '^TYPESAFE_API_KEY=' .env | cut -d= -f2- | tr -d '\n' | npx wrangler secret put TYPESAFE_API_KEY
+grep '^OPENAI_API_KEY=' .env | cut -d= -f2- | tr -d '\n' | npx wrangler secret put OPENAI_API_KEY
 npm run cf:deploy               # worker/data.json を作ってからデプロイ
 ```
 
 - `npm run cf:dev` でローカル確認できます(`.env` のキーを使います)
 - 画面は `web/index.html`、API は `worker/index.ts`(`/api/data` と `/api/select`)です。評価結果は最新の `results/v4/raw/run-test-*.json` から焼き込みます。「試す」も v3 の指示文と説明文を使います
-- 公開版には費用の上限がありません。TypeSafe のアカウント側の課金上限に任せています。入力は1〜300文字に制限しています
+- 公開版の判定(`/api/select`)は、同じ IP から1分に20回までです(Workers の Rate Limiting、`wrangler.jsonc`)。1回の判定で Jev と Decisions API を1回ずつ呼びます。費用の上限は、TypeSafe と OpenAI のアカウント側の設定に任せています。入力は1〜300文字に制限しています
 
 ## ディレクトリ
 
