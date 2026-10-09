@@ -101,7 +101,7 @@ tr.case:hover { background: var(--extra-bg); }
 <body>
 <main>
   <h1>プロンプト選択ビューア</h1>
-  <p class="sub">求人相談AI(架空のサービス「ハタラクラフト」)で、発話ごとにシステムプロンプトを1つ選びます。Jev と LLM 分類器(gpt-5.4-nano / gpt-6-luna / gpt-6-sol)を、12候補と6分類で比べた結果(v3)を見られます。結果の詳細は <a href="https://github.com/milkmaccya2/jev-prompt-selection/blob/main/results/v3/summary.md">summary</a>。</p>
+  <p class="sub">求人相談AI(架空のサービス「ハタラクラフト」)で、発話ごとにシステムプロンプトを1つ選びます。Jev・OpenAI Decisions API・通常の LLM(gpt-6-luna / gpt-5.4-nano、Chat Completions)を、同じ実行の中で12候補と6分類で比べた結果(v4)を見られます。結果の詳細は <a href="https://github.com/milkmaccya2/jev-prompt-selection/blob/main/results/v4/summary.md">summary</a>。</p>
   <div class="tabs" role="tablist">
     <button role="tab" aria-selected="true" data-tab="try">試す(Jev)</button>
     <button role="tab" aria-selected="false" data-tab="eval">比較(100件)</button>
@@ -132,11 +132,10 @@ tr.case:hover { background: var(--extra-bg); }
   <section id="tab-eval" class="hidden">
     <div class="panel">
       <div style="margin-bottom:12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap">
-        <div class="seg" id="e-set"><button data-s="test" aria-pressed="true">test(主)</button><button data-s="dev" aria-pressed="false">dev(参考)</button></div>
         <span class="meta" id="e-setnote" style="margin:0"></span>
       </div>
       <div class="table-wrap"><table class="overview">
-        <thead><tr><th>構成</th><th>粒度</th><th class="num">答えと一致 [95%CI]</th><th class="num">別解込み</th><th class="num">判定時間 p50 / p95</th><th class="num">費用 / 1000回</th></tr></thead>
+        <thead><tr><th>構成</th><th>粒度</th><th class="num">答えと一致 [95%CI]</th><th class="num">別解込み</th><th class="num">判定時間 p50 / p95</th><th class="num">費用 / 1000回(実績)</th></tr></thead>
         <tbody id="o-rows"></tbody>
       </table></div>
       <p class="meta" id="e-run"></p>
@@ -151,7 +150,7 @@ tr.case:hover { background: var(--extra-bg); }
         <span><span class="chip hit">✓ 正解</span></span>
         <span><span class="chip ok2">✓ 別解</span></span>
         <span><span class="chip miss">✗ 間違い</span></span>
-        <span>Jev の行はクリックすると候補ごとの確率を表示</span>
+        <span>Jev・Decisions API の行はクリックすると候補ごとの確率を表示</span>
       </div>
       <div class="table-wrap"><table>
         <thead><tr><th>id</th><th>発話</th><th>正解</th><th>選んだもの</th><th class="num">確信度</th><th class="num">時間</th></tr></thead>
@@ -252,13 +251,13 @@ function renderOverview() {
     return `<tr data-key="${cfg.key}" class="${cfg.key === cfgKey ? 'sel' : ''}"><td>${esc(cfg.label)}</td><td>${GRAN[cfg.granularity]}</td><td class="num">${pct(k / n)} [${pct(lo)}–${pct(hi)}]</td><td class="num">${pct(kl / n)}</td><td class="num">${sec(pctl(lat, 0.5))} / ${sec(pctl(lat, 0.95))}</td><td class="num">$${cost.toFixed(3)}</td></tr>`;
   }).join('');
   const models = [...new Set(S().run.cases.flatMap((c) => Object.values(c.results).map((r) => r.model)).filter(Boolean))].join(', ');
-  $('e-run').textContent = `実行 ${S().run.startedAt} / ${S().run.cases.length}件 / 正解は data/eval.v3.${setKey}.jsonl / 失敗は不正解として採点 / 返ってきたモデル名: ${models}。費用は実績(OpenAI はプロンプトキャッシュ込み)。行をクリックすると下の一覧が切り替わります`;
+  $('e-run').textContent = `実行 ${S().run.startedAt} / ${S().run.cases.length}件 / 正解は data/eval.v3.${setKey}.jsonl / 失敗は不正解として採点 / 費用は実際の usage × 公式単価(2026-10-09 確認) / 返ってきたモデル名: ${models}。gpt-6-luna(Chat)の費用はプロンプトキャッシュが効いた実績。行をクリックすると下の一覧が切り替わります`;
 }
 $('o-rows').onclick = (e) => { const tr = e.target.closest('tr'); if (!tr) return; cfgKey = tr.dataset.key; $('e-cfg').value = cfgKey; openId = null; renderEval(); };
 function renderEval() {
   renderOverview();
   const cfg = S().run.configs.find((x) => x.key === cfgKey);
-  const isJev = cfg.classifier === 'jev';
+  const hasProbs = cfg.classifier === 'jev' || cfg.classifier === 'dec';
   const tag = $('e-tag').value, wrongOnly = $('e-wrong').checked;
   const view = scored(cfg).filter((x) => (!tag || x.c.tags.includes(tag)) && (!wrongOnly || x.v === 'wrong'));
   if (!view.length) { $('e-rows').innerHTML = '<tr><td colspan="6" class="meta">該当する件はありません(別解まで含めて全件正解)</td></tr>'; return; }
@@ -268,7 +267,7 @@ function renderEval() {
       : `<span class="chip miss">✗ ${x.chosen ? esc(lab(x.chosen)) : '(失敗)'}</span>`;
     const ans = esc(lab(x.g.answer)) + (x.g.acc.length ? `<div class="ctx">別解: ${esc(x.g.acc.map(lab).join('、'))}</div>` : '');
     const ctx = x.c.context.length ? `<div class="ctx">文脈: ${esc(x.c.context.map((t) => (t.role === 'user' ? 'U: ' : 'A: ') + t.text.split('\n')[0]).join(' / '))}</div>` : '';
-    const detail = openId === x.c.id && isJev && x.r?.probs ? `<tr class="detail"><td></td><td colspan="5">
+    const detail = openId === x.c.id && hasProbs && x.r?.probs ? `<tr class="detail"><td></td><td colspan="5">
       <div class="bars">${barsHtml(x.r.probs, x.chosen, x.g.answer, x.g.acc)}</div>
       <div class="meta">ラベルの理由: ${esc(x.c.reason ?? '')}</div></td></tr>` : '';
     return `<tr class="case" data-id="${x.c.id}"><td>${x.c.id}</td><td>${esc(x.c.utterance)}${ctx}</td><td>${ans}</td><td>${chip}</td><td class="num">${x.r?.confidence != null ? x.r.confidence.toFixed(2) : '-'}</td><td class="num">${sec(x.r?.latencyMs)}</td></tr>${detail}`;
@@ -278,20 +277,13 @@ $('e-rows').onclick = (e) => { const tr = e.target.closest('tr.case'); if (!tr) 
 $('e-cfg').addEventListener('input', () => { cfgKey = $('e-cfg').value; openId = null; renderEval(); });
 for (const id of ['e-tag', 'e-wrong']) $(id).addEventListener('input', renderEval);
 const SETNOTE = {
-  test: 'test: 評価用に新しく作った100件。主な結論はこちら',
-  dev: 'dev: v1・v2 と同じ100件。説明文を直すときに見ているので参考',
+  test: 'test 100件(v3 で凍結し、結果を一度見たデータの再利用)。4構成を同じ実行の中で、1件ずつ順番をランダムにして測った(2026-10-09)',
 };
 function fillTags() {
   const tags = [...new Set(S().cases.flatMap((c) => c.tags))].sort();
   $('e-tag').innerHTML = '<option value="">すべて</option>' + tags.map((t) => `<option>${esc(t)}</option>`).join('');
 }
-$('e-set').onclick = (e) => {
-  const s = e.target.dataset?.s; if (!s) return;
-  setKey = s; openId = null;
-  $('e-set').querySelectorAll('button').forEach((b) => b.setAttribute('aria-pressed', b.dataset.s === s));
-  $('e-setnote').textContent = SETNOTE[s];
-  fillTags(); renderEval();
-};
+
 
 document.querySelectorAll('.tabs button').forEach((b) => b.onclick = () => {
   document.querySelectorAll('.tabs button').forEach((x) => x.setAttribute('aria-selected', x === b));
