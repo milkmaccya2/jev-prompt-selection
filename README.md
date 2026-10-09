@@ -6,8 +6,8 @@ v2 では LLM 分類器(gpt-5.4-nano / gpt-6-luna / gpt-6-sol)と比べ、v3 で
 
 - デモ: **https://jev-prompt-selection.milkmaccya2.workers.dev**
   - 「試す(Jev)」: 発話を入れると、Jev が選んだプロンプトと候補ごとの確率が出ます(12候補 / 6分類、v3 の説明文)
-  - 「比較(100件)」: 9構成の正解率・判定時間・費用と、100件それぞれの正解と選択を見比べられます(test / dev)
-- 結果の詳細: [results/v3/summary.md](results/v3/summary.md)(測定計画は [results/v3/PLAN.md](results/v3/PLAN.md)、Decisions API の追加測定は [results/v3/appendix-decisions/summary.md](results/v3/appendix-decisions/summary.md)、v2 は [results/v2/summary.md](results/v2/summary.md)、v1 は [results/summary.md](results/summary.md))
+  - 「比較(100件)」: v4 の4構成(Jev・Decisions API・gpt-6-luna Chat・gpt-5.4-nano Chat、12候補 / 6分類)の正解率・判定時間・費用と、test 100件それぞれの正解と選択を見比べられます
+- 結果の詳細: v4(4構成を同じ実行で比較)は [results/v4/summary.md](results/v4/summary.md)、v3 は [results/v3/summary.md](results/v3/summary.md)(測定計画は [results/v3/PLAN.md](results/v3/PLAN.md)、Decisions API の追加測定は [results/v3/appendix-decisions/summary.md](results/v3/appendix-decisions/summary.md)、v2 は [results/v2/summary.md](results/v2/summary.md)、v1 は [results/summary.md](results/summary.md))
 
 > **すべて架空の合成データです。** サービス名「ハタラクラフト」、企業名(Kデジタル、Mフーズ など)は実在しません。
 
@@ -137,7 +137,7 @@ npm run cf:deploy               # worker/data.json を作ってからデプロ�
 ```
 
 - `npm run cf:dev` でローカル確認できます(`.env` のキーを使います)
-- 画面は `web/index.html`、API は `worker/index.ts`(`/api/data` と `/api/select`)です。評価結果は最新の `results/v3/raw/run-test-*.json` と `run-dev-*.json` から焼き込みます。「試す」も v3 の指示文と説明文を使います
+- 画面は `web/index.html`、API は `worker/index.ts`(`/api/data` と `/api/select`)です。評価結果は最新の `results/v4/raw/run-test-*.json` から焼き込みます。「試す」も v3 の指示文と説明文を使います
 - 公開版には費用の上限がありません。TypeSafe のアカウント側の課金上限に任せています。入力は1〜300文字に制限しています
 
 ## ディレクトリ
