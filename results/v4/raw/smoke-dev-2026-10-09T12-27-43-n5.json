@@ -1,0 +1,1838 @@
+{
+  "startedAt": "2026-10-09T12:27:43.903Z",
+  "finishedAt": "2026-10-09T12:28:47.076Z",
+  "set": "dev",
+  "data": "data/eval.v3.dev.jsonl",
+  "smoke": true,
+  "env": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "node": "v24.18.0",
+    "sdk": {
+      "openai": "7.30.0",
+      "typesafe": "0.6.0"
+    }
+  },
+  "settings": {
+    "jev": "TypeSafe systemOne, model jev-latest, one choice question (instruction + candidate descriptions as criteria), state = { recent_turns, user_utterance }",
+    "dec": "OpenAI decisions.create, model gpt-6-luna, one choice question (instruction + choices[{ value: id, description }]), input = JSON string of the same state",
+    "chat": "OpenAI chat.completions.create, reasoning_effort none, system = instruction + candidate list, user = JSON of the same state, response_format json_schema strict with enum of candidate ids",
+    "timeoutMsPerCall": 30000,
+    "sdkRetries": 0,
+    "parallel": false
+  },
+  "seed": 20261009,
+  "warmup": {
+    "examples": [
+      0,
+      1,
+      19
+    ],
+    "utterances": [
+      "土日休みで、通勤30分以内の経理の仕事を探してる",
+      "年収の下限は外して、もう一回探して",
+      "求人の詳細を開こうとすると画面が固まる"
+    ]
+  },
+  "retries": 0,
+  "timeoutMs": 30000,
+  "budgetUsd": 0.05,
+  "spentUsd": 0.008280969000000001,
+  "stoppedByBudget": false,
+  "frozen": {
+    "before": {
+      "ok": true,
+      "items": [
+        {
+          "name": "分類器に渡す文",
+          "ok": true,
+          "actual": "3e178125c4a72fa31d18c34ca15cca4169968acb13b155c7540b9794051c65df"
+        },
+        {
+          "name": "説明文の元ファイル",
+          "ok": true,
+          "actual": "8f96ec13e047dc3e6dfda75610b293bffb73cc5e578de3b26afe77a2bf660412"
+        },
+        {
+          "name": "基準書 v3",
+          "ok": true,
+          "actual": "1bfc13c298c3bae872ccceea46f5f5d89279825924a6eea78f6278379b628ce2"
+        },
+        {
+          "name": "基準書の例",
+          "ok": true,
+          "actual": "6ddc2b9177314b56f272022d51666b69de6667784c2a16887d64465e63bd4fbd"
+        },
+        {
+          "name": "test の設計",
+          "ok": true,
+          "actual": "b6abdf54ba68d7554e725c26ca238032544269b2717baa3f21ea0b352e1dbe0a"
+        },
+        {
+          "name": "dev の正解(v3)",
+          "ok": true,
+          "actual": "e432acbe6a7a56f5f6f34e39ba69d4cb020a4cf6d3af1e151fd271fabfa0f7a6"
+        },
+        {
+          "name": "測定計画",
+          "ok": true,
+          "actual": "7a72e97c668698f35710079aac0b63b2f602c892cc6dc7ae6768237b5f1183f5"
+        },
+        {
+          "name": "test の正解つき",
+          "ok": true,
+          "actual": "437f6508af3eed4ee1aa3f84a1daa0ab69bc13a3c7b0e93f514613512bade9c8"
+        }
+      ]
+    },
+    "after": {
+      "ok": true,
+      "items": [
+        {
+          "name": "分類器に渡す文",
+          "ok": true,
+          "actual": "3e178125c4a72fa31d18c34ca15cca4169968acb13b155c7540b9794051c65df"
+        },
+        {
+          "name": "説明文の元ファイル",
+          "ok": true,
+          "actual": "8f96ec13e047dc3e6dfda75610b293bffb73cc5e578de3b26afe77a2bf660412"
+        },
+        {
+          "name": "基準書 v3",
+          "ok": true,
+          "actual": "1bfc13c298c3bae872ccceea46f5f5d89279825924a6eea78f6278379b628ce2"
+        },
+        {
+          "name": "基準書の例",
+          "ok": true,
+          "actual": "6ddc2b9177314b56f272022d51666b69de6667784c2a16887d64465e63bd4fbd"
+        },
+        {
+          "name": "test の設計",
+          "ok": true,
+          "actual": "b6abdf54ba68d7554e725c26ca238032544269b2717baa3f21ea0b352e1dbe0a"
+        },
+        {
+          "name": "dev の正解(v3)",
+          "ok": true,
+          "actual": "e432acbe6a7a56f5f6f34e39ba69d4cb020a4cf6d3af1e151fd271fabfa0f7a6"
+        },
+        {
+          "name": "測定計画",
+          "ok": true,
+          "actual": "7a72e97c668698f35710079aac0b63b2f602c892cc6dc7ae6768237b5f1183f5"
+        },
+        {
+          "name": "test の正解つき",
+          "ok": true,
+          "actual": "437f6508af3eed4ee1aa3f84a1daa0ab69bc13a3c7b0e93f514613512bade9c8"
+        }
+      ]
+    }
+  },
+  "configs": [
+    {
+      "key": "jev@fine",
+      "classifier": "jev",
+      "label": "Jev",
+      "model": "jev-latest",
+      "reasoningEffort": null,
+      "granularity": "fine",
+      "price": {
+        "input": 4.2000000000000006e-8,
+        "cachedInput": 4.2000000000000006e-8,
+        "output": 0
+      }
+    },
+    {
+      "key": "jev@coarse",
+      "classifier": "jev",
+      "label": "Jev",
+      "model": "jev-latest",
+      "reasoningEffort": null,
+      "granularity": "coarse",
+      "price": {
+        "input": 4.2000000000000006e-8,
+        "cachedInput": 4.2000000000000006e-8,
+        "output": 0
+      }
+    },
+    {
+      "key": "dec@fine",
+      "classifier": "dec",
+      "label": "gpt-6-luna(Decisions API)",
+      "model": "gpt-6-luna",
+      "reasoningEffort": null,
+      "granularity": "fine",
+      "price": {
+        "input": 1.0000000000000001e-7,
+        "cachedInput": 1.0000000000000001e-7,
+        "output": 0
+      }
+    },
+    {
+      "key": "dec@coarse",
+      "classifier": "dec",
+      "label": "gpt-6-luna(Decisions API)",
+      "model": "gpt-6-luna",
+      "reasoningEffort": null,
+      "granularity": "coarse",
+      "price": {
+        "input": 1.0000000000000001e-7,
+        "cachedInput": 1.0000000000000001e-7,
+        "output": 0
+      }
+    },
+    {
+      "key": "luna@fine",
+      "classifier": "luna",
+      "label": "gpt-6-luna(推論なし)",
+      "model": "gpt-6-luna",
+      "reasoningEffort": "none",
+      "granularity": "fine",
+      "price": {
+        "input": 1.0000000000000001e-7,
+        "cachedInput": 1e-8,
+        "cacheWrite": 1.25e-7,
+        "output": 5e-7
+      }
+    },
+    {
+      "key": "luna@coarse",
+      "classifier": "luna",
+      "label": "gpt-6-luna(推論なし)",
+      "model": "gpt-6-luna",
+      "reasoningEffort": "none",
+      "granularity": "coarse",
+      "price": {
+        "input": 1.0000000000000001e-7,
+        "cachedInput": 1e-8,
+        "cacheWrite": 1.25e-7,
+        "output": 5e-7
+      }
+    },
+    {
+      "key": "nano@fine",
+      "classifier": "nano",
+      "label": "gpt-5.4-nano(推論なし)",
+      "model": "gpt-5.4-nano",
+      "reasoningEffort": "none",
+      "granularity": "fine",
+      "price": {
+        "input": 2.0000000000000002e-7,
+        "cachedInput": 2e-8,
+        "output": 0.00000125
+      }
+    },
+    {
+      "key": "nano@coarse",
+      "classifier": "nano",
+      "label": "gpt-5.4-nano(推論なし)",
+      "model": "gpt-5.4-nano",
+      "reasoningEffort": "none",
+      "granularity": "coarse",
+      "price": {
+        "input": 2.0000000000000002e-7,
+        "cachedInput": 2e-8,
+        "output": 0.00000125
+      }
+    }
+  ],
+  "warmupCases": [
+    {
+      "id": "warmup-ex0",
+      "order": [
+        "dec@coarse",
+        "luna@fine",
+        "luna@coarse",
+        "nano@fine",
+        "nano@coarse",
+        "jev@fine",
+        "dec@fine",
+        "jev@coarse"
+      ],
+      "results": {
+        "dec@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 3680.0675410000003,
+          "usage": {
+            "input": 1138,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00011380000000000001,
+          "pos": 0,
+          "at": "2026-10-09T12:27:43.916Z"
+        },
+        "luna@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 3236.732583,
+          "usage": {
+            "input": 1428,
+            "cachedInput": 0,
+            "cacheWrite": 1425,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.000185425,
+          "pos": 1,
+          "at": "2026-10-09T12:27:47.596Z"
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 5958.089833000001,
+          "usage": {
+            "input": 1109,
+            "cachedInput": 0,
+            "cacheWrite": 1106,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00014505,
+          "pos": 2,
+          "at": "2026-10-09T12:27:50.833Z"
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 1604.7785000000003,
+          "usage": {
+            "input": 1428,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0003031,
+          "pos": 3,
+          "at": "2026-10-09T12:27:56.792Z"
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 1037.2738339999996,
+          "usage": {
+            "input": 1109,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00023805,
+          "pos": 4,
+          "at": "2026-10-09T12:27:58.397Z"
+        },
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 1,
+          "probs": {
+            "search_conditions": 1,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 242.7091249999994,
+          "usage": {
+            "input": 2024,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.00008500800000000001,
+          "pos": 5,
+          "at": "2026-10-09T12:27:59.435Z"
+        },
+        "dec@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 1,
+          "probs": {
+            "search_conditions": 1,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 371.3746250000004,
+          "usage": {
+            "input": 1436,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00014360000000000002,
+          "pos": 6,
+          "at": "2026-10-09T12:27:59.678Z"
+        },
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 164.84591699999874,
+          "usage": {
+            "input": 1622,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.00006812400000000001,
+          "pos": 7,
+          "at": "2026-10-09T12:28:00.050Z"
+        }
+      }
+    },
+    {
+      "id": "warmup-ex1",
+      "order": [
+        "dec@coarse",
+        "luna@coarse",
+        "luna@fine",
+        "jev@coarse",
+        "nano@fine",
+        "jev@fine",
+        "nano@coarse",
+        "dec@fine"
+      ],
+      "results": {
+        "dec@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 192.42908299999908,
+          "usage": {
+            "input": 1156,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.0001156,
+          "pos": 0,
+          "at": "2026-10-09T12:28:00.224Z"
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 4108.964457999999,
+          "usage": {
+            "input": 1127,
+            "cachedInput": 1070,
+            "cacheWrite": 54,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00002425,
+          "pos": 1,
+          "at": "2026-10-09T12:28:00.417Z"
+        },
+        "luna@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 4535.127791999999,
+          "usage": {
+            "input": 1446,
+            "cachedInput": 1389,
+            "cacheWrite": 54,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00002794,
+          "pos": 2,
+          "at": "2026-10-09T12:28:04.526Z"
+        },
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 0.98,
+          "probs": {
+            "consult": 0.98,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0.02
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 273.4294169999994,
+          "usage": {
+            "input": 1654,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.000069468,
+          "pos": 3,
+          "at": "2026-10-09T12:28:09.062Z"
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 1042.9392909999988,
+          "usage": {
+            "input": 1446,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00030670000000000003,
+          "pos": 4,
+          "at": "2026-10-09T12:28:09.336Z"
+        },
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 1,
+          "probs": {
+            "search_conditions": 1,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 240.05749999999898,
+          "usage": {
+            "input": 2056,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.00008635200000000002,
+          "pos": 5,
+          "at": "2026-10-09T12:28:10.379Z"
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 694.4318329999987,
+          "usage": {
+            "input": 1127,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00024165000000000005,
+          "pos": 6,
+          "at": "2026-10-09T12:28:10.620Z"
+        },
+        "dec@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.99,
+          "probs": {
+            "search_conditions": 0.99,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0.01,
+            "base": 0
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 354.320208000001,
+          "usage": {
+            "input": 1454,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.0001454,
+          "pos": 7,
+          "at": "2026-10-09T12:28:11.314Z"
+        }
+      }
+    },
+    {
+      "id": "warmup-ex19",
+      "order": [
+        "luna@fine",
+        "jev@fine",
+        "dec@coarse",
+        "dec@fine",
+        "nano@coarse",
+        "luna@coarse",
+        "nano@fine",
+        "jev@coarse"
+      ],
+      "results": {
+        "luna@fine": {
+          "ok": true,
+          "chosen": "error_handling",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 2813.8129579999986,
+          "usage": {
+            "input": 1422,
+            "cachedInput": 1389,
+            "cacheWrite": 30,
+            "output": 15,
+            "reasoning": 0
+          },
+          "costUsd": 0.00002544,
+          "pos": 0,
+          "at": "2026-10-09T12:28:11.678Z"
+        },
+        "jev@fine": {
+          "ok": true,
+          "chosen": "error_handling",
+          "confidence": 1,
+          "probs": {
+            "search_conditions": 0,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 1,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 167.19333299999926,
+          "usage": {
+            "input": 2019,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 126,
+            "reasoning": 0
+          },
+          "costUsd": 0.00008479800000000001,
+          "pos": 1,
+          "at": "2026-10-09T12:28:14.492Z"
+        },
+        "dec@coarse": {
+          "ok": true,
+          "chosen": "howto",
+          "confidence": 0.89,
+          "probs": {
+            "consult": 0,
+            "docs": 0,
+            "info": 0.01,
+            "howto": 0.91,
+            "out_of_scope": 0.01,
+            "base": 0.07
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 213.15191699999923,
+          "usage": {
+            "input": 1132,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00011320000000000001,
+          "pos": 2,
+          "at": "2026-10-09T12:28:14.660Z"
+        },
+        "dec@fine": {
+          "ok": true,
+          "chosen": "error_handling",
+          "confidence": 0.97,
+          "probs": {
+            "search_conditions": 0.01,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0.97,
+            "out_of_scope": 0.01,
+            "base": 0.01
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 206.42633399999977,
+          "usage": {
+            "input": 1430,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.000143,
+          "pos": 3,
+          "at": "2026-10-09T12:28:14.873Z"
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "howto",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 1764.9705419999955,
+          "usage": {
+            "input": 1103,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00023810000000000001,
+          "pos": 4,
+          "at": "2026-10-09T12:28:15.080Z"
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "howto",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 4056.7263750000056,
+          "usage": {
+            "input": 1103,
+            "cachedInput": 1070,
+            "cacheWrite": 30,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00002175,
+          "pos": 5,
+          "at": "2026-10-09T12:28:16.846Z"
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "error_handling",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 954.1033749999988,
+          "usage": {
+            "input": 1422,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 15,
+            "reasoning": 0
+          },
+          "costUsd": 0.00030315,
+          "pos": 6,
+          "at": "2026-10-09T12:28:20.903Z"
+        },
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "howto",
+          "confidence": 1,
+          "probs": {
+            "consult": 0,
+            "docs": 0,
+            "info": 0,
+            "howto": 1,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 207.37341600000218,
+          "usage": {
+            "input": 1617,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 63,
+            "reasoning": 0
+          },
+          "costUsd": 0.00006791400000000001,
+          "pos": 7,
+          "at": "2026-10-09T12:28:21.857Z"
+        }
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "e001",
+      "order": [
+        "jev@coarse",
+        "dec@coarse",
+        "nano@coarse",
+        "luna@coarse",
+        "nano@fine",
+        "luna@fine",
+        "dec@fine",
+        "jev@fine"
+      ],
+      "results": {
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 212.63470799999777,
+          "usage": {
+            "input": 1613,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.00006774600000000001,
+          "pos": 0,
+          "at": "2026-10-09T12:28:22.072Z"
+        },
+        "dec@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 219.31008400000428,
+          "usage": {
+            "input": 1130,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00011300000000000001,
+          "pos": 1,
+          "at": "2026-10-09T12:28:22.285Z"
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 1603.7347909999953,
+          "usage": {
+            "input": 1101,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00023645000000000003,
+          "pos": 2,
+          "at": "2026-10-09T12:28:22.505Z"
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 1830.3070000000007,
+          "usage": {
+            "input": 1101,
+            "cachedInput": 1070,
+            "cacheWrite": 28,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.000021000000000000002,
+          "pos": 3,
+          "at": "2026-10-09T12:28:24.109Z"
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 754.9120830000029,
+          "usage": {
+            "input": 1420,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0003015,
+          "pos": 4,
+          "at": "2026-10-09T12:28:25.940Z"
+        },
+        "luna@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 2231.0657920000012,
+          "usage": {
+            "input": 1420,
+            "cachedInput": 1389,
+            "cacheWrite": 28,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.000024690000000000002,
+          "pos": 5,
+          "at": "2026-10-09T12:28:26.695Z"
+        },
+        "dec@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.99,
+          "probs": {
+            "search_conditions": 0.99,
+            "query_normalization": 0.01,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 210.002625000001,
+          "usage": {
+            "input": 1428,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.0001428,
+          "pos": 6,
+          "at": "2026-10-09T12:28:28.926Z"
+        },
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 1,
+          "probs": {
+            "search_conditions": 1,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 196.83666700000322,
+          "usage": {
+            "input": 2015,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.00008463000000000001,
+          "pos": 7,
+          "at": "2026-10-09T12:28:29.137Z"
+        }
+      }
+    },
+    {
+      "id": "e002",
+      "order": [
+        "nano@coarse",
+        "luna@fine",
+        "jev@fine",
+        "dec@coarse",
+        "jev@coarse",
+        "dec@fine",
+        "luna@coarse",
+        "nano@fine"
+      ],
+      "results": {
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 648.0977090000015,
+          "usage": {
+            "input": 1104,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00023705000000000004,
+          "pos": 0,
+          "at": "2026-10-09T12:28:29.341Z"
+        },
+        "luna@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 1134.8506249999991,
+          "usage": {
+            "input": 1423,
+            "cachedInput": 1389,
+            "cacheWrite": 31,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.000025065,
+          "pos": 1,
+          "at": "2026-10-09T12:28:29.990Z"
+        },
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 1,
+          "probs": {
+            "search_conditions": 1,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 163.15391700000328,
+          "usage": {
+            "input": 2019,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.00008479800000000001,
+          "pos": 2,
+          "at": "2026-10-09T12:28:31.125Z"
+        },
+        "dec@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 196.28450000000157,
+          "usage": {
+            "input": 1133,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00011330000000000002,
+          "pos": 3,
+          "at": "2026-10-09T12:28:31.289Z"
+        },
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 202.15987500000483,
+          "usage": {
+            "input": 1617,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.00006791400000000001,
+          "pos": 4,
+          "at": "2026-10-09T12:28:31.485Z"
+        },
+        "dec@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.99,
+          "probs": {
+            "search_conditions": 0.99,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0.01,
+            "base": 0
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 191.27674999999726,
+          "usage": {
+            "input": 1431,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.0001431,
+          "pos": 5,
+          "at": "2026-10-09T12:28:31.688Z"
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 1547.843332999997,
+          "usage": {
+            "input": 1104,
+            "cachedInput": 1070,
+            "cacheWrite": 31,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.000021375,
+          "pos": 6,
+          "at": "2026-10-09T12:28:31.880Z"
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 655.9686250000013,
+          "usage": {
+            "input": 1423,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0003021,
+          "pos": 7,
+          "at": "2026-10-09T12:28:33.428Z"
+        }
+      }
+    },
+    {
+      "id": "e003",
+      "order": [
+        "jev@coarse",
+        "jev@fine",
+        "luna@fine",
+        "nano@fine",
+        "dec@coarse",
+        "dec@fine",
+        "luna@coarse",
+        "nano@coarse"
+      ],
+      "results": {
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 0.99,
+          "probs": {
+            "consult": 0.99,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0.01
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 143.71425000000454,
+          "usage": {
+            "input": 1609,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.00006757800000000001,
+          "pos": 0,
+          "at": "2026-10-09T12:28:34.112Z"
+        },
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 1,
+          "probs": {
+            "search_conditions": 1,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 174.60666599999968,
+          "usage": {
+            "input": 2011,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.000084462,
+          "pos": 1,
+          "at": "2026-10-09T12:28:34.256Z"
+        },
+        "luna@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 1420.8458339999997,
+          "usage": {
+            "input": 1416,
+            "cachedInput": 1389,
+            "cacheWrite": 24,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.000024190000000000004,
+          "pos": 2,
+          "at": "2026-10-09T12:28:34.431Z"
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 648.9162499999948,
+          "usage": {
+            "input": 1416,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0003007,
+          "pos": 3,
+          "at": "2026-10-09T12:28:35.852Z"
+        },
+        "dec@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 0.99,
+          "probs": {
+            "consult": 0.99,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0.01
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 192.92254200000025,
+          "usage": {
+            "input": 1126,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00011260000000000001,
+          "pos": 4,
+          "at": "2026-10-09T12:28:36.501Z"
+        },
+        "dec@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.97,
+          "probs": {
+            "search_conditions": 0.97,
+            "query_normalization": 0.01,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0.01,
+            "base": 0.01
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 270.94174999999814,
+          "usage": {
+            "input": 1424,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00014240000000000002,
+          "pos": 5,
+          "at": "2026-10-09T12:28:36.695Z"
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 866.4301669999986,
+          "usage": {
+            "input": 1097,
+            "cachedInput": 1070,
+            "cacheWrite": 24,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.0000205,
+          "pos": 6,
+          "at": "2026-10-09T12:28:36.966Z"
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 749.3147080000053,
+          "usage": {
+            "input": 1097,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00023565,
+          "pos": 7,
+          "at": "2026-10-09T12:28:37.833Z"
+        }
+      }
+    },
+    {
+      "id": "e004",
+      "order": [
+        "dec@coarse",
+        "nano@fine",
+        "luna@coarse",
+        "jev@fine",
+        "jev@coarse",
+        "dec@fine",
+        "nano@coarse",
+        "luna@fine"
+      ],
+      "results": {
+        "dec@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 209.05099999999948,
+          "usage": {
+            "input": 1161,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00011610000000000002,
+          "pos": 0,
+          "at": "2026-10-09T12:28:38.590Z"
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 640.5794999999998,
+          "usage": {
+            "input": 1451,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.0003077,
+          "pos": 1,
+          "at": "2026-10-09T12:28:38.799Z"
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 868.5067920000001,
+          "usage": {
+            "input": 1132,
+            "cachedInput": 1070,
+            "cacheWrite": 59,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.000024874999999999998,
+          "pos": 2,
+          "at": "2026-10-09T12:28:39.441Z"
+        },
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 1,
+          "probs": {
+            "search_conditions": 1,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 229.83579199999804,
+          "usage": {
+            "input": 2075,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.00008715000000000002,
+          "pos": 3,
+          "at": "2026-10-09T12:28:40.309Z"
+        },
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 185.0372920000009,
+          "usage": {
+            "input": 1673,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.00007026600000000001,
+          "pos": 4,
+          "at": "2026-10-09T12:28:40.540Z"
+        },
+        "dec@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.97,
+          "probs": {
+            "search_conditions": 0.97,
+            "query_normalization": 0.01,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0.01,
+            "base": 0.01
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 210.94795900000463,
+          "usage": {
+            "input": 1459,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00014590000000000002,
+          "pos": 5,
+          "at": "2026-10-09T12:28:40.725Z"
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 793.6543329999986,
+          "usage": {
+            "input": 1132,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00024265000000000002,
+          "pos": 6,
+          "at": "2026-10-09T12:28:40.936Z"
+        },
+        "luna@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 1032.101582999996,
+          "usage": {
+            "input": 1451,
+            "cachedInput": 1389,
+            "cacheWrite": 59,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.000028565000000000002,
+          "pos": 7,
+          "at": "2026-10-09T12:28:41.730Z"
+        }
+      }
+    },
+    {
+      "id": "e005",
+      "order": [
+        "luna@fine",
+        "dec@coarse",
+        "luna@coarse",
+        "nano@coarse",
+        "nano@fine",
+        "jev@coarse",
+        "jev@fine",
+        "dec@fine"
+      ],
+      "results": {
+        "luna@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 972.689667000006,
+          "usage": {
+            "input": 1414,
+            "cachedInput": 1389,
+            "cacheWrite": 22,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00002394,
+          "pos": 0,
+          "at": "2026-10-09T12:28:42.769Z"
+        },
+        "dec@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 203.82195800000045,
+          "usage": {
+            "input": 1124,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00011240000000000001,
+          "pos": 1,
+          "at": "2026-10-09T12:28:43.742Z"
+        },
+        "luna@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-6-luna",
+          "latencyMs": 825.5998749999999,
+          "usage": {
+            "input": 1095,
+            "cachedInput": 1070,
+            "cacheWrite": 22,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00002025,
+          "pos": 2,
+          "at": "2026-10-09T12:28:43.947Z"
+        },
+        "nano@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 955.1986669999969,
+          "usage": {
+            "input": 1095,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 13,
+            "reasoning": 0
+          },
+          "costUsd": 0.00023525,
+          "pos": 3,
+          "at": "2026-10-09T12:28:44.772Z"
+        },
+        "nano@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": null,
+          "probs": null,
+          "model": "gpt-5.4-nano-2026-03-17",
+          "latencyMs": 729.3654160000006,
+          "usage": {
+            "input": 1414,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 14,
+            "reasoning": 0
+          },
+          "costUsd": 0.00030030000000000004,
+          "pos": 4,
+          "at": "2026-10-09T12:28:45.728Z"
+        },
+        "jev@coarse": {
+          "ok": true,
+          "chosen": "consult",
+          "confidence": 1,
+          "probs": {
+            "consult": 1,
+            "docs": 0,
+            "info": 0,
+            "howto": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 237.00179200000275,
+          "usage": {
+            "input": 1608,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 62,
+            "reasoning": 0
+          },
+          "costUsd": 0.00006753600000000001,
+          "pos": 5,
+          "at": "2026-10-09T12:28:46.458Z"
+        },
+        "jev@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 1,
+          "probs": {
+            "search_conditions": 1,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "jev-1.13.0",
+          "latencyMs": 184.10495799999626,
+          "usage": {
+            "input": 2010,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 124,
+            "reasoning": 0
+          },
+          "costUsd": 0.00008442000000000001,
+          "pos": 6,
+          "at": "2026-10-09T12:28:46.695Z"
+        },
+        "dec@fine": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 1,
+          "probs": {
+            "search_conditions": 1,
+            "query_normalization": 0,
+            "company_info": 0,
+            "reviews": 0,
+            "salary_benefits": 0,
+            "career_advice": 0,
+            "application_docs": 0,
+            "interview_prep": 0,
+            "account_terms": 0,
+            "error_handling": 0,
+            "out_of_scope": 0,
+            "base": 0
+          },
+          "model": "gpt-6-luna",
+          "latencyMs": 192.66875000000437,
+          "usage": {
+            "input": 1422,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00014220000000000001,
+          "pos": 7,
+          "at": "2026-10-09T12:28:46.880Z"
+        }
+      }
+    }
+  ]
+}
