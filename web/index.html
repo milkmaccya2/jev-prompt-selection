@@ -103,7 +103,7 @@ tr.case:hover { background: var(--extra-bg); }
   <h1>プロンプト選択ビューア</h1>
   <p class="sub">求人相談AI(架空のサービス「ハタラクラフト」)で、発話ごとにシステムプロンプトを1つ選びます。Jev・OpenAI Decisions API・通常の LLM(gpt-6-luna / gpt-5.4-nano、Chat Completions)を、同じ実行の中で12候補と6分類で比べた結果(v4)を見られます。結果の詳細は <a href="https://github.com/milkmaccya2/jev-prompt-selection/blob/main/results/v4/summary.md">summary</a>。</p>
   <div class="tabs" role="tablist">
-    <button role="tab" aria-selected="true" data-tab="try">試す(Jev)</button>
+    <button role="tab" aria-selected="true" data-tab="try">試す(Jev / Decisions API)</button>
     <button role="tab" aria-selected="false" data-tab="eval">比較(100件)</button>
   </div>
 
@@ -117,15 +117,17 @@ tr.case:hover { background: var(--extra-bg); }
         <input id="utt" type="text" placeholder="例: 名駅あたりで事務の正社員ない?"></div>
       <div style="margin-top:12px; display:flex; gap:12px; align-items:center; flex-wrap:wrap">
         <div class="seg" id="t-gran"><button data-g="fine" aria-pressed="true">12候補</button><button data-g="coarse" aria-pressed="false">6分類</button></div>
-        <button class="btn" id="run">Jev で判定</button>
+        <button class="btn" id="run">Jev と Decisions API で判定</button>
         <span class="meta" id="budget"></span>
       </div>
       <div class="ex" id="examples"></div>
     </div>
-    <div class="panel hidden" id="live">
-      <div class="stats" id="l-stats"></div>
-      <div class="bars" id="l-bars"></div>
-      <p class="meta" id="l-meta"></p>
+    <div class="hidden" id="live">
+      <div class="row">
+        <div class="panel" id="l-jev"></div>
+        <div class="panel" id="l-dec"></div>
+      </div>
+      <p class="meta">同じ発話・同じ指示文・同じ候補の説明文を、2つの API に同時に送っています。判定時間はそれぞれの呼び出しにかかった時間で、1回の観測です。OpenAI Decisions API(gpt-6-luna)はパブリックベータです。同じ IP からの判定は1分に20回までです。</p>
     </div>
   </section>
 
@@ -198,16 +200,23 @@ function barsHtml(probs, chosen, answer, acceptable) {
 }
 
 // ---------- 試す ----------
-function renderLive() {
-  const r = lastLive?.result;
-  if (!r) return;
+function livePanel(name, r, g) {
+  if (!r) return `<h3 style="margin:0 0 8px;font-size:16px">${esc(name)}</h3><p class="meta">この画面では使えません</p>`;
   const chosen = r.ok ? r.chosen : BASE;
-  $('l-stats').innerHTML = `
-    <div class="stat"><b class="pick">${esc(lab(chosen))}</b><span>使うプロンプト(${GRAN[lastLive.g]})${r.ok ? '' : `<br>判定できず基本を使用: ${esc(r.error ?? '')}`}</span></div>
-    <div class="stat"><b>${r.confidence != null ? r.confidence.toFixed(2) : '-'}</b><span>確信度</span></div>
-    <div class="stat"><b>${sec(r.latencyMs)}</b><span>判定にかかった時間</span></div>`;
-  $('l-bars').innerHTML = r.ok ? barsHtml(r.probs, chosen) : '';
-  $('l-meta').textContent = r.ok ? `モデル ${r.model} / 判定に使った入力 ${r.inputTokens.toLocaleString()} tok` : '';
+  return `<h3 style="margin:0 0 8px;font-size:16px">${esc(name)}</h3>
+    <div class="stats">
+      <div class="stat"><b class="pick">${esc(lab(chosen))}</b><span>使うプロンプト(${GRAN[g]})${r.ok ? '' : `<br>判定できず基本を使用: ${esc(r.error ?? '')}`}</span></div>
+      <div class="stat"><b>${r.confidence != null ? r.confidence.toFixed(2) : '-'}</b><span>確信度(confidence)</span></div>
+      <div class="stat"><b>${sec(r.latencyMs)}</b><span>判定にかかった時間</span></div>
+    </div>
+    <div class="bars">${r.ok ? barsHtml(r.probs, chosen) : ''}</div>
+    <p class="meta">${r.ok ? `モデル ${esc(r.model ?? '')} / 入力 ${r.inputTokens.toLocaleString()} tok${r.costUsd != null ? ` / 約 $${r.costUsd.toFixed(5)}` : ''}` : ''}</p>`;
+}
+function renderLive() {
+  if (!lastLive) return;
+  // the local server (src/server.ts) returns only `result` (Jev)
+  $('l-jev').innerHTML = livePanel('Jev(choice)', lastLive.jev ?? lastLive.result, lastLive.g);
+  $('l-dec').innerHTML = livePanel('OpenAI Decisions API(gpt-6-luna・choice)', lastLive.dec, lastLive.g);
 }
 function showBudget(b) { $('budget').textContent = b ? `この画面の費用: $${b.spentUsd.toFixed(4)} / 上限 $${b.limitUsd}` : ''; }
 $('t-gran').onclick = (e) => {
@@ -226,7 +235,7 @@ $('run').onclick = async () => {
     lastLive = { ...j, g: gran }; showBudget(j.budget);
     $('live').classList.remove('hidden'); renderLive();
   } catch (e) { $('budget').textContent = 'エラー: ' + e.message; }
-  finally { $('run').disabled = false; $('run').textContent = 'Jev で判定'; }
+  finally { $('run').disabled = false; $('run').textContent = 'Jev と Decisions API で判定'; }
 };
 $('utt').addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.isComposing) $('run').click(); });
 
