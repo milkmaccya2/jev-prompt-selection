@@ -1,0 +1,104 @@
+verify: 2026-10-09T12:42:08.985Z raw=results/v4/raw/run-test-2026-10-09T12-29-00-n100.json checks=103 mismatches=0
+OK  run complete (100 cases, not stopped, hashes ok): raw=true metrics=true
+OK  case ids match test order: raw=["t001","t002","t003","t004","t005","t006","t007","t008","t009","t010","t011","t012","t013","t014","t015","t016","t017","t018","t019","t020","t021","t022","t023","t024","t025","t026","t027","t028","t029","t030","t031","t032","t033","t034","t035","t036","t037","t038","t039","t040","t041","t042","t043","t044","t045","t046","t047","t048","t049","t050","t051","t052","t053","t054","t055","t056","t057","t058","t059","t060","t061","t062","t063","t064","t065","t066","t067","t068","t069","t070","t071","t072","t073","t074","t075","t076","t077","t078","t079","t080","t081","t082","t083","t084","t085","t086","t087","t088","t089","t090","t091","t092","t093","t094","t095","t096","t097","t098","t099","t100"] metrics=["t001","t002","t003","t004","t005","t006","t007","t008","t009","t010","t011","t012","t013","t014","t015","t016","t017","t018","t019","t020","t021","t022","t023","t024","t025","t026","t027","t028","t029","t030","t031","t032","t033","t034","t035","t036","t037","t038","t039","t040","t041","t042","t043","t044","t045","t046","t047","t048","t049","t050","t051","t052","t053","t054","t055","t056","t057","t058","t059","t060","t061","t062","t063","t064","t065","t066","t067","t068","t069","t070","t071","t072","t073","t074","t075","t076","t077","t078","t079","t080","t081","t082","t083","t084","t085","t086","t087","t088","t089","t090","t091","t092","t093","t094","t095","t096","t097","t098","t099","t100"]
+OK  jev@fine correct: raw=96 metrics=96
+OK  jev@fine correctLenient: raw=98 metrics=98
+OK  jev@fine failures: raw=0 metrics=0
+OK  jev@fine p50: raw=178.60920800000895 metrics=178.60920800000895
+OK  jev@fine p95: raw=230.67741700001352 metrics=230.67741700001352
+OK  jev@fine usdPer1000: raw=0.08605002000000002 metrics=0.08605002000000002
+OK  jev@fine usdPer1000 from tokens x price: raw=0.08605002000000002 metrics=0.08605002000000002
+OK  jev@coarse correct: raw=95 metrics=95
+OK  jev@coarse correctLenient: raw=98 metrics=98
+OK  jev@coarse failures: raw=0 metrics=0
+OK  jev@coarse p50: raw=177.87904100003652 metrics=177.87904100003652
+OK  jev@coarse p95: raw=245.2207500000004 metrics=245.2207500000004
+OK  jev@coarse usdPer1000: raw=0.06916602000000001 metrics=0.06916602000000001
+OK  jev@coarse usdPer1000 from tokens x price: raw=0.06916602000000001 metrics=0.06916602000000001
+OK  dec@fine correct: raw=97 metrics=97
+OK  dec@fine correctLenient: raw=100 metrics=100
+OK  dec@fine failures: raw=0 metrics=0
+OK  dec@fine p50: raw=208.13000000000466 metrics=208.13000000000466
+OK  dec@fine p95: raw=307.96491599996807 metrics=307.96491599996807
+OK  dec@fine usdPer1000: raw=0.14503200000000002 metrics=0.14503200000000002
+OK  dec@fine usdPer1000 from tokens x price: raw=0.14503200000000002 metrics=0.14503200000000002
+OK  dec@coarse correct: raw=97 metrics=97
+OK  dec@coarse correctLenient: raw=100 metrics=100
+OK  dec@coarse failures: raw=0 metrics=0
+OK  dec@coarse p50: raw=210.80350000000908 metrics=210.80350000000908
+OK  dec@coarse p95: raw=318.7670409999846 metrics=318.7670409999846
+OK  dec@coarse usdPer1000: raw=0.11523200000000001 metrics=0.11523200000000001
+OK  dec@coarse usdPer1000 from tokens x price: raw=0.11523200000000001 metrics=0.11523200000000001
+OK  luna@fine correct: raw=98 metrics=98
+OK  luna@fine correctLenient: raw=99 metrics=99
+OK  luna@fine failures: raw=0 metrics=0
+OK  luna@fine p50: raw=1000.349749999994 metrics=1000.349749999994
+OK  luna@fine p95: raw=1492.4386250000098 metrics=1492.4386250000098
+OK  luna@fine usdPer1000: raw=0.027715000000000004 metrics=0.027715000000000004
+OK  luna@fine usdPer1000 from tokens x price: raw=0.027715000000000004 metrics=0.027715000000000004
+OK  luna@coarse correct: raw=98 metrics=98
+OK  luna@coarse correctLenient: raw=100 metrics=100
+OK  luna@coarse failures: raw=0 metrics=0
+OK  luna@coarse p50: raw=1020.190958000021 metrics=1020.190958000021
+OK  luna@coarse p95: raw=2381.796417000005 metrics=2381.796417000005
+OK  luna@coarse usdPer1000: raw=0.02398499999999999 metrics=0.02398499999999999
+OK  luna@coarse usdPer1000 from tokens x price: raw=0.02398499999999999 metrics=0.02398499999999999
+OK  nano@fine correct: raw=94 metrics=94
+OK  nano@fine correctLenient: raw=96 metrics=96
+OK  nano@fine failures: raw=0 metrics=0
+OK  nano@fine p50: raw=729.273375000048 metrics=729.273375000048
+OK  nano@fine p95: raw=951.4846250000119 metrics=951.4846250000119
+OK  nano@fine usdPer1000: raw=0.3065515 metrics=0.3065515
+OK  nano@fine usdPer1000 from tokens x price: raw=0.3065515 metrics=0.3065515
+OK  nano@coarse correct: raw=95 metrics=95
+OK  nano@coarse correctLenient: raw=97 metrics=97
+OK  nano@coarse failures: raw=0 metrics=0
+OK  nano@coarse p50: raw=719.2578330000106 metrics=719.2578330000106
+OK  nano@coarse p95: raw=918.9162919999799 metrics=918.9162919999799
+OK  nano@coarse usdPer1000: raw=0.24138899999999996 metrics=0.24138899999999996
+OK  nano@coarse usdPer1000 from tokens x price: raw=0.24138899999999996 metrics=0.24138899999999996
+OK  mcnemar fine jev-dec b,c: raw=[3,4] metrics=[3,4]
+OK  mcnemar fine jev-dec p: raw=1 metrics=1
+OK  mcnemar fine jev-luna b,c: raw=[2,4] metrics=[2,4]
+OK  mcnemar fine jev-luna p: raw=0.6875 metrics=0.6875
+OK  mcnemar fine jev-nano b,c: raw=[4,2] metrics=[4,2]
+OK  mcnemar fine jev-nano p: raw=0.6875 metrics=0.6875
+OK  mcnemar fine dec-luna b,c: raw=[1,2] metrics=[1,2]
+OK  mcnemar fine dec-luna p: raw=1 metrics=1
+OK  mcnemar fine dec-nano b,c: raw=[6,3] metrics=[6,3]
+OK  mcnemar fine dec-nano p: raw=0.5078125 metrics=0.5078125
+OK  mcnemar fine luna-nano b,c: raw=[6,2] metrics=[6,2]
+OK  mcnemar fine luna-nano p: raw=0.2890625 metrics=0.2890625
+OK  holm fine jev-dec: raw=1 metrics=1
+OK  holm fine jev-luna: raw=1 metrics=1
+OK  holm fine jev-nano: raw=1 metrics=1
+OK  holm fine dec-luna: raw=1 metrics=1
+OK  holm fine dec-nano: raw=1 metrics=1
+OK  holm fine luna-nano: raw=1 metrics=1
+OK  mcnemar coarse jev-dec b,c: raw=[1,3] metrics=[1,3]
+OK  mcnemar coarse jev-dec p: raw=0.625 metrics=0.625
+OK  mcnemar coarse jev-luna b,c: raw=[1,4] metrics=[1,4]
+OK  mcnemar coarse jev-luna p: raw=0.375 metrics=0.375
+OK  mcnemar coarse jev-nano b,c: raw=[2,2] metrics=[2,2]
+OK  mcnemar coarse jev-nano p: raw=1 metrics=1
+OK  mcnemar coarse dec-luna b,c: raw=[0,1] metrics=[0,1]
+OK  mcnemar coarse dec-luna p: raw=1 metrics=1
+OK  mcnemar coarse dec-nano b,c: raw=[3,1] metrics=[3,1]
+OK  mcnemar coarse dec-nano p: raw=0.625 metrics=0.625
+OK  mcnemar coarse luna-nano b,c: raw=[4,1] metrics=[4,1]
+OK  mcnemar coarse luna-nano p: raw=0.375 metrics=0.375
+OK  holm coarse jev-dec: raw=1 metrics=1
+OK  holm coarse jev-luna: raw=1 metrics=1
+OK  holm coarse jev-nano: raw=1 metrics=1
+OK  holm coarse dec-luna: raw=1 metrics=1
+OK  holm coarse dec-nano: raw=1 metrics=1
+OK  holm coarse luna-nano: raw=1 metrics=1
+OK  slide-table jev@fine accuracy: raw=true metrics=true
+OK  slide-table jev@fine cost: raw=true metrics=true
+OK  slide-table dec@fine accuracy: raw=true metrics=true
+OK  slide-table dec@fine cost: raw=true metrics=true
+OK  slide-table luna@fine accuracy: raw=true metrics=true
+OK  slide-table luna@fine cost: raw=true metrics=true
+OK  slide-table nano@fine accuracy: raw=true metrics=true
+OK  slide-table nano@fine cost: raw=true metrics=true
+OK  summary contains slide table: raw=true metrics=true

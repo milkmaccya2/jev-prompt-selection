@@ -1,0 +1,619 @@
+{
+  "raw": "results/v4/raw/run-test-2026-10-09T12-29-00-n100.json",
+  "plan": "results/v4/PLAN.md",
+  "startedAt": "2026-10-09T12:29:00.070Z",
+  "finishedAt": "2026-10-09T12:36:59.206Z",
+  "env": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "node": "v24.18.0",
+    "sdk": {
+      "openai": "7.30.0",
+      "typesafe": "0.6.0"
+    }
+  },
+  "seed": 20261009,
+  "retries": 0,
+  "timeoutMs": 30000,
+  "spentUsd": {
+    "smoke": 0.008280969000000001,
+    "run": 0.10449853800000027,
+    "total": 0.11277950700000026
+  },
+  "configs": [
+    {
+      "key": "jev@fine",
+      "label": "Jev(choice)",
+      "granularity": "fine",
+      "models": {
+        "jev-1.13.0": 100
+      },
+      "n": 100,
+      "correct": 96,
+      "correctCI": [
+        0.9016292850152787,
+        0.9843366961172447
+      ],
+      "correctLenient": 98,
+      "correctLenientCI": [
+        0.9299882086824252,
+        0.9944980324993383
+      ],
+      "failures": 0,
+      "latencyMs": {
+        "p50": 178.60920800000895,
+        "p95": 230.67741700001352,
+        "n": 100
+      },
+      "usdPer1000": 0.08605002000000002,
+      "usdPer1000NoCacheEstimate": null,
+      "tokensPerCall": {
+        "input": 2048.81,
+        "output": 124.75,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "reasoning": 0
+      },
+      "confidenceBins": [
+        {
+          "label": "0.5未満",
+          "n": 1,
+          "correct": 0
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 7,
+          "correct": 5
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 9,
+          "correct": 8
+        },
+        {
+          "label": "0.9以上",
+          "n": 83,
+          "correct": 83
+        }
+      ],
+      "chosenProbabilityBins": [
+        {
+          "label": "0.5未満",
+          "n": 1,
+          "correct": 0
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 5,
+          "correct": 3
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 10,
+          "correct": 9
+        },
+        {
+          "label": "0.9以上",
+          "n": 84,
+          "correct": 84
+        }
+      ]
+    },
+    {
+      "key": "jev@coarse",
+      "label": "Jev(choice)",
+      "granularity": "coarse",
+      "models": {
+        "jev-1.13.0": 100
+      },
+      "n": 100,
+      "correct": 95,
+      "correctCI": [
+        0.8882495301258955,
+        0.9784563209820079
+      ],
+      "correctLenient": 98,
+      "correctLenientCI": [
+        0.9299882086824252,
+        0.9944980324993383
+      ],
+      "failures": 0,
+      "latencyMs": {
+        "p50": 177.87904100003652,
+        "p95": 245.2207500000004,
+        "n": 100
+      },
+      "usdPer1000": 0.06916602000000001,
+      "usdPer1000NoCacheEstimate": null,
+      "tokensPerCall": {
+        "input": 1646.81,
+        "output": 62.43,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "reasoning": 0
+      },
+      "confidenceBins": [
+        {
+          "label": "0.5未満",
+          "n": 4,
+          "correct": 3
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 5,
+          "correct": 2
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 14,
+          "correct": 14
+        },
+        {
+          "label": "0.9以上",
+          "n": 77,
+          "correct": 76
+        }
+      ],
+      "chosenProbabilityBins": [
+        {
+          "label": "0.5未満",
+          "n": 0,
+          "correct": 0
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 9,
+          "correct": 5
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 9,
+          "correct": 9
+        },
+        {
+          "label": "0.9以上",
+          "n": 82,
+          "correct": 81
+        }
+      ]
+    },
+    {
+      "key": "dec@fine",
+      "label": "gpt-6-luna(Decisions API・choice)",
+      "granularity": "fine",
+      "models": {
+        "gpt-6-luna": 100
+      },
+      "n": 100,
+      "correct": 97,
+      "correctCI": [
+        0.9154806351014251,
+        0.9897454760557186
+      ],
+      "correctLenient": 100,
+      "correctLenientCI": [
+        0.9630065012310038,
+        1.0000000000000002
+      ],
+      "failures": 0,
+      "latencyMs": {
+        "p50": 208.13000000000466,
+        "p95": 307.96491599996807,
+        "n": 100
+      },
+      "usdPer1000": 0.14503200000000002,
+      "usdPer1000NoCacheEstimate": null,
+      "tokensPerCall": {
+        "input": 1450.32,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "reasoning": 0
+      },
+      "confidenceBins": [
+        {
+          "label": "0.5未満",
+          "n": 4,
+          "correct": 3
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 7,
+          "correct": 6
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 12,
+          "correct": 11
+        },
+        {
+          "label": "0.9以上",
+          "n": 77,
+          "correct": 77
+        }
+      ],
+      "chosenProbabilityBins": [
+        {
+          "label": "0.5未満",
+          "n": 2,
+          "correct": 2
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 9,
+          "correct": 7
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 11,
+          "correct": 10
+        },
+        {
+          "label": "0.9以上",
+          "n": 78,
+          "correct": 78
+        }
+      ]
+    },
+    {
+      "key": "dec@coarse",
+      "label": "gpt-6-luna(Decisions API・choice)",
+      "granularity": "coarse",
+      "models": {
+        "gpt-6-luna": 100
+      },
+      "n": 100,
+      "correct": 97,
+      "correctCI": [
+        0.9154806351014251,
+        0.9897454760557186
+      ],
+      "correctLenient": 100,
+      "correctLenientCI": [
+        0.9630065012310038,
+        1.0000000000000002
+      ],
+      "failures": 0,
+      "latencyMs": {
+        "p50": 210.80350000000908,
+        "p95": 318.7670409999846,
+        "n": 100
+      },
+      "usdPer1000": 0.11523200000000001,
+      "usdPer1000NoCacheEstimate": null,
+      "tokensPerCall": {
+        "input": 1152.32,
+        "output": 0,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "reasoning": 0
+      },
+      "confidenceBins": [
+        {
+          "label": "0.5未満",
+          "n": 2,
+          "correct": 2
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 4,
+          "correct": 3
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 13,
+          "correct": 12
+        },
+        {
+          "label": "0.9以上",
+          "n": 81,
+          "correct": 80
+        }
+      ],
+      "chosenProbabilityBins": [
+        {
+          "label": "0.5未満",
+          "n": 2,
+          "correct": 2
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 4,
+          "correct": 3
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 13,
+          "correct": 12
+        },
+        {
+          "label": "0.9以上",
+          "n": 81,
+          "correct": 80
+        }
+      ]
+    },
+    {
+      "key": "luna@fine",
+      "label": "gpt-6-luna(Chat・推論なし)",
+      "granularity": "fine",
+      "models": {
+        "gpt-6-luna": 100
+      },
+      "n": 100,
+      "correct": 98,
+      "correctCI": [
+        0.9299882086824252,
+        0.9944980324993383
+      ],
+      "correctLenient": 99,
+      "correctLenientCI": [
+        0.9455138032509934,
+        0.9982325679553906
+      ],
+      "failures": 0,
+      "latencyMs": {
+        "p50": 1000.349749999994,
+        "p95": 1492.4386250000098,
+        "n": 100
+      },
+      "usdPer1000": 0.027715000000000004,
+      "usdPer1000NoCacheEstimate": 0.18745,
+      "tokensPerCall": {
+        "input": 1442.32,
+        "output": 14.47,
+        "cacheRead": 1389,
+        "cacheWrite": 50.32,
+        "reasoning": 0
+      },
+      "confidenceBins": null,
+      "chosenProbabilityBins": null
+    },
+    {
+      "key": "luna@coarse",
+      "label": "gpt-6-luna(Chat・推論なし)",
+      "granularity": "coarse",
+      "models": {
+        "gpt-6-luna": 100
+      },
+      "n": 100,
+      "correct": 98,
+      "correctCI": [
+        0.9299882086824252,
+        0.9944980324993383
+      ],
+      "correctLenient": 100,
+      "correctLenientCI": [
+        0.9630065012310038,
+        1.0000000000000002
+      ],
+      "failures": 0,
+      "latencyMs": {
+        "p50": 1020.190958000021,
+        "p95": 2381.796417000005,
+        "n": 100
+      },
+      "usdPer1000": 0.02398499999999999,
+      "usdPer1000NoCacheEstimate": 0.147035,
+      "tokensPerCall": {
+        "input": 1123.32,
+        "output": 13.39,
+        "cacheRead": 1070,
+        "cacheWrite": 50.32,
+        "reasoning": 0
+      },
+      "confidenceBins": null,
+      "chosenProbabilityBins": null
+    },
+    {
+      "key": "nano@fine",
+      "label": "gpt-5.4-nano(Chat・推論なし)",
+      "granularity": "fine",
+      "models": {
+        "gpt-5.4-nano-2026-03-17": 100
+      },
+      "n": 100,
+      "correct": 94,
+      "correctCI": [
+        0.8752318448839115,
+        0.9722138761993719
+      ],
+      "correctLenient": 96,
+      "correctLenientCI": [
+        0.9016292850152787,
+        0.9843366961172447
+      ],
+      "failures": 0,
+      "latencyMs": {
+        "p50": 729.273375000048,
+        "p95": 951.4846250000119,
+        "n": 100
+      },
+      "usdPer1000": 0.3065515,
+      "usdPer1000NoCacheEstimate": 0.3065515,
+      "tokensPerCall": {
+        "input": 1442.32,
+        "output": 14.47,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "reasoning": 0
+      },
+      "confidenceBins": null,
+      "chosenProbabilityBins": null
+    },
+    {
+      "key": "nano@coarse",
+      "label": "gpt-5.4-nano(Chat・推論なし)",
+      "granularity": "coarse",
+      "models": {
+        "gpt-5.4-nano-2026-03-17": 100
+      },
+      "n": 100,
+      "correct": 95,
+      "correctCI": [
+        0.8882495301258955,
+        0.9784563209820079
+      ],
+      "correctLenient": 97,
+      "correctLenientCI": [
+        0.9154806351014251,
+        0.9897454760557186
+      ],
+      "failures": 0,
+      "latencyMs": {
+        "p50": 719.2578330000106,
+        "p95": 918.9162919999799,
+        "n": 100
+      },
+      "usdPer1000": 0.24138899999999996,
+      "usdPer1000NoCacheEstimate": 0.24138899999999996,
+      "tokensPerCall": {
+        "input": 1123.32,
+        "output": 13.38,
+        "cacheRead": 0,
+        "cacheWrite": 0,
+        "reasoning": 0
+      },
+      "confidenceBins": null,
+      "chosenProbabilityBins": null
+    }
+  ],
+  "mcnemar": {
+    "fine": [
+      {
+        "a": "jev",
+        "b": "dec",
+        "accA": 96,
+        "accB": 97,
+        "b_": 3,
+        "c_": 4,
+        "p": 1,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      },
+      {
+        "a": "jev",
+        "b": "luna",
+        "accA": 96,
+        "accB": 98,
+        "b_": 2,
+        "c_": 4,
+        "p": 0.6875,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      },
+      {
+        "a": "jev",
+        "b": "nano",
+        "accA": 96,
+        "accB": 94,
+        "b_": 4,
+        "c_": 2,
+        "p": 0.6875,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      },
+      {
+        "a": "dec",
+        "b": "luna",
+        "accA": 97,
+        "accB": 98,
+        "b_": 1,
+        "c_": 2,
+        "p": 1,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      },
+      {
+        "a": "dec",
+        "b": "nano",
+        "accA": 97,
+        "accB": 94,
+        "b_": 6,
+        "c_": 3,
+        "p": 0.5078125,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      },
+      {
+        "a": "luna",
+        "b": "nano",
+        "accA": 98,
+        "accB": 94,
+        "b_": 6,
+        "c_": 2,
+        "p": 0.2890625,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      }
+    ],
+    "coarse": [
+      {
+        "a": "jev",
+        "b": "dec",
+        "accA": 95,
+        "accB": 97,
+        "b_": 1,
+        "c_": 3,
+        "p": 0.625,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      },
+      {
+        "a": "jev",
+        "b": "luna",
+        "accA": 95,
+        "accB": 98,
+        "b_": 1,
+        "c_": 4,
+        "p": 0.375,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      },
+      {
+        "a": "jev",
+        "b": "nano",
+        "accA": 95,
+        "accB": 95,
+        "b_": 2,
+        "c_": 2,
+        "p": 1,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      },
+      {
+        "a": "dec",
+        "b": "luna",
+        "accA": 97,
+        "accB": 98,
+        "b_": 0,
+        "c_": 1,
+        "p": 1,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      },
+      {
+        "a": "dec",
+        "b": "nano",
+        "accA": 97,
+        "accB": 95,
+        "b_": 3,
+        "c_": 1,
+        "p": 0.625,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      },
+      {
+        "a": "luna",
+        "b": "nano",
+        "accA": 98,
+        "accB": 95,
+        "b_": 4,
+        "c_": 1,
+        "p": 0.375,
+        "holm": 1,
+        "verdict": "差があるとは言えない"
+      }
+    ]
+  }
+}
