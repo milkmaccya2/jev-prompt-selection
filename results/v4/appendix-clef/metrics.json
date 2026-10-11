@@ -1,0 +1,171 @@
+{
+  "raw": "results/v4/appendix-clef/raw/run-test-2026-10-11T12-09-44-n100.json",
+  "plan": "results/v4/appendix-clef/PLAN.md",
+  "startedAt": "2026-10-11T12:09:44.114Z",
+  "finishedAt": "2026-10-11T12:12:18.120Z",
+  "seed": 20261011,
+  "spentUsd": 0.035223434,
+  "smokeSpentUsd": 0.002713836,
+  "configs": [
+    {
+      "key": "clef",
+      "label": "Clef",
+      "path": "@cf/cloudflare/clef",
+      "models": {
+        "clef": 100
+      },
+      "n": 100,
+      "correct": 93,
+      "correctCI": [
+        0.862504851938476,
+        0.9656807391201875
+      ],
+      "correctLenient": 97,
+      "correctLenientCI": [
+        0.9154806351014251,
+        0.9897454760557186
+      ],
+      "failures": 0,
+      "latencyMs": {
+        "p50": 538.7722920000015,
+        "p95": 1247.454082999997,
+        "n": 100
+      },
+      "usdPer1000": 0.2952744000000001,
+      "priceInputPerToken": 2.4e-7,
+      "tokensPerCall": {
+        "input": 1230.31,
+        "output": 0
+      },
+      "confidenceBins": [
+        {
+          "label": "0.5未満",
+          "n": 26,
+          "correct": 21
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 32,
+          "correct": 30
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 41,
+          "correct": 41
+        },
+        {
+          "label": "0.9以上",
+          "n": 1,
+          "correct": 1
+        }
+      ],
+      "chosenProbabilityBins": [
+        {
+          "label": "0.5未満",
+          "n": 5,
+          "correct": 2
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 17,
+          "correct": 15
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 61,
+          "correct": 59
+        },
+        {
+          "label": "0.9以上",
+          "n": 17,
+          "correct": 17
+        }
+      ]
+    },
+    {
+      "key": "clefflash",
+      "label": "Clef-flash",
+      "path": "@cf/cloudflare/clef-flash",
+      "models": {
+        "clef-flash": 100
+      },
+      "n": 100,
+      "correct": 84,
+      "correctCI": [
+        0.7557973053553682,
+        0.8990471154817143
+      ],
+      "correctLenient": 86,
+      "correctLenientCI": [
+        0.7786281171512964,
+        0.9147365637350263
+      ],
+      "failures": 0,
+      "latencyMs": {
+        "p50": 702.9602080000041,
+        "p95": 1720.8295420000213,
+        "n": 100
+      },
+      "usdPer1000": 0.04675178,
+      "priceInputPerToken": 3.7999999999999996e-8,
+      "tokensPerCall": {
+        "input": 1230.31,
+        "output": 0
+      },
+      "confidenceBins": [
+        {
+          "label": "0.5未満",
+          "n": 34,
+          "correct": 22
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 37,
+          "correct": 33
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 29,
+          "correct": 29
+        },
+        {
+          "label": "0.9以上",
+          "n": 0,
+          "correct": 0
+        }
+      ],
+      "chosenProbabilityBins": [
+        {
+          "label": "0.5未満",
+          "n": 10,
+          "correct": 4
+        },
+        {
+          "label": "0.5〜0.7",
+          "n": 20,
+          "correct": 16
+        },
+        {
+          "label": "0.7〜0.9",
+          "n": 65,
+          "correct": 59
+        },
+        {
+          "label": "0.9以上",
+          "n": 5,
+          "correct": 5
+        }
+      ]
+    }
+  ],
+  "clefVsFlash": {
+    "b": 13,
+    "c": 4,
+    "p": 0.049041748046875,
+    "note": "reference only, uncorrected; same run"
+  },
+  "v4Reference": {
+    "raw": "results/v4/raw/run-test-2026-10-09T12-29-00-n100.json",
+    "startedAt": "2026-10-09T12:29:00.070Z"
+  }
+}
