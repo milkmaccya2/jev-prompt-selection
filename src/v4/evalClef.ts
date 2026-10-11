@@ -29,11 +29,15 @@ const { values: args } = parseArgs({
     'budget-usd': { type: 'string' },
     smoke: { type: 'boolean', default: false },
     'dry-run': { type: 'boolean', default: false },
+    // rest: Workers AI REST from this machine; worker: through the probe Worker (probe/clef-worker), env.AI.run
+    via: { type: 'string', default: 'rest' },
   },
 });
 if (args.set !== 'dev' && args.set !== 'test') throw new Error('--set dev|test is required');
 if (args.set === 'dev' && !args.smoke && !args['dry-run']) throw new Error('dev is run only as --smoke');
 if (!args['dry-run'] && !args['budget-usd']) throw new Error('--budget-usd is required');
+if (args.via !== 'rest' && args.via !== 'worker') throw new Error('--via rest|worker');
+const viaWorker = args.via === 'worker';
 
 /** $ per input token; output is not billed. Sources and date: results/v4/appendix-clef/PRICING.md. */
 export const CLEF = [
@@ -74,8 +78,11 @@ if (args['dry-run']) {
 }
 
 const account = process.env.CLOUDFLARE_ACCOUNT_ID;
-if (!account) throw new Error('CLOUDFLARE_ACCOUNT_ID is required');
-const token = process.env.CLOUDFLARE_API_TOKEN || execFileSync('npx', ['wrangler', 'auth', 'token'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim().split('\n').at(-1)?.trim();
+const probeUrl = process.env.PROBE_URL;
+const probeKey = process.env.PROBE_KEY;
+if (viaWorker && (!probeUrl || !probeKey)) throw new Error('PROBE_URL and PROBE_KEY are required for --via worker');
+if (!viaWorker && !account) throw new Error('CLOUDFLARE_ACCOUNT_ID is required');
+const token = viaWorker ? 'unused' : process.env.CLOUDFLARE_API_TOKEN || execFileSync('npx', ['wrangler', 'auth', 'token'], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim().split('\n').at(-1)?.trim();
 if (!token) throw new Error('no Cloudflare token');
 
 const before = checkFrozen();
@@ -84,16 +91,17 @@ if (!before.ok) {
   process.exit(1);
 }
 
-type Call = ClassifyResult & { pos: number; at: string; status: number | null; raw: unknown };
+type Call = ClassifyResult & { pos: number; at: string; status: number | null; raw: unknown; workerLatencyMs?: number | null; colo?: string | null };
 
 /** One attempt. Latency: from just before the request until the response JSON is read (as in v4). */
 async function classifyClef(spec: Spec, c: EvalCase): Promise<Omit<Call, 'pos' | 'at'>> {
   const empty = { input: 0, cachedInput: 0, cacheWrite: 0, output: 0, reasoning: 0 };
   const t0 = performance.now();
   try {
-    const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${account}/ai/run/${spec.path}`, {
+    const url = viaWorker ? (probeUrl as string) : `https://api.cloudflare.com/client/v4/accounts/${account}/ai/run/${spec.path}`;
+    const res = await fetch(url, {
       method: 'POST',
-      headers: { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
+      headers: viaWorker ? { 'x-probe-key': probeKey as string, 'content-type': 'application/json' } : { authorization: `Bearer ${token}`, 'content-type': 'application/json' },
       body: JSON.stringify(body(spec, c)),
       signal: AbortSignal.timeout(TIMEOUT_MS),
     });
@@ -112,7 +120,8 @@ async function classifyClef(spec: Spec, c: EvalCase): Promise<Omit<Call, 'pos' |
     const usage = { ...empty, input, output: r?.usage?.output_tokens ?? 0 };
     const a = r?.answers?.main;
     const probs = Array.isArray(a?.probabilities) ? Object.fromEntries(a.probabilities.map((p) => [p.value, p.probability])) : (a?.probabilities ?? null);
-    const ok = res.ok && typeof a?.choice === 'string' && ids.has(a.choice);
+    const w = viaWorker ? (raw as { ok?: boolean; workerLatencyMs?: number; colo?: string; error?: string }) : null;
+    const ok = res.ok && (!w || w.ok === true) && typeof a?.choice === 'string' && ids.has(a.choice);
     return {
       ok,
       chosen: ok ? (a?.choice as string) : null,
@@ -124,7 +133,8 @@ async function classifyClef(spec: Spec, c: EvalCase): Promise<Omit<Call, 'pos' |
       costUsd: input * spec.price,
       status: res.status,
       raw,
-      ...(ok ? {} : { error: `HTTP ${res.status}: ${text.slice(0, 200)}` }),
+      ...(w ? { workerLatencyMs: w.workerLatencyMs ?? null, colo: w.colo ?? null } : {}),
+      ...(ok ? {} : { error: `HTTP ${res.status}: ${w?.error ?? text.slice(0, 200)}` }),
     };
   } catch (e) {
     return { ok: false, chosen: null, confidence: null, probs: null, model: null, latencyMs: performance.now() - t0, usage: empty, costUsd: 0, status: null, raw: null, error: String(e).slice(0, 300) };
@@ -195,7 +205,7 @@ const after = checkFrozen();
 
 const kind = args.smoke ? 'smoke' : 'run';
 const stamp = startedAt.replace(/[:.]/g, '-').slice(0, 19);
-const out = `${OUT}/raw/${kind}-${args.set}-${stamp}-n${rows.length}.json`;
+const out = `${OUT}/raw/${viaWorker ? 'worker-' : ''}${kind}-${args.set}-${stamp}-n${rows.length}.json`;
 mkdirSync(`${OUT}/raw`, { recursive: true });
 writeFileSync(
   out,
@@ -206,6 +216,7 @@ writeFileSync(
       set: args.set,
       data: dataPath,
       smoke: args.smoke,
+      via: args.via,
       granularity: 'fine',
       env: { platform: platform(), arch: arch(), node: process.version, sdk: { fetch: 'node built-in fetch (no SDK)' } },
       settings: {
@@ -214,6 +225,7 @@ writeFileSync(
         retries: 0,
         parallel: false,
         latency: 'performance.now() from just before fetch until the response body is read',
+        ...(viaWorker ? { worker: 'probe Worker clef-latency-probe (probe/clef-worker): one env.AI.run per request; workerLatencyMs = Date.now() around env.AI.run inside the Worker' } : {}),
       },
       seed,
       warmup: { examples: WARMUP_EXAMPLES, utterances: warmupCases.map((w) => w.utterance) },

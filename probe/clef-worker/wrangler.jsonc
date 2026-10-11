@@ -1,0 +1,9 @@
+{
+  // Temporary measurement Worker for results/v4/appendix-clef/PLAN-worker.md. Deleted after the run.
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "clef-latency-probe",
+  "main": "index.ts",
+  "compatibility_date": "2026-09-01",
+  "ai": { "binding": "AI" }
+  // Secret (never commit it): PROBE_KEY, a random value shared only with the local runner
+}
