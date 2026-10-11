@@ -1,0 +1,1263 @@
+{
+  "startedAt": "2026-10-11T12:09:15.348Z",
+  "finishedAt": "2026-10-11T12:09:33.670Z",
+  "set": "dev",
+  "data": "data/eval.v3.dev.jsonl",
+  "smoke": true,
+  "granularity": "fine",
+  "env": {
+    "platform": "darwin",
+    "arch": "arm64",
+    "node": "v24.18.0",
+    "sdk": {
+      "fetch": "node built-in fetch (no SDK)"
+    }
+  },
+  "settings": {
+    "clef": "Workers AI REST /ai/run/<model>, body = the System One body sent to Jev ({ model, state, questions: { main: choice(instruction, criteria) } }) with model \"clef\" / \"clef-flash\"",
+    "timeoutMsPerCall": 30000,
+    "retries": 0,
+    "parallel": false,
+    "latency": "performance.now() from just before fetch until the response body is read"
+  },
+  "seed": 20261011,
+  "warmup": {
+    "examples": [
+      0,
+      1,
+      19
+    ],
+    "utterances": [
+      "土日休みで、通勤30分以内の経理の仕事を探してる",
+      "年収の下限は外して、もう一回探して",
+      "求人の詳細を開こうとすると画面が固まる"
+    ]
+  },
+  "budgetUsd": 0.05,
+  "spentUsd": 0.002713836,
+  "stoppedByBudget": false,
+  "frozen": {
+    "before": {
+      "ok": true,
+      "items": [
+        {
+          "name": "分類器に渡す文",
+          "ok": true,
+          "actual": "3e178125c4a72fa31d18c34ca15cca4169968acb13b155c7540b9794051c65df"
+        },
+        {
+          "name": "説明文の元ファイル",
+          "ok": true,
+          "actual": "8f96ec13e047dc3e6dfda75610b293bffb73cc5e578de3b26afe77a2bf660412"
+        },
+        {
+          "name": "基準書 v3",
+          "ok": true,
+          "actual": "1bfc13c298c3bae872ccceea46f5f5d89279825924a6eea78f6278379b628ce2"
+        },
+        {
+          "name": "基準書の例",
+          "ok": true,
+          "actual": "6ddc2b9177314b56f272022d51666b69de6667784c2a16887d64465e63bd4fbd"
+        },
+        {
+          "name": "test の設計",
+          "ok": true,
+          "actual": "b6abdf54ba68d7554e725c26ca238032544269b2717baa3f21ea0b352e1dbe0a"
+        },
+        {
+          "name": "dev の正解(v3)",
+          "ok": true,
+          "actual": "e432acbe6a7a56f5f6f34e39ba69d4cb020a4cf6d3af1e151fd271fabfa0f7a6"
+        },
+        {
+          "name": "測定計画",
+          "ok": true,
+          "actual": "7a72e97c668698f35710079aac0b63b2f602c892cc6dc7ae6768237b5f1183f5"
+        },
+        {
+          "name": "test の正解つき",
+          "ok": true,
+          "actual": "437f6508af3eed4ee1aa3f84a1daa0ab69bc13a3c7b0e93f514613512bade9c8"
+        }
+      ]
+    },
+    "after": {
+      "ok": true,
+      "items": [
+        {
+          "name": "分類器に渡す文",
+          "ok": true,
+          "actual": "3e178125c4a72fa31d18c34ca15cca4169968acb13b155c7540b9794051c65df"
+        },
+        {
+          "name": "説明文の元ファイル",
+          "ok": true,
+          "actual": "8f96ec13e047dc3e6dfda75610b293bffb73cc5e578de3b26afe77a2bf660412"
+        },
+        {
+          "name": "基準書 v3",
+          "ok": true,
+          "actual": "1bfc13c298c3bae872ccceea46f5f5d89279825924a6eea78f6278379b628ce2"
+        },
+        {
+          "name": "基準書の例",
+          "ok": true,
+          "actual": "6ddc2b9177314b56f272022d51666b69de6667784c2a16887d64465e63bd4fbd"
+        },
+        {
+          "name": "test の設計",
+          "ok": true,
+          "actual": "b6abdf54ba68d7554e725c26ca238032544269b2717baa3f21ea0b352e1dbe0a"
+        },
+        {
+          "name": "dev の正解(v3)",
+          "ok": true,
+          "actual": "e432acbe6a7a56f5f6f34e39ba69d4cb020a4cf6d3af1e151fd271fabfa0f7a6"
+        },
+        {
+          "name": "測定計画",
+          "ok": true,
+          "actual": "7a72e97c668698f35710079aac0b63b2f602c892cc6dc7ae6768237b5f1183f5"
+        },
+        {
+          "name": "test の正解つき",
+          "ok": true,
+          "actual": "437f6508af3eed4ee1aa3f84a1daa0ab69bc13a3c7b0e93f514613512bade9c8"
+        }
+      ]
+    }
+  },
+  "configs": [
+    {
+      "key": "clef",
+      "label": "Clef",
+      "path": "@cf/cloudflare/clef",
+      "model": "clef",
+      "priceInput": 2.4e-7
+    },
+    {
+      "key": "clefflash",
+      "label": "Clef-flash",
+      "path": "@cf/cloudflare/clef-flash",
+      "model": "clef-flash",
+      "priceInput": 3.7999999999999996e-8
+    }
+  ],
+  "warmupCases": [
+    {
+      "id": "warmup-ex0",
+      "order": [
+        "clefflash",
+        "clef"
+      ],
+      "results": {
+        "clefflash": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.7775,
+          "probs": {
+            "search_conditions": 0.8906,
+            "query_normalization": 0.0134,
+            "company_info": 0.0038,
+            "reviews": 0.0029,
+            "salary_benefits": 0.0049,
+            "career_advice": 0.0497,
+            "application_docs": 0.0083,
+            "interview_prep": 0.0029,
+            "account_terms": 0.0033,
+            "error_handling": 0.0044,
+            "out_of_scope": 0.0041,
+            "base": 0.0117
+          },
+          "model": "clef-flash",
+          "latencyMs": 1092.553333,
+          "usage": {
+            "input": 1220,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.000046359999999999997,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef-flash",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.8906,
+                    "query_normalization": 0.0134,
+                    "company_info": 0.0038,
+                    "reviews": 0.0029,
+                    "salary_benefits": 0.0049,
+                    "career_advice": 0.0497,
+                    "application_docs": 0.0083,
+                    "interview_prep": 0.0029,
+                    "account_terms": 0.0033,
+                    "error_handling": 0.0044,
+                    "out_of_scope": 0.0041,
+                    "base": 0.0117
+                  },
+                  "confidence": 0.7775
+                }
+              },
+              "usage": {
+                "input_tokens": 1220,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 0,
+          "at": "2026-10-11T12:09:15.360Z"
+        },
+        "clef": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.7195,
+          "probs": {
+            "search_conditions": 0.8597,
+            "query_normalization": 0.0314,
+            "company_info": 0.0073,
+            "reviews": 0.0038,
+            "salary_benefits": 0.0102,
+            "career_advice": 0.0495,
+            "application_docs": 0.0095,
+            "interview_prep": 0.0035,
+            "account_terms": 0.0033,
+            "error_handling": 0.0059,
+            "out_of_scope": 0.006,
+            "base": 0.0099
+          },
+          "model": "clef",
+          "latencyMs": 524.4285419999997,
+          "usage": {
+            "input": 1220,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00029279999999999996,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.8597,
+                    "query_normalization": 0.0314,
+                    "company_info": 0.0073,
+                    "reviews": 0.0038,
+                    "salary_benefits": 0.0102,
+                    "career_advice": 0.0495,
+                    "application_docs": 0.0095,
+                    "interview_prep": 0.0035,
+                    "account_terms": 0.0033,
+                    "error_handling": 0.0059,
+                    "out_of_scope": 0.006,
+                    "base": 0.0099
+                  },
+                  "confidence": 0.7195
+                }
+              },
+              "usage": {
+                "input_tokens": 1220,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 1,
+          "at": "2026-10-11T12:09:16.453Z"
+        }
+      }
+    },
+    {
+      "id": "warmup-ex1",
+      "order": [
+        "clef",
+        "clefflash"
+      ],
+      "results": {
+        "clef": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.8415,
+          "probs": {
+            "search_conditions": 0.9241,
+            "query_normalization": 0.0152,
+            "company_info": 0.0066,
+            "reviews": 0.0036,
+            "salary_benefits": 0.0067,
+            "career_advice": 0.0076,
+            "application_docs": 0.0051,
+            "interview_prep": 0.0034,
+            "account_terms": 0.0038,
+            "error_handling": 0.007,
+            "out_of_scope": 0.0056,
+            "base": 0.0113
+          },
+          "model": "clef",
+          "latencyMs": 397.85054100000025,
+          "usage": {
+            "input": 1236,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00029664,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.9241,
+                    "query_normalization": 0.0152,
+                    "company_info": 0.0066,
+                    "reviews": 0.0036,
+                    "salary_benefits": 0.0067,
+                    "career_advice": 0.0076,
+                    "application_docs": 0.0051,
+                    "interview_prep": 0.0034,
+                    "account_terms": 0.0038,
+                    "error_handling": 0.007,
+                    "out_of_scope": 0.0056,
+                    "base": 0.0113
+                  },
+                  "confidence": 0.8415
+                }
+              },
+              "usage": {
+                "input_tokens": 1236,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 0,
+          "at": "2026-10-11T12:09:16.982Z"
+        },
+        "clefflash": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.8437,
+          "probs": {
+            "search_conditions": 0.9253,
+            "query_normalization": 0.0093,
+            "company_info": 0.0038,
+            "reviews": 0.0037,
+            "salary_benefits": 0.0061,
+            "career_advice": 0.012,
+            "application_docs": 0.0059,
+            "interview_prep": 0.0045,
+            "account_terms": 0.0047,
+            "error_handling": 0.0081,
+            "out_of_scope": 0.0056,
+            "base": 0.011
+          },
+          "model": "clef-flash",
+          "latencyMs": 515.7443750000002,
+          "usage": {
+            "input": 1236,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.000046967999999999995,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef-flash",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.9253,
+                    "query_normalization": 0.0093,
+                    "company_info": 0.0038,
+                    "reviews": 0.0037,
+                    "salary_benefits": 0.0061,
+                    "career_advice": 0.012,
+                    "application_docs": 0.0059,
+                    "interview_prep": 0.0045,
+                    "account_terms": 0.0047,
+                    "error_handling": 0.0081,
+                    "out_of_scope": 0.0056,
+                    "base": 0.011
+                  },
+                  "confidence": 0.8437
+                }
+              },
+              "usage": {
+                "input_tokens": 1236,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 1,
+          "at": "2026-10-11T12:09:17.380Z"
+        }
+      }
+    },
+    {
+      "id": "warmup-ex19",
+      "order": [
+        "clef",
+        "clefflash"
+      ],
+      "results": {
+        "clef": {
+          "ok": true,
+          "chosen": "error_handling",
+          "confidence": 0.8152,
+          "probs": {
+            "search_conditions": 0.0072,
+            "query_normalization": 0.0055,
+            "company_info": 0.0069,
+            "reviews": 0.0032,
+            "salary_benefits": 0.0042,
+            "career_advice": 0.0059,
+            "application_docs": 0.0062,
+            "interview_prep": 0.004,
+            "account_terms": 0.0191,
+            "error_handling": 0.9108,
+            "out_of_scope": 0.0062,
+            "base": 0.0208
+          },
+          "model": "clef",
+          "latencyMs": 748.9836670000004,
+          "usage": {
+            "input": 1216,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00029183999999999997,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "error_handling",
+                  "probabilities": {
+                    "search_conditions": 0.0072,
+                    "query_normalization": 0.0055,
+                    "company_info": 0.0069,
+                    "reviews": 0.0032,
+                    "salary_benefits": 0.0042,
+                    "career_advice": 0.0059,
+                    "application_docs": 0.0062,
+                    "interview_prep": 0.004,
+                    "account_terms": 0.0191,
+                    "error_handling": 0.9108,
+                    "out_of_scope": 0.0062,
+                    "base": 0.0208
+                  },
+                  "confidence": 0.8152
+                }
+              },
+              "usage": {
+                "input_tokens": 1216,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 0,
+          "at": "2026-10-11T12:09:17.898Z"
+        },
+        "clefflash": {
+          "ok": true,
+          "chosen": "error_handling",
+          "confidence": 0.5381,
+          "probs": {
+            "search_conditions": 0.0195,
+            "query_normalization": 0.0145,
+            "company_info": 0.0155,
+            "reviews": 0.0136,
+            "salary_benefits": 0.0153,
+            "career_advice": 0.0207,
+            "application_docs": 0.0194,
+            "interview_prep": 0.0142,
+            "account_terms": 0.0262,
+            "error_handling": 0.754,
+            "out_of_scope": 0.0183,
+            "base": 0.0688
+          },
+          "model": "clef-flash",
+          "latencyMs": 1750.6654580000004,
+          "usage": {
+            "input": 1216,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.000046207999999999995,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef-flash",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "error_handling",
+                  "probabilities": {
+                    "search_conditions": 0.0195,
+                    "query_normalization": 0.0145,
+                    "company_info": 0.0155,
+                    "reviews": 0.0136,
+                    "salary_benefits": 0.0153,
+                    "career_advice": 0.0207,
+                    "application_docs": 0.0194,
+                    "interview_prep": 0.0142,
+                    "account_terms": 0.0262,
+                    "error_handling": 0.754,
+                    "out_of_scope": 0.0183,
+                    "base": 0.0688
+                  },
+                  "confidence": 0.5381
+                }
+              },
+              "usage": {
+                "input_tokens": 1216,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 1,
+          "at": "2026-10-11T12:09:18.647Z"
+        }
+      }
+    }
+  ],
+  "cases": [
+    {
+      "id": "e001",
+      "order": [
+        "clefflash",
+        "clef"
+      ],
+      "results": {
+        "clefflash": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.7741,
+          "probs": {
+            "search_conditions": 0.8893,
+            "query_normalization": 0.0264,
+            "company_info": 0.0049,
+            "reviews": 0.0055,
+            "salary_benefits": 0.0049,
+            "career_advice": 0.0329,
+            "application_docs": 0.0083,
+            "interview_prep": 0.0038,
+            "account_terms": 0.0034,
+            "error_handling": 0.0049,
+            "out_of_scope": 0.0048,
+            "base": 0.0109
+          },
+          "model": "clef-flash",
+          "latencyMs": 578.5231249999997,
+          "usage": {
+            "input": 1215,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00004616999999999999,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef-flash",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.8893,
+                    "query_normalization": 0.0264,
+                    "company_info": 0.0049,
+                    "reviews": 0.0055,
+                    "salary_benefits": 0.0049,
+                    "career_advice": 0.0329,
+                    "application_docs": 0.0083,
+                    "interview_prep": 0.0038,
+                    "account_terms": 0.0034,
+                    "error_handling": 0.0049,
+                    "out_of_scope": 0.0048,
+                    "base": 0.0109
+                  },
+                  "confidence": 0.7741
+                }
+              },
+              "usage": {
+                "input_tokens": 1215,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 0,
+          "at": "2026-10-11T12:09:20.401Z"
+        },
+        "clef": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.6849,
+          "probs": {
+            "search_conditions": 0.8388,
+            "query_normalization": 0.081,
+            "company_info": 0.0063,
+            "reviews": 0.0035,
+            "salary_benefits": 0.004,
+            "career_advice": 0.0273,
+            "application_docs": 0.0073,
+            "interview_prep": 0.0034,
+            "account_terms": 0.0031,
+            "error_handling": 0.0055,
+            "out_of_scope": 0.0073,
+            "base": 0.0125
+          },
+          "model": "clef",
+          "latencyMs": 607.8778750000001,
+          "usage": {
+            "input": 1215,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.0002916,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.8388,
+                    "query_normalization": 0.081,
+                    "company_info": 0.0063,
+                    "reviews": 0.0035,
+                    "salary_benefits": 0.004,
+                    "career_advice": 0.0273,
+                    "application_docs": 0.0073,
+                    "interview_prep": 0.0034,
+                    "account_terms": 0.0031,
+                    "error_handling": 0.0055,
+                    "out_of_scope": 0.0073,
+                    "base": 0.0125
+                  },
+                  "confidence": 0.6849
+                }
+              },
+              "usage": {
+                "input_tokens": 1215,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 1,
+          "at": "2026-10-11T12:09:20.980Z"
+        }
+      }
+    },
+    {
+      "id": "e002",
+      "order": [
+        "clefflash",
+        "clef"
+      ],
+      "results": {
+        "clefflash": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.6811,
+          "probs": {
+            "search_conditions": 0.8372,
+            "query_normalization": 0.018,
+            "company_info": 0.0046,
+            "reviews": 0.0038,
+            "salary_benefits": 0.0065,
+            "career_advice": 0.0749,
+            "application_docs": 0.0208,
+            "interview_prep": 0.005,
+            "account_terms": 0.004,
+            "error_handling": 0.0055,
+            "out_of_scope": 0.0057,
+            "base": 0.014
+          },
+          "model": "clef-flash",
+          "latencyMs": 583.5436250000002,
+          "usage": {
+            "input": 1213,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.000046093999999999996,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef-flash",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.8372,
+                    "query_normalization": 0.018,
+                    "company_info": 0.0046,
+                    "reviews": 0.0038,
+                    "salary_benefits": 0.0065,
+                    "career_advice": 0.0749,
+                    "application_docs": 0.0208,
+                    "interview_prep": 0.005,
+                    "account_terms": 0.004,
+                    "error_handling": 0.0055,
+                    "out_of_scope": 0.0057,
+                    "base": 0.014
+                  },
+                  "confidence": 0.6811
+                }
+              },
+              "usage": {
+                "input_tokens": 1213,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 0,
+          "at": "2026-10-11T12:09:21.591Z"
+        },
+        "clef": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.6004,
+          "probs": {
+            "search_conditions": 0.7871,
+            "query_normalization": 0.0397,
+            "company_info": 0.0066,
+            "reviews": 0.0034,
+            "salary_benefits": 0.0043,
+            "career_advice": 0.1098,
+            "application_docs": 0.0116,
+            "interview_prep": 0.0032,
+            "account_terms": 0.0034,
+            "error_handling": 0.0053,
+            "out_of_scope": 0.0145,
+            "base": 0.0111
+          },
+          "model": "clef",
+          "latencyMs": 645.7500420000006,
+          "usage": {
+            "input": 1213,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00029111999999999996,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.7871,
+                    "query_normalization": 0.0397,
+                    "company_info": 0.0066,
+                    "reviews": 0.0034,
+                    "salary_benefits": 0.0043,
+                    "career_advice": 0.1098,
+                    "application_docs": 0.0116,
+                    "interview_prep": 0.0032,
+                    "account_terms": 0.0034,
+                    "error_handling": 0.0053,
+                    "out_of_scope": 0.0145,
+                    "base": 0.0111
+                  },
+                  "confidence": 0.6004
+                }
+              },
+              "usage": {
+                "input_tokens": 1213,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 1,
+          "at": "2026-10-11T12:09:22.174Z"
+        }
+      }
+    },
+    {
+      "id": "e003",
+      "order": [
+        "clef",
+        "clefflash"
+      ],
+      "results": {
+        "clef": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.7468,
+          "probs": {
+            "search_conditions": 0.8748,
+            "query_normalization": 0.0381,
+            "company_info": 0.0101,
+            "reviews": 0.0036,
+            "salary_benefits": 0.0041,
+            "career_advice": 0.0214,
+            "application_docs": 0.01,
+            "interview_prep": 0.0033,
+            "account_terms": 0.0034,
+            "error_handling": 0.0061,
+            "out_of_scope": 0.0077,
+            "base": 0.0174
+          },
+          "model": "clef",
+          "latencyMs": 1111.4381249999988,
+          "usage": {
+            "input": 1212,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00029088,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.8748,
+                    "query_normalization": 0.0381,
+                    "company_info": 0.0101,
+                    "reviews": 0.0036,
+                    "salary_benefits": 0.0041,
+                    "career_advice": 0.0214,
+                    "application_docs": 0.01,
+                    "interview_prep": 0.0033,
+                    "account_terms": 0.0034,
+                    "error_handling": 0.0061,
+                    "out_of_scope": 0.0077,
+                    "base": 0.0174
+                  },
+                  "confidence": 0.7468
+                }
+              },
+              "usage": {
+                "input_tokens": 1212,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 0,
+          "at": "2026-10-11T12:09:22.822Z"
+        },
+        "clefflash": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.7459,
+          "probs": {
+            "search_conditions": 0.8744,
+            "query_normalization": 0.0307,
+            "company_info": 0.0046,
+            "reviews": 0.0037,
+            "salary_benefits": 0.0069,
+            "career_advice": 0.0299,
+            "application_docs": 0.011,
+            "interview_prep": 0.0046,
+            "account_terms": 0.0046,
+            "error_handling": 0.0067,
+            "out_of_scope": 0.0064,
+            "base": 0.0165
+          },
+          "model": "clef-flash",
+          "latencyMs": 6559.40575,
+          "usage": {
+            "input": 1212,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.000046055999999999994,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef-flash",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.8744,
+                    "query_normalization": 0.0307,
+                    "company_info": 0.0046,
+                    "reviews": 0.0037,
+                    "salary_benefits": 0.0069,
+                    "career_advice": 0.0299,
+                    "application_docs": 0.011,
+                    "interview_prep": 0.0046,
+                    "account_terms": 0.0046,
+                    "error_handling": 0.0067,
+                    "out_of_scope": 0.0064,
+                    "base": 0.0165
+                  },
+                  "confidence": 0.7459
+                }
+              },
+              "usage": {
+                "input_tokens": 1212,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 1,
+          "at": "2026-10-11T12:09:23.934Z"
+        }
+      }
+    },
+    {
+      "id": "e004",
+      "order": [
+        "clef",
+        "clefflash"
+      ],
+      "results": {
+        "clef": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.7635,
+          "probs": {
+            "search_conditions": 0.8836,
+            "query_normalization": 0.0346,
+            "company_info": 0.0051,
+            "reviews": 0.004,
+            "salary_benefits": 0.0046,
+            "career_advice": 0.0301,
+            "application_docs": 0.0101,
+            "interview_prep": 0.0041,
+            "account_terms": 0.0038,
+            "error_handling": 0.0058,
+            "out_of_scope": 0.0046,
+            "base": 0.0096
+          },
+          "model": "clef",
+          "latencyMs": 564.3134999999984,
+          "usage": {
+            "input": 1240,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00029759999999999997,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.8836,
+                    "query_normalization": 0.0346,
+                    "company_info": 0.0051,
+                    "reviews": 0.004,
+                    "salary_benefits": 0.0046,
+                    "career_advice": 0.0301,
+                    "application_docs": 0.0101,
+                    "interview_prep": 0.0041,
+                    "account_terms": 0.0038,
+                    "error_handling": 0.0058,
+                    "out_of_scope": 0.0046,
+                    "base": 0.0096
+                  },
+                  "confidence": 0.7635
+                }
+              },
+              "usage": {
+                "input_tokens": 1240,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 0,
+          "at": "2026-10-11T12:09:30.495Z"
+        },
+        "clefflash": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.8135,
+          "probs": {
+            "search_conditions": 0.9099,
+            "query_normalization": 0.0109,
+            "company_info": 0.0039,
+            "reviews": 0.0036,
+            "salary_benefits": 0.0044,
+            "career_advice": 0.0239,
+            "application_docs": 0.0142,
+            "interview_prep": 0.0045,
+            "account_terms": 0.0047,
+            "error_handling": 0.0061,
+            "out_of_scope": 0.0044,
+            "base": 0.0095
+          },
+          "model": "clef-flash",
+          "latencyMs": 1334.7953750000015,
+          "usage": {
+            "input": 1240,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.000047119999999999996,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef-flash",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.9099,
+                    "query_normalization": 0.0109,
+                    "company_info": 0.0039,
+                    "reviews": 0.0036,
+                    "salary_benefits": 0.0044,
+                    "career_advice": 0.0239,
+                    "application_docs": 0.0142,
+                    "interview_prep": 0.0045,
+                    "account_terms": 0.0047,
+                    "error_handling": 0.0061,
+                    "out_of_scope": 0.0044,
+                    "base": 0.0095
+                  },
+                  "confidence": 0.8135
+                }
+              },
+              "usage": {
+                "input_tokens": 1240,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 1,
+          "at": "2026-10-11T12:09:31.060Z"
+        }
+      }
+    },
+    {
+      "id": "e005",
+      "order": [
+        "clef",
+        "clefflash"
+      ],
+      "results": {
+        "clef": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.4529,
+          "probs": {
+            "search_conditions": 0.6801,
+            "query_normalization": 0.0235,
+            "company_info": 0.0086,
+            "reviews": 0.005,
+            "salary_benefits": 0.0059,
+            "career_advice": 0.1811,
+            "application_docs": 0.0197,
+            "interview_prep": 0.0041,
+            "account_terms": 0.0042,
+            "error_handling": 0.0057,
+            "out_of_scope": 0.0234,
+            "base": 0.0387
+          },
+          "model": "clef",
+          "latencyMs": 449.63837500000227,
+          "usage": {
+            "input": 1210,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00029039999999999996,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.6801,
+                    "query_normalization": 0.0235,
+                    "company_info": 0.0086,
+                    "reviews": 0.005,
+                    "salary_benefits": 0.0059,
+                    "career_advice": 0.1811,
+                    "application_docs": 0.0197,
+                    "interview_prep": 0.0041,
+                    "account_terms": 0.0042,
+                    "error_handling": 0.0057,
+                    "out_of_scope": 0.0234,
+                    "base": 0.0387
+                  },
+                  "confidence": 0.4529
+                }
+              },
+              "usage": {
+                "input_tokens": 1210,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 0,
+          "at": "2026-10-11T12:09:32.398Z"
+        },
+        "clefflash": {
+          "ok": true,
+          "chosen": "search_conditions",
+          "confidence": 0.5678,
+          "probs": {
+            "search_conditions": 0.7581,
+            "query_normalization": 0.0096,
+            "company_info": 0.0049,
+            "reviews": 0.0043,
+            "salary_benefits": 0.0076,
+            "career_advice": 0.1688,
+            "application_docs": 0.0129,
+            "interview_prep": 0.0044,
+            "account_terms": 0.0032,
+            "error_handling": 0.0046,
+            "out_of_scope": 0.0057,
+            "base": 0.0159
+          },
+          "model": "clef-flash",
+          "latencyMs": 817.259917000003,
+          "usage": {
+            "input": 1210,
+            "cachedInput": 0,
+            "cacheWrite": 0,
+            "output": 0,
+            "reasoning": 0
+          },
+          "costUsd": 0.00004598,
+          "status": 200,
+          "raw": {
+            "result": {
+              "model": "clef-flash",
+              "answers": {
+                "main": {
+                  "type": "choice",
+                  "choice": "search_conditions",
+                  "probabilities": {
+                    "search_conditions": 0.7581,
+                    "query_normalization": 0.0096,
+                    "company_info": 0.0049,
+                    "reviews": 0.0043,
+                    "salary_benefits": 0.0076,
+                    "career_advice": 0.1688,
+                    "application_docs": 0.0129,
+                    "interview_prep": 0.0044,
+                    "account_terms": 0.0032,
+                    "error_handling": 0.0046,
+                    "out_of_scope": 0.0057,
+                    "base": 0.0159
+                  },
+                  "confidence": 0.5678
+                }
+              },
+              "usage": {
+                "input_tokens": 1210,
+                "output_tokens": 0
+              }
+            },
+            "success": true,
+            "errors": [],
+            "messages": []
+          },
+          "pos": 1,
+          "at": "2026-10-11T12:09:32.848Z"
+        }
+      }
+    }
+  ]
+}
